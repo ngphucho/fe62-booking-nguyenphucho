@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SwipeableViews from "react-swipeable-views";
 import { Container } from "reactstrap";
-import SubContent from "../SubContent";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,13 +45,15 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
+    width: 700,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
     // backgroundColor: 'red'
   },
 }));
 
-export default function MainContent({ currentMovies, comingMovies }) {
-  // console.log("main", comingMovies);
+export default function OrderTicketBox() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -66,21 +67,24 @@ export default function MainContent({ currentMovies, comingMovies }) {
   };
 
   return (
-    <Container className="mt-4">
-      <div className={classes.root}>
+    <Container className="orderTicketBox">
+      <div
+        className={classes.root}
+        style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
+      >
         <AppBar position="static" color="transparent" elevation={0}>
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="simple tabs example"
-            // variant="fullWidth"
+            variant="fullWidth"
             //     indicatorColor="secondary"
             // textColor="primary"
             centered
           >
-            <Tab label="PHIM ĐANG CHIẾU" {...a11yProps(0)} />
-            <Tab label="PHIM SẮP CHIẾU" {...a11yProps(1)} />
-            {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
+            <Tab label="THEO PHIM" {...a11yProps(0)} />
+            <Tab label="THEO RẠP" {...a11yProps(1)} />
+            <Tab label="THEO NGÀY" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -89,14 +93,53 @@ export default function MainContent({ currentMovies, comingMovies }) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <SubContent data={currentMovies} link="/" />
+            <div className="tab">
+              <select>
+                <option>Chọn phim</option>
+              </select>
+              <select>
+                <option>Chọn rạp</option>
+              </select>
+              <select>
+                <option>Chọn ngày</option>
+              </select>
+              <select>
+                <option>Chọn suất</option>
+              </select>
+            </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <SubContent data={comingMovies} link="/" />
+            <div className="tab">
+              <select>
+                <option>Chọn rạp</option>
+              </select>
+              <select>
+                <option>Chọn phim</option>
+              </select>
+              <select>
+                <option>Chọn ngày</option>
+              </select>
+              <select>
+                <option>Chọn suất</option>
+              </select>
+            </div>
           </TabPanel>
-          {/* <TabPanel value={value} index={2} dir={theme.direction}>
-            Item Three
-          </TabPanel> */}
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <div className="tab">
+              <select>
+                <option>Chọn ngày</option>
+              </select>
+              <select>
+                <option>Chọn rạp</option>
+              </select>
+              <select>
+                <option>Chọn phim</option>
+              </select>
+              <select>
+                <option>Chọn suất</option>
+              </select>
+            </div>
+          </TabPanel>
         </SwipeableViews>
       </div>
     </Container>

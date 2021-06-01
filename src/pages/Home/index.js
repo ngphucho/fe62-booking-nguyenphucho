@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import MainContent from "../../components/MainContent";
 import MyCarousel from "../../components/MyCarousel";
 import { getMovies } from "../../actions/movies";
+import OrderTicketBox from "../../components/OrderTicketBox";
+import TrailerModal from "../../components/TrailerModal";
 
 export default function Home() {
   const dispatch = useDispatch();
   // const { category } = useParams();
   const { movies, error } = useSelector((state) => state.movies);
+  const { value } = useSelector((state) => state.searchValue);
   const [currentMovies, setCurrentMovies] = useState([]);
   const [comingMovies, setComingMovies] = useState([]);
 
@@ -17,6 +20,7 @@ export default function Home() {
     dispatch(getMovies());
   }, []);
 
+  //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
   useEffect(() => {
     if (movies.length > 0) {
       const today = new Date("2019-07-29T00:00:00");
@@ -28,10 +32,15 @@ export default function Home() {
           setCurrentMovies((currentMovies) => [...currentMovies, movie]);
         }
       });
-      // setCurrentMovies(cMovies=>[...]);
-      // console.log("coming", comingMovies);
     }
   }, [movies]);
+
+  //chay moi khi inputValue thay doi => goi lenh tim kiem/ di den trang detail
+  useEffect(() => {
+    // if(Array().indexOf(movie=>movie.tenPhim===))
+    console.log(value);
+  }, [value]);
+
   return (
     <div>
       <MyCarousel></MyCarousel>
@@ -39,30 +48,14 @@ export default function Home() {
       {error ? (
         <div>{error}</div>
       ) : (
-        <MainContent
-          currentMovies={currentMovies.slice(0,8)}
-          comingMovies={comingMovies.slice(0,8)}
-        ></MainContent>
-        // <div className="row">
-        //   {movies.map((item) => (
-        //     <div
-        //       key={item.maPhim}
-        //       className="card text-white col-md-4 p-2 border-0"
-        //       style={{ height: "450px", overflow: "hidden" }}
-        //     >
-        //       <img
-        //         className="card-img-top"
-        //         style={{ height: "300px" }}
-        //         src={item.hinhAnh}
-        //         alt={item.biDanh}
-        //       />
-        //       <div className="card-body bg-primary ">
-        //         <h4 className="card-title">{item.tenPhim}</h4>
-        //         <p className="card-text">{item.moTa}</p>
-        //       </div>
-        //     </div>
-        //   ))}
-        // </div>
+        <div>
+          <TrailerModal></TrailerModal>
+          <OrderTicketBox></OrderTicketBox>
+          <MainContent
+            currentMovies={currentMovies.slice(0, 8)}
+            comingMovies={comingMovies.slice(0, 8)}
+          ></MainContent>
+        </div>
       )}
     </div>
   );

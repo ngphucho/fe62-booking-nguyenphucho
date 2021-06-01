@@ -11,6 +11,12 @@ const moviesAPI = {
     };
     return axiosClient.get("/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc", { params });
   },
+  getMovieById: (id) => {
+    const params = {
+      MaPhim: id,
+    };
+    return axiosClient.get("/QuanLyPhim/LayThongTinPhim", { params });
+  },
 };
 
 export default moviesAPI;
