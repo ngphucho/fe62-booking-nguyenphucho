@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Home from "./pages/Home";
+import Movie from "./pages/Movie";
 import Search from "./pages/Search";
 import "./styles";
 
@@ -23,7 +24,10 @@ function App() {
                 <Route path="/home">
                   <Home> </Home>
                 </Route>
-                <Route path="/search/:movieId">
+                <Route path="/movie/:movieId">
+                  <Movie> </Movie>
+                </Route>
+                <Route path="/search/:keyword">
                   <Search> </Search>
                 </Route>
               </Switch>

@@ -24,9 +24,9 @@ export default function HeaderTop() {
   return (
     <div
       style={{
-        position: "fixed",
-        zIndex: "10",
-        backgroundColor: "#00000080",
+        // position: "fixed",
+        // zIndex: "10",
+        backgroundColor: "#000000",
         width: "100%",
       }}
     >
@@ -35,7 +35,7 @@ export default function HeaderTop() {
           <NavbarBrand>
             <Link to="/home">
               <img
-                src="images/header-logo1.png"
+                src="/images/header-logo1.png"
                 alt="header-logo"
                 height={70}
               />
@@ -53,12 +53,6 @@ export default function HeaderTop() {
                 </NavLink>
               </NavItem>
             </Nav>
-            {/* <InputGroup style={{ width: 300 }}>
-            <Input placeholder="Tìm kiếm-..." />
-            <InputGroupAddon addonType="append">
-              <InputGroupText>O</InputGroupText>
-            </InputGroupAddon>
-          </InputGroup> */}
             <Nav navbar>
               <SearchBox />
             </Nav>

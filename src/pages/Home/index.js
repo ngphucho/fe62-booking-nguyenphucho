@@ -5,19 +5,22 @@ import MyCarousel from "../../components/MyCarousel";
 import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import TrailerModal from "../../components/TrailerModal";
+import IsLoading from "../../components/IsLoading";
 
 export default function Home() {
   const dispatch = useDispatch();
-  // const { category } = useParams();
-  const { movies, error } = useSelector((state) => state.movies);
-  const { value } = useSelector((state) => state.searchValue);
+  const { movies, error, isLoading } = useSelector((state) => state.movies);
   const [currentMovies, setCurrentMovies] = useState([]);
   const [comingMovies, setComingMovies] = useState([]);
+  const [isPending, setPending] = useState(true);
 
   //Được chạy mỗi khi load trang này
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
     dispatch(getMovies());
+    setTimeout(() => {
+      setPending(false);
+    }, 2000);
   }, []);
 
   //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
@@ -35,15 +38,12 @@ export default function Home() {
     }
   }, [movies]);
 
-  //chay moi khi inputValue thay doi => goi lenh tim kiem/ di den trang detail
-  useEffect(() => {
-    // if(Array().indexOf(movie=>movie.tenPhim===))
-    console.log(value);
-  }, [value]);
-
-  return (
+  return isLoading || isPending ? (
+    <IsLoading></IsLoading>
+  ) : (
     <div>
       <MyCarousel></MyCarousel>
+
       {/* <MainContent></MainContent> */}
       {error ? (
         <div>{error}</div>

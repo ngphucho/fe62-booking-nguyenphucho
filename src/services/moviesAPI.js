@@ -6,10 +6,10 @@ const moviesAPI = {
   },
   getMoviesByName: (name) => {
     const params = {
-      tenPhim: name,
       maNhom: "GP13",
+      tenPhim: name,
     };
-    return axiosClient.get("/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc", { params });
+    return axiosClient.get("/QuanLyPhim/LayDanhSachPhim", { params });
   },
   getMovieById: (id) => {
     const params = {

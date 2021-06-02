@@ -9,7 +9,7 @@ export default function SubContent({ title, link, data }) {
         {title ? <h3>{title}</h3> : null}
         {data.map((item) => {
           return (
-            <Col md={3} className="my-2" key={item.maPhim}>
+            <Col md={3} key={item.maPhim}>
               <MovieItem movie={item}></MovieItem>
             </Col>
           );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { CLOSE_TRAILER } from "../../constants/selectedMovie";
 import { setOpen, changeSelectedMovie } from "../../actions/selectedMovie";
 
@@ -7,8 +8,9 @@ export default function MovieItem({ movie }) {
   // const [isOpen, setOpen] = useState(false);
   const { isOpen } = useSelector((state) => state.selectedMovie);
   const dispatch = useDispatch();
+  const history = useHistory();
   return (
-    <div className="card text-white itemMovieCard">
+    <div className="card text-white itemMovieCard my-2">
       <div className="itemMovieImage">
         <img
           className="card-img-top"
@@ -22,7 +24,14 @@ export default function MovieItem({ movie }) {
         <p>Mô tả: {movie.moTa.slice(0, 120)}</p>
         <p>Ngày khởi chiếu: {movie.ngayKhoiChieu.slice(0, 10)}</p>
         <div className="d-flex justify-content-around">
-          <button className="btn btn-outline-success">Chi tiết</button>
+          <button
+            className="btn btn-outline-success"
+            onClick={() => {
+              history.push("/movie/" + movie.maPhim);
+            }}
+          >
+            Chi tiết
+          </button>
           <button
             className="btn btn-outline-danger"
             onClick={() => {

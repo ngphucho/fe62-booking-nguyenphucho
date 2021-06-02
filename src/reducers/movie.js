@@ -1,9 +1,9 @@
 import {
   CHANGE_VALUE_SEARCH,
-  SEARCH_MOVIE_ID_FAILURE,
-  SEARCH_MOVIE_ID_REQUEST,
-  SEARCH_MOVIE_ID_SUCCESS,
-} from "../constants/searchValue";
+  GET_MOVIE_REQUEST,
+  GET_MOVIE_SUCCESS,
+  GET_MOVIE_FAILURE,
+} from "../constants/movie";
 
 const initialState = {
   value: "",
@@ -12,7 +12,7 @@ const initialState = {
   error: "",
 };
 
-function changeValueSearch(state = initialState, action) {
+function movieReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_VALUE_SEARCH: {
       return {
@@ -20,10 +20,10 @@ function changeValueSearch(state = initialState, action) {
       };
     }
     //
-    case SEARCH_MOVIE_ID_REQUEST: {
+    case GET_MOVIE_REQUEST: {
       return { ...state, isLoading: true, error: null };
     }
-    case SEARCH_MOVIE_ID_SUCCESS: {
+    case GET_MOVIE_SUCCESS: {
       return {
         ...state,
         movie: action.payload.data,
@@ -31,7 +31,7 @@ function changeValueSearch(state = initialState, action) {
         error: null,
       };
     }
-    case SEARCH_MOVIE_ID_FAILURE: {
+    case GET_MOVIE_FAILURE: {
       return { ...state, isLoading: false, error: action.payload.error };
     }
     //
@@ -40,4 +40,4 @@ function changeValueSearch(state = initialState, action) {
   }
 }
 
-export default changeValueSearch;
+export default movieReducer;

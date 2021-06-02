@@ -20,3 +20,18 @@ export function getMovies() {
     }
   };
 }
+
+export function getMoviesByName(keyword) {
+  return async (dispatch) => {
+    dispatch({ type: GET_MOVIES_REQUEST });
+    try {
+      const { data } = await moviesAPI.getMoviesByName(keyword);
+      dispatch({ type: GET_MOVIES_SUCCESS, payload: { data } });
+    } catch (error) {
+      dispatch({
+        type: GET_MOVIES_FAILURE,
+        payload: { error: error.response.data },
+      });
+    }
+  };
+}

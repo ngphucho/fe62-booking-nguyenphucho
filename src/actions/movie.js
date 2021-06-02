@@ -1,9 +1,9 @@
 import {
   CHANGE_VALUE_SEARCH,
-  SEARCH_MOVIE_ID_FAILURE,
-  SEARCH_MOVIE_ID_REQUEST,
-  SEARCH_MOVIE_ID_SUCCESS,
-} from "../constants/searchValue";
+  GET_MOVIE_REQUEST,
+  GET_MOVIE_SUCCESS,
+  GET_MOVIE_FAILURE,
+} from "../constants/movie";
 import moviesAPI from "../services/moviesAPI";
 
 export function changeValueSearch(value) {
@@ -17,13 +17,13 @@ export function changeValueSearch(value) {
 
 export function getMovieById(id) {
   return async (dispatch) => {
-    dispatch({ type: SEARCH_MOVIE_ID_REQUEST });
+    dispatch({ type: GET_MOVIE_REQUEST });
     try {
       const { data } = await moviesAPI.getMovieById(id);
-      dispatch({ type: SEARCH_MOVIE_ID_SUCCESS, payload: { data } });
+      dispatch({ type: GET_MOVIE_SUCCESS, payload: { data } });
     } catch (error) {
       dispatch({
-        type: SEARCH_MOVIE_ID_FAILURE,
+        type: GET_MOVIE_FAILURE,
         payload: { error: error.response.data },
       });
     }
