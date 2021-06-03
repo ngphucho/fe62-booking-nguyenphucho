@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { getMovies } from "../../actions/movies";
 import { getMovieById } from "../../actions/movie";
 
-import IsLoading from "../../components/IsLoading"
+import IsLoading from "../../components/IsLoading";
+import MovieDetail from "../../components/MovieDetail";
 
 export default function Movie() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function Movie() {
   //Được chạy mỗi khi load trang này
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
-    console.log("3. MoviePage");
+    // console.log("3. MoviePage");
     dispatch(getMovies());
   }, []);
 
@@ -24,7 +25,7 @@ export default function Movie() {
   }, [movieId]);
 
   useEffect(() => {
-    console.log("movie: ", movie);
+    // console.log("movie: ", movie);
   }, [movie]);
 
   // return <div>search</div>
@@ -34,16 +35,6 @@ export default function Movie() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div>
-      <div>Ma Phim: {movie.maPhim}</div>
-      <div>Ten Phim: {movie.tenPhim}</div>
-      <div>Mo ta: {movie.moTa}</div>
-      <div>Ngay khoi chieu: {movie.ngayKhoiChieu}</div>
-      {/* <div>Lich chieu: {movie.lichChieu}</div>
-    <div>Lich chieu: {movie.lichChieu}</div>
-    <div>Lich chieu: {movie.lichChieu}</div>
-    <div>Lich chieu: {movie.lichChieu}</div>
-    <div>Lich chieu: {movie.lichChieu}</div> */}
-    </div>
+    <MovieDetail detail={movie} />
   );
 }

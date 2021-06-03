@@ -89,10 +89,10 @@ export default function MainContent({ currentMovies, comingMovies }) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <SubContent data={currentMovies} link="/" />
+            <SubContent data={currentMovies} link="/now-showing-movies" />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <SubContent data={comingMovies} link="/" />
+            <SubContent data={comingMovies} link="/upcoming-movies" />
           </TabPanel>
           {/* <TabPanel value={value} index={2} dir={theme.direction}>
             Item Three

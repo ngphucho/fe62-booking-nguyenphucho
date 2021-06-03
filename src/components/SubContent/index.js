@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import MovieItem from "../MovieItem";
 
 export default function SubContent({ title, link, data }) {
@@ -15,7 +16,15 @@ export default function SubContent({ title, link, data }) {
           );
         })}
       </Row>
-      <p style={{textAlign: "right", paddingTop: "20px"}}><button className="btn btn-outline-warning d-inline">Xem thêm</button></p>
+      {link ? (
+        <p style={{ textAlign: "right", paddingTop: "20px" }}>
+          <Link to={link}>
+            <button className="btn btn-outline-warning d-inline">
+              Xem thêm
+            </button>
+          </Link>
+        </p>
+      ) : null}
     </>
   );
 }

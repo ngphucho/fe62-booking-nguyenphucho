@@ -9,10 +9,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Input,
 } from "reactstrap";
 import SearchBox from "../../SearchBox";
 
@@ -20,6 +16,17 @@ export default function HeaderTop() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const navData = [
+    {
+      name: "TRANG CHỦ",
+      link: "/home",
+    },
+    {
+      name: "RẠP",
+      link: "/cinemas",
+    },
+  ];
 
   return (
     <div
@@ -44,14 +51,21 @@ export default function HeaderTop() {
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar className="justify-content-between">
             <Nav navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="/home"><NavLink>TRANG CHỦ</NavLink></Link>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">
                   THỂ LOẠI
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
+              {navData.map((item, index) => (
+                <NavItem key={index}>
+                  <Link to={item.link}>
+                    <NavLink>{item.name}</NavLink>
+                  </Link>
+                </NavItem>
+              ))}
             </Nav>
             <Nav navbar>
               <SearchBox />

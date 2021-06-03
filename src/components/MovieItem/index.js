@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { CLOSE_TRAILER } from "../../constants/selectedMovie";
-import { setOpen, changeSelectedMovie } from "../../actions/selectedMovie";
+import { changeSelectedMovie } from "../../actions/selectedMovie";
 
 export default function MovieItem({ movie }) {
   // const [isOpen, setOpen] = useState(false);

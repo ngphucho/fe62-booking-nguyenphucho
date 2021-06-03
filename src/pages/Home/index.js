@@ -4,7 +4,6 @@ import MainContent from "../../components/MainContent";
 import MyCarousel from "../../components/MyCarousel";
 import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
-import TrailerModal from "../../components/TrailerModal";
 import IsLoading from "../../components/IsLoading";
 
 export default function Home() {
@@ -49,7 +48,7 @@ export default function Home() {
         <div>{error}</div>
       ) : (
         <div>
-          <TrailerModal></TrailerModal>
+          
           <OrderTicketBox></OrderTicketBox>
           <MainContent
             currentMovies={currentMovies.slice(0, 8)}
