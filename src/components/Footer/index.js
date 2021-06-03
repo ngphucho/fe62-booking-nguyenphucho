@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="col-5 pb-5">
             <img
               className="bottom-logo"
-              src="/images/footer-logo1.png"
+              src="./images/footer-logo1.png"
               alt="bottom-log"
             />
             <div className="contact-logo-box">

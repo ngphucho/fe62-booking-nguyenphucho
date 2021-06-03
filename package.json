@@ -2,6 +2,7 @@
   "name": "fe62-booking-nguyenphucho",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

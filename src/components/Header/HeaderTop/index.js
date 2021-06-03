@@ -42,7 +42,7 @@ export default function HeaderTop() {
           <NavbarBrand>
             <Link to="/home">
               <img
-                src="/images/header-logo1.png"
+                src="./images/header-logo1.png"
                 alt="header-logo"
                 height={70}
               />
