@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    width: 700,
+    // width: 700,
+    // backgroundClip: "padding-box",
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
     // backgroundColor: 'red'
@@ -67,7 +68,7 @@ export default function OrderTicketBox() {
   };
 
   return (
-    <Container className="orderTicketBox">
+    <Container className="orderTicketBox" style={{backgroundClip: "padding-box"}}>
       <div
         className={classes.root}
         style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
