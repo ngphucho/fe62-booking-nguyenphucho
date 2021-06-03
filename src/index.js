@@ -13,7 +13,7 @@ import rootReducer from "./reducers";
 const middleWare = applyMiddleware(thunk);
 const enhancer = compose(
   middleWare, // middleWare
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //redux devtools
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //redux devtools
 );
 const store = createStore(rootReducer, enhancer);
 
