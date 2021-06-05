@@ -28,6 +28,7 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   // xu ly ket qua tra ve tu server
   (response) => {
+    // console.log("response: ", response.data);
     return response;
   },
   // xu ly neu ket qua tra ve bi loi

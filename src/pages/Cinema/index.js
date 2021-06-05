@@ -3,24 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCinemaById } from "../../actions/cinema";
 import CinemaItemDetail from "../../components/CinemaItemDetail";
-import { getCinemas } from "../../actions/cinemas";
+import { getCinemasById } from "../../actions/cinemas";
 import IsLoading from "../../components/IsLoading";
 import CinemaItem from "../../components/CinemaItem";
 
 export default function Cinema() {
   const dispatch = useDispatch();
   const { cinemaId } = useParams();
-  const { cinema, isLoading, error } = useSelector((state) => state.cinema);
-  const { cinemas: selectedCinema } = useSelector((state) => state.cinemas);
+  const { cinema, isLoading, error } = useSelector((state) => state.cinema);//Thong tin chi tiet cua cum rap
+  const { selectedCinema } = useSelector((state) => state.selectedCinema);// Danh sach cum rap
 
   useEffect(() => {
     dispatch(getCinemaById(cinemaId));
-    dispatch(getCinemas(cinemaId));
+    dispatch(getCinemasById(cinemaId));
   }, [cinemaId]);
 
-  useEffect(() => {
-    console.log("Selected", selectedCinema);
-  }, [selectedCinema]);
+  // useEffect(() => {
+  //   console.log("Selected", selectedCinema);
+  // }, [selectedCinema]);
 
   return isLoading ? (
     <IsLoading></IsLoading>

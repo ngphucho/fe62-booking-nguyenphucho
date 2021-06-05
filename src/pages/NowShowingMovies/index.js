@@ -16,6 +16,7 @@ export default function NowShowingMovies() {
 
   useEffect(() => {
     if (movies.length > 0) {
+      setNowShowingMovies([]);
       const today = new Date("2019-07-29T00:00:00");
       movies.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);

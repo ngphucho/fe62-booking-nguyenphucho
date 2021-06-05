@@ -9,7 +9,12 @@ import {
   Nav,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownItem,
+  DropdownMenu,
 } from "reactstrap";
+import Cinemas from "../../../pages/Cinemas";
 import SearchBox from "../../SearchBox";
 
 export default function HeaderTop() {
@@ -31,14 +36,16 @@ export default function HeaderTop() {
   return (
     <div
       style={{
-        // position: "fixed",
-        // zIndex: "10",
         backgroundColor: "#000000",
         width: "100%",
       }}
     >
-      <Container>
-        <Navbar dark expand="md" className="d-flex justify-content-between">
+      <Container className="position-static">
+        <Navbar
+          dark
+          expand="md"
+          className="d-flex justify-content-between position-static"
+        >
           <NavbarBrand>
             <Link to="/home">
               <img
@@ -49,30 +56,49 @@ export default function HeaderTop() {
             </Link>
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar className="justify-content-between">
-            <Nav navbar>
-              {/* <NavItem>
-                <Link to="/home"><NavLink>TRANG CHỦ</NavLink></Link>
-              </NavItem>
+          <Collapse
+            isOpen={isOpen}
+            navbar
+            className="justify-content-between position-static"
+          >
+            <Nav className="position-static" navbar>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  THỂ LOẠI
-                </NavLink>
+                <Link to="/home">
+                  <NavLink>TRANG CHỦ</NavLink>
+                </Link>
+              </NavItem>
+              {/* <NavItem>
+                <Link to="/cinemas">
+                  <NavLink>RẠP</NavLink>
+                </Link>
               </NavItem> */}
-              {navData.map((item, index) => (
+              <UncontrolledDropdown nav inNavbar className="position-static">
+                <DropdownToggle nav>RẠP</DropdownToggle>
+                <DropdownMenu
+                  className="border-0 rounded-0 p-0"
+                  style={{ width: "100%", top: "96px", left: "0px" }}
+                >
+                  <DropdownItem>
+                    <Cinemas />
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              {/* {navData.map((item, index) => (
                 <NavItem key={index}>
                   <Link to={item.link}>
                     <NavLink>{item.name}</NavLink>
                   </Link>
                 </NavItem>
-              ))}
+              ))} */}
             </Nav>
             <Nav navbar>
               <SearchBox />
             </Nav>
             <Nav navbar>
               <NavItem>
-                <NavLink>ĐĂNG KÝ</NavLink>
+                <Link to="/login">
+                  <NavLink>ĐĂNG KÝ</NavLink>
+                </Link>
               </NavItem>
             </Nav>
           </Collapse>

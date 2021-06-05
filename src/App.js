@@ -4,6 +4,7 @@ import AppLayout from "./layouts/AppLayout";
 import Cinema from "./pages/Cinema";
 import Cinemas from "./pages/Cinemas";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Movie from "./pages/Movie";
 import NowShowingMovies from "./pages/NowShowingMovies";
 import Search from "./pages/Search";
@@ -16,6 +17,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* Router Admin */}
+
+          {/* Router Login */}
+          <Route path="/login">
+            <Login />
+          </Route>
 
           {/* Router App */}
           <Route path="/">

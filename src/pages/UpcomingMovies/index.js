@@ -16,6 +16,7 @@ export default function UpcomingMovies() {
 
   useEffect(() => {
     if (movies.length > 0) {
+      setUpcomingMovies([]);
       const today = new Date("2019-07-29T00:00:00");
       movies.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);

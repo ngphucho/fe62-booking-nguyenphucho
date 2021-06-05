@@ -5,12 +5,13 @@ import MyCarousel from "../../components/MyCarousel";
 import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
+import { Container } from "reactstrap";
 
 export default function Home() {
   const dispatch = useDispatch();
   const { movies, error, isLoading } = useSelector((state) => state.movies);
-  const [currentMovies, setCurrentMovies] = useState([]);
-  const [comingMovies, setComingMovies] = useState([]);
+  const [nowShowingMovies, setNowShowingMovies] = useState([]);
+  const [upcomingMovies, setUpComingMovies] = useState([]);
   const [isPending, setPending] = useState(true);
 
   //Được chạy mỗi khi load trang này
@@ -25,13 +26,15 @@ export default function Home() {
   //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
   useEffect(() => {
     if (movies.length > 0) {
+      setNowShowingMovies([]);
+      setUpComingMovies([]);
       const today = new Date("2019-07-29T00:00:00");
       movies.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);
         if (day > today) {
-          setComingMovies((comingMovies) => [...comingMovies, movie]);
+          setUpComingMovies((upcomingMovies) => [...upcomingMovies, movie]);
         } else {
-          setCurrentMovies((currentMovies) => [...currentMovies, movie]);
+          setNowShowingMovies((nowShowingMovies) => [...nowShowingMovies, movie]);
         }
       });
     }
@@ -49,10 +52,10 @@ export default function Home() {
       ) : (
         <div>
           
-          <OrderTicketBox></OrderTicketBox>
+          <Container><OrderTicketBox></OrderTicketBox></Container>
           <MainContent
-            currentMovies={currentMovies.slice(0, 8)}
-            comingMovies={comingMovies.slice(0, 8)}
+            currentMovies={nowShowingMovies.slice(0, 8)}
+            comingMovies={upcomingMovies.slice(0, 8)}
           ></MainContent>
         </div>
       )}

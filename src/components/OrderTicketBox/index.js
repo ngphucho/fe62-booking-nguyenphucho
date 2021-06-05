@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     // width: 700,
     // backgroundClip: "padding-box",
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    // borderBottomLeftRadius: 15,
+    // borderBottomRightRadius: 15,
     // backgroundColor: 'red'
   },
 }));
