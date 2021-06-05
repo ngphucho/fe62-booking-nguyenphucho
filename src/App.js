@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Movie from "./pages/Movie";
 import NowShowingMovies from "./pages/NowShowingMovies";
 import Search from "./pages/Search";
+import SignUp from "./pages/SignUp";
 import UpcomingMovies from "./pages/UpcomingMovies";
 import "./styles";
 
@@ -19,8 +20,13 @@ function App() {
           {/* Router Admin */}
 
           {/* Router Login */}
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
+          </Route>
+
+          {/* Router Login */}
+          <Route exact path="/sign-up">
+            <SignUp />
           </Route>
 
           {/* Router App */}

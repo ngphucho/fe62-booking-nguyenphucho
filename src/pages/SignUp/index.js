@@ -16,7 +16,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Login() {
+export default function SignUp() {
   return (
     <div className="login container-fluid">
       <div
@@ -31,12 +31,12 @@ export default function Login() {
             </div>
           </Link>
           <div className="title">
-            <h1 className="text-center">Login</h1>
+            <h1 className="text-center">Sign Up</h1>
           </div>
-          <Link to="/sign-up">
+          <Link to="/login">
             <div className="icon">
               <FontAwesomeIcon icon={faUserPlus} />
-              <div className="text">Đăng ký</div>
+              <div className="text">Đăng nhập</div>
             </div>
           </Link>
         </div>
