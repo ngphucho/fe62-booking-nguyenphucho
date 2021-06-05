@@ -18,7 +18,7 @@ import {
 
 export default function SignUp() {
   return (
-    <div className="login container-fluid">
+    <div className="signUp container-fluid">
       <div
         style={{ height: "100%" }}
         className="container px-5 w-50 d-flex flex-column justify-content-around"
@@ -42,18 +42,29 @@ export default function SignUp() {
         </div>
         <div className="formBox">
           <Form className="text-light">
+            {/* FULL NAME */}
             <InputGroup className="inputGroup">
-              <Input type="text" placeholder="username" className="rounded-0" />
+              <Input type="text" placeholder="Họ và tên" className="rounded-0" />
               <InputGroupAddon addonType="append">
                 <InputGroupText className="rounded-0 bg-white">
                   <span><FontAwesomeIcon icon={faUser} /></span>
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
+            {/* USERNAME */}
+            <InputGroup className="inputGroup">
+              <Input type="text" placeholder="Tên người dùng" className="rounded-0" />
+              <InputGroupAddon addonType="append">
+                <InputGroupText className="rounded-0 bg-white">
+                  <span><FontAwesomeIcon icon={faUser} /></span>
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+            {/* PASSWORD */}
             <InputGroup className="inputGroup">
               <Input
                 type="password"
-                placeholder="password"
+                placeholder="Mật khẩu"
                 className="rounded-0"
               />
               <InputGroupAddon addonType="append">
@@ -62,9 +73,27 @@ export default function SignUp() {
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
-            <div>
+            {/* EMAIL */}
+            <InputGroup className="inputGroup">
+              <Input type="email" placeholder="Email" className="rounded-0" />
+              <InputGroupAddon addonType="append">
+                <InputGroupText className="rounded-0 bg-white">
+                  <span><FontAwesomeIcon icon={faUser} /></span>
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+            {/* PHONE NUMBER */}
+            <InputGroup className="inputGroup">
+              <Input type="text" placeholder="Số điện thoại" className="rounded-0" />
+              <InputGroupAddon addonType="append">
+                <InputGroupText className="rounded-0 bg-white">
+                  <span><FontAwesomeIcon icon={faUser} /></span>
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+            {/* <div>
               Quên mật khẩu? <span>Bấm vào đây</span>
-            </div>
+            </div> */}
             <div className="text-center inputGroup">
               <Button type="button">Đăng nhập</Button>
             </div>

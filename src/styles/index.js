@@ -3,5 +3,6 @@ import "./App.css";
 import "react-modal-video/scss/modal-video.scss";
 //My css
 import "./login.scss"
+import "./signUp.scss"
 import "./index.css";
 import "./index.scss";
