@@ -1,0 +1,45 @@
+.home {
+  .ThongTinLichChieuBox {
+    border: 1px solid #cccccc;
+    height: 520px;
+    // overflow: auto;
+  }
+
+  .danhSachHeThongRapBox,
+  .danhSachCumRapBox {
+    border-right: 1px solid #cccccc;
+    height: 520px;
+    overflow: auto;
+  }
+
+  .danhSachCumRapBox{
+    // height: 100%;
+  }
+
+  .danhSachPhimBox{
+    height: 520px;
+    overflow: auto;
+  }
+
+  ul.nav {
+    flex-wrap: nowrap;
+  }
+
+  ul.nav-tabs {
+    border-bottom: none;
+  }
+
+  ul .nav-link {
+    opacity: 0.6;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0;
+  }
+
+  ul .nav-link.active {
+    opacity: 1;
+    color: #ff0000;
+  }
+}

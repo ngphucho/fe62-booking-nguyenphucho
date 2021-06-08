@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -16,8 +17,10 @@ import {
 } from "reactstrap";
 import Cinemas from "../../../pages/Cinemas";
 import SearchBox from "../../SearchBox";
-
+import { logout } from "../../../actions/auth";
 export default function HeaderTop() {
+  const { userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -95,11 +98,26 @@ export default function HeaderTop() {
               <SearchBox />
             </Nav>
             <Nav navbar>
-              <NavItem>
-                <Link to="/login">
-                  <NavLink>ĐĂNG KÝ</NavLink>
-                </Link>
-              </NavItem>
+              {userInfo ? (
+                <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
+                  {/* <Link to="/login"> */}
+                  <NavLink>{userInfo.taiKhoan}</NavLink>
+                  {/* </Link> */}
+                </NavItem>
+              ) : (
+                <>
+                <NavItem>
+                  <Link to="/login">
+                    <NavLink>ĐĂNG NHẬP</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/sign-up">
+                    <NavLink>ĐĂNG KÝ</NavLink>
+                  </Link>
+                </NavItem>
+                </>
+              )}
             </Nav>
           </Collapse>
         </Navbar>

@@ -6,6 +6,8 @@ import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
 import { Container } from "reactstrap";
+import ThongTinLichChieuHeThongRap from "../../components/ThongTinLichChieuHeThongRap";
+import {layThongTinLichChieuHeThongRap} from "../../actions/schedules"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -13,11 +15,13 @@ export default function Home() {
   const [nowShowingMovies, setNowShowingMovies] = useState([]);
   const [upcomingMovies, setUpComingMovies] = useState([]);
   const [isPending, setPending] = useState(true);
+  const {data} = useSelector(state=>state.schedules)
 
   //Được chạy mỗi khi load trang này
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
     dispatch(getMovies());
+    dispatch(layThongTinLichChieuHeThongRap());
     setTimeout(() => {
       setPending(false);
     }, 2000);
@@ -43,7 +47,7 @@ export default function Home() {
   return isLoading || isPending ? (
     <IsLoading></IsLoading>
   ) : (
-    <div>
+    <div className="home">
       <MyCarousel></MyCarousel>
 
       {/* <MainContent></MainContent> */}
@@ -57,6 +61,8 @@ export default function Home() {
             currentMovies={nowShowingMovies.slice(0, 8)}
             comingMovies={upcomingMovies.slice(0, 8)}
           ></MainContent>
+          {data?<ThongTinLichChieuHeThongRap danhSachHeThongRap={data} />:null}
+          
         </div>
       )}
     </div>

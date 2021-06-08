@@ -9,6 +9,8 @@ import Movie from "./pages/Movie";
 import NowShowingMovies from "./pages/NowShowingMovies";
 import Search from "./pages/Search";
 import SignUp from "./pages/SignUp";
+import TestPage from "./pages/TestPage";
+import TestPage2 from "./pages/TestPage2";
 import UpcomingMovies from "./pages/UpcomingMovies";
 import "./styles";
 
@@ -27,6 +29,11 @@ function App() {
           {/* Router Login */}
           <Route exact path="/sign-up">
             <SignUp />
+          </Route>
+
+          {/* Router Test page */}
+          <Route exact path="/test">
+            <TestPage2 />
           </Route>
 
           {/* Router App */}
