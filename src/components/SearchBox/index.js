@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getMovies } from "../../actions/movies";
 //MaterialUI
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -9,6 +10,10 @@ export default function SearchBox() {
   const { movies } = useSelector((state) => state.movies);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMovies());
+  }, []);
 
   return (
     <>

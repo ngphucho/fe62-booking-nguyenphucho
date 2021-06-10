@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
+import ChiTietPhongVe from "./pages/ChiTietPhongVe";
 import Cinema from "./pages/Cinema";
 import Cinemas from "./pages/Cinemas";
 import Home from "./pages/Home";
@@ -64,6 +65,9 @@ function App() {
                 </Route>
                 <Route path="/search/:keyword">
                   <Search />
+                </Route>
+                <Route path="/chi-tiet-phong-ve/:maLichChieu">
+                  <ChiTietPhongVe />
                 </Route>
                 <Route>
                   <div>Page not found</div>

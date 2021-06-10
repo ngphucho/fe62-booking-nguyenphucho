@@ -6,8 +6,8 @@ import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
 import { Container } from "reactstrap";
-import ThongTinLichChieuHeThongRap from "../../components/ThongTinLichChieuHeThongRap";
-import {layThongTinLichChieuHeThongRap} from "../../actions/schedules"
+import { layThongTinLichChieuHeThongRap } from "../../actions/schedules";
+import ThongTinLichChieuHeThongRap2 from "../ThongTinLichChieuHeThongRap2";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function Home() {
   const [nowShowingMovies, setNowShowingMovies] = useState([]);
   const [upcomingMovies, setUpComingMovies] = useState([]);
   const [isPending, setPending] = useState(true);
-  const {data} = useSelector(state=>state.schedules)
+  const { data } = useSelector((state) => state.schedules);
 
   //Được chạy mỗi khi load trang này
   useEffect(() => {
@@ -38,7 +38,10 @@ export default function Home() {
         if (day > today) {
           setUpComingMovies((upcomingMovies) => [...upcomingMovies, movie]);
         } else {
-          setNowShowingMovies((nowShowingMovies) => [...nowShowingMovies, movie]);
+          setNowShowingMovies((nowShowingMovies) => [
+            ...nowShowingMovies,
+            movie,
+          ]);
         }
       });
     }
@@ -55,14 +58,16 @@ export default function Home() {
         <div>{error}</div>
       ) : (
         <div>
-          
-          <Container><OrderTicketBox></OrderTicketBox></Container>
+          <Container>
+            <OrderTicketBox></OrderTicketBox>
+          </Container>
           <MainContent
             currentMovies={nowShowingMovies.slice(0, 8)}
             comingMovies={upcomingMovies.slice(0, 8)}
           ></MainContent>
-          {data?<ThongTinLichChieuHeThongRap danhSachHeThongRap={data} />:null}
-          
+          {data ? (
+            <ThongTinLichChieuHeThongRap2 danhSachHeThongRap={data} />
+          ) : null}
         </div>
       )}
     </div>

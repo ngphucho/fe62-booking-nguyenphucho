@@ -7,7 +7,8 @@ import cinemas from "./cinemas"; // Luu danh sach rap phim
 import cinema from "./cinema"; // Luu danh dach cum ram (cinema detail)
 import selectedCinema from "./selectedCinema"; // Luu cinemas duoc chon
 import auth from "./auth"; // Luu userInfo
-import schedules from "./schedules" // Luu danh sach lich chieu
+import schedules from "./schedules"; // Luu danh sach lich chieu
+import danhSachPhongVe from "./danhSachPhongVe"; // Luu danh sach phong ve
 
 const rootReducer = combineReducers({
   // nơi chứa các reducers con
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   selectedCinema,
   auth,
   schedules,
+  danhSachPhongVe,
 });
 
 export default rootReducer;

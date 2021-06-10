@@ -12,10 +12,6 @@ export default function Cinemas() {
     dispatch(getCinemas());
   }, []);
 
-  // useEffect(() => {
-  //   console.log(cinemas);
-  // }, [cinemas]);
-
   return isLoading ? (
     <IsLoading></IsLoading>
   ) : (

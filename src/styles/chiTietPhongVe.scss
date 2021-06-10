@@ -1,0 +1,46 @@
+.chiTietPhongVe {
+  $edge: 30px;
+
+  .danhSachGhe {
+    .col {
+      padding: 0;
+    }
+
+    .square {
+      position: relative;
+      ::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+    }
+
+    .chairBox {
+      font-size: 10px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .none {
+      background-color: transparent;
+      cursor: default;
+    }
+
+    .daDat {
+      background-color: #ff0000;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .chuaChon {
+      background-color: #cccccc;
+    }
+
+    .dangChon {
+      background-color: #00ff00;
+    }
+  }
+}

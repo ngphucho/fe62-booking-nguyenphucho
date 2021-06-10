@@ -4,7 +4,7 @@ import classnames from "classnames";
 import ThongTinLichChieuHeThongRapLV2 from "../ThongTinLichChieuHeThongRapLV2";
 
 export default function ThongTinLichChieuHeThongRap({ danhSachHeThongRap }) {
-  console.log(danhSachHeThongRap);
+  // console.log(danhSachHeThongRap);
   const [activeTab, setActiveTab] = useState(
     danhSachHeThongRap[0].maHeThongRap
   );
