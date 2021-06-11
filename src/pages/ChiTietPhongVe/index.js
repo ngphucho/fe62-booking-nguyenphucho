@@ -33,5 +33,7 @@ export default function ChiTietPhongVe() {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <div>Khong co danhSachPhongve</div>
+  );
 }
