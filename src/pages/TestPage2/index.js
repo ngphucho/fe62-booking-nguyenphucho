@@ -5,10 +5,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
   Col,
 } from "reactstrap";
@@ -22,6 +18,15 @@ export default function TestPage2() {
   useEffect(async () => {
     const { data } = await scheduleAPI.layThongTinLichChieuHeThongRap("");
     setHeThongRap(data);
+    for (let heThongRap of data) {
+      console.log("=======HE THONG RAP========", heThongRap.maHeThongRap); //in ra he thong rap. CGV, BHD,...
+      for (let cumRap of heThongRap.lstCumRap) {
+        console.log("====CUM RAP=====", cumRap.maCumRap); //in ra tung cum rap trong he thong rap
+        for (let phim of cumRap.danhSachPhim) {
+          console.log("=PHIM=", phim.tenPhim); // in ra phim trong tung cum rap
+        }
+      }
+    }
   }, []);
 
   const [activeTab, setActiveTab] = useState("CGV");
@@ -29,6 +34,18 @@ export default function TestPage2() {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  // useEffect(()=>{
+  //   for (let heThongRap of res) {
+  //     console.log(heThongRap); //in ra he thong rap. CGV, BHD,...
+  //     for (cumRap of heThongRap.lstCumRap) {
+  //       console.log(cumRap); //in ra tung cum rap trong he thong rap
+  //       for (phim of cumRap.danhSachPhim) {
+  //         console.log(phim); // in ra phim trong tung cum rap
+  //       }
+  //     }
+  //   }
+  // },[heThongRap])
 
   return heThongRap ? (
     <div className="container">
@@ -68,3 +85,15 @@ export default function TestPage2() {
     </div>
   ) : null;
 }
+
+
+
+// for (let heThongRap of res) {
+//   console.log("=======HE THONG RAP========", heThongRap.maHeThongRap); //in ra he thong rap. CGV, BHD,...
+//   for (let cumRap of heThongRap.lstCumRap) {
+//     console.log("====CUM RAP=====", cumRap.maCumRap); //in ra tung cum rap trong he thong rap
+//     for (let phim of cumRap.danhSachPhim) {
+//       console.log("=PHIM=", phim.tenPhim); // in ra phim trong tung cum rap
+//     }
+//   }
+// }

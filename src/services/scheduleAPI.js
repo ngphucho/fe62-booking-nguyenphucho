@@ -14,7 +14,7 @@ const scheduleAPI = {
   },
 
   //Lay thong tin lich chieu theo ma phim => he thong rap => cum rap => lich chieu
-  LayThongTinLichChieuPhim: (MaPhim) => {
+  layThongTinLichChieuPhim: (MaPhim) => {
     const params = {
       // maNhom: "GP13",
       MaPhim,

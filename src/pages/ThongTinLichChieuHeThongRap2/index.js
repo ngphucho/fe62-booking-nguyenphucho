@@ -19,15 +19,15 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
     }
   };
 
-  const onSelectedDay = (d) => {
-    setToday(d.toISOString().slice(0, 10));
-  };
-
   const [cumRapActive, setCumRapActive] = useState("1");
   const changeCumRapActive = (active) => {
     if (cumRapActive !== active) {
       setCumRapActive(active);
     }
+  };
+
+  const onSelectedDay = (d) => {
+    setToday(d.toISOString().slice(0, 10));
   };
 
   useEffect(() => {
@@ -58,6 +58,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         <div className="col-2 " style={{ overflow: "auto", height: "500px" }}>
           {danhSachHeThongRap.map((item, index) => (
             <div
+              key={index}
               className={heThongRapActive === index + 1 + "" ? "active" : null}
               onClick={() => {
                 changeHeThongRapActive(index + 1 + "");
@@ -77,6 +78,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         <div className="col-3" style={{ overflow: "auto", height: "500px" }}>
           {danhSachCumRap.map((item, index) => (
             <div
+              key={index}
               className={cumRapActive === index + 1 + "" ? "active" : null}
               onClick={() => {
                 changeCumRapActive(index + 1 + "");
@@ -90,9 +92,9 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
         {/* DANH SACH PHIM */}
         <div className="col-7" style={{ overflow: "auto", height: "500px" }}>
-          {danhSachPhim.map((item) => (
-            // <div>{item.maPhim}</div>
-            // =========
+          {/* {danhSachPhim.map((item) => ( */}
+            {/* // <div>{item.maPhim}</div>
+            // ========= */}
             <div className="row">
               {danhSachPhim.map((item) => (
                 <div
@@ -115,7 +117,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
                       <h6>{item.tenPhim}</h6>
                       <div className="d-flex flex-wrap">
                         {/* Danh sach thoi gian chieu */}
-                        {item.lstLichChieuTheoPhim.map((subItem) => {
+                        {item.lstLichChieuTheoPhim.map((subItem, index) => {
                           const showingDate = subItem.ngayChieuGioChieu.slice(
                             0,
                             10
@@ -125,6 +127,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
                               <div
                                 style={{ fontSize: "1.5em" }}
                                 className="text-success p-2"
+                                key={index}
                               >
                                 {subItem.ngayChieuGioChieu.slice(11, 16)}
                               </div>
@@ -138,7 +141,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
               ))}
             </div>
             // =========
-          ))}
+          {/* ))} */}
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function MyCarousel() {
       dynamicHeight={true}
     >
       <div>
-        <img src="./images/banner1.jpg" alt="banner" style={{ height: "500px" }} />
+        <img src="./images/mat_biec.jpg" alt="banner" style={{ height: "500px" }} />
         <p className="legend">Legend 1</p>
         {/* <p className="legend ">Titles</p> */}
       </div>
@@ -24,7 +24,7 @@ export default function MyCarousel() {
         <p className="legend">Legend 2</p>
       </div>
       <div>
-        <img src="./images/mat_biec.jpg" alt="banner" style={{ height: "500px" }} />
+        <img src="./images/avenger.jpg" alt="banner" style={{ height: "500px" }} />
         <p className="legend">Legend 3</p>
       </div>
     </Carousel>

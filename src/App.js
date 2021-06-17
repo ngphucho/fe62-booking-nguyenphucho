@@ -13,7 +13,13 @@ import SignUp from "./pages/SignUp";
 import TestPage from "./pages/TestPage";
 import TestPage2 from "./pages/TestPage2";
 import UpcomingMovies from "./pages/UpcomingMovies";
+import ClientRoute from "./auth/ClientRoute";
 import "./styles";
+import ThongTinTaiKhoan from "./pages/ThongTinTaiKhoan";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminQuanLyNguoiDung from "./pages/AdminQuanLyNguoiDung";
+import AdminQuanLyPhim from "./pages/AdminQuanLyPhim";
+import AdminQuanLyLichChieu from "./pages/AdminQuanLyLichChieu";
 
 function App() {
   return (
@@ -21,6 +27,21 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* Router Admin */}
+          <Route path="/admin">
+            <AdminLayout>
+              <Switch>
+                <Route path="/admin/quan-ly-nguoi-dung">
+                  <AdminQuanLyNguoiDung />
+                </Route>
+                <Route path="/admin/quan-ly-phim">
+                  <AdminQuanLyPhim />
+                </Route>
+                <Route path="/admin/quan-ly-lich-chieu">
+                  <AdminQuanLyLichChieu />
+                </Route>
+              </Switch>
+            </AdminLayout>
+          </Route>
 
           {/* Router Login */}
           <Route exact path="/login">
@@ -66,9 +87,12 @@ function App() {
                 <Route path="/search/:keyword">
                   <Search />
                 </Route>
-                <Route path="/chi-tiet-phong-ve/:maLichChieu">
+                <ClientRoute path="/chi-tiet-phong-ve/:maLichChieu">
                   <ChiTietPhongVe />
-                </Route>
+                </ClientRoute>
+                <ClientRoute path="/thong-tin-tai-khoan/:userId">
+                  <ThongTinTaiKhoan />
+                </ClientRoute>
                 <Route>
                   <div>Page not found</div>
                 </Route>

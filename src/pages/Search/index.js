@@ -45,7 +45,7 @@ export default function Search() {
       <h1>Kết quả tìm kiếm</h1>
       <div className="row">
         {moviesSearch.map((item) => (
-          <div key={item.moTa} className="col-md-3">
+          <div key={item.maPhim} className="col-md-3">
             <MovieItem movie={item} />
           </div>
         ))}

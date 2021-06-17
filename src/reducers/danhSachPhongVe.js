@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   danhSachPhongVe: null,
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 

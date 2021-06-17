@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
 import {
@@ -43,8 +44,13 @@ export default function Login() {
   const onSubmit = (data) => dispatch(login(data));
 
   if (userInfo) {
-    // return <Redirect to="/home" />;
-    history.push('/home');
+    const { redirectTo } = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+    if (redirectTo) {
+      return <Redirect to={redirectTo} />;
+    }
+    return <Redirect to="/" />;
   }
 
   return (

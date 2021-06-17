@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { changeSelectedMovie } from "../../actions/selectedMovie";
 
 export default function MovieDetail({ detail }) {
+  // console.log("detail: ", detail);
   const history = useHistory();
   const dispatch = useDispatch();
   return (
@@ -11,7 +12,12 @@ export default function MovieDetail({ detail }) {
       <h1>Chi tiết phim</h1>
       <div className="row">
         <div className="col-md-5">
-          <img className="img-fluid" style={{maxHeight: "400px"}} src={detail.hinhAnh} alt={detail.biDanh} />
+          <img
+            className="img-fluid"
+            style={{ maxHeight: "400px" }}
+            src={detail.hinhAnh}
+            alt={detail.biDanh}
+          />
         </div>
         <div className="col-md-7">
           <h3>{detail.tenPhim}</h3>

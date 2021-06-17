@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainContent from "../../components/MainContent";
 import MyCarousel from "../../components/MyCarousel";
-import { getMovies } from "../../actions/movies";
+// import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
 import { Container } from "reactstrap";
@@ -20,7 +20,7 @@ export default function Home() {
   //Được chạy mỗi khi load trang này
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
-    dispatch(getMovies());
+    // dispatch(getMovies());
     dispatch(layThongTinLichChieuHeThongRap());
     setTimeout(() => {
       setPending(false);

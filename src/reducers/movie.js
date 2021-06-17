@@ -8,7 +8,7 @@ import {
 const initialState = {
   value: "",
   movie: {},
-  isLoading: false,
+  isLoading: true,
   error: "",
 };
 

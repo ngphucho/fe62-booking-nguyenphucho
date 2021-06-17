@@ -3,7 +3,7 @@ import { chairToggle } from "../../actions/quanLyDatVe";
 import { useDispatch } from "react-redux";
 
 export default function DanhSachGhe({ danhSachGhe }) {
-  console.log("danh sach ghe", danhSachGhe);
+  // console.log("DanhSachGhe", danhSachGhe);
   const dispatch = useDispatch();
   const toggle = (x, y) => {
     dispatch(chairToggle(x, y));
@@ -26,9 +26,9 @@ export default function DanhSachGhe({ danhSachGhe }) {
   return (
     <div className="container-fluid danhSachGhe">
       {danhSachGhe.map((row, x) => (
-        <div className="row">
+        <div key={x} className="row">
           {row.map((item, y) => (
-            <div className={"col square p-1"}>
+            <div key={y} className={"col square p-1"}>
               <div
                 onClick={
                   item
@@ -38,7 +38,6 @@ export default function DanhSachGhe({ danhSachGhe }) {
                     : null
                 }
                 className={chairBoxStyle(item)}
-                
               >
                 {item.tenGhe}
               </div>

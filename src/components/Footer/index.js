@@ -43,46 +43,46 @@ export default function Footer() {
           <div className="col-7 d-flex flex-column justify-content-around">
             <div className="footer-nav">
               <b>ABOUT</b>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
             </div>
             <div className="footer-nav">
               <b>CONTACT</b>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
             </div>
             <div className="footer-nav">
               <b>CONECT</b>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Privacy
               </a>
-              <a href="#" className="footer-nav-item">
+              <a href="/" className="footer-nav-item">
                 Notice
               </a>
             </div>

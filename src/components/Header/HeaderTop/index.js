@@ -99,23 +99,41 @@ export default function HeaderTop() {
             </Nav>
             <Nav navbar>
               {userInfo ? (
-                <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
-                  {/* <Link to="/login"> */}
-                  <NavLink>{userInfo.taiKhoan}</NavLink>
-                  {/* </Link> */}
-                </NavItem>
+                // <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
+                //   {/* <Link to="/login"> */}
+                //   <NavLink>{userInfo.taiKhoan}</NavLink>
+                //   {/* </Link> */}
+                // </NavItem>
+                <UncontrolledDropdown nav inNavbar className="position-static">
+                  <DropdownToggle nav>{userInfo.taiKhoan}</DropdownToggle>
+                  <DropdownMenu
+                    className="border-0 rounded-0 p-0"
+                    style={{ top: "96px", backgroundColor: "#00000080" }}
+                  >
+                    <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
+                      <DropdownItem>Thông tin cá nhân</DropdownItem>
+                    </Link>
+                    <DropdownItem
+                      onClick={() => {
+                        dispatch(logout());
+                      }}
+                    >
+                      Đăng xuất
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               ) : (
                 <>
-                <NavItem>
-                  <Link to="/login">
-                    <NavLink>ĐĂNG NHẬP</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/sign-up">
-                    <NavLink>ĐĂNG KÝ</NavLink>
-                  </Link>
-                </NavItem>
+                  <NavItem>
+                    <Link to="/login">
+                      <NavLink>ĐĂNG NHẬP</NavLink>
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to="/sign-up">
+                      <NavLink>ĐĂNG KÝ</NavLink>
+                    </Link>
+                  </NavItem>
                 </>
               )}
             </Nav>

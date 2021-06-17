@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import "react-modal-video/scss/modal-video.scss";
 //My css
+import "./admin.scss"
+import "./movie.scss"
 import "./chiTietPhongVe.scss"
 import "./home.scss"
 import "./test.scss"

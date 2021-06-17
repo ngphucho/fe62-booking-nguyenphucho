@@ -43,4 +43,21 @@
       background-color: #00ff00;
     }
   }
+
+  .phuongThucThanhToan {
+    .btn {
+      opacity: 0.6;
+      &:focus {
+        outline: none !important;
+        box-shadow: none;
+      }
+    }
+
+    .btn.active {
+      opacity: 1;
+      border: 1px solid #cccccc80 !important;
+      outline: none !important;
+      box-shadow: none;
+    }
+  }
 }

@@ -9,11 +9,11 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 export default function SearchBox() {
   const { movies } = useSelector((state) => state.movies);
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getMovies());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getMovies());
+  // }, []);
 
   return (
     <>

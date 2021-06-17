@@ -10,12 +10,11 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
   //xu ly truoc khi request duoc gui len server
   (config) => {
-    // console.log(config);
     //Them authorization vao header
     const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
       const { accessToken } = JSON.parse(userInfo);
-      config.headers.Authorization = `Bearer${accessToken}`;
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -28,7 +27,7 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   // xu ly ket qua tra ve tu server
   (response) => {
-    // console.log("response: ", response.data);
+    console.log("response: ", response);
     return response;
   },
   // xu ly neu ket qua tra ve bi loi

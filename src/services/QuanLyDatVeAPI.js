@@ -7,6 +7,10 @@ const QuanLyDatVeAPI = {
     };
     return axiosClient.get("/QuanLyDatVe/LayDanhSachPhongVe", { params });
   },
+
+  datVe: (values) => {
+    return axiosClient.post("/QuanLyDatVe/DatVe", values);
+  },
 };
 
 export default QuanLyDatVeAPI;

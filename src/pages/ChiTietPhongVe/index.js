@@ -3,9 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { layDanhSachPhongVe } from "../../actions/quanLyDatVe";
 import DanhSachGhe from "../../components/DanhSachGhe";
+import IsLoading from "../../components/IsLoading";
+import ChiTietPhimPhongVe from "../../components/ChiTietPhimPhongVe";
+import ChiTietDatGhe from "../../components/ChiTietDatGhe";
 
 export default function ChiTietPhongVe() {
   const dispatch = useDispatch();
+  const [isSuccess, setSuccess] = useState(false);
   const { danhSachPhongVe, isLoading, error } = useSelector(
     (state) => state.danhSachPhongVe
   );
@@ -15,25 +19,41 @@ export default function ChiTietPhongVe() {
     dispatch(layDanhSachPhongVe(maLichChieu));
   }, []);
 
-  useEffect(() => {
-    // console.log("sdfsdfsdf", danhSachPhongVe);
-  }, [danhSachPhongVe]);
+  if (isSuccess) {
+    setTimeout(() => {
+      // setSuccess(false);
+      window.location.reload();
+    }, 2000);
+    return <div>Đặt vé thành công</div>;
+  }
 
-  return danhSachPhongVe ? (
+  return !isLoading && danhSachPhongVe ? (
     <div className="chiTietPhongVe">
       <div className="container">
-        <div>Chi tiet phim</div>
         <div className="row">
           <div className="col-md-9">
-            <DanhSachGhe danhSachGhe={danhSachPhongVe.danhSachGhe} />
+            <div>
+              <ChiTietPhimPhongVe chiTietPhim={danhSachPhongVe.thongTinPhim} />
+            </div>
+            <div>
+              <DanhSachGhe danhSachGhe={danhSachPhongVe.danhSachGhe} />
+            </div>
           </div>
           <div className="col-md-3">
-            <div>Chi tiet dat ghe</div>
+            <div>
+              <div>
+                <ChiTietDatGhe
+                  isSuccess={isSuccess}
+                  setSuccess={setSuccess}
+                  danhSachPhongVe={danhSachPhongVe}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   ) : (
-    <div>Khong co danhSachPhongve</div>
+    <IsLoading />
   );
 }

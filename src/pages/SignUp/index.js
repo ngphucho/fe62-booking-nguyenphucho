@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -46,8 +46,12 @@ const schema = yup.object().shape({
 });
 
 export default function SignUp() {
-  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
   const history = useHistory();
+  if (userInfo) {
+    history.push("/home");
+  }
+  const dispatch = useDispatch();
   const [resError, setResError] = useState(null);
   const [isSuccess, setSuccess] = useState(false);
   const {
