@@ -18,18 +18,23 @@ const quanLyNguoiDungAPI = {
     return axiosClient.get("/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung");
   },
 
-  layDanhSachNguoiDungPhanTrang: (data) => {
-    // const newParams = { MaNhom: "GP13", ...params };
+  layDanhSachNguoiDungPhanTrang: (params) => {
+    return axiosClient.get("/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang", {
+      params,
+    });
+  },
+
+  timKiemNguoiDungPhanTrang: (params) => {
+    return axiosClient.get("/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang", {
+      params,
+    });
+  },
+
+  xoaNguoiDung: (TaiKhoan) => {
     const params = {
-      MaNhom: "GP01",
-      tuKhoa: "",
-      soTrang: 5,
-      soPhanTuTrenTrang: 10,
+      TaiKhoan,
     };
-    return axiosClient.get(
-      "/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang",
-      {params}
-    );
+    return axiosClient.delete("/QuanLyNguoiDung/XoaNguoiDung", { params });
   },
 };
 

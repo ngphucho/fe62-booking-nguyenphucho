@@ -9,8 +9,8 @@ export default function ClientRoute({ children, ...props }) {
   if (!userInfo) {
     return <Redirect to={`/login?redirectTo=${props.location.pathname}`} />;
   }
-  if (userInfo.maLoaiNguoiDung !== "KhachHang") {
-    return <Redirect to="/" />;
-  }
+  // if (userInfo.maLoaiNguoiDung !== "KhachHang") {
+  //   return <Redirect to="/" />;
+  // }
   return <Route {...props}>{children}</Route>;
 }

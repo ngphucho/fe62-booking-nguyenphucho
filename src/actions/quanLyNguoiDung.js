@@ -7,6 +7,8 @@ import {
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_REQUEST,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_SUCCESS,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_FAILURE,
+  //THAY DOI THONG TIN PHAN TRANG (soTrang, tongSoTrang, ...)
+  THAY_DOI_THONG_TIN_PHAN_TRANG_NGUOI_DUNG,
 } from "../constants/quanLyNguoiDung";
 import quanLyNguoiDungAPI from "../services/quanLyNguoiDungAPI";
 
@@ -28,22 +30,30 @@ export const layDanhSachLoaiNguoiDung = () => {
   };
 };
 
-export const layDanhSachNguoiDungPhanTrang = (params) => {
+export const timKiemNguoiDungPhanTrang = (params) => {
   return async (dispatch) => {
     dispatch({ type: LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_REQUEST });
     try {
-      const { data } = await quanLyNguoiDungAPI.layDanhSachNguoiDungPhanTrang(
-        params
-      );
+      const { data: res } =
+        await quanLyNguoiDungAPI.layDanhSachNguoiDungPhanTrang(params);
       dispatch({
         type: LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_SUCCESS,
-        payload: { data },
+        payload: { data: { ...res, tuKhoa: params.tuKhoa } },
       });
     } catch (error) {
+      // console.log("erororrrrrrrr",error);
       dispatch({
         type: LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_FAILURE,
         payload: { error: error.response.data },
       });
     }
+  };
+};
+
+export const doiThongTinPhanTrangNguoiDung = (params) => {
+  localStorage.setItem("thongTinPhanTrangNguoiDung", JSON.stringify(params));
+  return {
+    type: THAY_DOI_THONG_TIN_PHAN_TRANG_NGUOI_DUNG,
+    payload: { data: params },
   };
 };

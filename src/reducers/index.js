@@ -11,6 +11,7 @@ import schedules from "./schedules"; // Luu danh sach lich chieu
 import danhSachPhongVe from "./danhSachPhongVe"; // Luu danh sach phong ve
 import danhSachLoaiNguoiDung from "./danhSachLoaiNguoiDung"; // Danh sach loai nguoi dung
 import danhSachNguoiDungPhanTrang from "./danhSachNguoiDungPhanTrang"; // Danh sach loai nguoi dung phan trang
+import thongTinPhanTrangNguoiDung from "./thongTinPhanTrangNguoiDung";// chua thong tin phan trang
 
 const rootReducer = combineReducers({
   // nơi chứa các reducers con
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   danhSachPhongVe,
   danhSachLoaiNguoiDung,
   danhSachNguoiDungPhanTrang,
+  thongTinPhanTrangNguoiDung,
 });
 
 export default rootReducer;

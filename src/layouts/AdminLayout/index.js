@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import NavBar from "../../components/Admin/NavBar";
 import SlideBar from "../../components/Admin/SlideBar";
 
 export default function AdminLayout({ children }) {
+
   return (
     <div className="admin">
-      <div className="container">
+      <div className="container-fluid px-0">
         <div className="navBar">
           <NavBar />
         </div>

@@ -1,31 +1,53 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { timKiemNguoiDungPhanTrang } from "../../actions/quanLyNguoiDung";
 
-export default function PhanTrang({
-  trangHienTai,
-  tongSoTrang,
-  soLuongRender,
-  setTrangHienTai,
-}) {
+export default function PhanTrang({ soLuongRender }) {
   const dispatch = useDispatch();
+  const { danhSachNguoiDungPhanTrang, error } = useSelector(
+    (state) => state.danhSachNguoiDungPhanTrang
+  );
+  const { MaNhom, soPhanTuTrenTrang } = useSelector(
+    (state) => state.thongTinPhanTrangNguoiDung
+  );
+
+  if (error || !danhSachNguoiDungPhanTrang) {
+    return <div>{error}</div>;
+  }
+
+  const trangHienTai = danhSachNguoiDungPhanTrang?.currentPage;
+  const tongSoTrang = danhSachNguoiDungPhanTrang?.totalPages;
+  const tuKhoa = danhSachNguoiDungPhanTrang?.tuKhoa;
+  const setTrangHienTai = (nextPage) => {
+    dispatch(
+      timKiemNguoiDungPhanTrang({
+        MaNhom,
+        tuKhoa,
+        soPhanTuTrenTrang,
+        soTrang: nextPage,
+      })
+    );
+  };
+  // const { totalPages: tongSoTrang } = danhSachNguoiDungPhanTrang;
+
   const taoMangTrangRender = () => {
     if (soLuongRender >= tongSoTrang) {
       return [...Array(tongSoTrang).keys()].map((i) => i + 1);
     }
 
-    if (trangHienTai - (soLuongRender - 1) / 2 < 0) {
+    if (trangHienTai - parseInt((soLuongRender - 1) / 2) <= 0) {
       return [...Array(soLuongRender).keys()].map((i) => i + 1);
     }
 
-    if (trangHienTai + (soLuongRender - 1) / 2 > tongSoTrang) {
+    if (trangHienTai + parseInt((soLuongRender - 1) / 2) > tongSoTrang) {
       return [...Array(soLuongRender).keys()].map(
         (i) => i + tongSoTrang - soLuongRender + 1
       );
     }
 
     return [...Array(soLuongRender).keys()].map(
-      (i) => i + trangHienTai - (soLuongRender - 1) / 2
+      (i) => i + trangHienTai - parseInt((soLuongRender - 1) / 2)
     );
   };
   const mangTrangRender = taoMangTrangRender();
@@ -34,10 +56,10 @@ export default function PhanTrang({
   };
 
   return (
-    <div>
+    <div className="phanTrang">
       <Pagination>
         {/* Trang dau */}
-        <PaginationItem>
+        <PaginationItem disabled={trangHienTai === 1}>
           <PaginationLink
             first
             onClick={() => {
@@ -46,7 +68,7 @@ export default function PhanTrang({
           />
         </PaginationItem>
         {/* Trang truoc */}
-        <PaginationItem>
+        <PaginationItem disabled={trangHienTai === 1}>
           <PaginationLink
             previous
             onClick={() => {
@@ -68,7 +90,7 @@ export default function PhanTrang({
         ))}
 
         {/* Trang tiep theo */}
-        <PaginationItem>
+        <PaginationItem disabled={trangHienTai === tongSoTrang}>
           <PaginationLink
             next
             onClick={() => {
@@ -77,7 +99,7 @@ export default function PhanTrang({
           />
         </PaginationItem>
         {/* Trang cuoi */}
-        <PaginationItem>
+        <PaginationItem disabled={trangHienTai === tongSoTrang}>
           <PaginationLink
             last
             onClick={() => {

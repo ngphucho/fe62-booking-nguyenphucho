@@ -11,11 +11,11 @@ import { login } from "../../actions/auth";
 
 const schema = yup.object().shape({
   hoTen: yup.string().required("Vui lòng nhập họ tên"),
-  taiKhoan: yup
-    .string()
-    .required("Vui lòng nhập tài khoản")
-    .min(6, "Tài khoản phải từ 6 - 20 ký tự")
-    .max(20, "Tài khoản phải từ 6 - 20 ký tự"),
+  // taiKhoan: yup
+  //   .string()
+  //   .required("Vui lòng nhập tài khoản")
+  //   .min(6, "Tài khoản phải từ 6 - 20 ký tự")
+  //   .max(20, "Tài khoản phải từ 6 - 20 ký tự"),
   checkBox: yup.bool(),
   matKhauCu: yup.string().when("checkBox", {
     is: true,
@@ -117,11 +117,7 @@ export default function ThongTinTaiKhoan() {
         maLoaiNguoiDung: "KhachHang",
         hoTen: values.hoTen,
       };
-      // console.log(
-      //   dirtyFields &&
-      //     Object.keys(dirtyFields).length === 0 &&
-      //     dirtyFields.constructor === Object
-      // );
+      // console.log(newValues);
       try {
         const { data } = await quanLyNguoiDungAPI.capNhatThongTinNguoiDung(
           newValues

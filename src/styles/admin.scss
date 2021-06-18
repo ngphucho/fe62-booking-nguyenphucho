@@ -87,6 +87,13 @@
   .mainContent {
     flex-grow: 1;
     padding: 30px;
-    overflow: hidden;
+    padding-bottom: 50px;
+    overflow: auto;
+    height: calc(100vh - 56px);
+
+    .phanTrang {
+      position: fixed;
+      bottom: 0;
+    }
   }
 }
