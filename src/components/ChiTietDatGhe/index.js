@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { chairToggle } from "../../actions/quanLyDatVe";
 import { useDispatch, useSelector } from "react-redux";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
-import QuanLyDatVeAPI from "../../services/QuanLyDatVeAPI";
+import quanLyDatVeAPI from "../../services/quanLyDatVeAPI";
 
 export default function ChiTietDatGhe({ danhSachPhongVe, isSuccess, setSuccess }) {
   const [selected, setSelected] = useState(null);
@@ -37,7 +37,7 @@ export default function ChiTietDatGhe({ danhSachPhongVe, isSuccess, setSuccess }
     const values = { maLichChieu, danhSachVe, taiKhoanNguoiDung };
     console.log(values);
     try {
-      const { data } = await QuanLyDatVeAPI.datVe(values);
+      const { data } = await quanLyDatVeAPI.datVe(values);
       setSuccess(true);
     } catch (error) {
       console.log(error);

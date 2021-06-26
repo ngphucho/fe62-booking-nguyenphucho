@@ -8,12 +8,12 @@ export default function CinemaItem({ cinema }) {
         <div className="itemCinemaImage">
           <img
             className="card-img-top"
-            style={{ width: "70%" }}
+            style={{ width: "90%" }}
             src={cinema?.logo}
             alt={cinema?.biDanh}
           />
         </div>
-        <div className="card-body itemCinemaBody p-0">
+        <div className="card-body itemCinemaBody p-0 d-none d-md-block">
           <h6 className="card-title itemCinemaTitle pt-3">
             {cinema?.tenHeThongRap}
           </h6>

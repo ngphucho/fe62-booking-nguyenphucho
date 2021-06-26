@@ -1,37 +1,75 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getMovies } from "../../actions/movies";
+import { makeStyles } from "@material-ui/styles";
+
 //MaterialUI
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
-export default function SearchBox() {
-  const { movies } = useSelector((state) => state.movies);
-  const history = useHistory();
-  // const dispatch = useDispatch();
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   backgroundColor: "#ffffff60",
+  //   minWidth: 300,
+  // },
 
-  // useEffect(() => {
-  //   dispatch(getMovies());
-  // }, []);
+  notchedOutline: {
+    borderRadius: 0,
+  },
+
+  paper: {
+    // height: window.innerHeight - 90,
+    backgroundColor: "transparent",
+  },
+
+  listbox: {
+    height: "100%",
+    maxHeight: window.innerHeight - 90,
+    backgroundColor: "#ffffffee",
+
+    "*::-webkit-scrollbar": {
+      width: "0",
+    },
+    "*::-webkit-scrollbar-track": {
+      "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)",
+    },
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,.1)",
+      outline: "1px solid slategrey",
+    },
+  },
+
+  // popper: {
+  //   backgroundColor: "yellow",
+  // }
+}));
+
+export default function SearchBox() {
+  const classes = useStyles();
+  const [state, setState] = useState("");
+  const { danhSachPhim } = useSelector((state) => state.danhSachPhim);
+  const history = useHistory();
 
   return (
-    <>
+    <div className="searchBox">
       <Autocomplete
-        onChange={(event, value) => {
-          // console.log("1. SearchBoxPage");
-          // console.log("/search/" + value);
-          history.push("/search/" + value);
-        }}
+      className="autocompleteBox"
+        fullWidth={true}
+        autoHighlight={false}
         clearOnBlur={false}
-        style={{ width: "300px" }}
+        // style={{ minWidth: "300px" }}
         id="searchBox"
         freeSolo
         disableClearable
-        options={movies.map((movie) => movie.tenPhim)}
+        options={danhSachPhim}
+        classes={{
+          paper: classes.paper,
+          popper: classes.popper,
+          listbox: classes.listbox,
+        }}
         renderInput={(params) => (
           <TextField
-            style={{ backgroundColor: "#ffffff80" }}
+            // className={{ root: classes.root }}
             {...params}
             placeholder="Tìm kiếm ..."
             margin="normal"
@@ -39,7 +77,28 @@ export default function SearchBox() {
             InputProps={{ ...params.InputProps, type: "search" }}
           />
         )}
+        getOptionLabel={(option) => {
+          return option.tenPhim || state;
+        }}
+        renderOption={(option) => (
+          <div className="w-100 d-flex justify-content-between align-items-center m-2">
+            <h6>{option.tenPhim}</h6>
+            <img
+              className="bg-success"
+              style={{ width: 40 }}
+              className="img-fluid"
+              src={option.hinhAnh}
+              alt={option.biDanh}
+            />
+          </div>
+        )}
+        onChange={(event, value) => {
+          const newValue = value.tenPhim || value;
+          history.push("/search/" + newValue);
+          console.log(newValue);
+          setState(newValue);
+        }}
       />
-    </>
+    </div>
   );
 }

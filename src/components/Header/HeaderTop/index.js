@@ -15,9 +15,11 @@ import {
   DropdownItem,
   DropdownMenu,
 } from "reactstrap";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Cinemas from "../../../pages/Cinemas";
 import SearchBox from "../../SearchBox";
 import { logout } from "../../../actions/auth";
+
 export default function HeaderTop() {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -42,13 +44,15 @@ export default function HeaderTop() {
         backgroundColor: "#000000",
         width: "100%",
       }}
+      className="headerTop"
     >
       <Container className="position-static">
         <Navbar
           dark
           expand="md"
-          className="d-flex justify-content-between position-static"
+          className="d-flex justify-content-between position-static p-0"
         >
+          {/* left (logo)*/}
           <NavbarBrand>
             <Link to="/home">
               <img
@@ -58,12 +62,19 @@ export default function HeaderTop() {
               />
             </Link>
           </NavbarBrand>
+          
+          
+          {/* middle (nut menu)*/}
           <NavbarToggler onClick={toggle} />
+          
+          
+          {/* right */}
           <Collapse
             isOpen={isOpen}
             navbar
-            className="justify-content-between position-static"
+            className="justify-content-between position-static headerRight"
           >
+            {/* thanh dieu huong */}
             <Nav className="position-static" navbar>
               <NavItem>
                 <Link to="/home">
@@ -78,8 +89,7 @@ export default function HeaderTop() {
               <UncontrolledDropdown nav inNavbar className="position-static">
                 <DropdownToggle nav>RẠP</DropdownToggle>
                 <DropdownMenu
-                  className="border-0 rounded-0 p-0"
-                  style={{ width: "100%", top: "96px", left: "0px" }}
+                  className="border-0 rounded-0 p-0 rapMenu"
                 >
                   <DropdownItem>
                     <Cinemas />
@@ -94,9 +104,13 @@ export default function HeaderTop() {
                 </NavItem>
               ))} */}
             </Nav>
+            
+            {/* thanh tiem kiem */}
             <Nav navbar>
               <SearchBox />
             </Nav>
+            
+            {/* thanh userinfo */}
             <Nav navbar>
               {userInfo ? (
                 // <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
@@ -105,10 +119,13 @@ export default function HeaderTop() {
                 //   {/* </Link> */}
                 // </NavItem>
                 <UncontrolledDropdown nav inNavbar className="position-static">
-                  <DropdownToggle nav>{userInfo.taiKhoan}</DropdownToggle>
+                  <DropdownToggle nav>
+                    <AccountCircleIcon />
+                    <span style={{ paddingLeft: 10 }}>{userInfo.hoTen}</span>
+                  </DropdownToggle>
                   <DropdownMenu
                     className="border-0 rounded-0 p-0"
-                    style={{ top: "96px", backgroundColor: "#00000080" }}
+                    style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
                       <DropdownItem>Thông tin cá nhân</DropdownItem>

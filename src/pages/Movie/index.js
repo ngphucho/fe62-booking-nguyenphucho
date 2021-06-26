@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMovieById } from "../../actions/movie";
-import scheduleAPI from "../../services/scheduleAPI";
+import { layThongTinPhim } from "../../actions/movie";
+import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
 
 import IsLoading from "../../components/IsLoading";
 import MovieDetail from "../../components/MovieDetail";
@@ -14,12 +14,14 @@ export default function Movie() {
   const { movie, isLoading, error } = useSelector((state) => state.movie);
   const [thongTinLichChieuPhim, setThongTinLichChieuPhim] = useState(null);
 
-  useEffect(async () => {
-    dispatch(getMovieById(movieId)); // lay chi tiet phim
-    // dispatch(layThongTinLichChieuPhim(movieId));
-    const { data: heThongRapChieu } =
-      await scheduleAPI.layThongTinLichChieuPhim(movieId);
-    setThongTinLichChieuPhim(heThongRapChieu);
+  useEffect(() => {
+    dispatch(layThongTinPhim(movieId)); // lay chi tiet phim
+    const layTongTinLichChieu = async () => {
+      const { data: heThongRapChieu } =
+        await lichChieuPhimAPI.layThongTinLichChieuPhim(movieId);
+      setThongTinLichChieuPhim(heThongRapChieu);
+    };
+    layTongTinLichChieu();
   }, [movieId]);
 
   return isLoading ? (
@@ -29,9 +31,9 @@ export default function Movie() {
   ) : (
     <div className="movie">
       <MovieDetail detail={movie} />
-      {thongTinLichChieuPhim ? (
+      {thongTinLichChieuPhim && (
         <ThongTinLichChieuPhim thongTinLichChieuPhim={thongTinLichChieuPhim} />
-      ) : null}
+      )}
     </div>
   );
 }

@@ -2,19 +2,19 @@ import {
   GET_CINEMAS_REQUEST,
   GET_CINEMAS_SUCCESS,
   GET_CINEMAS_FAILURE,
-} from "../constants/cinemas";
+} from "../constants/heThongRap";
 
 const initialState = {
-  cinemas: [],
+  danhSachHeThongRap: [],
   isLoading: false,
   error: null,
 };
 
-function cinemasReducer(state = initialState, action) {
+function danhSachHeThongRapReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CINEMAS_REQUEST: {
       return {
-        cinemas: [],
+        danhSachHeThongRap: [],
         isLoading: true,
         error: null,
       };
@@ -23,12 +23,12 @@ function cinemasReducer(state = initialState, action) {
       return {
         isLoading: false,
         error: null,
-        cinemas: action.payload.data,
+        danhSachHeThongRap: action.payload.data,
       };
     }
     case GET_CINEMAS_FAILURE: {
       return {
-        cinemas: [],
+        danhSachHeThongRap: [],
         isLoading: false,
         error: action.payload.error,
       };
@@ -38,4 +38,4 @@ function cinemasReducer(state = initialState, action) {
   }
 }
 
-export default cinemasReducer;
+export default danhSachHeThongRapReducer;

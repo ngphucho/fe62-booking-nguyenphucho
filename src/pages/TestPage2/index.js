@@ -9,14 +9,14 @@ import {
   Col,
 } from "reactstrap";
 import classnames from "classnames";
-import scheduleAPI from "../../services/scheduleAPI";
+import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
 import SubTestPage2 from "./SubTestPage2";
 
 export default function TestPage2() {
   const [heThongRap, setHeThongRap] = useState(null);
 
   useEffect(async () => {
-    const { data } = await scheduleAPI.layThongTinLichChieuHeThongRap("");
+    const { data } = await lichChieuPhimAPI.layThongTinLichChieuHeThongRap("");
     setHeThongRap(data);
     for (let heThongRap of data) {
       console.log("=======HE THONG RAP========", heThongRap.maHeThongRap); //in ra he thong rap. CGV, BHD,...

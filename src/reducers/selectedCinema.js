@@ -2,7 +2,7 @@ import {
   GET_CINEMAS_BY_ID_REQUEST,
   GET_CINEMAS_BY_ID_SUCCESS,
   GET_CINEMAS_BY_ID_FAILURE,
-} from "../constants/cinemas";
+} from "../constants/heThongRap";
 
 const initialState = {
   selectedCinema: {},

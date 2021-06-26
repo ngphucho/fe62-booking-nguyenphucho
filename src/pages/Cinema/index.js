@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCinemaById } from "../../actions/cinema";
+import { layThongTinCumRapTheoHeThong } from "../../actions/cinema";
 import CinemaItemDetail from "../../components/CinemaItemDetail";
-import { getCinemasById } from "../../actions/cinemas";
+import { layThongTinHeThongRapById } from "../../actions/heThongRap";
 import IsLoading from "../../components/IsLoading";
 import CinemaItem from "../../components/CinemaItem";
 
 export default function Cinema() {
   const dispatch = useDispatch();
   const { cinemaId } = useParams();
-  const { cinema, isLoading, error } = useSelector((state) => state.cinema); //Thong tin chi tiet cua cum rap
+  const { danhSachCumRap, isLoading, error } = useSelector((state) => state.danhSachCumRap); //Thong tin chi tiet cua cum rap
   const { selectedCinema } = useSelector((state) => state.selectedCinema); // Danh sach cum rap
 
   useEffect(() => {
-    dispatch(getCinemaById(cinemaId));
-    dispatch(getCinemasById(cinemaId));
+    dispatch(layThongTinCumRapTheoHeThong(cinemaId));
+    dispatch(layThongTinHeThongRapById(cinemaId));
   }, [cinemaId]);
 
   return isLoading ? (
@@ -28,7 +28,7 @@ export default function Cinema() {
         <CinemaItem cinema={selectedCinema[0]} />
       </div>
       <div className="row">
-        {cinema.map((item, index) => (
+        {danhSachCumRap.map((item, index) => (
           <div key={index} className="col-md-6">
             <CinemaItemDetail detail={item} />
           </div>

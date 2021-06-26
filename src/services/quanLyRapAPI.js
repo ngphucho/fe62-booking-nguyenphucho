@@ -1,20 +1,20 @@
 import axiosClient from "./axiosClient";
 
-const cinemasAPI = {
-  getCinemas: (id) => {
+const quanLyRapAPI = {
+  layThongTinHeThongRap: (id) => {
     const params = {
       maHeThongRap: id,
     };
     return axiosClient.get("/QuanLyRap/LayThongTinHeThongRap", { params });
   },
-  // getMoviesByName: (name) => {
+  // layDanhSachPhimTheoTen: (name) => {
   //   const params = {
   //     maNhom: "GP13",
   //     tenPhim: name,
   //   };
   //   return axiosClient.get("/QuanLyPhim/LayDanhSachPhim", { params });
   // },
-  getCinemaById: (id) => {
+  layThongTinCumRapTheoHeThong: (id) => {
     const params = {
       maHeThongRap: id,
     };
@@ -24,4 +24,4 @@ const cinemasAPI = {
   },
 };
 
-export default cinemasAPI;
+export default quanLyRapAPI;

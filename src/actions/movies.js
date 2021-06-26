@@ -4,13 +4,13 @@ import {
   GET_MOVIES_FAILURE,
 } from "../constants/movies";
 
-import moviesAPI from "../services/moviesAPI";
+import quanLyPhimAPI from "../services/quanLyPhimAPI";
 
-export function getMovies() {
+export function layDanhSachPhim() {
   return async (dispatch) => {
     dispatch({ type: GET_MOVIES_REQUEST });
     try {
-      const { data } = await moviesAPI.getMovies();
+      const { data } = await quanLyPhimAPI.layDanhSachPhim();
       dispatch({ type: GET_MOVIES_SUCCESS, payload: { data } });
     } catch (error) {
       dispatch({
@@ -21,11 +21,11 @@ export function getMovies() {
   };
 }
 
-export function getMoviesByName(keyword) {
+export function layDanhSachPhimTheoTen(keyword) {
   return async (dispatch) => {
     dispatch({ type: GET_MOVIES_REQUEST });
     try {
-      const { data } = await moviesAPI.getMoviesByName(keyword);
+      const { data } = await quanLyPhimAPI.layDanhSachPhimTheoTen(keyword);
       dispatch({ type: GET_MOVIES_SUCCESS, payload: { data } });
     } catch (error) {
       dispatch({

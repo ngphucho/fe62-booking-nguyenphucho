@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient";
 
-const QuanLyDatVeAPI = {
-  LayDanhSachPhongVe: (maLichChieu) => {
+const quanLyDatVeAPI = {
+  layDanhSachPhongVe: (maLichChieu) => {
     const params = {
       MaLichChieu: maLichChieu,
     };
@@ -11,6 +11,10 @@ const QuanLyDatVeAPI = {
   datVe: (values) => {
     return axiosClient.post("/QuanLyDatVe/DatVe", values);
   },
+
+  taoLichChieu: (params) => {
+    return axiosClient.post("/QuanLyDatVe/TaoLichChieu", params);
+  },
 };
 
-export default QuanLyDatVeAPI;
+export default quanLyDatVeAPI;

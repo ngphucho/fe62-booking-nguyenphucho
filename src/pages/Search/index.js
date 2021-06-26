@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 //import action
-import { getMovies } from "../../actions/movies";
-import { getMoviesByName } from "../../actions/moviesSearch";
+import { layDanhSachPhim } from "../../actions/movies";
+import { layDanhSachPhimTheoTen } from "../../actions/moviesSearch";
 
 import IsLoading from "../../components/IsLoading";
 import MovieItem from "../../components/MovieItem";
@@ -12,7 +12,7 @@ export default function Search() {
   const dispatch = useDispatch();
   let { keyword } = useParams();
   const history = useHistory();
-  const { movies } = useSelector((state) => state.movies);
+  const { danhSachPhim } = useSelector((state) => state.danhSachPhim);
   const { moviesSearch, isLoading, error } = useSelector(
     (state) => state.moviesSearch
   );
@@ -22,12 +22,12 @@ export default function Search() {
     //dispatch action goi API lay danh sach phim
     // console.log("2. SearchPage");
     // console.log("moviesSearch1", moviesSearch);
-    dispatch(getMovies());
+    dispatch(layDanhSachPhim());
   }, []);
 
   useEffect(() => {
     // console.log("keyword = " + keyword);
-    dispatch(getMoviesByName(keyword));
+    dispatch(layDanhSachPhimTheoTen(keyword));
   }, [keyword]);
 
   useEffect(() => {

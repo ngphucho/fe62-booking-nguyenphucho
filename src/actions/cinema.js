@@ -4,13 +4,13 @@ import {
   GET_CINEMA_FAILURE,
 } from "../constants/cinema";
 
-import cinemasAPI from "../services/cinemasAPI";
+import quanLyRapAPI from "../services/quanLyRapAPI";
 
-export function getCinemaById(id) {
+export function layThongTinCumRapTheoHeThong(id) {
   return async (dispatch) => {
     dispatch({ type: GET_CINEMA_REQUEST });
     try {
-      const { data } = await cinemasAPI.getCinemaById(id);
+      const { data } = await quanLyRapAPI.layThongTinCumRapTheoHeThong(id);
       dispatch({ type: GET_CINEMA_SUCCESS, payload: { data } });
     } catch (error) {
       console.log(error);

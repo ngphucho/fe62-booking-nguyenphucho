@@ -5,6 +5,8 @@ import NutXoa from "../../NutXoa";
 import NutSua from "../../NutSua";
 import quanLyNguoiDungAPI from "../../../services/quanLyNguoiDungAPI";
 import { timKiemNguoiDungPhanTrang } from "../../../actions/quanLyNguoiDung";
+import { popupModalToggle } from "../../../actions/popupModal";
+import { changeFormData } from "../../../actions/formData";
 
 export default function BangDanhSachNguoiDung() {
   const dispatch = useDispatch();
@@ -87,7 +89,26 @@ export default function BangDanhSachNguoiDung() {
               >
                 xoa
               </button>
-              <NutSua />
+              {/* <NutSua /> */}
+              <button
+                className="btn btn-success"
+                onClick={() => {
+                  dispatch(
+                    popupModalToggle({
+                      title: "SỬA THÔNG TIN NGƯỜI DÙNG",
+                    })
+                  );
+                  dispatch(
+                    changeFormData({
+                      button: "Sửa",
+                      type: "edit",
+                      values: item,
+                    })
+                  );
+                }}
+              >
+                sua
+              </button>
             </td>
           </tr>
         ))}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   timKiemNguoiDungPhanTrang,
@@ -6,14 +6,20 @@ import {
 } from "../../actions/quanLyNguoiDung";
 import PhanTrang from "../../components/PhanTrang";
 import BangDanhSachNguoiDung from "../../components/Admin/BangDanhSachNguoiDung";
-import ThanhCongCuQuanLyNguoiDung from "../../components/Admin/ThanhCongCuQuanLyNguoiDung"
+import ThanhCongCuQuanLyNguoiDung from "../../components/Admin/ThanhCongCuQuanLyNguoiDung";
+import Popup from "../../components/Controls/Popup";
+import FormDangKy from "../../components/Controls/FormDangKy";
+// import SnackbarThongBao from "../../components/Controls/SnackbarThongBao";
 
 export default function AdminQuanLyNguoiDung() {
   const dispatch = useDispatch();
+  const [trangHienTai, setTrangHienTai] = useState(1);
   const { soPhanTuTrenTrang, MaNhom } = useSelector(
     (state) => state.thongTinPhanTrangNguoiDung
   );
-
+  const { danhSachNguoiDungPhanTrang } = useSelector(
+    (state) => state.danhSachNguoiDungPhanTrang
+  );
   useEffect(() => {
     dispatch(layDanhSachLoaiNguoiDung());
   }, []);
@@ -21,19 +27,30 @@ export default function AdminQuanLyNguoiDung() {
   useEffect(() => {
     dispatch(
       timKiemNguoiDungPhanTrang({
-        tuKhoa: null,
-        soTrang: 1,
+        tuKhoa: danhSachNguoiDungPhanTrang?.tuKhoa,
+        soTrang: trangHienTai,
         soPhanTuTrenTrang,
         MaNhom,
       })
     );
-  }, []);
+  }, [trangHienTai]);
 
   return (
     <div>
       <ThanhCongCuQuanLyNguoiDung />
       <BangDanhSachNguoiDung />
-      <PhanTrang soLuongRender={6} />
+      {danhSachNguoiDungPhanTrang ? (
+        <PhanTrang
+          soLuongRender={6}
+          trangHienTai={trangHienTai}
+          tongSoTrang={danhSachNguoiDungPhanTrang.totalPages}
+          setTrangHienTai={setTrangHienTai}
+        />
+      ) : null}
+      <Popup>
+        <FormDangKy />
+      </Popup>
+      {/* <SnackbarThongBao /> */}
     </div>
   );
 }

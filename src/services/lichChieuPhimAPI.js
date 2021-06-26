@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient";
 
-const scheduleAPI = {
+const lichChieuPhimAPI = {
   //Lay thong tin lich chieu theo he thong rap => cum rap => phim => lich chieu
   layThongTinLichChieuHeThongRap: (maHeThongRap) => {
     //maHeThongRap có thể rỗng => trả về tất cả rạp
@@ -23,4 +23,4 @@ const scheduleAPI = {
   },
 };
 
-export default scheduleAPI;
+export default lichChieuPhimAPI;

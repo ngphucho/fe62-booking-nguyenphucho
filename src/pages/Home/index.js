@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainContent from "../../components/MainContent";
 import MyCarousel from "../../components/MyCarousel";
-// import { getMovies } from "../../actions/movies";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
 import { Container } from "reactstrap";
@@ -11,7 +10,7 @@ import ThongTinLichChieuHeThongRap2 from "../ThongTinLichChieuHeThongRap2";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { movies, error, isLoading } = useSelector((state) => state.movies);
+  const { danhSachPhim, error, isLoading } = useSelector((state) => state.danhSachPhim);
   const [nowShowingMovies, setNowShowingMovies] = useState([]);
   const [upcomingMovies, setUpComingMovies] = useState([]);
   const [isPending, setPending] = useState(true);
@@ -20,7 +19,7 @@ export default function Home() {
   //Được chạy mỗi khi load trang này
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
-    // dispatch(getMovies());
+    // dispatch(layDanhSachPhim());
     dispatch(layThongTinLichChieuHeThongRap());
     setTimeout(() => {
       setPending(false);
@@ -29,11 +28,11 @@ export default function Home() {
 
   //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
   useEffect(() => {
-    if (movies.length > 0) {
+    if (danhSachPhim.length > 0) {
       setNowShowingMovies([]);
       setUpComingMovies([]);
       const today = new Date("2019-07-29T00:00:00");
-      movies.forEach((movie) => {
+      danhSachPhim.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);
         if (day > today) {
           setUpComingMovies((upcomingMovies) => [...upcomingMovies, movie]);
@@ -45,7 +44,7 @@ export default function Home() {
         }
       });
     }
-  }, [movies]);
+  }, [danhSachPhim]);
 
   return isLoading || isPending ? (
     <IsLoading></IsLoading>

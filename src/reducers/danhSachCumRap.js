@@ -5,12 +5,12 @@ import {
 } from "../constants/cinema";
 
 const initialState = {
-  cinema: [],
+  danhSachCumRap: [],
   isLoading: false,
   error: null,
 };
 
-function cinemaReducer(state = initialState, action) {
+function danhSachCumRapReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CINEMA_REQUEST: {
       return {
@@ -20,11 +20,12 @@ function cinemaReducer(state = initialState, action) {
       };
     }
     case GET_CINEMA_SUCCESS: {
+      // console.log("thanh cong", action.payload.data)
       return {
         ...state,
         isLoading: false,
         error: null,
-        cinema: action.payload.data,
+        danhSachCumRap: action.payload.data,
       };
     }
     case GET_CINEMA_FAILURE: {
@@ -39,4 +40,4 @@ function cinemaReducer(state = initialState, action) {
   }
 }
 
-export default cinemaReducer;
+export default danhSachCumRapReducer;

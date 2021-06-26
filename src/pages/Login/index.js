@@ -50,6 +50,9 @@ export default function Login() {
     if (redirectTo) {
       return <Redirect to={redirectTo} />;
     }
+    if (userInfo.maLoaiNguoiDung === "QuanTri") {
+      return <Redirect to="/admin" />;
+    }
     return <Redirect to="/" />;
   }
 

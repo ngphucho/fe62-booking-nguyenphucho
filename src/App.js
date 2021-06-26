@@ -14,6 +14,7 @@ import TestPage from "./pages/TestPage";
 import TestPage2 from "./pages/TestPage2";
 import UpcomingMovies from "./pages/UpcomingMovies";
 import ClientRoute from "./auth/ClientRoute";
+import AdminRoute from "./auth/AdminRoute";
 import "./styles";
 import ThongTinTaiKhoan from "./pages/ThongTinTaiKhoan";
 import AdminLayout from "./layouts/AdminLayout";
@@ -27,21 +28,22 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* Router Admin */}
-          <Route path="/admin">
+          <AdminRoute path="/admin">
             <AdminLayout>
               <Switch>
-                <Route path="/admin/quan-ly-nguoi-dung">
+                <Redirect exact from="/admin" to="/admin/quan-ly-nguoi-dung" />
+                <AdminRoute path="/admin/quan-ly-nguoi-dung">
                   <AdminQuanLyNguoiDung />
-                </Route>
-                <Route path="/admin/quan-ly-phim">
+                </AdminRoute>
+                <AdminRoute path="/admin/quan-ly-phim">
                   <AdminQuanLyPhim />
-                </Route>
-                <Route path="/admin/quan-ly-lich-chieu">
+                </AdminRoute>
+                <AdminRoute path="/admin/quan-ly-lich-chieu/">
                   <AdminQuanLyLichChieu />
-                </Route>
+                </AdminRoute>
               </Switch>
             </AdminLayout>
-          </Route>
+          </AdminRoute>
 
           {/* Router Login */}
           <Route exact path="/login">

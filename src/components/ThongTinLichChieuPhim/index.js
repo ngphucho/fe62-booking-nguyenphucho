@@ -7,11 +7,11 @@ import { useHistory } from "react-router-dom";
 export default function ThongTinLichChieuPhim({
   thongTinLichChieuPhim: { heThongRapChieu },
 }) {
-  console.log(heThongRapChieu);
+  // console.log(heThongRapChieu);
 
   const history = useHistory();
   const [cumRapChieu, setCumRapChieu] = useState(
-    heThongRapChieu[0].cumRapChieu
+    heThongRapChieu[0]?.cumRapChieu
   );
 
   const [heThongRapActive, setHeThongRapActive] = useState("1");
@@ -48,38 +48,40 @@ export default function ThongTinLichChieuPhim({
           ))}
         </div>
         {/* DANH SACH CUM RAP VA LICH CHIEU PHIM */}
-        <div className="col-9">
-          <div>
-            <DatePicker
-              getSelectedDay={onSelectedDay}
-              endDate={30}
-              // selectDate={new Date("2020-04-30")}
-              labelFormat={"MMMM-yyyy"}
-              color={"#374e8c"}
-            />
+        {cumRapChieu ? (
+          <div className="col-9">
+            <div>
+              <DatePicker
+                getSelectedDay={onSelectedDay}
+                endDate={30}
+                // selectDate={new Date("2020-04-30")}
+                labelFormat={"MMMM-yyyy"}
+                color={"#374e8c"}
+              />
+            </div>
+            <div>
+              {cumRapChieu?.map((item, index) => (
+                <div key={index}>
+                  <div>{item.tenCumRap}</div>
+                  {item.lichChieuPhim.map((lich) => (
+                    <span
+                      key={lich.maLichChieu}
+                      style={{ display: "inline-block", padding: "5px" }}
+                      onClick={() => {
+                        history.push("/chi-tiet-phong-ve/" + lich.maLichChieu);
+                      }}
+                    >
+                      <SuatChieu
+                        thoiGianBatDau={lich.ngayChieuGioChieu}
+                        thoiLuong={lich.thoiLuong}
+                      />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-          <div>
-            {cumRapChieu.map((item, index) => (
-              <div key={index}>
-                <div>{item.tenCumRap}</div>
-                {item.lichChieuPhim.map((lich) => (
-                  <span
-                    key={lich.maLichChieu}
-                    style={{ display: "inline-block", padding: "5px" }}
-                    onClick={() => {
-                      history.push("/chi-tiet-phong-ve/" + lich.maLichChieu);
-                    }}
-                  >
-                    <SuatChieu
-                      thoiGianBatDau={lich.ngayChieuGioChieu}
-                      thoiLuong={lich.thoiLuong}
-                    />
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );

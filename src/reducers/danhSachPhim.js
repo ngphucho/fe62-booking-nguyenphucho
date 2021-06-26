@@ -5,12 +5,12 @@ import {
 } from "../constants/movies";
 
 const initialState = {
-  movies: [],
+  danhSachPhim: [],
   isLoading: false,
   error: null,
 };
 
-function moviesReducer(state = initialState, action) {
+function danhSachPhimReducer(state = initialState, action) {
   switch (action.type) {
     case GET_MOVIES_REQUEST: {
       return { ...state, isLoading: true, error: null };
@@ -18,7 +18,7 @@ function moviesReducer(state = initialState, action) {
     case GET_MOVIES_SUCCESS: {
       return {
         ...state,
-        movies: action.payload.data,
+        danhSachPhim: action.payload.data,
         isLoading: false,
         error: null,
       };
@@ -31,4 +31,4 @@ function moviesReducer(state = initialState, action) {
   }
 }
 
-export default moviesReducer;
+export default danhSachPhimReducer;

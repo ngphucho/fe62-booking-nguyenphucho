@@ -4,7 +4,7 @@ import {
   LAY_DANH_SACH_PHONG_VE_FAILURE,
   DAT_GHE,
 } from "../constants/quanLyDatVe";
-import quanLyDatVeAPI from "../services/QuanLyDatVeAPI";
+import quanLyDatVeAPI from "../services/quanLyDatVeAPI";
 import createChairMap from "../utils/createChairMap";
 
 // Lay danh sach phong ve
@@ -14,7 +14,7 @@ export const layDanhSachPhongVe = (maLichChieu) => {
     try {
       const {
         data: { thongTinPhim, danhSachGhe },
-      } = await quanLyDatVeAPI.LayDanhSachPhongVe(maLichChieu);
+      } = await quanLyDatVeAPI.layDanhSachPhongVe(maLichChieu);
       let i = 0;
       const chairMap = createChairMap.map1();
       const newDanhSachGhe = chairMap.map((row) => {
@@ -30,6 +30,7 @@ export const layDanhSachPhongVe = (maLichChieu) => {
         payload: { data: { thongTinPhim, danhSachGhe: newDanhSachGhe } },
       });
     } catch (error) {
+      // console.log(error);
       dispatch({
         type: LAY_DANH_SACH_PHONG_VE_FAILURE,
         payload: { error: error.response.data },

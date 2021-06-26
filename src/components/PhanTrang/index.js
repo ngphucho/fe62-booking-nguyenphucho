@@ -1,36 +1,16 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
-import { timKiemNguoiDungPhanTrang } from "../../actions/quanLyNguoiDung";
+import { useLocation, useHistory } from "react-router-dom";
+import qs from "qs";
+import "./styles.scss";
 
-export default function PhanTrang({ soLuongRender }) {
-  const dispatch = useDispatch();
-  const { danhSachNguoiDungPhanTrang, error } = useSelector(
-    (state) => state.danhSachNguoiDungPhanTrang
-  );
-  const { MaNhom, soPhanTuTrenTrang } = useSelector(
-    (state) => state.thongTinPhanTrangNguoiDung
-  );
-
-  if (error || !danhSachNguoiDungPhanTrang) {
-    return <div>{error}</div>;
-  }
-
-  const trangHienTai = danhSachNguoiDungPhanTrang?.currentPage;
-  const tongSoTrang = danhSachNguoiDungPhanTrang?.totalPages;
-  const tuKhoa = danhSachNguoiDungPhanTrang?.tuKhoa;
-  const setTrangHienTai = (nextPage) => {
-    dispatch(
-      timKiemNguoiDungPhanTrang({
-        MaNhom,
-        tuKhoa,
-        soPhanTuTrenTrang,
-        soTrang: nextPage,
-      })
-    );
-  };
-  // const { totalPages: tongSoTrang } = danhSachNguoiDungPhanTrang;
-
+export default function PhanTrang({
+  soLuongRender,
+  trangHienTai,
+  tongSoTrang,
+}) {
+  const location = useLocation();
+  const history = useHistory();
   const taoMangTrangRender = () => {
     if (soLuongRender >= tongSoTrang) {
       return [...Array(tongSoTrang).keys()].map((i) => i + 1);
@@ -40,7 +20,7 @@ export default function PhanTrang({ soLuongRender }) {
       return [...Array(soLuongRender).keys()].map((i) => i + 1);
     }
 
-    if (trangHienTai + parseInt((soLuongRender - 1) / 2) > tongSoTrang) {
+    if (trangHienTai + parseInt((soLuongRender - 1) / 2) >= tongSoTrang) {
       return [...Array(soLuongRender).keys()].map(
         (i) => i + tongSoTrang - soLuongRender + 1
       );
@@ -51,10 +31,23 @@ export default function PhanTrang({ soLuongRender }) {
     );
   };
   const mangTrangRender = taoMangTrangRender();
-  const nextPage = (page) => {
-    setTrangHienTai(page);
+  const diDenTrang = (page) => {
+    const thongTinTrang = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+    history.push(
+      "/admin/quan-ly-phim?" +
+        qs.stringify({
+          ...thongTinTrang,
+          trangHienTai: page,
+        })
+    );
   };
-
+  useEffect(() => {
+    if (trangHienTai > tongSoTrang) {
+      diDenTrang(tongSoTrang);
+    }
+  }, [tongSoTrang]);
   return (
     <div className="phanTrang">
       <Pagination>
@@ -63,7 +56,7 @@ export default function PhanTrang({ soLuongRender }) {
           <PaginationLink
             first
             onClick={() => {
-              nextPage(1);
+              diDenTrang(1);
             }}
           />
         </PaginationItem>
@@ -72,7 +65,7 @@ export default function PhanTrang({ soLuongRender }) {
           <PaginationLink
             previous
             onClick={() => {
-              nextPage(trangHienTai - 1);
+              diDenTrang(trangHienTai - 1);
             }}
           />
         </PaginationItem>
@@ -81,7 +74,7 @@ export default function PhanTrang({ soLuongRender }) {
           <PaginationItem key={i} active={i === trangHienTai ? true : false}>
             <PaginationLink
               onClick={() => {
-                nextPage(i);
+                diDenTrang(i);
               }}
             >
               {i}
@@ -94,7 +87,7 @@ export default function PhanTrang({ soLuongRender }) {
           <PaginationLink
             next
             onClick={() => {
-              nextPage(trangHienTai + 1);
+              diDenTrang(trangHienTai + 1);
             }}
           />
         </PaginationItem>
@@ -103,7 +96,7 @@ export default function PhanTrang({ soLuongRender }) {
           <PaginationLink
             last
             onClick={() => {
-              nextPage(tongSoTrang);
+              diDenTrang(tongSoTrang);
             }}
           />
         </PaginationItem>

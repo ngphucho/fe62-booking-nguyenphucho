@@ -1,0 +1,48 @@
+.date-range {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-range .input {
+  width: 100%;
+}
+
+.input {
+  -webkit-appearance: none;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #d3dde6;
+  color: #0e3254;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  height: 42px;
+  outline: none;
+  padding: 0 12px;
+  transition: border-color .2s;
+}
+
+.date-range_arrow {
+  flex-shrink: 0;
+  position: relative;
+  width: 36px;
+}
+
+.date-range_arrow:before {
+  border-right: 2px solid #d3dde6;
+  border-top: 2px solid #d3dde6;
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  height: 18px;
+  left: 50%;
+  margin-left: -14px;
+  margin-top: -9px;
+  position: absolute;
+  top: 50%;
+  transform: rotate(
+45deg
+);
+  width: 18px;
+}
+

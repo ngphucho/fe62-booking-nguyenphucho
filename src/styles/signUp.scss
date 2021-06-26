@@ -20,22 +20,6 @@
     z-index: -1;
   }
 
-  .formBox {
-    padding: 20px 80px;
-    background-color: #00000080;
-  }
-
-  .inputGroup {
-    margin: 20px 0;
-  }
-
-  .alert {
-    border-radius: 0;
-    padding: 0.375rem 0.75rem;
-    margin-top: 1px;
-    opacity: 0.8;
-  }
-
   .icon,
   .title {
     color: #ffffffbe !important;
@@ -56,3 +40,21 @@
     }
   }
 }
+
+.formBox {
+  padding: 20px 80px;
+  background-color: #00000080;
+
+  .inputGroup {
+    margin: 20px 0;
+  }
+
+  .alert {
+    border-radius: 0;
+    padding: 0.375rem 0.75rem;
+    margin-top: 1px;
+    opacity: 0.8;
+  }
+}
+
+// }

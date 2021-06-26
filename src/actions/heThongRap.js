@@ -4,16 +4,16 @@ import {
   GET_CINEMAS_FAILURE,
   GET_CINEMAS_BY_ID_REQUEST,
   GET_CINEMAS_BY_ID_SUCCESS,
-  GET_CINEMAS_BY_ID_FAILURE
-} from "../constants/cinemas";
+  GET_CINEMAS_BY_ID_FAILURE,
+} from "../constants/heThongRap";
 
-import cinemasAPI from "../services/cinemasAPI";
+import quanLyRapAPI from "../services/quanLyRapAPI";
 
-export function getCinemas() {
+export function layThongTinHeThongRap() {
   return async (dispatch) => {
     dispatch({ type: GET_CINEMAS_REQUEST });
     try {
-      const { data } = await cinemasAPI.getCinemas();
+      const { data } = await quanLyRapAPI.layThongTinHeThongRap();
       dispatch({ type: GET_CINEMAS_SUCCESS, payload: { data } });
     } catch (error) {
       dispatch({
@@ -24,11 +24,12 @@ export function getCinemas() {
   };
 }
 
-export function getCinemasById(id) {
+export function layThongTinHeThongRapById(id) {
   return async (dispatch) => {
+    // console.log("heeer");
     dispatch({ type: GET_CINEMAS_BY_ID_REQUEST });
     try {
-      const { data } = await cinemasAPI.getCinemas(id);
+      const { data } = await quanLyRapAPI.layThongTinHeThongRap(id);
       dispatch({ type: GET_CINEMAS_BY_ID_SUCCESS, payload: { data } });
     } catch (error) {
       dispatch({

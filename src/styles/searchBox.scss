@@ -1,0 +1,28 @@
+.searchBox {
+  .MuiOutlinedInput-notchedOutline {
+    top: 0;
+    border-radius: 0;
+  }
+
+  .MuiFormControl-marginNormal {
+    margin: 0;
+  }
+
+  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 5px;
+  }
+
+  .MuiAutocomplete-root {
+    background-color: #ffffff60;
+    min-width: 300px;
+  }
+  // .MuiAutocomplete-listbox {
+  //   height: 50px;
+  // }
+
+  @media screen and (max-width: 991.9px) {
+    .MuiAutocomplete-root {
+      min-width: 200px;
+    }
+  }
+}

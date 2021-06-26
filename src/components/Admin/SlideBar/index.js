@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { slideBarList } from "./slideBarList";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { useDispatch } from "react-redux";
+import { pageTitleChange } from "../../../actions/pageTitle";
 
 export default function SlideBar() {
   const [showSlideBar, setShowSlideBar] = useState(true);
@@ -9,6 +11,7 @@ export default function SlideBar() {
   const changeActivePage = (page) => {
     setActivePage(page);
   };
+  const dispatch = useDispatch();
 
   return (
     <div className={showSlideBar ? "slideBar show" : "slideBar"}>
@@ -25,6 +28,7 @@ export default function SlideBar() {
             <li
               onClick={() => {
                 changeActivePage(index);
+                dispatch(pageTitleChange({ pageTitle: item.title }));
               }}
               className={index === activePage ? "active" : null}
             >

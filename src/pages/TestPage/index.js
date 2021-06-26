@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import scheduleAPI from "../../services/scheduleAPI";
+import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
 import { useForm, Controller } from "react-hook-form";
 import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
@@ -12,7 +12,7 @@ export default function TestPage() {
   const [phim, setPhim] = useState(null);
 
   useEffect(async () => {
-    const { data } = await scheduleAPI.layThongTinLichChieuHeThongRap("");
+    const { data } = await lichChieuPhimAPI.layThongTinLichChieuHeThongRap("");
     setHeThongRap(data);
   }, []);
 
