@@ -1,3 +1,7 @@
+import StarIcon from "@material-ui/icons/Star";
+import StarHalfIcon from "@material-ui/icons/StarHalf";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+
 //ham xu lu clone array object cho mang JSON-serializable (su dung khi mang ko chua function, số Number.POSITIVE_INFINITY,... )
 export const cloneArrayObject = (arr) => JSON.parse(JSON.stringify(arr));
 
@@ -11,4 +15,16 @@ export const cloneArrayIdName = (arr, id, name) =>
 //format chuoi sang dang tien viet nam
 export const formatVND = (number) => {
   return number.toLocaleString("vi", { style: "currency", currency: "VND" });
+};
+
+export const generateStar = (score, maxScore) => {
+  const newScore = parseInt(score / 2);
+  const mod = score % 2;
+  const newMaxScore = parseInt((maxScore + 1) / 2);
+  console.log(score, maxScore, newScore, mod, newMaxScore);
+  return [...Array(newMaxScore).keys()].map((key) => {
+    if (key < newScore) return <StarIcon />;
+    if ((key === newScore && (mod === 1))) return <StarHalfIcon />;
+    return <StarBorderIcon />;
+  });
 };

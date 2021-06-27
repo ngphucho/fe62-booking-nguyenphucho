@@ -26,7 +26,7 @@ export default function Home() {
     if (isXl) return 12;
     if (isLg) return 8;
     if (isMd) return 6;
-    if (isSm) return 4;
+    return 4;
   });
   const { data } = useSelector((state) => state.schedules);
 
@@ -54,7 +54,7 @@ export default function Home() {
       if (isXl) return 12;
       if (isLg) return 8;
       if (isMd) return 6;
-      if (isSm) return 4;
+      return 4;
     });
   }, [isXl, isLg, isMd, isSm]);
 
@@ -77,6 +77,10 @@ export default function Home() {
       });
     }
   }, [danhSachPhim]);
+
+  useEffect(() => {
+    console.log(soLuong);
+  }, [soLuong]);
 
   return isLoading || isPending ? (
     <IsLoading></IsLoading>

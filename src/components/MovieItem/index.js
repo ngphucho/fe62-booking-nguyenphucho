@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { changeSelectedMovie } from "../../actions/selectedMovie";
-
+import { generateStar } from "../../utils/myFunction";
 export default function MovieItem({ movie }) {
   // const [isOpen, setOpen] = useState(false);
   const { isOpen } = useSelector((state) => state.selectedMovie);
@@ -19,32 +19,41 @@ export default function MovieItem({ movie }) {
         />
       </div>
       <div className="itemMovieEffect d-flex flex-column justify-content-around">
-        <p>Tên Phim: {movie.tenPhim}</p>
-        <p>Mô tả: {movie.moTa.slice(0, 120)}</p>
-        <p>Ngày khởi chiếu: {movie.ngayKhoiChieu.slice(0, 10)}</p>
-        <div className="d-flex justify-content-around">
-          <button
-            className="btn btn-outline-success"
+        <div className="text-content">
+          <p>
+            <span>Tên Phim: </span>
+            {movie.tenPhim}
+          </p>
+          <p>
+            <span>Ngày khởi chiếu: </span>
+            {movie.ngayKhoiChieu.slice(0, 10)}
+          </p>
+          <p>
+            <span>Mô tả: </span>
+            {movie.moTa.slice(0, 120)}
+          </p>
+        </div>
+        <div className="d-flex justify-content-around button-content">
+          <div
             onClick={() => {
               history.push("/movie/" + movie.maPhim);
             }}
           >
             Chi tiết
-          </button>
-          <button
-            className="btn btn-outline-danger"
+          </div>
+          <div
             onClick={() => {
               // dispatch(setOpen(true));
               dispatch(changeSelectedMovie(movie));
             }}
           >
             Trailer
-          </button>
+          </div>
         </div>
       </div>
       <div className="card-body itemMovieBody text-center">
         <h5 className="card-title itemMovieTitle">{movie.tenPhim}</h5>
-        <p className="card-text">{movie.danhGia}/10</p>
+        <p className="card-text movieScore">{generateStar(movie.danhGia, 10)}</p>
       </div>
     </div>
   );
