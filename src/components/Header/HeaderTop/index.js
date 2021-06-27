@@ -47,11 +47,11 @@ export default function HeaderTop() {
 
   return (
     <div className="headerTop">
-      <Container fluid="md" className="position-static">
+      <Container fluid="lg" className="position-static">
         <Navbar
           dark
           expand="md"
-          className="d-flex justify-content-between position-static p-0"
+          className="d-flex justify-content-between position-static p-0 myNavbar"
         >
           {/* left (logo)*/}
           <NavbarBrand>

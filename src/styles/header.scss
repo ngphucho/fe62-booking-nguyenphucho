@@ -3,14 +3,17 @@
   --shadow-color-light: white;
   $topToMenu: 80px;
 
-  background-color: #000000;
+  background-color: #0c0c0c;
   width: 100%;
 
-  .navbar-toggler:focus{
+  position: relative;
+  z-index: 1000;
+  box-shadow: rgba(255, 255, 255, 0.315) 0px 60px 40px -7px;
+
+  .navbar-toggler:focus {
     box-shadow: none;
     border: 2px solid #3f51b5;
     border-radius: 0;
-
   }
 
   .collapsing {
@@ -36,7 +39,7 @@
       }
 
       & > li.nav-item a {
-        font-size: 13px;
+        font-size: 14px;
       }
 
       & > li.nav-item:hover a.nav-link {
@@ -103,7 +106,7 @@
   }
 
   @media screen and (max-width: 767.9px) {
-    & > .container-md {
+    & > .container-lg {
       padding-left: 0;
       padding-right: 0;
     }
@@ -113,13 +116,13 @@
       & > ul.navbar-nav {
         & > li.nav-item {
           flex-direction: column;
-          
+
           & > a {
             display: block;
             line-height: 48px;
             padding: 0;
 
-            *{
+            * {
               padding: 0;
             }
           }
