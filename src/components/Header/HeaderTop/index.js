@@ -27,6 +27,8 @@ export default function HeaderTop() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+  const openMenu = () => setIsOpen(true);
 
   const navData = [
     {
@@ -44,14 +46,8 @@ export default function HeaderTop() {
   }, [activePage]);
 
   return (
-    <div
-      style={{
-        backgroundColor: "#000000",
-        width: "100%",
-      }}
-      className="headerTop"
-    >
-      <Container className="position-static">
+    <div className="headerTop">
+      <Container fluid="md" className="position-static">
         <Navbar
           dark
           expand="md"
@@ -77,11 +73,16 @@ export default function HeaderTop() {
             navbar
             className="justify-content-between position-static headerRight"
           >
+            {/* thanh tiem kiem */}
+            <Nav navbar className="order-md-1">
+              <SearchBox />
+            </Nav>
+
             {/* thanh dieu huong */}
-            <Nav className="position-static order-md-0 order-1" navbar>
+            <Nav className="position-static order-md-0" navbar>
               <NavItem active={activePage === 1}>
                 <Link to="/home">
-                  <NavLink>TRANG CHỦ</NavLink>
+                  <NavLink onClick={closeMenu}>TRANG CHỦ</NavLink>
                 </Link>
               </NavItem>
               {/* <NavItem>
@@ -97,7 +98,7 @@ export default function HeaderTop() {
               >
                 <DropdownToggle nav>CỤM RẠP</DropdownToggle>
                 <DropdownMenu className="border-0 rounded-0 p-0 rapMenu">
-                  <DropdownItem>
+                  <DropdownItem onClick={closeMenu}>
                     <Cinemas />
                   </DropdownItem>
                 </DropdownMenu>
@@ -111,13 +112,8 @@ export default function HeaderTop() {
               ))} */}
             </Nav>
 
-            {/* thanh tiem kiem */}
-            <Nav navbar className="order-md-1 order-0">
-              <SearchBox />
-            </Nav>
-
             {/* thanh userinfo */}
-            <Nav navbar className="order-md-2 order-2">
+            <Nav navbar className="order-md-2">
               {userInfo ? (
                 // <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
                 //   {/* <Link to="/login"> */}
@@ -139,10 +135,13 @@ export default function HeaderTop() {
                     // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
-                      <DropdownItem>Thông tin cá nhân</DropdownItem>
+                      <DropdownItem onClick={closeMenu}>
+                        Thông tin cá nhân
+                      </DropdownItem>
                     </Link>
                     <DropdownItem
                       onClick={() => {
+                        closeMenu();
                         dispatch(logout());
                       }}
                     >
@@ -154,12 +153,12 @@ export default function HeaderTop() {
                 <>
                   <NavItem>
                     <Link to="/login">
-                      <NavLink>ĐĂNG NHẬP</NavLink>
+                      <NavLink onClick={closeMenu}>ĐĂNG NHẬP</NavLink>
                     </Link>
                   </NavItem>
                   <NavItem>
                     <Link to="/sign-up">
-                      <NavLink>ĐĂNG KÝ</NavLink>
+                      <NavLink onClick={closeMenu}>ĐĂNG KÝ</NavLink>
                     </Link>
                   </NavItem>
                 </>

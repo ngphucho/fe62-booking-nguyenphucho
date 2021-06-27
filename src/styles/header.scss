@@ -3,6 +3,20 @@
   --shadow-color-light: white;
   $topToMenu: 80px;
 
+  background-color: #000000;
+  width: 100%;
+
+  .navbar-toggler:focus{
+    box-shadow: none;
+    border: 2px solid #3f51b5;
+    border-radius: 0;
+
+  }
+
+  .collapsing {
+    transition: all 0.3s;
+  }
+
   .headerRight {
     padding-left: 5%;
     align-self: stretch;
@@ -89,20 +103,45 @@
   }
 
   @media screen and (max-width: 767.9px) {
+    & > .container-md {
+      padding-left: 0;
+      padding-right: 0;
+    }
     .headerRight {
-      display: flex;
-      flex-direction: column;
       background-color: #cccccc80;
 
       & > ul.navbar-nav {
         & > li.nav-item {
           flex-direction: column;
+          
+          & > a {
+            display: block;
+            line-height: 48px;
+            padding: 0;
+
+            *{
+              padding: 0;
+            }
+          }
 
           & > .userInfoMunu {
             width: 100%;
           }
         }
+
+        & > li.nav-item.show {
+          background-color: #cccccc50;
+
+          .dropdown-menu {
+            background-color: #cccccc30;
+          }
+        }
       }
+    }
+
+    .headerRight.show {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
