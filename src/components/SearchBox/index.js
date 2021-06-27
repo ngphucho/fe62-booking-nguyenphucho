@@ -24,7 +24,10 @@ const useStyles = makeStyles((theme) => ({
 
   listbox: {
     height: "100%",
-    maxHeight: window.innerHeight - 90,
+    maxHeight:
+      window.innerWidth < 768
+        ? window.innerHeight - 150
+        : window.innerHeight - 90,
     backgroundColor: "#ffffffee",
 
     "*::-webkit-scrollbar": {
@@ -53,7 +56,7 @@ export default function SearchBox() {
   return (
     <div className="searchBox">
       <Autocomplete
-      className="autocompleteBox"
+        className="autocompleteBox"
         fullWidth={true}
         autoHighlight={false}
         clearOnBlur={false}

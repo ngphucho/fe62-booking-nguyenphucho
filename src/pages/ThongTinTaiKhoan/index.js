@@ -8,6 +8,7 @@ import { Label, Form, FormGroup, Input, Button } from "reactstrap";
 import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 import { useSelector } from "react-redux";
 import { login } from "../../actions/auth";
+import { pageTitleChange } from "../../actions/pageTitle";
 
 const schema = yup.object().shape({
   hoTen: yup.string().required("Vui lòng nhập họ tên"),
@@ -88,18 +89,6 @@ export default function ThongTinTaiKhoan() {
 
   const [thongTinTaiKhoan, setThongTinTaiKhoan] = useState(null);
   const [thongTinDatVe, setThongTinDatVe] = useState(null);
-  useEffect(async () => {
-    if (userInfo) {
-      const { data } = await quanLyNguoiDungAPI.thongTinTaiKhoan(
-        userInfo.taiKhoan
-      );
-      setThongTinTaiKhoan(data);
-      setThongTinDatVe(data.thongTinDatVe);
-    }
-    if(isSuccess){
-      window.location.reload();
-    }
-  }, [userInfo]);
 
   const onSubmit = async (values) => {
     if (
@@ -130,6 +119,28 @@ export default function ThongTinTaiKhoan() {
       }
     }
   };
+
+  useEffect(async () => {
+    if (userInfo) {
+      const { data } = await quanLyNguoiDungAPI.thongTinTaiKhoan(
+        userInfo.taiKhoan
+      );
+      setThongTinTaiKhoan(data);
+      setThongTinDatVe(data.thongTinDatVe);
+    }
+    if (isSuccess) {
+      window.location.reload();
+    }
+  }, [userInfo]);
+
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 3,
+        pageTitle: "",
+      })
+    );
+  });
 
   return thongTinTaiKhoan && thongTinDatVe ? (
     <div className="container">

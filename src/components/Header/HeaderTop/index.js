@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -21,6 +21,7 @@ import SearchBox from "../../SearchBox";
 import { logout } from "../../../actions/auth";
 
 export default function HeaderTop() {
+  const { activePage } = useSelector((state) => state.pageTitle);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +38,10 @@ export default function HeaderTop() {
       link: "/cinemas",
     },
   ];
+
+  useEffect(() => {
+    console.log(activePage);
+  }, [activePage]);
 
   return (
     <div
@@ -62,12 +67,10 @@ export default function HeaderTop() {
               />
             </Link>
           </NavbarBrand>
-          
-          
+
           {/* middle (nut menu)*/}
           <NavbarToggler onClick={toggle} />
-          
-          
+
           {/* right */}
           <Collapse
             isOpen={isOpen}
@@ -75,8 +78,8 @@ export default function HeaderTop() {
             className="justify-content-between position-static headerRight"
           >
             {/* thanh dieu huong */}
-            <Nav className="position-static" navbar>
-              <NavItem>
+            <Nav className="position-static order-md-0 order-1" navbar>
+              <NavItem active={activePage === 1}>
                 <Link to="/home">
                   <NavLink>TRANG CHỦ</NavLink>
                 </Link>
@@ -86,11 +89,14 @@ export default function HeaderTop() {
                   <NavLink>RẠP</NavLink>
                 </Link>
               </NavItem> */}
-              <UncontrolledDropdown nav inNavbar className="position-static">
-                <DropdownToggle nav>RẠP</DropdownToggle>
-                <DropdownMenu
-                  className="border-0 rounded-0 p-0 rapMenu"
-                >
+              <UncontrolledDropdown
+                active={activePage === 2}
+                nav
+                inNavbar
+                className="position-static"
+              >
+                <DropdownToggle nav>CỤM RẠP</DropdownToggle>
+                <DropdownMenu className="border-0 rounded-0 p-0 rapMenu">
                   <DropdownItem>
                     <Cinemas />
                   </DropdownItem>
@@ -104,28 +110,33 @@ export default function HeaderTop() {
                 </NavItem>
               ))} */}
             </Nav>
-            
+
             {/* thanh tiem kiem */}
-            <Nav navbar>
+            <Nav navbar className="order-md-1 order-0">
               <SearchBox />
             </Nav>
-            
+
             {/* thanh userinfo */}
-            <Nav navbar>
+            <Nav navbar className="order-md-2 order-2">
               {userInfo ? (
                 // <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
                 //   {/* <Link to="/login"> */}
                 //   <NavLink>{userInfo.taiKhoan}</NavLink>
                 //   {/* </Link> */}
                 // </NavItem>
-                <UncontrolledDropdown nav inNavbar className="position-static">
+                <UncontrolledDropdown
+                  active={activePage === 3}
+                  nav
+                  inNavbar
+                  className="position-static"
+                >
                   <DropdownToggle nav>
                     <AccountCircleIcon />
                     <span style={{ paddingLeft: 10 }}>{userInfo.hoTen}</span>
                   </DropdownToggle>
                   <DropdownMenu
-                    className="border-0 rounded-0 p-0"
-                    style={{ top: "96px", backgroundColor: "#ffffff80" }}
+                    className="border-0 rounded-0 p-0 userInfoMunu"
+                    // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
                       <DropdownItem>Thông tin cá nhân</DropdownItem>

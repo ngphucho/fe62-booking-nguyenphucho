@@ -1,11 +1,44 @@
 .headerTop {
+  --shadow-color: #ff9e9e;
+  --shadow-color-light: white;
+  $topToMenu: 80px;
+
   .headerRight {
     padding-left: 5%;
+    align-self: stretch;
+
+    & > ul.navbar-nav {
+      align-self: stretch;
+
+      & > li.nav-item,
+      & > .searchBox {
+        display: flex;
+        align-items: center;
+
+        & > .userInfoMunu {
+          top: $topToMenu;
+          background-color: #ffffff80;
+        }
+      }
+
+      & > li.nav-item a {
+        font-size: 13px;
+      }
+
+      & > li.nav-item:hover a.nav-link {
+        color: white;
+        animation: neon 3s infinite;
+      }
+
+      & > li.nav-item.active a.nav-link {
+        animation: neon 3s infinite;
+      }
+    }
   }
 
   .rapMenu {
     width: 100% !important;
-    top: 96px;
+    top: $topToMenu;
     left: 0;
     background-color: #ffffff80;
 
@@ -16,9 +49,60 @@
     }
   }
 
+  @keyframes neon {
+    0% {
+      text-shadow: -1px -1px 1px var(--shadow-color-light),
+        -1px 1px 1px var(--shadow-color-light),
+        1px -1px 1px var(--shadow-color-light),
+        1px 1px 1px var(--shadow-color-light), 0 0 3px var(--shadow-color-light),
+        0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+        0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color),
+        0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color),
+        0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+    }
+    50% {
+      text-shadow: -1px -1px 1px var(--shadow-color-light),
+        -1px 1px 1px var(--shadow-color-light),
+        1px -1px 1px var(--shadow-color-light),
+        1px 1px 1px var(--shadow-color-light), 0 0 5px var(--shadow-color-light),
+        0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+        0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color),
+        0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color),
+        0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
+    }
+    100% {
+      text-shadow: -1px -1px 1px var(--shadow-color-light),
+        -1px 1px 1px var(--shadow-color-light),
+        1px -1px 1px var(--shadow-color-light),
+        1px 1px 1px var(--shadow-color-light), 0 0 3px var(--shadow-color-light),
+        0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+        0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color),
+        0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color),
+        0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+    }
+  }
+
   @media screen and (max-width: 992px) {
     .headerRight {
       padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 767.9px) {
+    .headerRight {
+      display: flex;
+      flex-direction: column;
+      background-color: #cccccc80;
+
+      & > ul.navbar-nav {
+        & > li.nav-item {
+          flex-direction: column;
+
+          & > .userInfoMunu {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

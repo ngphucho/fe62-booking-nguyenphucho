@@ -6,17 +6,30 @@ import CinemaItemDetail from "../../components/CinemaItemDetail";
 import { layThongTinHeThongRapById } from "../../actions/heThongRap";
 import IsLoading from "../../components/IsLoading";
 import CinemaItem from "../../components/CinemaItem";
+import { pageTitleChange } from "../../actions/pageTitle";
 
 export default function Cinema() {
   const dispatch = useDispatch();
   const { cinemaId } = useParams();
-  const { danhSachCumRap, isLoading, error } = useSelector((state) => state.danhSachCumRap); //Thong tin chi tiet cua cum rap
+  const { danhSachCumRap, isLoading, error } = useSelector(
+    (state) => state.danhSachCumRap
+  ); //Thong tin chi tiet cua cum rap
   const { selectedCinema } = useSelector((state) => state.selectedCinema); // Danh sach cum rap
 
   useEffect(() => {
     dispatch(layThongTinCumRapTheoHeThong(cinemaId));
     dispatch(layThongTinHeThongRapById(cinemaId));
   }, [cinemaId]);
+
+  useEffect(() => {
+    //set activePage
+    dispatch(
+      pageTitleChange({
+        pageTitle: "",
+        activePage: 2,
+      })
+    );
+  }, []);
 
   return isLoading ? (
     <IsLoading></IsLoading>
