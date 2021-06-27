@@ -80,16 +80,14 @@ export default function HeaderTop() {
 
             {/* thanh dieu huong */}
             <Nav className="position-static order-md-0" navbar>
+              {/* Trang chu */}
               <NavItem active={activePage === 1}>
                 <Link to="/home">
                   <NavLink onClick={closeMenu}>TRANG CHỦ</NavLink>
                 </Link>
               </NavItem>
-              {/* <NavItem>
-                <Link to="/cinemas">
-                  <NavLink>RẠP</NavLink>
-                </Link>
-              </NavItem> */}
+
+              {/* cum rap */}
               <UncontrolledDropdown
                 active={activePage === 2}
                 nav
@@ -103,6 +101,38 @@ export default function HeaderTop() {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+
+              {/* Tat ca phim */}
+              <UncontrolledDropdown
+                  active={activePage === 3}
+                  nav
+                  inNavbar
+                  className="position-static"
+                >
+                  <DropdownToggle nav>
+                    PHIM
+                  </DropdownToggle>
+                  <DropdownMenu
+                    className="border-0 rounded-0 p-0 subMenu"
+                  >
+                    <Link to="/tat-ca-phim">
+                      <DropdownItem onClick={closeMenu}>
+                        TẤT CẢ PHIM
+                      </DropdownItem>
+                    </Link>
+                    <Link to="/phim-dang-chieu">
+                      <DropdownItem onClick={closeMenu}>
+                        PHIM ĐANG CHIẾU
+                      </DropdownItem>
+                    </Link>
+                    <Link to="/phim-sap-chieu">
+                      <DropdownItem onClick={closeMenu}>
+                        PHIM SẮP CHIẾU
+                      </DropdownItem>
+                    </Link>
+                    
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               {/* {navData.map((item, index) => (
                 <NavItem key={index}>
                   <Link to={item.link}>
@@ -121,7 +151,7 @@ export default function HeaderTop() {
                 //   {/* </Link> */}
                 // </NavItem>
                 <UncontrolledDropdown
-                  active={activePage === 3}
+                  active={activePage === 4}
                   nav
                   inNavbar
                   className="position-static"
@@ -131,7 +161,7 @@ export default function HeaderTop() {
                     <span style={{ paddingLeft: 10 }}>{userInfo.hoTen}</span>
                   </DropdownToggle>
                   <DropdownMenu
-                    className="border-0 rounded-0 p-0 userInfoMunu"
+                    className="border-0 rounded-0 p-0 subMenu"
                     // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>

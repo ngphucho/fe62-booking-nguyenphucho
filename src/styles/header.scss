@@ -32,7 +32,7 @@
         display: flex;
         align-items: center;
 
-        & > .userInfoMunu {
+        & > .subMenu {
           top: $topToMenu;
           background-color: #ffffff80;
         }
@@ -127,7 +127,7 @@
             }
           }
 
-          & > .userInfoMunu {
+          & > .subMenu {
             width: 100%;
           }
         }

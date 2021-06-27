@@ -136,11 +136,11 @@ export default function ThongTinTaiKhoan() {
   useEffect(() => {
     dispatch(
       pageTitleChange({
-        activePage: 3,
+        activePage: 4,
         pageTitle: "",
       })
     );
-  });
+  }, []);
 
   return thongTinTaiKhoan && thongTinDatVe ? (
     <div className="container">

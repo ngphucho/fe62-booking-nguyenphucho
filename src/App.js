@@ -21,6 +21,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminQuanLyNguoiDung from "./pages/AdminQuanLyNguoiDung";
 import AdminQuanLyPhim from "./pages/AdminQuanLyPhim";
 import AdminQuanLyLichChieu from "./pages/AdminQuanLyLichChieu";
+import AllMovies from "./pages/AllMovies";
 
 function App() {
   return (
@@ -77,10 +78,13 @@ function App() {
                 <Route path="/cinemas/cinema/:cinemaId">
                   <Cinema />
                 </Route>
-                <Route path="/now-showing-movies">
+                <Route path="/tat-ca-phim">
+                  <AllMovies />
+                </Route>
+                <Route path="/phim-dang-chieu">
                   <NowShowingMovies />
                 </Route>
-                <Route path="/upcoming-movies">
+                <Route path="/phim-sap-chieu">
                   <UpcomingMovies />
                 </Route>
                 <Route path="/movie/:movieId">

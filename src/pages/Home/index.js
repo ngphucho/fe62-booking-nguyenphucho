@@ -8,8 +8,13 @@ import { Container } from "reactstrap";
 import { layThongTinLichChieuHeThongRap } from "../../actions/schedules";
 import ThongTinLichChieuHeThongRap2 from "../ThongTinLichChieuHeThongRap2";
 import { pageTitleChange } from "../../actions/pageTitle";
+import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
+  const isSm = useMediaQuery({ minWidth: 576 });
+  const isMd = useMediaQuery({ minWidth: 768 });
+  const isLg = useMediaQuery({ minWidth: 992 });
+  const isXl = useMediaQuery({ minWidth: 1200 });
   const dispatch = useDispatch();
   const { danhSachPhim, error, isLoading } = useSelector(
     (state) => state.danhSachPhim
@@ -17,6 +22,12 @@ export default function Home() {
   const [nowShowingMovies, setNowShowingMovies] = useState([]);
   const [upcomingMovies, setUpComingMovies] = useState([]);
   const [isPending, setPending] = useState(true);
+  const [soLuong, setSoLuong] = useState(() => {
+    if (isXl) return 12;
+    if (isLg) return 8;
+    if (isMd) return 6;
+    if (isSm) return 4;
+  });
   const { data } = useSelector((state) => state.schedules);
 
   //Được chạy mỗi khi load trang này =>
@@ -37,6 +48,15 @@ export default function Home() {
       })
     );
   }, []);
+
+  useEffect(() => {
+    setSoLuong(() => {
+      if (isXl) return 12;
+      if (isLg) return 8;
+      if (isMd) return 6;
+      if (isSm) return 4;
+    });
+  }, [isXl, isLg, isMd, isSm]);
 
   //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
   useEffect(() => {
@@ -73,8 +93,8 @@ export default function Home() {
             <OrderTicketBox></OrderTicketBox>
           </Container>
           <MainContent
-            currentMovies={nowShowingMovies.slice(0, 8)}
-            comingMovies={upcomingMovies.slice(0, 8)}
+            currentMovies={nowShowingMovies.slice(0, soLuong)}
+            comingMovies={upcomingMovies.slice(0, soLuong)}
           ></MainContent>
           {data ? (
             <ThongTinLichChieuHeThongRap2 danhSachHeThongRap={data} />

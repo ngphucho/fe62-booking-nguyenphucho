@@ -14,8 +14,8 @@ export default function MyCarousel() {
       stopOnHover={true}
       dynamicHeight={true}
     >
-      {items.map((item) => (
-        <div>
+      {items.map((item, index) => (
+        <div key={index}>
           <img src={item.src} alt={item.altText} style={{ height: 500, objectFit: "cover" }} />
           <p className="legend">{item.caption}</p>
         </div>

@@ -4,10 +4,10 @@ import { useHistory, useParams } from "react-router-dom";
 //import action
 import { layDanhSachPhim } from "../../actions/movies";
 import { layDanhSachPhimTheoTen } from "../../actions/moviesSearch";
+import { pageTitleChange } from "../../actions/pageTitle";
 
 import IsLoading from "../../components/IsLoading";
-import MovieItem from "../../components/MovieItem";
-
+import SubContent from "../../components/SubContent";
 export default function Search() {
   const dispatch = useDispatch();
   let { keyword } = useParams();
@@ -25,6 +25,16 @@ export default function Search() {
     dispatch(layDanhSachPhim());
   }, []);
 
+  // set active page
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 3,
+        pageTitle: "",
+      })
+    );
+  }, []);
+
   useEffect(() => {
     // console.log("keyword = " + keyword);
     dispatch(layDanhSachPhimTheoTen(keyword));
@@ -38,18 +48,28 @@ export default function Search() {
     }
   }, [moviesSearch]);
 
+  // return isLoading ? (
+  //   <IsLoading></IsLoading>
+  // ) : (
+  //   <div className="container">
+  //     <h1>Kết quả tìm kiếm</h1>
+  //     <div className="row moviesList">
+  //       {moviesSearch.map((item) => (
+  //         <div key={item.maPhim} className="col-md-3">
+  //           <MovieItem movie={item} />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
+
   return isLoading ? (
-    <IsLoading></IsLoading>
+    <IsLoading />
+  ) : error ? (
+    <div>{error}</div>
   ) : (
     <div className="container">
-      <h1>Kết quả tìm kiếm</h1>
-      <div className="row">
-        {moviesSearch.map((item) => (
-          <div key={item.maPhim} className="col-md-3">
-            <MovieItem movie={item} />
-          </div>
-        ))}
-      </div>
+      <SubContent title="KẾT QUẢ TÌM KIẾM" data={moviesSearch} />
     </div>
   );
 }

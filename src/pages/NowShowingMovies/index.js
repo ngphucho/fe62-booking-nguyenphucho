@@ -3,15 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { layDanhSachPhim } from "../../actions/movies";
 import IsLoading from "../../components/IsLoading";
 import SubContent from "../../components/SubContent";
+import { pageTitleChange } from "../../actions/pageTitle";
 
 export default function NowShowingMovies() {
-  const { danhSachPhim, isLoading, errror } = useSelector((state) => state.danhSachPhim);
+  const { danhSachPhim, isLoading, error } = useSelector((state) => state.danhSachPhim);
   const dispatch = useDispatch();
   const [nowShowingMovies, setNowShowingMovies] = useState([]);
 
   useEffect(() => {
     //dispatch action goi API lay danh sach phim
     dispatch(layDanhSachPhim());
+  }, []);
+
+  //set active page
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 3,
+        pageTitle: "",
+      })
+    );
   }, []);
 
   useEffect(() => {
@@ -32,8 +43,8 @@ export default function NowShowingMovies() {
 
   return isLoading ? (
     <IsLoading />
-  ) : errror ? (
-    <div>{errror}</div>
+  ) : error ? (
+    <div>{error}</div>
   ) : (
     <div className="container">
       <SubContent title="PHIM ĐANG CHIẾU" data={nowShowingMovies} />
