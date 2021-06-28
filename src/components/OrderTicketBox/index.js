@@ -68,7 +68,7 @@ export default function OrderTicketBox() {
   };
 
   return (
-    <Container className="orderTicketBox" style={{backgroundClip: "padding-box"}}>
+    <div className="orderTicketBox" style={{backgroundClip: "padding-box"}}>
       <div
         className={classes.root}
         style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
@@ -143,6 +143,6 @@ export default function OrderTicketBox() {
           </TabPanel>
         </SwipeableViews>
       </div>
-    </Container>
+    </div>
   );
 }

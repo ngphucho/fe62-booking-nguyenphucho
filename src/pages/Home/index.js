@@ -25,7 +25,7 @@ export default function Home() {
   const [soLuong, setSoLuong] = useState(() => {
     if (isXl) return 12;
     if (isLg) return 8;
-    if (isMd) return 6;
+    if (isSm) return 6;
     return 4;
   });
   const { data } = useSelector((state) => state.schedules);
@@ -49,18 +49,18 @@ export default function Home() {
     );
   }, []);
 
-  useEffect(()=>{
-    window.scrollTo(0, 0);
-  })
+  // useEffect(()=>{
+  //   window.scrollTo(0, 0);
+  // })
 
   useEffect(() => {
     setSoLuong(() => {
       if (isXl) return 12;
       if (isLg) return 8;
-      if (isMd) return 6;
+      if (isSm) return 6;
       return 4;
     });
-  }, [isXl, isLg, isMd, isSm]);
+  }, [isXl, isLg, isSm]);
 
   //Chay khi movie thay doi => tao 2 mang moi: mang phim dang chieu va mang phim sap chieu
   useEffect(() => {
@@ -96,10 +96,10 @@ export default function Home() {
       {error ? (
         <div>{error}</div>
       ) : (
-        <div>
-          <Container>
+        <div className="container-md homeBody p-0">
+          <div className="oderTicketBox">
             <OrderTicketBox></OrderTicketBox>
-          </Container>
+          </div>
           <MainContent
             currentMovies={nowShowingMovies.slice(0, soLuong)}
             comingMovies={upcomingMovies.slice(0, soLuong)}

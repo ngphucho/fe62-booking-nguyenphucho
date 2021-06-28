@@ -10,15 +10,15 @@ import React from "react";
 export default function Footer() {
   return (
     <div className="bg-light footer">
-      <div className="container">
+      <div className="container-md">
         <div className="row">
-          <div className="col-5"></div>
-          <div className="col-7">
-            <div className="border-bottom" style={{ textAlign: "right" }}>
+          <div className="col-sm-5"></div>
+          <div className="col-sm-7">
+            <div className="border-bottom goToTop" style={{ textAlign: "right" }}>
               RETURN TO TOP ^
             </div>
           </div>
-          <div className="col-5 pb-5">
+          <div className="col-sm-5 pb-5 footerLogo">
             <img
               className="bottom-logo"
               src="./images/footer-logo1.png"
@@ -40,8 +40,8 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <div className="col-7 d-flex flex-column justify-content-around">
-            <div className="footer-nav">
+          <div className="col-sm-7 d-flex flex-column justify-content-around footerNavBox">
+            <div className="footer-nav about">
               <b>ABOUT</b>
               <a href="/" className="footer-nav-item">
                 Privacy
@@ -87,7 +87,7 @@ export default function Footer() {
               </a>
             </div>
             </div>
-          <div className="col-5 border-top py-2">Copyright ©2021</div>
+          <div className="col-sm-5 border-top py-2 copyright">Copyright ©2021</div>
         </div>
       </div>
     </div>

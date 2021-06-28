@@ -7,7 +7,6 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SwipeableViews from "react-swipeable-views";
-import { Container } from "reactstrap";
 import SubContent from "../SubContent";
 
 function TabPanel(props) {
@@ -66,7 +65,7 @@ export default function MainContent({ currentMovies, comingMovies }) {
   };
 
   return (
-    <Container className="mt-4">
+    <div className="mt-4">
       <div className={classes.root}>
         <AppBar position="static" color="transparent" elevation={0}>
           <Tabs
@@ -99,6 +98,6 @@ export default function MainContent({ currentMovies, comingMovies }) {
           </TabPanel> */}
         </SwipeableViews>
       </div>
-    </Container>
+    </div>
   );
 }
