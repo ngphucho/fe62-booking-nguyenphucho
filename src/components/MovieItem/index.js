@@ -34,14 +34,14 @@ export default function MovieItem({ movie }) {
           </p>
         </div>
         <div className="d-flex justify-content-around button-content">
-          <div
+          <div className="btnChiTiet"
             onClick={() => {
               history.push("/movie/" + movie.maPhim);
             }}
           >
             Chi tiết
           </div>
-          <div
+          <div className="btnTrailer"
             onClick={() => {
               // dispatch(setOpen(true));
               dispatch(changeSelectedMovie(movie));
