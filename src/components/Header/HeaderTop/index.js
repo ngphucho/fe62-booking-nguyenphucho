@@ -41,9 +41,9 @@ export default function HeaderTop() {
     },
   ];
 
-  useEffect(() => {
-    console.log(activePage);
-  }, [activePage]);
+  // useEffect(() => {
+  //   console.log(activePage);
+  // }, [activePage]);
 
   return (
     <div className="headerTop">

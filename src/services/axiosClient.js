@@ -1,5 +1,6 @@
 import axios from "axios";
 import qs from "qs";
+import { httpToHttps } from "../utils/myFunction";
 
 const axiosClient = axios.create({
   baseURL: "https://movie0706.cybersoft.edu.vn/api",
@@ -27,6 +28,7 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   // xu ly ket qua tra ve tu server
   (response) => {
+    response.data = httpToHttps(response.data);
     return response;
   },
   // xu ly neu ket qua tra ve bi loi

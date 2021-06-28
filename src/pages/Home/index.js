@@ -49,6 +49,10 @@ export default function Home() {
     );
   }, []);
 
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  })
+
   useEffect(() => {
     setSoLuong(() => {
       if (isXl) return 12;
@@ -78,9 +82,9 @@ export default function Home() {
     }
   }, [danhSachPhim]);
 
-  useEffect(() => {
-    console.log(soLuong);
-  }, [soLuong]);
+  // useEffect(() => {
+  //   console.log(soLuong);
+  // }, [soLuong]);
 
   return isLoading || isPending ? (
     <IsLoading></IsLoading>

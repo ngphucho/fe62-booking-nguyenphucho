@@ -21,10 +21,17 @@ export const generateStar = (score, maxScore) => {
   const newScore = parseInt(score / 2);
   const mod = score % 2;
   const newMaxScore = parseInt((maxScore + 1) / 2);
-  console.log(score, maxScore, newScore, mod, newMaxScore);
+  // console.log(score, maxScore, newScore, mod, newMaxScore);
   return [...Array(newMaxScore).keys()].map((key) => {
-    if (key < newScore) return <StarIcon />;
-    if ((key === newScore && (mod === 1))) return <StarHalfIcon />;
-    return <StarBorderIcon />;
+    if (key < newScore) return <StarIcon key={key} />;
+    if (key === newScore && mod === 1) return <StarHalfIcon key={key} />;
+    return <StarBorderIcon key={key} />;
   });
+};
+
+export const httpToHttps = (data) => {
+  const stringData = JSON.stringify(data);
+  const regex = new RegExp("http://", "g");
+  const stringResult = stringData.replace(regex, "https://");
+  return JSON.parse(stringResult);
 };
