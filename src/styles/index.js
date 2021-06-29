@@ -17,3 +17,4 @@ import "./home.scss";
 import "./test.scss";
 import "./login.scss";
 import "./signUp.scss";
+import "./thongTinLichChieuHeThongRap2.scss";

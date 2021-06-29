@@ -43,39 +43,44 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   }, [danhSachCumRap]);
 
   return danhSachHeThongRap && danhSachCumRap && danhSachPhim ? (
-    <div className="container">
+    <div className="container thongTinLichChieuHeThongRap2">
       {/* DATE TIME PICKER */}
       <DatePicker
         getSelectedDay={onSelectedDay}
         endDate={30}
-        // selectDate={new Date("2020-04-30")}
-        labelFormat={"MMMM-yyyy"}
+        selectDate={new Date()}
+        labelFormat={"MM-yyyy"}
         color={"#374e8c"}
       />
 
       <div className="row" style={{ overflow: "auto", height: "500px" }}>
         {/* DANH SACH HE THONG RAP */}
-        <div className="col-2 " style={{ overflow: "auto", height: "500px" }}>
+        <div className="col-sm-1 listHeThongRap">
           {danhSachHeThongRap.map((item, index) => (
             <div
               key={index}
-              className={heThongRapActive === index + 1 + "" ? "active" : null}
+              className={
+                "heThongRapBox" +
+                (heThongRapActive === index + 1 + "" ? " active" : "")
+              }
               onClick={() => {
                 changeHeThongRapActive(index + 1 + "");
                 setDanhSachCumRap(item.lstCumRap);
               }}
             >
-              <img
-                className="rounded-circle w-100 normal-tab"
-                src={item.logo}
-                alt={item.tenHeThongRap}
-              />
+              <div className="imageBox">
+                <img
+                  className="rounded-circle w-100 normal-tab"
+                  src={item.logo}
+                  alt={item.tenHeThongRap}
+                />
+              </div>
             </div>
           ))}
         </div>
 
         {/* DANH SACH CUM RAP */}
-        <div className="col-3" style={{ overflow: "auto", height: "500px" }}>
+        <div className="col-4" style={{ overflow: "auto", height: "500px" }}>
           {danhSachCumRap.map((item, index) => (
             <div
               key={index}
@@ -93,54 +98,54 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         {/* DANH SACH PHIM */}
         <div className="col-7" style={{ overflow: "auto", height: "500px" }}>
           {/* {danhSachPhim.map((item) => ( */}
-            {/* // <div>{item.maPhim}</div>
+          {/* // <div>{item.maPhim}</div>
             // ========= */}
-            <div className="row">
-              {danhSachPhim.map((item) => (
-                <div
-                  className="border-bottom py-2 col-12"
-                  key={item.maPhim}
-                  onClick={() => {
-                    history.push("/movie/" + item.maPhim);
-                  }}
-                >
-                  <div className="row">
-                    <div className="col-3 d-flex justify-content-center align-items-center">
-                      <img
-                        className="img-fluid"
-                        style={{ height: "120px" }}
-                        src={item.hinhAnh}
-                        alt={item.tenPhim}
-                      />
-                    </div>
-                    <div className="col-9">
-                      <h6>{item.tenPhim}</h6>
-                      <div className="d-flex flex-wrap">
-                        {/* Danh sach thoi gian chieu */}
-                        {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                          const showingDate = subItem.ngayChieuGioChieu.slice(
-                            0,
-                            10
+          <div className="row">
+            {danhSachPhim.map((item) => (
+              <div
+                className="border-bottom py-2 col-12"
+                key={item.maPhim}
+                onClick={() => {
+                  history.push("/movie/" + item.maPhim);
+                }}
+              >
+                <div className="row">
+                  <div className="col-3 d-flex justify-content-center align-items-center">
+                    <img
+                      className="img-fluid"
+                      style={{ height: "120px" }}
+                      src={item.hinhAnh}
+                      alt={item.tenPhim}
+                    />
+                  </div>
+                  <div className="col-9">
+                    <h6>{item.tenPhim}</h6>
+                    <div className="d-flex flex-wrap">
+                      {/* Danh sach thoi gian chieu */}
+                      {item.lstLichChieuTheoPhim.map((subItem, index) => {
+                        const showingDate = subItem.ngayChieuGioChieu.slice(
+                          0,
+                          10
+                        );
+                        if (today === showingDate) {
+                          return (
+                            <div
+                              style={{ fontSize: "1.5em" }}
+                              className="text-success p-2"
+                              key={index}
+                            >
+                              {subItem.ngayChieuGioChieu.slice(11, 16)}
+                            </div>
                           );
-                          if (today === showingDate) {
-                            return (
-                              <div
-                                style={{ fontSize: "1.5em" }}
-                                className="text-success p-2"
-                                key={index}
-                              >
-                                {subItem.ngayChieuGioChieu.slice(11, 16)}
-                              </div>
-                            );
-                          }
-                        })}
-                      </div>
+                        }
+                      })}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-            // =========
+              </div>
+            ))}
+          </div>
+          // =========
           {/* ))} */}
         </div>
       </div>
