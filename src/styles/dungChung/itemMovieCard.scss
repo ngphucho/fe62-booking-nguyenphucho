@@ -98,6 +98,7 @@ $textContentHeight: 135%;
       left: 0;
       padding: 10px;
       overflow: auto;
+      cursor: grab;
 
       //hide scrollbar
       &::-webkit-scrollbar {
@@ -195,43 +196,91 @@ $textContentHeight: 135%;
 
 @media screen and (max-width: 575px) {
   .itemMovieCard {
+    // box-sizing: border-box;
     // background: #Cccccc30;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: 25% 75%;
+    // grid-template-rows: 1fr 1fr 1fr 1fr;
     // grid-column-gap: 5px;
 
     &:hover .itemMovieImage {
-      box-shadow: rgba(0, 0, 0, 0.801) 0px 10px 20px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px;
     }
 
     .itemMovieImage {
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 3;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+      // grid-column: 1 / span 3;
+      grid-row: 1 / span 4;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
       background: #ffffff;
+      padding-top: $imgHeight;
+      height: 0;
+      overflow: hidden;
 
       img {
-        max-width: 100%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .itemMovieBody {
+      grid-column: 2 / span 1;
+      // grid-row: 1 / span 1;
+      padding-bottom: 0;
+      padding-top: 12.5%;
+      overflow: hidden;
+      height: 0;
+      position: relative;
+      // background
+      background: #00000030; /* fallback for old browsers */
+      background: -webkit-linear-gradient(
+        to top,
+        #ffffff50,
+        #00000020
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to top,
+        #ffffff50,
+        #00000020
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      h5,
+      p {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      h5 {
+        left: 10px;
+      }
+
+      p {
+        right: 10px;
+        color: crimson;
       }
     }
 
     .itemMovieEffect {
-      grid-column: 4 / span 7;
-      grid-row: 2 / span 2;
+      grid-column: 2 / span 1;
+      grid-row: 2 / span 3;
+
       opacity: 1;
       background-color: transparent;
-      padding: 0 10px;
+      padding-top: 37.5%;
       position: relative;
-      height: 100%;
+      height: 0;
 
       .text-content {
-        position: relative;
+        position: absolute;
+        top: 0;
+        bottom: 0;
         padding: 0;
 
         & > div {
-          position: relative;
-          padding: 0;
-          max-height: 139px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          padding: 10px;
+          // max-height: 139px;
 
           p {
             margin-bottom: 5px;
@@ -247,7 +296,7 @@ $textContentHeight: 135%;
       .button-content {
         position: absolute;
         padding: 0;
-        top: -10px;
+        top: 0;
         right: 10px;
         bottom: auto;
         left: auto;
@@ -256,6 +305,9 @@ $textContentHeight: 135%;
           background: transparent;
           position: relative;
           display: block;
+          width: 77px;
+          padding: 0 9px;
+          font-size: 2vw;
 
           .btnChiTiet,
           .btnTrailer {
@@ -263,28 +315,11 @@ $textContentHeight: 135%;
             display: block;
             width: 100%;
             margin-bottom: 5px;
-            padding: 5px 15px;
+            padding: 2px 10px;
             background-color: #00000060;
           }
         }
       }
-    }
-
-    .itemMovieBody {
-      grid-column: 4 / span 7;
-      grid-row: 1 / span 1;
-      // background
-      background: #00000030; /* fallback for old browsers */
-      background: -webkit-linear-gradient(
-        to top,
-        #ffffff50,
-        #00000020
-      ); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(
-        to top,
-        #ffffff50,
-        #00000020
-      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
   }
 }
