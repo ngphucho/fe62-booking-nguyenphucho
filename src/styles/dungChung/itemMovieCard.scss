@@ -81,7 +81,7 @@ $textContentHeight: 135%;
   text-align: justify;
   transition: all 1s;
 
-  & .text-content {
+  .text-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -98,7 +98,6 @@ $textContentHeight: 135%;
       left: 0;
       padding: 5px;
       overflow: auto;
-      max-height: 139px;
 
       //hide scrollbar
       &::-webkit-scrollbar {
@@ -232,6 +231,7 @@ $textContentHeight: 135%;
         & > div {
           position: relative;
           padding: 0;
+          max-height: 139px;
 
           p {
             margin-bottom: 5px;
