@@ -107,8 +107,19 @@
 
   @media screen and (max-width: 767.9px) {
     & > .container-lg {
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 0;
+      padding-right: 0;
+
+      .navbar-brand{
+        margin-left: 20px;
+      }
+
+      .navbar-toggler{
+        margin-right: 20px;
+        border-radius: 0;
+        border: none;
+        // padding: 0;
+      }
     }
     .headerRight {
       background-color: #cccccc80;
