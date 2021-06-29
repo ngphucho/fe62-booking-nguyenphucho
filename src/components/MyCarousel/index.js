@@ -12,11 +12,11 @@ export default function MyCarousel() {
       infiniteLoop={true}
       showThumbs={false}
       stopOnHover={true}
-      dynamicHeight={true}
+      dynamicHeight={false}
     >
       {items.map((item, index) => (
-        <div key={index}>
-          <img src={item.src} alt={item.altText} style={{ height: 500, objectFit: "cover" }} />
+        <div key={index} className="myCarouselImgageBox">
+          <img className="myCarouselImage" src={item.src} alt={item.altText} />
           <p className="legend">{item.caption}</p>
         </div>
       ))}

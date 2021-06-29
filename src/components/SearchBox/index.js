@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     // height: window.innerHeight - 90,
     backgroundColor: "transparent",
+    borderRadius: 0,
   },
 
   listbox: {

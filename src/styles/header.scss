@@ -3,7 +3,7 @@
   --shadow-color-light: white;
   $topToMenu: 80px;
 
-  background-color: #0c0c0c;
+  background-color: var(--color-primary-dark);
   width: 100%;
 
   position: relative;

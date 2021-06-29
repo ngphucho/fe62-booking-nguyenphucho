@@ -2,11 +2,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import "react-modal-video/scss/modal-video.scss";
 //My css
-import "./footer.scss"
+import "./variables.scss";
+import "./footer.scss";
 import "./index.css";
 import "./index.scss";
-import "./dungChung/itemMovieCard.scss"
-import "./carousel.scss"
+import "./dungChung/itemMovieCard.scss";
+import "./carousel.scss";
 import "./header.scss";
 import "./searchBox.scss";
 import "./admin.scss";
