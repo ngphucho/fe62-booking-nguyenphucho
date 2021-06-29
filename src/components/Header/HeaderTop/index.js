@@ -19,8 +19,10 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Cinemas from "../../../pages/Cinemas";
 import SearchBox from "../../SearchBox";
 import { logout } from "../../../actions/auth";
+import { useMediaQuery } from "react-responsive";
 
 export default function HeaderTop() {
+  const isMd = useMediaQuery({ minWidth: 768 });
   const { activePage } = useSelector((state) => state.pageTitle);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -41,10 +43,6 @@ export default function HeaderTop() {
     },
   ];
 
-  // useEffect(() => {
-  //   console.log(activePage);
-  // }, [activePage]);
-
   return (
     <div className="headerTop">
       <Container fluid="lg" className="position-static">
@@ -57,9 +55,25 @@ export default function HeaderTop() {
           <NavbarBrand>
             <Link to="/home">
               <img
-                src="./images/header-logo1.png"
+                className="logoHeader"
+                src={
+                  isMd
+                    ? "./images/header-logo1.png"
+                    : "./images/mini-logo-white.png"
+                }
                 alt="header-logo"
-                height={70}
+                height={isMd ? 70 : 50}
+                style={{ margin: isMd ? 0 : "10px 0" }}
+                onMouseOver={(e) => {
+                  e.currentTarget.src = isMd
+                    ? "./images/header-logo1.png"
+                    : "./images/mini-logo-white-hover.png";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.src = isMd
+                    ? "./images/header-logo1.png"
+                    : "./images/mini-logo-white.png";
+                }}
               />
             </Link>
           </NavbarBrand>
@@ -104,35 +118,28 @@ export default function HeaderTop() {
 
               {/* Tat ca phim */}
               <UncontrolledDropdown
-                  active={activePage === 3}
-                  nav
-                  inNavbar
-                  className="position-static"
-                >
-                  <DropdownToggle nav>
-                    PHIM
-                  </DropdownToggle>
-                  <DropdownMenu
-                    className="border-0 rounded-0 p-0 subMenu"
-                  >
-                    <Link to="/tat-ca-phim">
-                      <DropdownItem onClick={closeMenu}>
-                        TẤT CẢ PHIM
-                      </DropdownItem>
-                    </Link>
-                    <Link to="/phim-dang-chieu">
-                      <DropdownItem onClick={closeMenu}>
-                        PHIM ĐANG CHIẾU
-                      </DropdownItem>
-                    </Link>
-                    <Link to="/phim-sap-chieu">
-                      <DropdownItem onClick={closeMenu}>
-                        PHIM SẮP CHIẾU
-                      </DropdownItem>
-                    </Link>
-                    
-                  </DropdownMenu>
-                </UncontrolledDropdown>
+                active={activePage === 3}
+                nav
+                inNavbar
+                className="position-static"
+              >
+                <DropdownToggle nav>PHIM</DropdownToggle>
+                <DropdownMenu className="border-0 rounded-0 p-0 subMenu">
+                  <Link to="/tat-ca-phim">
+                    <DropdownItem onClick={closeMenu}>TẤT CẢ PHIM</DropdownItem>
+                  </Link>
+                  <Link to="/phim-dang-chieu">
+                    <DropdownItem onClick={closeMenu}>
+                      PHIM ĐANG CHIẾU
+                    </DropdownItem>
+                  </Link>
+                  <Link to="/phim-sap-chieu">
+                    <DropdownItem onClick={closeMenu}>
+                      PHIM SẮP CHIẾU
+                    </DropdownItem>
+                  </Link>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               {/* {navData.map((item, index) => (
                 <NavItem key={index}>
                   <Link to={item.link}>
