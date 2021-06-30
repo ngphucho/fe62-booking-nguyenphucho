@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-horizontal-datepicker";
+import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
 
 export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   const [today, setToday] = useState(
-    new Date("2019-01-01T16:10:00").toISOString().slice(0, 10)
+    new Date("2019-01-01T10:10:00").toISOString().slice(0, 10)
   );
   const history = useHistory();
 
   const [danhSachCumRap, setDanhSachCumRap] = useState(null);
   const [danhSachPhim, setDanhSachPhim] = useState(null);
+  const [danhSachPhimFilter, setDanhSachPhimFilter] = useState([]);
 
   const [heThongRapActive, setHeThongRapActive] = useState("1");
   const changeHeThongRapActive = (active) => {
@@ -27,7 +29,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   };
 
   const onSelectedDay = (d) => {
-    setToday(d.toISOString().slice(0, 10));
+    // setToday(d.toISOString().slice(0, 10));
   };
 
   useEffect(() => {
@@ -41,6 +43,82 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
       setDanhSachPhim(danhSachCumRap[0]?.danhSachPhim);
     }
   }, [danhSachCumRap]);
+
+  useEffect(() => {
+    if (danhSachPhim) {
+      setDanhSachPhimFilter(filterPhim(danhSachPhim));
+    }
+  }, [danhSachPhim]);
+
+  const BoxPhim = (item) => {
+    // console.log("phim", item);
+    return (
+      <div
+        key={item.maPhim}
+        className="phimBox"
+        // onClick={() => {
+        //   history.push("/movie/" + item.maPhim);
+        // }}
+      >
+        {/* {console.log(item)} */}
+        <div className="thongTinPhimBox">
+          <div className="thongTinPhimBoxImage">
+            <div className="itemPhimBoxImage cursorPointer">
+              <div className="imageBox">
+                <img
+                  className="img-fluid"
+                  src={item.hinhAnh}
+                  alt={item.tenPhim}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="thongTinPhimBoxText">
+            <div className="thongTinPhimBoxText__Info">
+              <h6>{item.tenPhim}</h6>
+            </div>
+            <div className="thongTinPhimBoxText__lichChieu">
+              <div className="d-flex flex-wrap">
+                {/* Danh sach thoi gian chieu */}
+                {item.lstLichChieuTheoPhim.map((subItem, index) => {
+                  const showingDate = new Date(subItem.ngayChieuGioChieu)
+                    .toISOString()
+                    .slice(0, 10);
+                  return (
+                    <div
+                      style={{ fontSize: "1.5em" }}
+                      className="text-success p-2 cursorPointer"
+                      key={index}
+                    >
+                      {/* {console.log(subItem.ngayChieuGioChieu)} */}
+                      {subItem.ngayChieuGioChieu.slice(11, 16)}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const filterPhim = (dsPhim) => {
+    const newDS = [];
+    dsPhim.forEach((phim) => {
+      const newPhim = { ...phim };
+      newPhim.lstLichChieuTheoPhim = [];
+      phim.lstLichChieuTheoPhim.map((item) => {
+        if (compareTwoDayWithoutTime(today, item.ngayChieuGioChieu)) {
+          newPhim.lstLichChieuTheoPhim.push(item);
+        }
+      });
+      if (newPhim.lstLichChieuTheoPhim.length > 0) {
+        newDS.push(newPhim);
+      }
+    });
+    return newDS;
+  };
 
   return danhSachHeThongRap && danhSachCumRap && danhSachPhim ? (
     <div className="container thongTinLichChieuHeThongRap2">
@@ -110,76 +188,8 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         </div>
 
         {/* DANH SACH PHIM */}
-        <div className="col-7 container-fluid px-0 customScrollbar listPhim">
-          <div className="row mx-0">
-            {danhSachPhim.map((item) => (
-              <div
-                className="border-bottom py-2 px-0 col-12 container-fluid cursorPointer itemPhimBox"
-                key={item.maPhim}
-                onClick={() => {
-                  history.push("/movie/" + item.maPhim);
-                }}
-              >
-                {console.log(item)}
-                <div className="row mx-0">
-                  <div className="col-3 d-flex justify-content-center align-items-center p-0">
-                    <div className="itemPhimBoxImage">
-                      <img
-                        className="img-fluid"
-                        style={{ height: "120px" }}
-                        src={item.hinhAnh}
-                        alt={item.tenPhim}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-9 p-0">
-                    <div className="itemPhimBoxText">
-                      <div className="itemPhimBoxText__Info">
-                        <h6>{item.tenPhim}</h6>
-                      </div>
-                      <div className="itemPhimBoxText__lichChieu">
-                        <div className="d-flex flex-wrap">
-                          {/* Danh sach thoi gian chieu */}
-                          {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                            const showingDate = subItem.ngayChieuGioChieu.slice(
-                              0,
-                              10
-                            );
-                            if (today === showingDate) {
-                              return (
-                                <div
-                                  style={{ fontSize: "1.5em" }}
-                                  className="text-success p-2"
-                                  key={index}
-                                >
-                                  {subItem.ngayChieuGioChieu.slice(11, 16)}
-                                </div>
-                              );
-                            }
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="thongTinPhimBox cursorPointer ">
-            <div className="thongTinPhimBoxImage">
-
-            </div>
-            <div className="thongTinPhimBoxText">
-              <div className="thongTinPhimBoxText__Info">
-
-              </div>
-              <div className="thongTinPhimBoxText__lichChieu">
-
-              </div>
-            </div>
-          </div>
-
+        <div className="col-7 container-fluid customScrollbar listPhim">
+          {danhSachPhimFilter.map((item) => BoxPhim(item))}
         </div>
       </div>
     </div>

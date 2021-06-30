@@ -8,6 +8,13 @@
     // background-color: black;
   }
 
+  .cumRapBox,
+  .phimBox {
+    margin-bottom: 10px;
+    //shadow
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
   .heThongRapBox {
     max-width: 40px;
     margin: 0 auto;
@@ -43,10 +50,6 @@
   }
 
   .cumRapBox {
-    margin-bottom: 10px;
-    //shadow
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
     .thongTinCumRapBox {
       display: flex;
 
@@ -85,7 +88,7 @@
       background-color: var(--background-primary-dark-3);
       opacity: 1;
 
-      .thongTinCumRapBoxInfo{
+      .thongTinCumRapBoxInfo {
         .tenRap {
           color: #ffffff;
         }
@@ -96,8 +99,42 @@
     }
   }
 
-  .itemPhimBox{
-    
+  .phimBox {
+    .thongTinPhimBox {
+      display: flex;
+
+      .thongTinPhimBoxImage,
+      .thongTinPhimBoxText {
+        display: flex;
+        // justify-content: center;
+        flex-direction: column;
+        padding: 5px;
+      }
+
+      .thongTinPhimBoxImage {
+        width: 20%;
+        // background-color: #00000020;
+
+        .imageBox {
+          position: relative;
+          padding-top: 150%;
+          height: 0;
+          overflow: hidden;
+
+          img {
+            display: block;
+            position: absolute;
+            top: 0;
+            max-width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .thongTinPhimBoxText {
+        width: 80%;
+      }
+    }
   }
 
   .customScrollbar {
@@ -105,6 +142,7 @@
     /* width */
     &::-webkit-scrollbar {
       width: 5px;
+      height: 5px;
     }
 
     /* Track */
@@ -122,5 +160,26 @@
       background: #555;
     }
     //scrollbar
+  }
+
+  @media screen and (max-width: 575.9px) {
+    .listHeThongRap {
+      display: flex;
+      height: auto;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      margin-bottom: 10px;
+      // width: auto;
+
+      .heThongRapBox {
+        min-width: 40px;
+        margin: 0 30px;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
   }
 }

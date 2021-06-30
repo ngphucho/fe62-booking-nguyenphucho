@@ -1,6 +1,10 @@
 export const getHoursMinutes = (date) => {
   const newDate = new Date(date);
-  return ("0"+newDate.getHours()).slice(-2) + ":" + ("0"+newDate.getMinutes()).slice(-2);
+  return (
+    ("0" + newDate.getHours()).slice(-2) +
+    ":" +
+    ("0" + newDate.getMinutes()).slice(-2)
+  );
 };
 
 export const addMinutes = (date, minutes) => {
@@ -18,4 +22,10 @@ export const formatDDMMYYYY = (date, separator) => {
     s +
     d.getFullYear()
   );
+};
+
+export const compareTwoDayWithoutTime = (date1, date2) => {
+  const d1 = new Date(date1).setHours(0, 0, 0, 0);
+  const d2 = new Date(date2).setHours(0, 0, 0, 0);
+  return d1 === d2;
 };
