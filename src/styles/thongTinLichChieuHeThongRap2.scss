@@ -1,11 +1,15 @@
 .thongTinLichChieuHeThongRap2 {
-  .listHeThongRap {
-    overflow: auto;
-    height: 500px;
+  .listHeThongRap,
+  .listCumRap,
+  .listPhim {
+    overflow-y: auto;
+    height: 400px;
+    padding: 5px;
+    // background-color: black;
   }
 
   .heThongRapBox {
-    max-width: 70px;
+    max-width: 40px;
     margin: 0 auto;
     padding: 10px 0;
     position: relative;
@@ -22,20 +26,101 @@
       background-color: #cccccc50;
     }
 
+    &.active {
+      .imageBox {
+        background-color: #00000020;
+        box-shadow: 0px 0px 15px #cccccc;
+        background-clip: content-box;
+      }
+
+      opacity: 1;
+    }
+
     .imageBox {
       background-color: #00000020;
-      background-clip: content-box;
       border-radius: 50%;
-      opacity: 1;
     }
   }
 
-  .heThongRapBox.active {
-    .imageBox {
-      background-color: #00000020;
-      box-shadow: 0px 0px 15px #cccccc;
-      background-clip: content-box;
-      opacity: 1;
+  .cumRapBox {
+    margin-bottom: 10px;
+    //shadow
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    .thongTinCumRapBox {
+      display: flex;
+
+      .thongTinCumRapBoxImage,
+      .thongTinCumRapBoxInfo {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5px;
+      }
+
+      .thongTinCumRapBoxImage {
+        width: 20%;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .thongTinCumRapBoxInfo {
+        width: 80%;
+
+        .tenRap {
+          font-weight: bold;
+          font-size: 1rem;
+          color: #000000;
+        }
+        .diaChi {
+          font-size: 0.8rem;
+          color: #888888;
+        }
+      }
     }
+
+    &.active {
+      background-color: var(--background-primary-dark-3);
+      opacity: 1;
+
+      .thongTinCumRapBoxInfo{
+        .tenRap {
+          color: #ffffff;
+        }
+        .diaChi {
+          color: #eeeeee;
+        }
+      }
+    }
+  }
+
+  .itemPhimBox{
+    
+  }
+
+  .customScrollbar {
+    //scrollbar
+    /* width */
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #00000020;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #88888810;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    //scrollbar
   }
 }

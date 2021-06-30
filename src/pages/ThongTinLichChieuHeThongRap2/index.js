@@ -53,14 +53,14 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         color={"#374e8c"}
       />
 
-      <div className="row" style={{ overflow: "auto", height: "500px" }}>
+      <div className="row" style={{ overflow: "hidden" }}>
         {/* DANH SACH HE THONG RAP */}
-        <div className="col-sm-1 listHeThongRap">
+        <div className="col-sm-1 listHeThongRap customScrollbar">
           {danhSachHeThongRap.map((item, index) => (
             <div
               key={index}
               className={
-                "heThongRapBox" +
+                "heThongRapBox cursorPointer opacityHalf" +
                 (heThongRapActive === index + 1 + "" ? " active" : "")
               }
               onClick={() => {
@@ -80,73 +80,106 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         </div>
 
         {/* DANH SACH CUM RAP */}
-        <div className="col-4" style={{ overflow: "auto", height: "500px" }}>
+        <div className="col-4 listCumRap customScrollbar">
           {danhSachCumRap.map((item, index) => (
             <div
               key={index}
-              className={cumRapActive === index + 1 + "" ? "active" : null}
+              className={
+                "cumRapBox cursorPointer opacityHalf" +
+                (cumRapActive === index + 1 + "" ? " active" : "")
+              }
               onClick={() => {
                 changeCumRapActive(index + 1 + "");
                 setDanhSachPhim(item.danhSachPhim);
               }}
             >
-              {item.maCumRap}
+              <div className="thongTinCumRapBox">
+                <div className="thongTinCumRapBoxImage">
+                  <img src="./images/cinema-address.jpg" alt="cinema address" />
+                </div>
+                <div className="thongTinCumRapBoxInfo">
+                  <div className="tenRap">{item.tenCumRap}</div>
+                  <div className="diaChi">
+                    {item.diaChi}
+                    <span className="banDo">[Bản đồ]</span>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
         {/* DANH SACH PHIM */}
-        <div className="col-7" style={{ overflow: "auto", height: "500px" }}>
-          {/* {danhSachPhim.map((item) => ( */}
-          {/* // <div>{item.maPhim}</div>
-            // ========= */}
-          <div className="row">
+        <div className="col-7 container-fluid px-0 customScrollbar listPhim">
+          <div className="row mx-0">
             {danhSachPhim.map((item) => (
               <div
-                className="border-bottom py-2 col-12"
+                className="border-bottom py-2 px-0 col-12 container-fluid cursorPointer itemPhimBox"
                 key={item.maPhim}
                 onClick={() => {
                   history.push("/movie/" + item.maPhim);
                 }}
               >
-                <div className="row">
-                  <div className="col-3 d-flex justify-content-center align-items-center">
-                    <img
-                      className="img-fluid"
-                      style={{ height: "120px" }}
-                      src={item.hinhAnh}
-                      alt={item.tenPhim}
-                    />
+                {console.log(item)}
+                <div className="row mx-0">
+                  <div className="col-3 d-flex justify-content-center align-items-center p-0">
+                    <div className="itemPhimBoxImage">
+                      <img
+                        className="img-fluid"
+                        style={{ height: "120px" }}
+                        src={item.hinhAnh}
+                        alt={item.tenPhim}
+                      />
+                    </div>
                   </div>
-                  <div className="col-9">
-                    <h6>{item.tenPhim}</h6>
-                    <div className="d-flex flex-wrap">
-                      {/* Danh sach thoi gian chieu */}
-                      {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                        const showingDate = subItem.ngayChieuGioChieu.slice(
-                          0,
-                          10
-                        );
-                        if (today === showingDate) {
-                          return (
-                            <div
-                              style={{ fontSize: "1.5em" }}
-                              className="text-success p-2"
-                              key={index}
-                            >
-                              {subItem.ngayChieuGioChieu.slice(11, 16)}
-                            </div>
-                          );
-                        }
-                      })}
+                  <div className="col-9 p-0">
+                    <div className="itemPhimBoxText">
+                      <div className="itemPhimBoxText__Info">
+                        <h6>{item.tenPhim}</h6>
+                      </div>
+                      <div className="itemPhimBoxText__lichChieu">
+                        <div className="d-flex flex-wrap">
+                          {/* Danh sach thoi gian chieu */}
+                          {item.lstLichChieuTheoPhim.map((subItem, index) => {
+                            const showingDate = subItem.ngayChieuGioChieu.slice(
+                              0,
+                              10
+                            );
+                            if (today === showingDate) {
+                              return (
+                                <div
+                                  style={{ fontSize: "1.5em" }}
+                                  className="text-success p-2"
+                                  key={index}
+                                >
+                                  {subItem.ngayChieuGioChieu.slice(11, 16)}
+                                </div>
+                              );
+                            }
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          // =========
-          {/* ))} */}
+          
+          <div className="thongTinPhimBox cursorPointer ">
+            <div className="thongTinPhimBoxImage">
+
+            </div>
+            <div className="thongTinPhimBoxText">
+              <div className="thongTinPhimBoxText__Info">
+
+              </div>
+              <div className="thongTinPhimBoxText__lichChieu">
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

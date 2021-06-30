@@ -4,7 +4,7 @@
     border-radius: 0;
     display: inline-block;
     width: unset;
-    padding: 0 10% 0 10px;
+    padding: 0 calc(10vw + 10px) 0 10px;
     top: 10px;
     right: 0;
     left: unset;
@@ -12,6 +12,12 @@
     margin-left: auto;
     font-size: 1.3rem;
     text-align: left;
+    transform: translateX(10vw);
+    transition: transform 1s, opacity 1.5s;
+  }
+
+  .carousel .slide.selected:hover .legend {
+    transform: translateX(0);
   }
 
   .carousel .slide img.myCarouselImage {

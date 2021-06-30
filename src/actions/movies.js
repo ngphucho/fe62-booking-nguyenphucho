@@ -12,7 +12,7 @@ export function layDanhSachPhim() {
     dispatch({ type: GET_MOVIES_REQUEST });
     try {
       const { data } = await quanLyPhimAPI.layDanhSachPhim();
-      console.log("before", data);
+      // console.log("before", data);
       // console.log("after", httpToHttps(data));
       dispatch({ type: GET_MOVIES_SUCCESS, payload: { data } });
     } catch (error) {
