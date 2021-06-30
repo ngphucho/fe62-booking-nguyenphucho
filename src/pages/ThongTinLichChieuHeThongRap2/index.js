@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-horizontal-datepicker";
 import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   const [today, setToday] = useState(
@@ -133,63 +134,73 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
       <div className="row" style={{ overflow: "hidden" }}>
         {/* DANH SACH HE THONG RAP */}
-        <div className="col-sm-1 listHeThongRap customScrollbar">
-          {danhSachHeThongRap.map((item, index) => (
-            <div
-              key={index}
-              className={
-                "heThongRapBox cursorPointer opacityHalf" +
-                (heThongRapActive === index + 1 + "" ? " active" : "")
-              }
-              onClick={() => {
-                changeHeThongRapActive(index + 1 + "");
-                setDanhSachCumRap(item.lstCumRap);
-              }}
-            >
-              <div className="imageBox">
-                <img
-                  className="rounded-circle w-100 normal-tab"
-                  src={item.logo}
-                  alt={item.tenHeThongRap}
-                />
+
+        <div className="col-md-1 listHeThongRap customScrollbar">
+          <ScrollContainer className="scroll-container" vertical horizontal>
+            {danhSachHeThongRap.map((item, index) => (
+              <div
+                key={index}
+                className={
+                  "heThongRapBox cursorPointer opacityHalf" +
+                  (heThongRapActive === index + 1 + "" ? " active" : "")
+                }
+                onClick={() => {
+                  changeHeThongRapActive(index + 1 + "");
+                  setDanhSachCumRap(item.lstCumRap);
+                }}
+              >
+                <div className="imageBox">
+                  <img
+                    className="rounded-circle w-100 normal-tab"
+                    src={item.logo}
+                    alt={item.tenHeThongRap}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </ScrollContainer>
         </div>
 
         {/* DANH SACH CUM RAP */}
-        <div className="col-4 listCumRap customScrollbar">
-          {danhSachCumRap.map((item, index) => (
-            <div
-              key={index}
-              className={
-                "cumRapBox cursorPointer opacityHalf" +
-                (cumRapActive === index + 1 + "" ? " active" : "")
-              }
-              onClick={() => {
-                changeCumRapActive(index + 1 + "");
-                setDanhSachPhim(item.danhSachPhim);
-              }}
-            >
-              <div className="thongTinCumRapBox">
-                <div className="thongTinCumRapBoxImage">
-                  <img src="./images/cinema-address.jpg" alt="cinema address" />
-                </div>
-                <div className="thongTinCumRapBoxInfo">
-                  <div className="tenRap">{item.tenCumRap}</div>
-                  <div className="diaChi">
-                    {item.diaChi}
-                    <span className="banDo">[Bản đồ]</span>
+        <div className="col-md-4 col-sm-5 listCumRap customScrollbar">
+          <ScrollContainer className="scroll-container" vertical horizontal>
+            {danhSachCumRap.map((item, index) => (
+              <div
+                key={index}
+                className={
+                  "cumRapBox cursorPointer opacityHalf" +
+                  (cumRapActive === index + 1 + "" ? " active" : "")
+                }
+                onClick={() => {
+                  changeCumRapActive(index + 1 + "");
+                  setDanhSachPhim(item.danhSachPhim);
+                }}
+              >
+                <div className="thongTinCumRapBox">
+                  <div className="thongTinCumRapBoxImage">
+                    <img
+                      src="./images/cinema-address.jpg"
+                      alt="cinema address"
+                    />
+                  </div>
+                  <div className="thongTinCumRapBoxInfo">
+                    <div className="tenRap">{item.tenCumRap}</div>
+                    <div className="diaChi">
+                      {item.diaChi}
+                      <span className="banDo">[Bản đồ]</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </ScrollContainer>
         </div>
 
         {/* DANH SACH PHIM */}
-        <div className="col-7 container-fluid customScrollbar listPhim">
-          {danhSachPhimFilter.map((item) => BoxPhim(item))}
+        <div className="col-sm-7 container-fluid customScrollbar listPhim">
+          <ScrollContainer className="scroll-container">
+            {danhSachPhimFilter.map((item) => BoxPhim(item))}
+          </ScrollContainer>
         </div>
       </div>
     </div>

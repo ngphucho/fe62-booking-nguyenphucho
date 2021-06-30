@@ -2,10 +2,41 @@
   .listHeThongRap,
   .listCumRap,
   .listPhim {
-    overflow-y: auto;
-    height: 400px;
-    padding: 5px;
+    // overflow: auto;
+    // height: 400px;
+    padding: 10px 15px;
     // background-color: black;
+
+    .scroll-container {
+      height: 400px;
+    }
+  }
+
+  .listHeThongRap{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .listCumRap {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 80%;
+      background-color: transparent;
+      border-left: 1px solid #cccccc60;
+      border-right: 1px solid #cccccc60;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 
   .cumRapBox,
@@ -16,7 +47,8 @@
   }
 
   .heThongRapBox {
-    max-width: 40px;
+    max-width: 50px;
+    width: 45px;
     margin: 0 auto;
     padding: 10px 0;
     position: relative;
@@ -71,6 +103,7 @@
 
       .thongTinCumRapBoxInfo {
         width: 80%;
+    
 
         .tenRap {
           font-weight: bold;
@@ -162,7 +195,7 @@
     //scrollbar
   }
 
-  @media screen and (max-width: 575.9px) {
+  @media screen and (max-width: 767.9px) {
     .listHeThongRap {
       display: flex;
       height: auto;
@@ -178,6 +211,38 @@
 
         &::after {
           display: none;
+        }
+      }
+
+      .scroll-container {
+        display: flex;
+        height: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 575.9px) {
+    .listCumRap {
+      .scroll-container {
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap;
+        height: 100%;
+        width: 100%;
+      }
+
+      .cumRapBox {
+        width: 50%;
+        // height: 100%;
+        flex-shrink: 0;
+
+        .thongTinCumRapBoxInfo{
+          .tenRap {
+            font-size: 0.9rem;
+          }
+          .diaChi {
+            font-size: 0.6rem;
+          }
         }
       }
     }
