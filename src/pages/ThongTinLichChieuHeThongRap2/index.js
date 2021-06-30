@@ -5,9 +5,7 @@ import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
-  const [today, setToday] = useState(
-    new Date("2019-01-01T10:10:00").toISOString().slice(0, 10)
-  );
+  const [today, setToday] = useState(new Date().toISOString().slice(0, 10));
   const history = useHistory();
 
   const [danhSachCumRap, setDanhSachCumRap] = useState(null);
@@ -21,7 +19,6 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
       setCumRapActive("1");
     }
   };
-
   const [cumRapActive, setCumRapActive] = useState("1");
   const changeCumRapActive = (active) => {
     if (cumRapActive !== active) {
@@ -30,7 +27,9 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   };
 
   const onSelectedDay = (d) => {
-    // setToday(d.toISOString().slice(0, 10));
+    d.setHours(7, 0, 0, 0);
+    // console.log(d.toISOString());
+    setToday(d.toISOString().slice(0, 10));
   };
 
   useEffect(() => {
@@ -49,18 +48,11 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
     if (danhSachPhim) {
       setDanhSachPhimFilter(filterPhim(danhSachPhim));
     }
-  }, [danhSachPhim]);
+  }, [danhSachPhim, today]);
 
   const BoxPhim = (item) => {
-    // console.log("phim", item);
     return (
-      <div
-        key={item.maPhim}
-        className="phimBox"
-        // onClick={() => {
-        //   history.push("/movie/" + item.maPhim);
-        // }}
-      >
+      <div key={item.maPhim} className="phimBox">
         {/* {console.log(item)} */}
         <div className="thongTinPhimBox">
           <div className="thongTinPhimBoxImage">
@@ -76,7 +68,13 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
           </div>
           <div className="thongTinPhimBoxText">
             <div className="thongTinPhimBoxText__Info">
-              <h6>{item.tenPhim}</h6>
+              <h6
+                onClick={() => {
+                  history.push("/movie/" + item.maPhim);
+                }}
+              >
+                {item.tenPhim}
+              </h6>
             </div>
             <div className="thongTinPhimBoxText__lichChieu">
               <div className="d-flex flex-wrap">
@@ -90,6 +88,11 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
                       style={{ fontSize: "1.5em" }}
                       className="text-success p-2 cursorPointer"
                       key={index}
+                      onClick={() => {
+                        history.push(
+                          "/chi-tiet-phong-ve/" + subItem.maLichChieu
+                        );
+                      }}
                     >
                       {/* {console.log(subItem.ngayChieuGioChieu)} */}
                       {subItem.ngayChieuGioChieu.slice(11, 16)}
@@ -123,15 +126,6 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
   return danhSachHeThongRap && danhSachCumRap && danhSachPhim ? (
     <div className="container thongTinLichChieuHeThongRap2">
-      {/* DATE TIME PICKER */}
-      <DatePicker
-        getSelectedDay={onSelectedDay}
-        endDate={30}
-        selectDate={new Date()}
-        labelFormat={"MM-yyyy"}
-        color={"#374e8c"}
-      />
-
       <div className="row" style={{ overflow: "hidden" }}>
         {/* DANH SACH HE THONG RAP */}
 
@@ -198,6 +192,16 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
         {/* DANH SACH PHIM */}
         <div className="col-sm-7 container-fluid customScrollbar listPhim">
+          <div className="dateBox">
+            {/* DATE TIME PICKER */}
+            <DatePicker
+              getSelectedDay={onSelectedDay}
+              endDate={30}
+              // selectDate={new Date()}
+              labelFormat={"MM-yyyy"}
+              color={"#374e8c"}
+            />
+          </div>
           <ScrollContainer className="scroll-container">
             {danhSachPhimFilter.map((item) => BoxPhim(item))}
           </ScrollContainer>

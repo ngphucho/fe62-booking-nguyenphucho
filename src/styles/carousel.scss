@@ -14,6 +14,11 @@
     text-align: left;
     transform: translateX(10vw);
     transition: transform 1s, opacity 1.5s;
+
+    &:hover {
+      // letter-spacing: 5px;
+      text-shadow: 3px 3px 20px #ffffff, -2px 1px 30px #ffffff;
+    }
   }
 
   .carousel .slide.selected:hover .legend {

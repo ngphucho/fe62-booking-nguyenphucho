@@ -5,7 +5,7 @@ const lichChieuPhimAPI = {
   layThongTinLichChieuHeThongRap: (maHeThongRap) => {
     //maHeThongRap có thể rỗng => trả về tất cả rạp
     const params = {
-      maNhom: "GP01",
+      maNhom: "GP13",
       maHeThongRap,
     };
     return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap", {

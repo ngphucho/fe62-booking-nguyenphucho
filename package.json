@@ -37,6 +37,7 @@
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-scroll": "^1.8.2",
     "react-spinners": "^0.11.0",
     "react-swipeable-views": "^0.13.9",
     "reactstrap": "^8.9.0",

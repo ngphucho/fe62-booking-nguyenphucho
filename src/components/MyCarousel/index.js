@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
@@ -18,7 +19,9 @@ export default function MyCarousel() {
       {items.map((item, index) => (
         <div key={index} className="myCarouselImgageBox">
           <img className="myCarouselImage" src={item.src} alt={item.altText} />
-          <p className="legend">{item.caption}</p>
+          <Link to="/">
+            <p className="legend cursorPointer">{item.caption}</p>
+          </Link>
         </div>
       ))}
     </Carousel>

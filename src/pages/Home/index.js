@@ -4,7 +4,6 @@ import MainContent from "../../components/MainContent";
 import MyCarousel from "../../components/MyCarousel";
 import OrderTicketBox from "../../components/OrderTicketBox";
 import IsLoading from "../../components/IsLoading";
-import { Container } from "reactstrap";
 import { layThongTinLichChieuHeThongRap } from "../../actions/schedules";
 import ThongTinLichChieuHeThongRap2 from "../ThongTinLichChieuHeThongRap2";
 import { pageTitleChange } from "../../actions/pageTitle";
