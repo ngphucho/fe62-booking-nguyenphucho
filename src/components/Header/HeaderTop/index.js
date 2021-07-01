@@ -126,15 +126,15 @@ export default function HeaderTop() {
                 <DropdownToggle nav>PHIM</DropdownToggle>
                 <DropdownMenu className="border-0 rounded-0 p-0 subMenu">
                   <Link to="/tat-ca-phim">
-                    <DropdownItem onClick={closeMenu}>TẤT CẢ PHIM</DropdownItem>
+                    <DropdownItem className="subItem" onClick={closeMenu}>TẤT CẢ PHIM</DropdownItem>
                   </Link>
                   <Link to="/phim-dang-chieu">
-                    <DropdownItem onClick={closeMenu}>
+                    <DropdownItem className="subItem" onClick={closeMenu}>
                       PHIM ĐANG CHIẾU
                     </DropdownItem>
                   </Link>
                   <Link to="/phim-sap-chieu">
-                    <DropdownItem onClick={closeMenu}>
+                    <DropdownItem className="subItem" onClick={closeMenu}>
                       PHIM SẮP CHIẾU
                     </DropdownItem>
                   </Link>
@@ -172,11 +172,11 @@ export default function HeaderTop() {
                     // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
-                      <DropdownItem onClick={closeMenu}>
+                      <DropdownItem className="subItem" onClick={closeMenu}>
                         Thông tin cá nhân
                       </DropdownItem>
                     </Link>
-                    <DropdownItem
+                    <DropdownItem className="subItem"
                       onClick={() => {
                         closeMenu();
                         dispatch(logout());

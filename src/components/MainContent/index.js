@@ -14,6 +14,7 @@ function TabPanel(props) {
 
   return (
     <div
+      
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -21,7 +22,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box py={3}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -46,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    // backgroundColor: 'red'
   },
 }));
 
@@ -83,6 +83,7 @@ export default function MainContent({ currentMovies, comingMovies }) {
           </Tabs>
         </AppBar>
         <SwipeableViews
+        
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={value}
           onChangeIndex={handleChangeIndex}

@@ -6,7 +6,7 @@ import MovieItem from "../MovieItem";
 export default function SubContent({ title, link, data }) {
   return (
     <>
-      <Row className="moviesList">
+      <Row className="moviesList" style={{marginLeft: -24, marginRight: -24}}>
         {title ? <h3>{title}</h3> : null}
         {data.map((item) => {
           return (
