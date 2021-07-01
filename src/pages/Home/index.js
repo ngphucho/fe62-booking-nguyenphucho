@@ -96,7 +96,10 @@ export default function Home() {
         <div>{error}</div>
       ) : (
         <div className="container-md homeBody p-0">
-          <div className="oderTicketBox">
+          <div
+            className="oderTicketBox"
+            style={{ padding: isMd ? "0 24px" : 0 }}
+          >
             <OrderTicketBox></OrderTicketBox>
           </div>
           <MainContent

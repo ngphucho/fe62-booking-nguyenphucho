@@ -31,7 +31,7 @@ export default function AllMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container">
+    <div className="container-md bodyContainer">
       <SubContent title="TẤT CẢ PHIM" data={danhSachPhim} />
     </div>
   );

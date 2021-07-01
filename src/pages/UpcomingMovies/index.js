@@ -46,7 +46,7 @@ export default function UpcomingMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container">
+    <div className="container-md bodyContainer">
       <SubContent title="PHIM SẮP CHIẾU" data={upcomingMovies} />
     </div>
   );

@@ -46,7 +46,7 @@ export default function NowShowingMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container">
+    <div className="container-md bodyContainer">
       <SubContent title="PHIM ĐANG CHIẾU" data={nowShowingMovies} />
     </div>
   );

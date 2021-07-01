@@ -68,7 +68,7 @@ export default function Search() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container">
+    <div className="container-md bodyContainer">
       <SubContent title="KẾT QUẢ TÌM KIẾM" data={moviesSearch} />
     </div>
   );
