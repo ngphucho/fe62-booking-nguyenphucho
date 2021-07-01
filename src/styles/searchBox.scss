@@ -13,8 +13,13 @@
   }
 
   .MuiAutocomplete-root {
-    background-color: #ffffff60;
+    // background-color: #ffffff60;
+    background-color: var(--color-primary);
     min-width: 300px;
+  }
+
+  .MuiInputBase-root {
+    color: #ffffffcc;
   }
   // .MuiAutocomplete-listbox {
   //   height: 50px;
@@ -27,6 +32,6 @@
   }
 
   // @media screen and (max-width: 767.9px) {
-    
+
   // }
 }

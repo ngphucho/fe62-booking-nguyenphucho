@@ -62,8 +62,8 @@ export default function HeaderTop() {
                     : "./images/mini-logo-white.png"
                 }
                 alt="header-logo"
-                height={isMd ? 70 : 50}
-                style={{ margin: isMd ? 0 : "10px 0" }}
+                height={50}
+                style={{ margin: "10px 0" }}
                 onMouseOver={(e) => {
                   e.currentTarget.src = isMd
                     ? "./images/header-logo1.png"
@@ -126,7 +126,9 @@ export default function HeaderTop() {
                 <DropdownToggle nav>PHIM</DropdownToggle>
                 <DropdownMenu className="border-0 rounded-0 p-0 subMenu">
                   <Link to="/tat-ca-phim">
-                    <DropdownItem className="subItem" onClick={closeMenu}>TẤT CẢ PHIM</DropdownItem>
+                    <DropdownItem className="subItem" onClick={closeMenu}>
+                      TẤT CẢ PHIM
+                    </DropdownItem>
                   </Link>
                   <Link to="/phim-dang-chieu">
                     <DropdownItem className="subItem" onClick={closeMenu}>
@@ -152,11 +154,6 @@ export default function HeaderTop() {
             {/* thanh userinfo */}
             <Nav navbar className="order-md-2">
               {userInfo ? (
-                // <NavItem style={{cursor: "pointer"}} onClick={()=>{dispatch(logout())}}>
-                //   {/* <Link to="/login"> */}
-                //   <NavLink>{userInfo.taiKhoan}</NavLink>
-                //   {/* </Link> */}
-                // </NavItem>
                 <UncontrolledDropdown
                   active={activePage === 4}
                   nav
@@ -165,7 +162,9 @@ export default function HeaderTop() {
                 >
                   <DropdownToggle nav>
                     <AccountCircleIcon />
-                    <span style={{ paddingLeft: 10 }}>{userInfo.hoTen}</span>
+                    <span style={{ paddingLeft: 10, letterSpacing: 2 }}>
+                      {userInfo.hoTen}
+                    </span>
                   </DropdownToggle>
                   <DropdownMenu
                     className="border-0 rounded-0 p-0 subMenu"
@@ -176,7 +175,8 @@ export default function HeaderTop() {
                         Thông tin cá nhân
                       </DropdownItem>
                     </Link>
-                    <DropdownItem className="subItem"
+                    <DropdownItem
+                      className="subItem"
                       onClick={() => {
                         closeMenu();
                         dispatch(logout());

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   //   backgroundColor: "#ffffff60",
   //   minWidth: 300,
   // },
+  
 
   notchedOutline: {
     borderRadius: 0,
@@ -30,17 +31,6 @@ const useStyles = makeStyles((theme) => ({
         ? window.innerHeight - 150
         : window.innerHeight - 90,
     backgroundColor: "#ffffffee",
-
-    "*::-webkit-scrollbar": {
-      width: "0",
-    },
-    "*::-webkit-scrollbar-track": {
-      "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)",
-    },
-    "*::-webkit-scrollbar-thumb": {
-      backgroundColor: "rgba(0,0,0,.1)",
-      outline: "1px solid slategrey",
-    },
   },
 
   // popper: {
@@ -68,7 +58,6 @@ export default function SearchBox() {
         options={danhSachPhim}
         classes={{
           paper: classes.paper,
-          popper: classes.popper,
           listbox: classes.listbox,
         }}
         renderInput={(params) => (
