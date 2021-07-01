@@ -192,7 +192,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
         {/* DANH SACH PHIM */}
         <div className="col-sm-7 container-fluid customScrollbar listPhim">
-          <div className="dateBox">
+          <div className="dateBox container">
             {/* DATE TIME PICKER */}
             <DatePicker
               getSelectedDay={onSelectedDay}

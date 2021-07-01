@@ -96,50 +96,16 @@ export default function OrderTicketBox() {
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="tab">
               <TheoPhim />
-              {/* <select>
-                <option>Chọn phim</option>
-              </select>
-              <select>
-                <option>Chọn rạp</option>
-              </select>
-              <select>
-                <option>Chọn ngày</option>
-              </select>
-              <select>
-                <option>Chọn suất</option>
-              </select> */}
             </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="tab">
-              <select>
-                <option>Chọn rạp</option>
-              </select>
-              <select>
-                <option>Chọn phim</option>
-              </select>
-              <select>
-                <option>Chọn ngày</option>
-              </select>
-              <select>
-                <option>Chọn suất</option>
-              </select>
+              <TheoPhim />
             </div>
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="tab">
-              <select>
-                <option>Chọn ngày</option>
-              </select>
-              <select>
-                <option>Chọn rạp</option>
-              </select>
-              <select>
-                <option>Chọn phim</option>
-              </select>
-              <select>
-                <option>Chọn suất</option>
-              </select>
+              <TheoPhim />
             </div>
           </TabPanel>
         </SwipeableViews>
