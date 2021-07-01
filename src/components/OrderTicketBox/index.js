@@ -7,7 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SwipeableViews from "react-swipeable-views";
-import { Container } from "reactstrap";
+import TheoPhim from "./TheoPhim";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,17 +68,17 @@ export default function OrderTicketBox() {
   };
 
   return (
-    <div className="orderTicketBox" style={{backgroundClip: "padding-box"}}>
+    <div className="orderTicketBox" style={{ backgroundClip: "padding-box" }}>
       <div
         className={classes.root}
-        style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
+        // style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
       >
         <AppBar position="static" color="transparent" elevation={0}>
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="simple tabs example"
-            variant="fullWidth"
+            // variant="fullWidth"
             //     indicatorColor="secondary"
             // textColor="primary"
             centered
@@ -95,7 +95,8 @@ export default function OrderTicketBox() {
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="tab">
-              <select>
+              <TheoPhim />
+              {/* <select>
                 <option>Chọn phim</option>
               </select>
               <select>
@@ -106,7 +107,7 @@ export default function OrderTicketBox() {
               </select>
               <select>
                 <option>Chọn suất</option>
-              </select>
+              </select> */}
             </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
