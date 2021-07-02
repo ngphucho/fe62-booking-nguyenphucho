@@ -5,6 +5,7 @@
 
   background-color: var(--color-primary-dark);
   width: 100%;
+  max-height: 100vh;
 
   position: relative;
   z-index: 1000;
@@ -84,6 +85,7 @@
     color: #ffffff;
     font-size: 0.9rem;
     border-bottom: 1px solid #ffffff20;
+    text-transform: uppercase;
 
     &:hover {
       background-color: #000000aa;
@@ -134,16 +136,16 @@
     --shadow-color: #000000;
     --shadow-color-light: #000000;
 
-    .headerRight {
+    & {
       overflow-y: auto;
-      // max-height: calc(100vh-$topToMenu);
+      // max-height: 100vh;
     }
 
     .listCinema {
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
-      // width: 100%;
+      width: 100%;
 
       .cinemaItem {
         flex-shrink: 1;
@@ -211,6 +213,7 @@
     .headerRight.show {
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
   }
 }
