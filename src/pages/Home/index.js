@@ -9,6 +9,8 @@ import ThongTinLichChieuHeThongRap2 from "../ThongTinLichChieuHeThongRap2";
 import { pageTitleChange } from "../../actions/pageTitle";
 import { useMediaQuery } from "react-responsive";
 
+import { toggleMenu } from "../../actions/toggleMenu";
+
 export default function Home() {
   const isSm = useMediaQuery({ minWidth: 576 });
   const isMd = useMediaQuery({ minWidth: 768 });
@@ -46,11 +48,12 @@ export default function Home() {
         pageTitle: "",
       })
     );
+
+    //close submenu o man hinh nho
+    dispatch(toggleMenu("close"));
   }, []);
 
-  // useEffect(()=>{
-  //   window.scrollTo(0, 0);
-  // })
+  useEffect(() => {});
 
   useEffect(() => {
     setSoLuong(() => {

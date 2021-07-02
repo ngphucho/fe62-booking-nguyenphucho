@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { layThongTinCumRapTheoHeThong } from "../../actions/cinema";
 import CinemaItemDetail from "../../components/CinemaItemDetail";
-import { layThongTinHeThongRapById } from "../../actions/heThongRap";
 import IsLoading from "../../components/IsLoading";
 import CinemaItem from "../../components/CinemaItem";
+// import action
+import { toggleMenu } from "../../actions/toggleMenu";
 import { pageTitleChange } from "../../actions/pageTitle";
+import { layThongTinCumRapTheoHeThong } from "../../actions/cinema";
+import { layThongTinHeThongRapById } from "../../actions/heThongRap";
 
 export default function Cinema() {
   const dispatch = useDispatch();
@@ -30,6 +32,11 @@ export default function Cinema() {
       })
     );
   }, []);
+
+    //close submenu o man hinh nho
+    useEffect(() => {
+      dispatch(toggleMenu("close"));
+    }, []);
 
   return isLoading ? (
     <IsLoading></IsLoading>

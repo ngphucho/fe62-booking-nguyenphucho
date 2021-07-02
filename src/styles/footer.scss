@@ -1,18 +1,17 @@
 .footer {
   padding-top: 20px;
-  // background-color: var(--color-primary-light);
+  position: relative;
 
-  // background: #bdc3c7; /* fallback for old browsers */
-  // background: -webkit-linear-gradient(
-  //   to bottom,
-  //   #bdc3c7,
-  //   var(--color-primary-light)
-  // ); /* Chrome 10-25, Safari 5.1-6 */
-  // background: linear-gradient(
-  //   to bottom,
-  //   #bdc3c7,
-  //   var(--color-primary-light)
-  // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    box-shadow: 0px 0 10px rgb(0 0 0 / 15%);
+    z-index: -1;
+  }
 
   .bottom-logo {
     height: 70px;

@@ -5,10 +5,15 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Label, Form, FormGroup, Input, Button } from "reactstrap";
-import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 import { useSelector } from "react-redux";
+
+//import action
 import { login } from "../../actions/auth";
 import { pageTitleChange } from "../../actions/pageTitle";
+import { toggleMenu } from "../../actions/toggleMenu";
+
+//import services
+import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 
 const schema = yup.object().shape({
   hoTen: yup.string().required("Vui lòng nhập họ tên"),
@@ -141,6 +146,11 @@ export default function ThongTinTaiKhoan() {
       })
     );
   }, []);
+
+    //close submenu o man hinh nho
+    useEffect(() => {
+      dispatch(toggleMenu("close"));
+    }, []);
 
   return thongTinTaiKhoan && thongTinDatVe ? (
     <div className="container">

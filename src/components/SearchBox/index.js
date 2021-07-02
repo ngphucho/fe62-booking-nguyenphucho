@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 
@@ -7,12 +7,14 @@ import { makeStyles } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
+//import action
+import { toggleMenu } from "../../actions/toggleMenu";
+
 const useStyles = makeStyles((theme) => ({
   // root: {
   //   backgroundColor: "#ffffff60",
   //   minWidth: 300,
   // },
-  
 
   notchedOutline: {
     borderRadius: 0,
@@ -39,10 +41,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBox() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [state, setState] = useState("");
   const { danhSachPhim } = useSelector((state) => state.danhSachPhim);
   const history = useHistory();
+
+  const search = (value) => {
+    dispatch(toggleMenu("close"));
+    const newValue = value.tenPhim || value;
+    history.push("/search/" + newValue);
+    setState(newValue);
+  };
 
   return (
     <div className="searchBox">
@@ -86,10 +96,7 @@ export default function SearchBox() {
           </div>
         )}
         onChange={(event, value) => {
-          const newValue = value.tenPhim || value;
-          history.push("/search/" + newValue);
-          console.log(newValue);
-          setState(newValue);
+          search(value);
         }}
       />
     </div>

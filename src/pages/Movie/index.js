@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { layThongTinPhim } from "../../actions/movie";
-import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
 
 import IsLoading from "../../components/IsLoading";
 import MovieDetail from "../../components/MovieDetail";
 import ThongTinLichChieuPhim from "../../components/ThongTinLichChieuPhim";
+
+//import action
+import { toggleMenu } from "../../actions/toggleMenu";
+import { layThongTinPhim } from "../../actions/movie";
+
+// services
+import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
 
 export default function Movie() {
   const dispatch = useDispatch();
@@ -23,6 +28,11 @@ export default function Movie() {
     };
     layTongTinLichChieu();
   }, [movieId]);
+
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
+  }, []);
 
   return isLoading ? (
     <IsLoading></IsLoading>

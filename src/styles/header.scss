@@ -45,12 +45,14 @@
       }
 
       & > li.nav-item:not(.active):hover a.nav-link {
-        color: #00000080;
-        animation: neon 3s infinite;
+        color: #ffffff;
+        // animation: neon 3s infinite;
       }
 
       & > li.nav-item.active a.nav-link {
-        animation: neon 3s infinite;
+        color: #ffffff;
+        font-weight: 900;
+        // animation: neon 3s infinite;
       }
     }
   }

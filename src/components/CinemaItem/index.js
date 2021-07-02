@@ -1,10 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+// import action
+import { toggleMenu } from "../../actions/toggleMenu";
 
 export default function CinemaItem({ cinema }) {
+  const dispatch = useDispatch();
   return (
     <Link to={"/cinemas/cinema/" + cinema?.maHeThongRap}>
-      <div className="card itemCinemaCard my-2 py-3 text-center">
+      <div
+        onClick={() => {
+          // close submenu o man hinh nho
+          dispatch(toggleMenu("close"));
+        }}
+        className="card itemCinemaCard my-2 py-3 text-center"
+      >
         <div className="itemCinemaImage">
           <img
             className="card-img-top"

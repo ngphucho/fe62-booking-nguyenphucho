@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { layDanhSachPhim } from "../../actions/movies";
 import IsLoading from "../../components/IsLoading";
 import SubContent from "../../components/SubContent";
+
+// import action
+import { toggleMenu } from "../../actions/toggleMenu";
 import { pageTitleChange } from "../../actions/pageTitle";
+import { layDanhSachPhim } from "../../actions/movies";
 
 export default function UpcomingMovies() {
   const { danhSachPhim, isLoading, error } = useSelector((state) => state.danhSachPhim);
@@ -23,6 +26,11 @@ export default function UpcomingMovies() {
         pageTitle: "",
       })
     );
+  }, []);
+
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
   }, []);
 
   useEffect(() => {

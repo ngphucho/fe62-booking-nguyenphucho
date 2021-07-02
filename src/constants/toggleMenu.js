@@ -1,0 +1,3 @@
+export const TOGGLE_MENU_HIDE = "TOGGLE_MENU_HIDE"
+export const TOGGLE_MENU_SHOW = "TOGGLE_MENU_SHOW"
+export const TOGGLE_MENU = "TOGGLE_MENU"

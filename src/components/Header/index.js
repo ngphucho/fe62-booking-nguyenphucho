@@ -51,10 +51,10 @@ export default function Header() {
     <Container
       fluid={true}
       className="p-0"
-      // style={{ ...navbarStyles, top: visible ? "0" : "-100%" }}
+      style={{ ...navbarStyles, top: visible ? "0" : "-100%" }}
     >
       <HeaderTop></HeaderTop>
-      <HeaderNavbar></HeaderNavbar>
+      {/* <HeaderNavbar></HeaderNavbar> */}
     </Container>
   );
 }

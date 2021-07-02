@@ -21,16 +21,19 @@ import SearchBox from "../../SearchBox";
 import { logout } from "../../../actions/auth";
 import { useMediaQuery } from "react-responsive";
 
+import { toggleMenu } from "../../../actions/toggleMenu";
+
 export default function HeaderTop() {
   const isMd = useMediaQuery({ minWidth: 768 });
   const { activePage } = useSelector((state) => state.pageTitle);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  const { isOpen } = useSelector((state) => state.toggleMenu);
 
-  const toggle = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-  const openMenu = () => setIsOpen(true);
+  const toggle = () => dispatch(toggleMenu());
+  // const closeMenu = () => dispatch(toggle("close"));
+  // const openMenu = () => dispatch(toggle("open"));
 
   const navData = [
     {
@@ -97,7 +100,7 @@ export default function HeaderTop() {
               {/* Trang chu */}
               <NavItem active={activePage === 1}>
                 <Link to="/home">
-                  <NavLink onClick={closeMenu}>TRANG CHỦ</NavLink>
+                  <NavLink>TRANG CHỦ</NavLink>
                 </Link>
               </NavItem>
 
@@ -110,7 +113,7 @@ export default function HeaderTop() {
               >
                 <DropdownToggle nav>CỤM RẠP</DropdownToggle>
                 <DropdownMenu className="border-0 rounded-0 p-0 rapMenu">
-                  <DropdownItem onClick={closeMenu}>
+                  <DropdownItem>
                     <Cinemas />
                   </DropdownItem>
                 </DropdownMenu>
@@ -126,17 +129,15 @@ export default function HeaderTop() {
                 <DropdownToggle nav>PHIM</DropdownToggle>
                 <DropdownMenu className="border-0 rounded-0 p-0 subMenu">
                   <Link to="/tat-ca-phim">
-                    <DropdownItem className="subItem" onClick={closeMenu}>
-                      TẤT CẢ PHIM
-                    </DropdownItem>
+                    <DropdownItem className="subItem">TẤT CẢ PHIM</DropdownItem>
                   </Link>
                   <Link to="/phim-dang-chieu">
-                    <DropdownItem className="subItem" onClick={closeMenu}>
+                    <DropdownItem className="subItem">
                       PHIM ĐANG CHIẾU
                     </DropdownItem>
                   </Link>
                   <Link to="/phim-sap-chieu">
-                    <DropdownItem className="subItem" onClick={closeMenu}>
+                    <DropdownItem className="subItem">
                       PHIM SẮP CHIẾU
                     </DropdownItem>
                   </Link>
@@ -171,14 +172,13 @@ export default function HeaderTop() {
                     // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
-                      <DropdownItem className="subItem" onClick={closeMenu}>
+                      <DropdownItem className="subItem">
                         Thông tin cá nhân
                       </DropdownItem>
                     </Link>
                     <DropdownItem
                       className="subItem"
                       onClick={() => {
-                        closeMenu();
                         dispatch(logout());
                       }}
                     >
@@ -190,12 +190,12 @@ export default function HeaderTop() {
                 <>
                   <NavItem>
                     <Link to="/login">
-                      <NavLink onClick={closeMenu}>ĐĂNG NHẬP</NavLink>
+                      <NavLink>ĐĂNG NHẬP</NavLink>
                     </Link>
                   </NavItem>
                   <NavItem>
                     <Link to="/sign-up">
-                      <NavLink onClick={closeMenu}>ĐĂNG KÝ</NavLink>
+                      <NavLink>ĐĂNG KÝ</NavLink>
                     </Link>
                   </NavItem>
                 </>

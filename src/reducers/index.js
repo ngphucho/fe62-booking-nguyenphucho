@@ -17,7 +17,7 @@ import popupModal from "./popupModal"; // toggle popup reducer + luu title popup
 import formData from "./formData"; // chua thong tin form dang ky cua tai khoan duoc chon de cap nhat thong tin
 import pageTitle from "./pageTitle"; // tieu de cua trang admin
 import thongTinTimKiemPhim from "./thongTinTimKiemPhim"; // thong tin de sort data trong bang danh sach phim của admin
-
+import toggleMenu from "./toggleMenu"; // collapse sub menu khi man hinh nho
 const rootReducer = combineReducers({
   // nơi chứa các reducers con
   danhSachPhim,
@@ -38,6 +38,7 @@ const rootReducer = combineReducers({
   formData,
   pageTitle,
   thongTinTimKiemPhim,
+  toggleMenu,
 });
 
 export default rootReducer;

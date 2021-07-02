@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-//import action
+// import action
 import { layDanhSachPhim } from "../../actions/movies";
 import { layDanhSachPhimTheoTen } from "../../actions/moviesSearch";
 import { pageTitleChange } from "../../actions/pageTitle";
-
+import { toggleMenu } from "../../actions/toggleMenu";
+// import component
 import IsLoading from "../../components/IsLoading";
 import SubContent from "../../components/SubContent";
 export default function Search() {
@@ -19,9 +20,7 @@ export default function Search() {
 
   //Được chạy mỗi khi load trang này
   useEffect(() => {
-    //dispatch action goi API lay danh sach phim
-    // console.log("2. SearchPage");
-    // console.log("moviesSearch1", moviesSearch);
+    //load danh sach phim
     dispatch(layDanhSachPhim());
   }, []);
 
@@ -33,6 +32,11 @@ export default function Search() {
         pageTitle: "",
       })
     );
+  }, []);
+
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
   }, []);
 
   useEffect(() => {

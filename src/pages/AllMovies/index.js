@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 //import action
 import { layDanhSachPhim } from "../../actions/movies";
 import { pageTitleChange } from "../../actions/pageTitle";
+import { toggleMenu } from "../../actions/toggleMenu";
 
 import IsLoading from "../../components/IsLoading";
 import SubContent from "../../components/SubContent";
@@ -24,6 +25,11 @@ export default function AllMovies() {
         pageTitle: "",
       })
     );
+  }, []);
+
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
   }, []);
 
   return isLoading ? (
