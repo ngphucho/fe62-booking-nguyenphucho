@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import DatePicker from "react-horizontal-datepicker";
+import ReactHorizontalDatePicker from "react-horizontal-strip-datepicker";
+import "react-horizontal-strip-datepicker/dist/ReactHorizontalDatePicker.css";
 import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
 import ScrollContainer from "react-indiana-drag-scroll";
 
@@ -192,14 +193,19 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
 
         {/* DANH SACH PHIM */}
         <div className="col-sm-7 container-fluid customScrollbar listPhim">
-          <div className="dateBox container">
+          <div className="dateBox">
             {/* DATE TIME PICKER */}
-            <DatePicker
+            {/* <DatePicker
               getSelectedDay={onSelectedDay}
               endDate={30}
               // selectDate={new Date()}
               labelFormat={"MM-yyyy"}
               color={"#374e8c"}
+            /> */}
+            <ReactHorizontalDatePicker
+              selectedDay={onSelectedDay}
+              enableScroll={true}
+              enableDays={45}
             />
           </div>
           <ScrollContainer className="scroll-container">

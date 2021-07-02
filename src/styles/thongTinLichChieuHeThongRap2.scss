@@ -12,13 +12,13 @@
     }
   }
 
-  .listPhim{
+  .listPhim {
     .scroll-container {
       height: 400px;
     }
   }
 
-  .listHeThongRap{
+  .listHeThongRap {
     // background: red;
     padding-left: 0;
     padding-right: 0;
@@ -111,7 +111,6 @@
 
       .thongTinCumRapBoxInfo {
         width: 80%;
-    
 
         .tenRap {
           font-weight: bold;
@@ -178,6 +177,10 @@
     }
   }
 
+  .dateBox {
+    margin: -7px;
+  }
+
   .customScrollbar {
     //scrollbar
     /* width */
@@ -228,10 +231,10 @@
       }
     }
 
-    .listCumRap{
+    .listCumRap {
       padding-left: 0;
 
-      &::before{
+      &::before {
         border-left: none;
       }
     }
@@ -239,10 +242,10 @@
 
   @media screen and (max-width: 575.9px) {
     .listCumRap {
+      margin-left: 5px;
+      margin-right: 5px;
 
-      padding-left: 15px;
-
-      &::before{
+      &::before {
         display: none;
       }
 
@@ -260,11 +263,11 @@
         // height: 100%;
         flex-shrink: 0;
 
-        .thongTinCumRapBox{
+        .thongTinCumRapBox {
           height: 100%;
         }
 
-        .thongTinCumRapBoxInfo{
+        .thongTinCumRapBoxInfo {
           overflow: hidden;
           white-space: pre-wrap;
           .tenRap {
@@ -277,11 +280,20 @@
       }
     }
 
-    .listHeThongRap{
+    .listHeThongRap {
       padding: 0 15px;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      .heThongRapBox {
+        margin-left: 8px;
+        // margin-right: 8px;
+      }
     }
 
-    .listCumRap, .listHeThongRap, .listPhim {
+    .listCumRap,
+    .listHeThongRap,
+    .listPhim {
       padding-left: 0;
       padding-right: 0;
     }
