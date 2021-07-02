@@ -35,7 +35,7 @@ export default function Footer() {
     };
   }, []);
   return (
-    <div className="footer bg-light">
+    <div className="footer">
       <div className="container-md">
         <div className="row">
           <div className="col-sm-5"></div>

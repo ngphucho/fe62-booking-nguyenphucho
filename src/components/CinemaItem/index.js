@@ -14,18 +14,18 @@ export default function CinemaItem({ cinema }) {
           // close submenu o man hinh nho
           dispatch(toggleMenu("close"));
         }}
-        className="card itemCinemaCard my-2 py-3 text-center"
+        className="card bg-transparent border-0 itemCinemaCard my-2 py-3 text-center"
       >
         <div className="itemCinemaImage">
           <img
             className="card-img-top"
-            style={{ width: "90%" }}
+            style={{ maxWidth: "65%", minWidth: 90 }}
             src={cinema?.logo}
             alt={cinema?.biDanh}
           />
         </div>
         <div className="card-body itemCinemaBody p-0 d-none d-md-block">
-          <h6 className="card-title itemCinemaTitle pt-3">
+          <h6 className="card-title itemCinemaTitle pt-3 text-light">
             {cinema?.tenHeThongRap}
           </h6>
         </div>

@@ -4,9 +4,9 @@ import CinemaItem from "../CinemaItem";
 export default function ListCinemas({ danhSachHeThongRap }) {
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row listCinema">
         {danhSachHeThongRap.map((item, index) => (
-          <div className="col-2" key={index}>
+          <div className="col-md-2 col-auto cinemaItem" key={index}>
             <CinemaItem cinema={item} />
           </div>
         ))}

@@ -105,12 +105,16 @@ export default function Home() {
           >
             <OrderTicketBox></OrderTicketBox>
           </div>
-          <MainContent
-            currentMovies={nowShowingMovies.slice(0, soLuong)}
-            comingMovies={upcomingMovies.slice(0, soLuong)}
-          ></MainContent>
+          <div className="mainContent">
+            <MainContent
+              currentMovies={nowShowingMovies.slice(0, soLuong)}
+              comingMovies={upcomingMovies.slice(0, soLuong)}
+            ></MainContent>
+          </div>
           {data ? (
-            <ThongTinLichChieuHeThongRap2 danhSachHeThongRap={data} />
+            <div className="thongTinLichChieuHeThongRap">
+              <ThongTinLichChieuHeThongRap2 danhSachHeThongRap={data} />
+            </div>
           ) : null}
         </div>
       )}

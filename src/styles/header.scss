@@ -36,7 +36,6 @@
         & > .subMenu {
           top: $topToMenu;
           background-color: #00000080;
-
         }
       }
 
@@ -57,7 +56,7 @@
     }
   }
   // .subMenu{
-    
+
   //   color: #ffffff;
   // }
 
@@ -67,9 +66,15 @@
     left: 0;
     background-color: #00000080;
 
-    .dropdown-item {
+    & > .dropdown-item {
+      padding: 0;
+
       &:hover {
         background-color: transparent;
+      }
+
+      .cinemaItem:hover {
+        background-color: #000000aa;
       }
     }
   }
@@ -80,7 +85,7 @@
     font-size: 0.9rem;
     border-bottom: 1px solid #ffffff20;
 
-    &:hover{
+    &:hover {
       background-color: #000000aa;
       text-shadow: 2px 2px 4px #ff0000;
     }
@@ -129,6 +134,22 @@
     --shadow-color: #000000;
     --shadow-color-light: #000000;
 
+    .headerRight {
+      overflow-y: auto;
+      // max-height: calc(100vh-$topToMenu);
+    }
+
+    .listCinema {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      // width: 100%;
+
+      .cinemaItem {
+        flex-shrink: 1;
+      }
+    }
+
     & > .container-lg {
       padding-left: 0;
       padding-right: 0;
@@ -152,9 +173,8 @@
         padding: 10px;
         color: var(--color-primary-dark);
         border-bottom-color: #00000020;
-        
-    
-        &:hover{
+
+        &:hover {
           background-color: #000000aa;
           color: #ffffff;
         }
@@ -177,10 +197,12 @@
             }
           }
 
-          & > .subMenu, & > .rapMenu {
+          & > .subMenu,
+          & > .rapMenu {
             width: 100%;
-            box-shadow: rgba(255, 255, 255, 0.32) 0px 2px 4px 0px, rgba(255, 255, 255, 0.52) 0px 2px 16px 0px;
-            background-color: #E1E2E1;
+            box-shadow: rgba(255, 255, 255, 0.32) 0px 2px 4px 0px,
+              rgba(255, 255, 255, 0.52) 0px 2px 16px 0px;
+            background-color: #e1e2e1;
           }
         }
       }
