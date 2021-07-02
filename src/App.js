@@ -60,10 +60,10 @@ const AdminQuanLyLichChieu = lazy(() => import("./pages/AdminQuanLyLichChieu"))
 
 // Test==========
 // import TestPage from "./pages/TestPage";
-const TestPage = lazy(() => import("./pages/TestPage"))
+// const TestPage = lazy(() => import("./pages/TestPage"))
 
 // import TestPage2 from "./pages/TestPage2";
-const TestPage2 = lazy(() => import("./pages/TestPage2"))
+// const TestPage2 = lazy(() => import("./pages/TestPage2"))
 
 
 
@@ -102,9 +102,9 @@ function App() {
           </Route>
 
           {/* Router Test page */}
-          <Route exact path="/test">
+          {/* <Route exact path="/test">
             <TestPage2 />
-          </Route>
+          </Route> */}
 
           {/* Router App */}
           <Route path="/">

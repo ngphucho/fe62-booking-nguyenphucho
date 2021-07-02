@@ -50,8 +50,12 @@ export default function SearchBox() {
   const search = (value) => {
     dispatch(toggleMenu("close"));
     const newValue = value.tenPhim || value;
-    history.push("/search/" + newValue);
-    setState(newValue);
+    if (newValue.trim() === "") {
+      history.push("/tat-ca-phim");
+    } else {
+      history.push("/search/" + newValue);
+    }
+    setState(newValue.trim());
   };
 
   return (

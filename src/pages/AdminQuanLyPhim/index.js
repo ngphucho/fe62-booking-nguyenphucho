@@ -356,6 +356,7 @@ export default function AdminQuanLyPhim() {
         soLuongRender={6}
         trangHienTai={trangHienTai}
         tongSoTrang={tongSoTrang}
+        link="/admin/quan-ly-phim"
       />
       {/* Dialog confirm truoc khi xoa */}
       <Dialog

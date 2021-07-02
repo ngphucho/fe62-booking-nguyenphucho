@@ -72,14 +72,10 @@ export default function MainContent({ currentMovies, comingMovies }) {
             value={value}
             onChange={handleChange}
             aria-label="simple tabs example"
-            // variant="fullWidth"
-            //     indicatorColor="secondary"
-            // textColor="primary"
             centered
           >
             <Tab label="PHIM ĐANG CHIẾU" {...a11yProps(0)} />
             <Tab label="PHIM SẮP CHIẾU" {...a11yProps(1)} />
-            {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -93,9 +89,6 @@ export default function MainContent({ currentMovies, comingMovies }) {
           <TabPanel value={value} index={1} dir={theme.direction}>
             <SubContent data={comingMovies} link="/phim-sap-chieu" />
           </TabPanel>
-          {/* <TabPanel value={value} index={2} dir={theme.direction}>
-            Item Three
-          </TabPanel> */}
         </SwipeableViews>
       </div>
     </div>

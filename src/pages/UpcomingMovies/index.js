@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import IsLoading from "../../components/IsLoading";
-import SubContent from "../../components/SubContent";
 
 // import action
 import { toggleMenu } from "../../actions/toggleMenu";
 import { pageTitleChange } from "../../actions/pageTitle";
 import { layDanhSachPhim } from "../../actions/movies";
 
+// import khac
+import PhanTrangAppLayout from "../../components/PhanTrangAppLayout";
+
 export default function UpcomingMovies() {
-  const { danhSachPhim, isLoading, error } = useSelector((state) => state.danhSachPhim);
+  const { danhSachPhim, isLoading, error } = useSelector(
+    (state) => state.danhSachPhim
+  );
   const dispatch = useDispatch();
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
@@ -40,10 +44,7 @@ export default function UpcomingMovies() {
       danhSachPhim.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);
         if (day > today) {
-          setUpcomingMovies((upcomingMovies) => [
-            ...upcomingMovies,
-            movie,
-          ]);
+          setUpcomingMovies((upcomingMovies) => [...upcomingMovies, movie]);
         }
       });
     }
@@ -54,8 +55,10 @@ export default function UpcomingMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container-md bodyContainer">
-      <SubContent title="PHIM SẮP CHIẾU" data={upcomingMovies} />
-    </div>
+    <PhanTrangAppLayout
+      danhSachPhim={upcomingMovies}
+      title="PHIM SẮP CHIẾU"
+      link="/phim-sap-chieu"
+    />
   );
 }

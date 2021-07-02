@@ -8,6 +8,7 @@ export default function PhanTrang({
   soLuongRender,
   trangHienTai,
   tongSoTrang,
+  link,
 }) {
   const location = useLocation();
   const history = useHistory();
@@ -35,8 +36,10 @@ export default function PhanTrang({
     const thongTinTrang = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
+    // link="/admin/quan-ly-phim?"
     history.push(
-      "/admin/quan-ly-phim?" +
+      link +
+        "?" +
         qs.stringify({
           ...thongTinTrang,
           trangHienTai: page,
@@ -52,7 +55,7 @@ export default function PhanTrang({
     <div className="phanTrang">
       <Pagination>
         {/* Trang dau */}
-        <PaginationItem disabled={trangHienTai === 1}>
+        <PaginationItem disabled={trangHienTai == 1}>
           <PaginationLink
             first
             onClick={() => {
@@ -61,7 +64,7 @@ export default function PhanTrang({
           />
         </PaginationItem>
         {/* Trang truoc */}
-        <PaginationItem disabled={trangHienTai === 1}>
+        <PaginationItem disabled={trangHienTai == 1}>
           <PaginationLink
             previous
             onClick={() => {
@@ -71,7 +74,7 @@ export default function PhanTrang({
         </PaginationItem>
         {/* Render mang trang */}
         {mangTrangRender.map((i) => (
-          <PaginationItem key={i} active={i === trangHienTai ? true : false}>
+          <PaginationItem key={i} active={i == trangHienTai ? true : false}>
             <PaginationLink
               onClick={() => {
                 diDenTrang(i);
@@ -83,7 +86,7 @@ export default function PhanTrang({
         ))}
 
         {/* Trang tiep theo */}
-        <PaginationItem disabled={trangHienTai === tongSoTrang}>
+        <PaginationItem disabled={trangHienTai == tongSoTrang}>
           <PaginationLink
             next
             onClick={() => {
@@ -92,7 +95,7 @@ export default function PhanTrang({
           />
         </PaginationItem>
         {/* Trang cuoi */}
-        <PaginationItem disabled={trangHienTai === tongSoTrang}>
+        <PaginationItem disabled={trangHienTai == tongSoTrang}>
           <PaginationLink
             last
             onClick={() => {

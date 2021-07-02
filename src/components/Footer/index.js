@@ -54,7 +54,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-sm-5 pb-5 footerLogo">
-            <Link>
+            <Link to="/home">
               <img
                 className="bottom-logo"
                 src="./images/footer-logo1.png"

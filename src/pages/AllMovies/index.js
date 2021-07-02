@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 //import action
 import { layDanhSachPhim } from "../../actions/movies";
 import { pageTitleChange } from "../../actions/pageTitle";
 import { toggleMenu } from "../../actions/toggleMenu";
 
+//import component
 import IsLoading from "../../components/IsLoading";
-import SubContent from "../../components/SubContent";
+
+//import khac
+import PhanTrangAppLayout from "../../components/PhanTrangAppLayout";
+
 export default function AllMovies() {
   const dispatch = useDispatch();
-  const { danhSachPhim, isLoading, error } = useSelector((state) => state.danhSachPhim);
-
-  //Được chạy mỗi khi load trang này
+  const { danhSachPhim, isLoading, error } = useSelector(
+    (state) => state.danhSachPhim
+  );
+  //dispatch action goi API lay danh sach phim
   useEffect(() => {
-    //dispatch action goi API lay danh sach phim
     dispatch(layDanhSachPhim());
   }, []);
 
@@ -37,8 +42,11 @@ export default function AllMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container-md bodyContainer">
-      <SubContent title="TẤT CẢ PHIM" data={danhSachPhim} />
-    </div>
+
+    <PhanTrangAppLayout
+      danhSachPhim={danhSachPhim}
+      link="/tat-ca-phim"
+      title="TẤT CẢ PHIM"
+    />
   );
 }

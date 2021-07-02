@@ -14,11 +14,13 @@ export default function AppLayout({ children }) {
     dispatch(layDanhSachPhim());
   }, []);
   return (
-    <>
+    <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
       <Header></Header>
+      <div style={{flexGrow: 1}}>
       {children}
+      </div>
       <Footer></Footer>
       <TrailerModal></TrailerModal>
-    </>
+    </div>
   );
 }

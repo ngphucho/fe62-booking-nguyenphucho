@@ -8,13 +8,17 @@ export default function SubContent({ title, link, data }) {
     <>
       <Row className="moviesList">
         {title ? <h3>{title}</h3> : null}
-        {data.map((item) => {
-          return (
-            <Col sm={4} lg={3} xl={2} key={item.maPhim}>
-              <MovieItem movie={item}></MovieItem>
-            </Col>
-          );
-        })}
+        {data.length > 0 ? (
+          data.map((item) => {
+            return (
+              <Col sm={4} lg={3} xl={2} key={item.maPhim}>
+                <MovieItem movie={item}></MovieItem>
+              </Col>
+            );
+          })
+        ) : (
+          <div>Không tìm thấy phim...</div>
+        )}
       </Row>
       {link ? (
         <p style={{ textAlign: "right", paddingTop: "20px" }}>

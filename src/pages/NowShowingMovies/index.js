@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import IsLoading from "../../components/IsLoading";
-import SubContent from "../../components/SubContent";
 
 // import action
 import { toggleMenu } from "../../actions/toggleMenu";
 import { pageTitleChange } from "../../actions/pageTitle";
 import { layDanhSachPhim } from "../../actions/movies";
+
+// import khác
+import PhanTrangAppLayout from "../../components/PhanTrangAppLayout";
 
 export default function NowShowingMovies() {
   const { danhSachPhim, isLoading, error } = useSelector(
@@ -56,8 +58,10 @@ export default function NowShowingMovies() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container-md bodyContainer">
-      <SubContent title="PHIM ĐANG CHIẾU" data={nowShowingMovies} />
-    </div>
+    <PhanTrangAppLayout
+      danhSachPhim={nowShowingMovies}
+      title="PHIM ĐANG CHIẾU"
+      link="/phim-dang-chieu"
+    />
   );
 }
