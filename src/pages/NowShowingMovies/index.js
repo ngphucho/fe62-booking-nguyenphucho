@@ -40,7 +40,8 @@ export default function NowShowingMovies() {
   useEffect(() => {
     if (danhSachPhim.length > 0) {
       setNowShowingMovies([]);
-      const today = new Date("2019-07-29T00:00:00");
+      // const today = new Date("2019-07-29T00:00:00");
+      const today = new Date();
       danhSachPhim.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);
         if (day <= today) {

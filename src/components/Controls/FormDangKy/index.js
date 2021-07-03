@@ -33,6 +33,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+
+// import khac
+import { appLayoutData } from "../../../utils/myData";
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
@@ -94,7 +98,7 @@ export default function FormDangKy() {
   const onSubmit = async (values) => {
     const newValues = {
       ...values,
-      maNhom: "GP13",
+      maNhom: appLayoutData.maNhom,
       maLoaiNguoiDung: values.maLoaiNguoiDung
         ? values.maLoaiNguoiDung
         : "KhachHang",

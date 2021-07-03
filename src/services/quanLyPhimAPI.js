@@ -1,14 +1,16 @@
 import axios from "axios";
 import axiosClient from "./axiosClient";
+import { appLayoutData } from "../utils/myData";
 
 const quanLyPhimAPI = {
   layDanhSachPhim: () => {
     //=> layDanhSachPhim
-    return axiosClient.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP13");
+    const maNhom = appLayoutData.maNhom;
+    return axiosClient.get("/QuanLyPhim/LayDanhSachPhim?maNhom=" + maNhom);
   },
   layDanhSachPhimTheoTen: (name) => {
     const params = {
-      maNhom: "GP13",
+      maNhom: appLayoutData.maNhom,
       tenPhim: name,
     };
     return axiosClient.get("/QuanLyPhim/LayDanhSachPhim", { params });

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 * {
   // padding: 0;
@@ -15,7 +15,7 @@ body {
   font-size: 16px;
   margin: 0;
   /* font-family: 'Pacifico', cursive; */
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif; */
@@ -33,7 +33,6 @@ a {
   text-decoration: none;
 }
 
-
 .orderTicketBox {
   select {
     height: 40px;
@@ -48,7 +47,7 @@ a {
   }
 }
 
-.withEnd{
+.withEnd {
   font-size: 1rem;
   color: green;
   background-color: #dcf7465e;
@@ -57,7 +56,7 @@ a {
   cursor: pointer;
 }
 
-.withoutEnd{
+.withoutEnd {
   font-size: 1.5rem;
   color: green;
   cursor: pointer;
@@ -71,17 +70,43 @@ a {
   opacity: 0.5;
 }
 
-.bodyContainer{
+.bodyContainer {
   padding: 24px;
-} 
+}
 
 .btn {
   border-radius: 0;
 }
 
-// @media screen and (max-width: 575.9px) {
-//   .bodyContainer{
-//     padding-left: 0;
-//     padding-right: 0;
-//   } 
-// }
+.phanTrangAppLayout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: -40px;
+  margin-top: 10px;
+
+  .page-item:first-child,
+  .page-item:last-child {
+    .page-link {
+      border-radius: 0;
+    }
+  }
+
+  .page-item .page-link {
+    border-color: transparent;
+    color: var(--color-secondary-text);
+  }
+}
+
+@media screen and (max-width: 767.9px) {
+  .phanTrangAppLayout{
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 575.9px) {
+  .phanTrangAppLayout{
+    margin-bottom: -30px;
+    margin-top: -10px
+  }
+}

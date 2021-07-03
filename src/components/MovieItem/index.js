@@ -66,16 +66,4 @@ export default function MovieItem({ movie }) {
     </div>
   );
 }
-// const arr = [
-//   {
-//     maPhim: 1329,
-//     tenPhim: "Bố Già",
-//     biDanh: "bo-gia",
-//     trailer: "https://www.youtube.com/embed/jluSu8Rw6YE",
-//     hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/bo-gia_gp01.jpg",
-//     moTa: "Tui Chưa Coi Nên Chưa Biết",
-//     maNhom: "GP01",
-//     ngayKhoiChieu: "2021-04-03T00:00:00",
-//     danhGia: 10,
-//   },
-// ];
+

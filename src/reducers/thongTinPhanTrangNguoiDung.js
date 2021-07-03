@@ -1,11 +1,12 @@
 import { THAY_DOI_THONG_TIN_PHAN_TRANG_NGUOI_DUNG } from "../constants/quanLyNguoiDung";
+import { appLayoutData } from "../utils/myData";
 
 const thongTinPhanTrangNguoiDung = localStorage.getItem(
   "thongTinPhanTrangNguoiDung"
 )
   ? JSON.parse(localStorage.getItem("thongTinPhanTrangNguoiDung"))
   : {
-      MaNhom: "GP13",
+      MaNhom: appLayoutData.maNhom,
       tuKhoa: null,
       soTrang: 1,
       soPhanTuTrenTrang: 10,

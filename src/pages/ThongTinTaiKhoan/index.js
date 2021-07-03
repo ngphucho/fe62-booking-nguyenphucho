@@ -15,6 +15,9 @@ import { toggleMenu } from "../../actions/toggleMenu";
 //import services
 import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 
+// import khac
+import { appLayoutData } from "../../utils/myData";
+
 const schema = yup.object().shape({
   hoTen: yup.string().required("Vui lòng nhập họ tên"),
   // taiKhoan: yup
@@ -107,7 +110,7 @@ export default function ThongTinTaiKhoan() {
         matKhau: values.checkBox ? values.matKhauMoi : thongTinTaiKhoan.matKhau,
         email: values.email,
         soDt: values.soDT,
-        maNhom: "GP13",
+        maNhom: appLayoutData.maNhom,
         maLoaiNguoiDung: "KhachHang",
         hoTen: values.hoTen,
       };

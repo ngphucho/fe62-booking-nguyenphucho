@@ -1,8 +1,12 @@
 .page-item.active .page-link {
   // z-index: 3;
   // color: #fff;
-  // background-color: #0d6efd;
+  background-color: var(--color-secondary-light);
   // border-color: #0d6efd;
   // pointer-events: none;
   pointer-events: none;
+}
+
+ul.pagination{
+  flex-wrap: wrap;
 }

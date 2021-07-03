@@ -13,22 +13,28 @@ export default function PhanTrang({
   const location = useLocation();
   const history = useHistory();
   const taoMangTrangRender = () => {
+    // console.log("trang hien tai", parseInt(trangHienTai));
+    // console.log("tong so trang", tongSoTrang);
+    // console.log("so luong render", soLuongRender);
     if (soLuongRender >= tongSoTrang) {
       return [...Array(tongSoTrang).keys()].map((i) => i + 1);
     }
 
-    if (trangHienTai - parseInt((soLuongRender - 1) / 2) <= 0) {
+    if (parseInt(trangHienTai) - parseInt((soLuongRender - 1) / 2) <= 0) {
       return [...Array(soLuongRender).keys()].map((i) => i + 1);
     }
 
-    if (trangHienTai + parseInt((soLuongRender - 1) / 2) >= tongSoTrang) {
+    if (
+      parseInt(trangHienTai) + parseInt((soLuongRender - 1) / 2) >=
+      tongSoTrang
+    ) {
       return [...Array(soLuongRender).keys()].map(
         (i) => i + tongSoTrang - soLuongRender + 1
       );
     }
 
     return [...Array(soLuongRender).keys()].map(
-      (i) => i + trangHienTai - parseInt((soLuongRender - 1) / 2)
+      (i) => i + parseInt(trangHienTai) - parseInt((soLuongRender - 1) / 2)
     );
   };
   const mangTrangRender = taoMangTrangRender();
@@ -47,7 +53,7 @@ export default function PhanTrang({
     );
   };
   useEffect(() => {
-    if (trangHienTai > tongSoTrang) {
+    if (parseInt(trangHienTai) > tongSoTrang) {
       diDenTrang(tongSoTrang);
     }
   }, [tongSoTrang]);
@@ -55,7 +61,7 @@ export default function PhanTrang({
     <div className="phanTrang">
       <Pagination>
         {/* Trang dau */}
-        <PaginationItem disabled={trangHienTai == 1}>
+        <PaginationItem disabled={parseInt(trangHienTai) === 1}>
           <PaginationLink
             first
             onClick={() => {
@@ -64,17 +70,20 @@ export default function PhanTrang({
           />
         </PaginationItem>
         {/* Trang truoc */}
-        <PaginationItem disabled={trangHienTai == 1}>
+        <PaginationItem disabled={parseInt(trangHienTai) === 1}>
           <PaginationLink
             previous
             onClick={() => {
-              diDenTrang(trangHienTai - 1);
+              diDenTrang(parseInt(trangHienTai) - 1);
             }}
           />
         </PaginationItem>
         {/* Render mang trang */}
         {mangTrangRender.map((i) => (
-          <PaginationItem key={i} active={i == trangHienTai ? true : false}>
+          <PaginationItem
+            key={i}
+            active={i === parseInt(trangHienTai) ? true : false}
+          >
             <PaginationLink
               onClick={() => {
                 diDenTrang(i);
@@ -86,16 +95,16 @@ export default function PhanTrang({
         ))}
 
         {/* Trang tiep theo */}
-        <PaginationItem disabled={trangHienTai == tongSoTrang}>
+        <PaginationItem disabled={parseInt(trangHienTai) === tongSoTrang}>
           <PaginationLink
             next
             onClick={() => {
-              diDenTrang(trangHienTai + 1);
+              diDenTrang(parseInt(trangHienTai) + 1);
             }}
           />
         </PaginationItem>
         {/* Trang cuoi */}
-        <PaginationItem disabled={trangHienTai == tongSoTrang}>
+        <PaginationItem disabled={parseInt(trangHienTai) === tongSoTrang}>
           <PaginationLink
             last
             onClick={() => {

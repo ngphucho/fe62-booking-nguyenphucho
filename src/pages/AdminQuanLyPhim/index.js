@@ -21,6 +21,9 @@ import { cloneArrayObject } from "../../utils/myFunction";
 import { listSortCheckBox } from "../../components/Admin/AdminPhim/ThanhCongCuQuanLyPhim/TimKiemPhim/listSortCheckBox";
 import { layDanhSachPhim } from "../../actions/movies";
 
+// import khac
+import { appLayoutData } from "../../utils/myData";
+
 export default function AdminQuanLyPhim() {
   const history = useHistory();
   const location = useLocation();
@@ -50,7 +53,7 @@ export default function AdminQuanLyPhim() {
   // let danhSachPhimSorted = [];
   //
   const soPhanTuTrenTrang = 5;
-  const MaNhom = "GP13";
+  const MaNhom = appLayoutData.maNhom;
   //
 
   //close dialogConfirm
@@ -164,7 +167,7 @@ export default function AdminQuanLyPhim() {
       // co cap nhat hinh
       try {
         const data = await quanLyPhimAPI.capNhatPhimUpload(formData);
-        console.log(data);
+        // console.log(data);
         dispatch(
           snackbarThongBaoToggle({
             message: "Cập nhật phim thành công",
@@ -172,6 +175,7 @@ export default function AdminQuanLyPhim() {
             autoHideTime: 3000,
           })
         );
+        window.location.reload();
       } catch (error) {
         try {
           dispatch(
@@ -189,7 +193,7 @@ export default function AdminQuanLyPhim() {
       // console.log("khong cap nhat hinh");
       try {
         const data = await quanLyPhimAPI.capNhatPhim(values);
-        console.log(data);
+        // console.log(data);
         dispatch(
           snackbarThongBaoToggle({
             message: "Cập nhật phim thành công",
@@ -197,6 +201,7 @@ export default function AdminQuanLyPhim() {
             autoHideTime: 3000,
           })
         );
+        window.location.reload();
       } catch (error) {
         try {
           dispatch(

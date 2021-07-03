@@ -52,7 +52,7 @@ export default function PhanTrangAppLayout(props) {
 
   //xu ly khi danh sach phim thay doi
   useEffect(() => {
-    setTongSoTrang(parseInt(danhSachPhim.length / soPhanTuTrenTrang) + 1);
+    setTongSoTrang(parseInt((danhSachPhim.length - 1) / soPhanTuTrenTrang) + 1);
   }, [danhSachPhim]);
 
   return (
@@ -60,14 +60,16 @@ export default function PhanTrangAppLayout(props) {
       <div className="container-md bodyContainer">
         <SubContent title={title} data={danhSachPhimFilter} />
       </div>
-      <div class="phanTrangAppLayout">
-        <PhanTrang
-          soLuongRender={soLuongRender}
-          trangHienTai={trangHienTai}
-          tongSoTrang={tongSoTrang}
-          link={link}
-        />
-      </div>
+      {danhSachPhimFilter.length > 0 ? (
+        <div class="phanTrangAppLayout container-md">
+          <PhanTrang
+            soLuongRender={soLuongRender}
+            trangHienTai={trangHienTai}
+            tongSoTrang={tongSoTrang}
+            link={link}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

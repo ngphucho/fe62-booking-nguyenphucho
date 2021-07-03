@@ -1,5 +1,6 @@
 import { CHANGE_SELECTED_MOVIE } from "../constants/selectedMovie";
 import { CLOSE_TRAILER } from "../constants/selectedMovie";
+import { appLayoutData } from "../utils/myData";
 
 const initialState = {
   selectedMovie: {
@@ -9,7 +10,7 @@ const initialState = {
     trailer: "https://www.youtube.com/embed/jluSu8Rw6YE",
     hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/bo-gia_gp01.jpg",
     moTa: "Tui Chưa Coi Nên Chưa Biết",
-    maNhom: "GP01",
+    maNhom: appLayoutData.maNhom,
     ngayKhoiChieu: "2021-04-03T00:00:00",
     danhGia: 10,
   },

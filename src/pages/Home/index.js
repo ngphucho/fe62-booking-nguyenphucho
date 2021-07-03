@@ -36,10 +36,10 @@ export default function Home() {
     //lay thong tin lich chieu theo he thong rap
     dispatch(layThongTinLichChieuHeThongRap());
 
-    //set thoi gian hien thi icon Loading (icon loading hien thi it nhat 2s, va an sau khi danhsachphim tai xong)
+    //set thoi gian hien thi icon Loading (icon loading hien thi it nhat 1.5s, va an sau khi danhsachphim tai xong)
     setTimeout(() => {
       setPending(false);
-    }, 2000);
+    }, 1500);
 
     //set activePage
     dispatch(
@@ -69,7 +69,8 @@ export default function Home() {
     if (danhSachPhim.length > 0) {
       setNowShowingMovies([]);
       setUpComingMovies([]);
-      const today = new Date("2019-07-29T00:00:00");
+      // const today = new Date("2019-07-29T00:00:00");
+      const today = new Date();
       danhSachPhim.forEach((movie) => {
         const day = new Date(movie.ngayKhoiChieu);
         if (day > today) {

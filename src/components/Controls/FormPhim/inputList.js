@@ -1,3 +1,5 @@
+import { appLayoutData } from "../../../utils/myData";
+
 export const inputList = [
   {
     inputName: "maPhim",
@@ -51,7 +53,7 @@ export const inputList = [
     inputName: "maNhom",
     label: "Mã Nhóm",
     placeholder: "Mã Nhóm",
-    deafaultValue: "GP13",
+    deafaultValue: appLayoutData.maNhom,
     type: "text",
     disabled: true,
   },
