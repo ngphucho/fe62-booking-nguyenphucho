@@ -44,6 +44,7 @@ function LichChieuTheoNgay(props) {
                 <SuatChieu
                   thoiGianBatDau={item.ngayChieuGioChieu}
                   thoiLuong={item.thoiLuong}
+                  maLichChieu={item.maLichChieu}
                 />
               </div>
             ))}

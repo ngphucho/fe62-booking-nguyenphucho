@@ -6,6 +6,7 @@ import DanhSachGhe from "../../components/DanhSachGhe";
 import IsLoading from "../../components/IsLoading";
 import ChiTietPhimPhongVe from "../../components/ChiTietPhimPhongVe";
 import ChiTietDatGhe from "../../components/ChiTietDatGhe";
+import GiaiThich from "../../components/GiaiThich";
 
 export default function ChiTietPhongVe() {
   const dispatch = useDispatch();
@@ -29,14 +30,17 @@ export default function ChiTietPhongVe() {
 
   return !isLoading && danhSachPhongVe ? (
     <div className="chiTietPhongVe">
-      <div className="container">
+      <div className="container py-3">
         <div className="row">
           <div className="col-md-9">
-            <div>
+            <div className="container-fluid p-0 mb-3 chiTietPhimPhongVe">
               <ChiTietPhimPhongVe chiTietPhim={danhSachPhongVe.thongTinPhim} />
             </div>
-            <div>
+            <div className="container-fluid p-0">
               <DanhSachGhe danhSachGhe={danhSachPhongVe.danhSachGhe} />
+            </div>
+            <div className="container-fluid p-0 giaiThichGhe">
+              <GiaiThich />
             </div>
           </div>
           <div className="col-md-3">

@@ -1,13 +1,33 @@
 .chiTietPhongVe {
   $edge: 30px;
 
+  .chiTietPhimPhongVe {
+    .chiTietPhim {
+      font-size: 0.9rem;
+
+      * {
+        font-size: 1em;
+      }
+
+      .tenPhim {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+  }
+
   .danhSachGhe {
+    max-width: 600px;
+    margin: 0 auto;
+
     .col {
       padding: 0;
     }
 
     .square {
       position: relative;
+      padding: 1px;
+
       ::before {
         content: "";
         display: block;
@@ -16,12 +36,21 @@
     }
 
     .chairBox {
-      font-size: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
       margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+
+      &:not(.none):not(.dangChon):hover {
+        border: 1px solid #4ac13b;
+      }
+    }
+
+    .chairBox.Vip {
+      background-color: var(--color-gheVip);
     }
 
     .none {
@@ -30,17 +59,53 @@
     }
 
     .daDat {
-      background-color: #ff0000;
+      // background-color: #ff0000;
       pointer-events: none;
       opacity: 0.4;
+      // text-indent: -9999px;
+
+      &::after {
+        font-family: "Material Icons";
+        content: "\e02c";
+        font-size: 2em;
+        color: #000000;
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+      }
     }
 
-    .chuaChon {
-      background-color: #cccccc;
+    .chuaChon,
+    .Thuong {
+      background-color: var(--color-gheThuong);
     }
 
     .dangChon {
-      background-color: #00ff00;
+      // background-color: #4ac13b;
+      border: 2px solid var(--color-dangChon);
+    }
+  }
+
+  .giaiThichGhe {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 0.7rem;
+
+    .gheVip,
+    .gheThuong,
+    .gheDangChon,
+    .gheDaDat {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      margin-right: 10px;
     }
   }
 
@@ -58,6 +123,43 @@
       border: 1px solid #cccccc80 !important;
       outline: none !important;
       box-shadow: none;
+    }
+  }
+
+  @media screen and(max-width: 1199.9px) {
+    .danhSachGhe {
+      .chairBox {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media screen and(max-width: 991.9px) {
+    .danhSachGhe {
+      .chairBox {
+        font-size: 0.75rem;
+      }
+
+      .rowChair {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  @media screen and(max-width: 767.9px) {
+    .danhSachGhe {
+      .chairBox {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  @media screen and(max-width: 575.9px) {
+    .danhSachGhe {
+      .chairBox {
+        font-size: 0.5rem;
+      }
     }
   }
 }

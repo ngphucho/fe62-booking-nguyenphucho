@@ -60,7 +60,7 @@ export default function Movie() {
   ) : (
     <div className="movie container-md bodyContainer">
       <MovieDetail detail={movie} />
-      {thongTinLichChieuPhim && (
+      {thongTinLichChieuPhim?.heThongRapChieu.length > 0 && (
         <ThongTinLichChieuPhim thongTinLichChieuPhim={thongTinLichChieuPhim} />
       )}
     </div>

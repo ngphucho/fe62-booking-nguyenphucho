@@ -10,10 +10,12 @@ export default function DanhSachGhe({ danhSachGhe }) {
   };
   //su ly class cho cac loai ghe
   const chairBoxStyle = (item) => {
-    const result = "chairBox";
+    let result = "chairBox";
     if (!item) {
       return result + " none";
     }
+    result += ` ${item.loaiGhe}`;
+    // console.log(item.loaiGhe)
     if (item.daDat) {
       return result + " daDat";
     }
@@ -24,11 +26,11 @@ export default function DanhSachGhe({ danhSachGhe }) {
   };
 
   return (
-    <div className="container-fluid danhSachGhe">
+    <div className="danhSachGhe">
       {danhSachGhe.map((row, x) => (
-        <div key={x} className="row">
+        <div key={x} className="row rowChair">
           {row.map((item, y) => (
-            <div key={y} className={"col square p-1"}>
+            <div key={y} className={"col square"}>
               <div
                 onClick={
                   item
@@ -39,7 +41,7 @@ export default function DanhSachGhe({ danhSachGhe }) {
                 }
                 className={chairBoxStyle(item)}
               >
-                {item.tenGhe}
+                {item.tenGhe ? `00${item.tenGhe}`.slice(-3) : null}
               </div>
             </div>
           ))}

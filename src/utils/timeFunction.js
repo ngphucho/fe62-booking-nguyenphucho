@@ -29,3 +29,11 @@ export const compareTwoDayWithoutTime = (date1, date2) => {
   const d2 = new Date(date2).setHours(0, 0, 0, 0);
   return d1 === d2;
 };
+
+// date = dd/mm/yyyy
+export const dateToToday = (date) => {
+  const d = date.toString().split("/");
+  const newDate = new Date(d[2], d[1] - 1, d[0]);
+  const today = new Date();
+  return compareTwoDayWithoutTime(newDate, today) ? "Hôm nay" : date;
+};
