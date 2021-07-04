@@ -4,6 +4,7 @@ import DatePicker from "react-horizontal-datepicker";
 import { useHistory } from "react-router-dom";
 import LichChieuTheoNgay from "../LichChieuTheoNgay";
 import MultiCollapse from "../MultiCollapse";
+import MyCollapse from "../Collapse";
 
 // thong tin lich chieu theo phim
 export default function ThongTinLichChieuPhim({
@@ -30,7 +31,7 @@ export default function ThongTinLichChieuPhim({
       header: item.tenCumRap,
       body: item.lichChieuPhim,
     }));
-    return <MultiCollapse collapseList={collapseList} />;
+    return <MultiCollapse collapseList={collapseList} isShowTheFirst={true} />;
   };
 
   //lifecycle
@@ -49,41 +50,34 @@ export default function ThongTinLichChieuPhim({
 
   return (
     <div className="thongTinLichChieuPhimBox">
-      <div className="row">
-        {/* DANH SACH HE THONG RAP */}
-        <div className="col-lg-1 col-md-2 col-1 heThongRap">
-          {heThongRapChieu.map((item, index) => (
-            <div
-              key={index}
-              className={heThongRapActive === index + 1 + "" ? "active" : null}
-              onClick={() => {
-                changeHeThongRapActive(index + 1 + "");
-                setCumRapChieu(item.cumRapChieu);
-              }}
-            >
-              <img
-                className="rounded-circle w-100 normal-tab"
-                src={item.logo}
-                alt={item.tenHeThongRap}
-              />
-            </div>
-          ))}
-        </div>
-        {/* DANH SACH CUM RAP VA LICH CHIEU PHIM */}
-        {cumRapChieuFilter ? (
-          <div className="col-lg-11 col-md-10 col-11 LichChieuBox">
-            {/* <div>
-              {cumRapChieuFilter?.map((item, index) => (
-                <div key={index}>
-                  <div>{item.tenCumRap}</div>
-                  <LichChieuTheoNgay lichChieu={item.lichChieuPhim} />
-                </div>
-              ))}
-            </div> */}
-            {showLichChieuPhim(cumRapChieuFilter)}
+      {/* DANH SACH HE THONG RAP */}
+      <div className="heThongRap">
+        {heThongRapChieu.map((item, index) => (
+          <div
+            key={index}
+            className={
+              "heThongRapImageBox opacityHalf customScrollbar" +
+              (heThongRapActive === index + 1 + "" ? " active" : null)
+            }
+            onClick={() => {
+              changeHeThongRapActive(index + 1 + "");
+              setCumRapChieu(item.cumRapChieu);
+            }}
+          >
+            <img
+              className="rounded-circle w-100 normal-tab"
+              src={item.logo}
+              alt={item.tenHeThongRap}
+            />
           </div>
-        ) : null}
+        ))}
       </div>
+      {/* DANH SACH CUM RAP VA LICH CHIEU PHIM */}
+      {cumRapChieuFilter ? (
+        <div className="LichChieuBox">
+          {showLichChieuPhim(cumRapChieuFilter)}
+        </div>
+      ) : null}
     </div>
   );
 }

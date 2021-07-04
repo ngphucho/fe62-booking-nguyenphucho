@@ -1,29 +1,11 @@
 .movie {
-  .active {
-    opacity: 0.5;
-  }
-
   .chiTietPhimImageBox {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    .imageContent {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0.75rem;
-      right: 0.75rem;
-      max-height: 100%;
-      // bottom: 0;
-    }
-
-    .imageFrame {
-      content: "";
-      display: block;
-      width: 100%;
-      padding-top: 150%;
+    img {
+      max-width: 100%;
     }
   }
 
@@ -38,22 +20,54 @@
     }
   }
 
-  @media screen and (max-width: 767.9px) {
-    .thongTinLichChieuPhimBox{
-      .heThongRap{
-        padding-right: 0;
+  .thongTinLichChieuPhimBox {
+    margin-top: 1rem;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+
+    .heThongRap{
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+      // margin: 0 -1px;
+
+      .heThongRapImageBox.active{
+        opacity: 1;
       }
 
-      .LichChieuBox{
-        font-size: 0.8rem;
+      .heThongRapImageBox{
+        // flex-shrink: 0;
+        padding: 10px;
+
+        width: 100px;
       }
     }
   }
-  
+
+  @media screen and (max-width: 767.9px) {
+    .thongTinLichChieuPhimBox {
+      .heThongRap {
+        overflow-y: auto;
+
+        .heThongRapImageBox {
+          flex-shrink: 0;
+
+        }
+      }
+
+      .LichChieuBox {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
   @media screen and(max-width: 575.9px) {
-    .thongTinLichChieuPhimBox{
-      .LichChieuBox{
-        font-size: 0.6rem;
+    .thongTinLichChieuPhimBox {
+      .LichChieuBox {
+        font-size: 0.8rem;
       }
     }
   }

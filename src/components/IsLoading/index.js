@@ -11,7 +11,10 @@ const override = css`
 export default function IsLoading() {
   let [loading, setLoading] = useState(true);
   return (
-    <div className="sweet-loading d-flex justify-content-center align-items-center" style={{height: "100vh", backgroundColor: "#cccccc80"}}>
+    <div
+      className="sweet-loading d-flex justify-content-center align-items-center"
+      style={{ height: "calc(100vh - 80px)", backgroundColor: "#cccccc80" }}
+    >
       <HashLoader loading={loading} css={override} size={100} />
     </div>
   );

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import MyCollapse from "../Collapse";
 
 function MultiCollapse(props) {
-  const { collapseList } = props;
-  const [activeTab, setActiveTab] = useState(1000);
+  const { collapseList, isShowTheFirst } = props;
+  const [activeTab, setActiveTab] = useState(isShowTheFirst ? 0 : 1000);
 
   const handleActiveTab = (tab) => {
     if (tab === activeTab) {
@@ -32,10 +32,12 @@ function MultiCollapse(props) {
 
 MultiCollapse.propTypes = {
   collapseList: PropTypes.array,
+  isShowTheFirst: PropTypes.bool,
 };
 
 MultiCollapse.defaultProps = {
   collapseList: [],
+  isShowTheFirst: true,
 };
 
 export default MultiCollapse;

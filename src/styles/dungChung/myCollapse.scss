@@ -2,6 +2,7 @@
   font-size: 1em;
 
   .collapseHeader {
+    margin-top: -1px;
     background-color: #fafafa;
     font-size: 1.1em;
     font-weight: 600;
@@ -34,8 +35,8 @@
   }
 }
 
-.collapseBox:not(:first-child) {
-  .collapseHeader {
-    margin-top: -1px;
-  }
-}
+// .collapseBox:not(:first-child) {
+//   .collapseHeader {
+//     margin-top: -1px;
+//   }
+// }

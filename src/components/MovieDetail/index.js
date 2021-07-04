@@ -21,7 +21,7 @@ export default function MovieDetail({ detail }) {
               alt={detail.biDanh}
             />
           </div>
-          <div className="imageFrame"></div>
+          {/* <div className="imageFrame"></div> */}
         </div>
         <div className="col-lg-9 col-sm-8 chiTietPhimTextBox">
           <h4>{detail.tenPhim}</h4>
