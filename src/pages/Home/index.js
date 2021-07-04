@@ -85,10 +85,6 @@ export default function Home() {
     }
   }, [danhSachPhim]);
 
-  // useEffect(() => {
-  //   console.log(soLuong);
-  // }, [soLuong]);
-
   return isLoading || isPending ? (
     <IsLoading></IsLoading>
   ) : (

@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 
 export default function ThongTinLichChieuHeThongRapLV3({ danhSachPhim }) {
   console.log(danhSachPhim);
-  const today = new Date("2019-01-01T16:10:00").toISOString().slice(0, 10);
+  const today = new Date("2019-01-01T16:10:00");
   const history = useHistory();
   return danhSachPhim ? (
     <div className="container danhSachPhimBox">
@@ -30,7 +30,7 @@ export default function ThongTinLichChieuHeThongRapLV3({ danhSachPhim }) {
                 <div className="d-flex flex-wrap">
                   {/* Danh sach thoi gian chieu */}
                   {item.lstLichChieuTheoPhim.map((subItem) => {
-                    const showingDate = subItem.ngayChieuGioChieu.slice(0, 10);
+                    const showingDate = new Date(subItem.ngayChieuGioChieu);
                     if (today === showingDate) {
                       return (
                         <div

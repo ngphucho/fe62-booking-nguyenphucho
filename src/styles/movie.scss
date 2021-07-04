@@ -1,5 +1,65 @@
-.movie{
+.movie {
   .active {
-    opacity: .5;
+    opacity: 0.5;
+  }
+
+  .chiTietPhimImageBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imageContent {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0.75rem;
+      right: 0.75rem;
+      max-height: 100%;
+      // bottom: 0;
+    }
+
+    .imageFrame {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-top: 150%;
+    }
+  }
+
+  .chiTietPhimBox {
+    .chiTietPhimTextBox {
+      padding: 10px;
+
+      p {
+        margin-bottom: 5px;
+        text-align: justify;
+      }
+    }
+  }
+
+  .thongTinLichChieuPhimBox{
+    
+    
+  }
+
+  @media screen and (max-width: 767.9px) {
+    .thongTinLichChieuPhimBox{
+      .heThongRap{
+        padding-right: 0;
+      }
+
+      .LichChieuBox{
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  @media screen and(max-width: 575.9px) {
+    .thongTinLichChieuPhimBox{
+      .LichChieuBox{
+        font-size: 0.6rem;
+      }
+    }
   }
 }

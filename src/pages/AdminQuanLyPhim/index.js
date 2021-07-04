@@ -277,8 +277,8 @@ export default function AdminQuanLyPhim() {
         })
       ) {
         setTenPhim(thongTinTrang.tenPhim);
-        setTuNgay(thongTinTrang.tuNgay);
-        setDenNgay(thongTinTrang.denNgay);
+        setTuNgay(thongTinTrang.tuNgay + "T00:00:00");
+        setDenNgay(thongTinTrang.denNgay + "T00:00:00");
         setListCheckBox(thongTinTrang.listCheckBox);
         setDanhGia(thongTinTrang.danhGia);
       }

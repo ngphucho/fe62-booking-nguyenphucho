@@ -1,0 +1,21 @@
+.dailyScheduleBox {
+  .dateHeader {
+    padding: 10px;
+  }
+
+  .dateBody {
+    padding: 10px;
+    padding-top: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .dateItem {
+      margin-right: 10px;
+    }
+  }
+}
+
+.dailyScheduleBox:last-child{
+  padding-bottom: 20px;
+}

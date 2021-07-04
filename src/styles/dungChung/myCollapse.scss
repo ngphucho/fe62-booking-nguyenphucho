@@ -1,0 +1,41 @@
+.collapseBox {
+  font-size: 1em;
+
+  .collapseHeader {
+    background-color: #fafafa;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 10px;
+    position: relative;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+
+    &::after {
+      font-family: "Material Icons";
+      content: "\e5cf";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      transition: all 0.5s;
+    }
+
+    &.show::after {
+      transform: rotate(-180deg) translateY(50%);
+    }
+  }
+
+  .collapseBody{
+    font-size: 1em;
+    font-weight: 600;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+.collapseBox:not(:first-child) {
+  .collapseHeader {
+    margin-top: -1px;
+  }
+}

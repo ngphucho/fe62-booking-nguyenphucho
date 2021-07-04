@@ -10,14 +10,20 @@ import ThongTinLichChieuPhim from "../../components/ThongTinLichChieuPhim";
 import { toggleMenu } from "../../actions/toggleMenu";
 import { layThongTinPhim } from "../../actions/movie";
 
-// services
+// import services
 import lichChieuPhimAPI from "../../services/lichChieuPhimAPI";
+
+// import khac
+import { phanTichMang } from "../../utils/myFunction";
 
 export default function Movie() {
   const dispatch = useDispatch();
   const { movieId } = useParams();
   const { movie, isLoading, error } = useSelector((state) => state.movie);
   const [thongTinLichChieuPhim, setThongTinLichChieuPhim] = useState(null);
+  const [thongTinLichChieuPhimFilter, setThongTinLichChieuPhimFiter] = useState(
+    []
+  );
 
   useEffect(() => {
     dispatch(layThongTinPhim(movieId)); // lay chi tiet phim
@@ -34,12 +40,25 @@ export default function Movie() {
     dispatch(toggleMenu("close"));
   }, []);
 
+  //xu ly thong tin lich chieu
+  useEffect(() => {
+    if (thongTinLichChieuPhim) {
+      setThongTinLichChieuPhimFiter(phanTichMang(thongTinLichChieuPhim));
+    }
+  }, [thongTinLichChieuPhim]);
+
+  // useEffect(() => {
+  //   if (thongTinLichChieuPhimFilter) {
+  //     console.log(thongTinLichChieuPhimFilter);
+  //   }
+  // }, [thongTinLichChieuPhimFilter]);
+
   return isLoading ? (
     <IsLoading></IsLoading>
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="movie">
+    <div className="movie container-md bodyContainer">
       <MovieDetail detail={movie} />
       {thongTinLichChieuPhim && (
         <ThongTinLichChieuPhim thongTinLichChieuPhim={thongTinLichChieuPhim} />

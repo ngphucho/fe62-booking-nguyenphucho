@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SuatChieu from "../SuatChieu";
 import DatePicker from "react-horizontal-datepicker";
 import { useHistory } from "react-router-dom";
+import LichChieuTheoNgay from "../LichChieuTheoNgay";
+import MultiCollapse from "../MultiCollapse";
 
 // thong tin lich chieu theo phim
 export default function ThongTinLichChieuPhim({
   thongTinLichChieuPhim: { heThongRapChieu },
 }) {
-  // console.log(heThongRapChieu);
-
   const history = useHistory();
+  const [today, setToday] = useState(new Date("2019-01-08 00:00"));
+
   const [cumRapChieu, setCumRapChieu] = useState(
     heThongRapChieu[0]?.cumRapChieu
   );
+  const [cumRapChieuFilter, setCumRapchieuFilter] = useState([]);
 
   const [heThongRapActive, setHeThongRapActive] = useState("1");
   const changeHeThongRapActive = (active) => {
@@ -21,15 +24,34 @@ export default function ThongTinLichChieuPhim({
     }
   };
 
-  const onSelectedDay = (d) => {
-    // setToday(d.toISOString().slice(0, 10));
-    console.log(d);
+  //function
+  const showLichChieuPhim = (data) => {
+    const collapseList = data.map((item) => ({
+      header: item.tenCumRap,
+      body: item.lichChieuPhim,
+    }));
+    return <MultiCollapse collapseList={collapseList} />;
   };
+
+  //lifecycle
+  useEffect(() => {
+    if (cumRapChieu) {
+      const newCumRapChieu = [...cumRapChieu];
+      newCumRapChieu.forEach((cumRap, i) => {
+        const newLichChieu = cumRap.lichChieuPhim.filter(
+          (lich) => new Date(lich.ngayChieuGioChieu) >= today
+        );
+        newCumRapChieu[i].lichChieuPhim = newLichChieu;
+      });
+      setCumRapchieuFilter(newCumRapChieu);
+    }
+  }, [cumRapChieu]);
+
   return (
-    <div className="container">
+    <div className="thongTinLichChieuPhimBox">
       <div className="row">
         {/* DANH SACH HE THONG RAP */}
-        <div className="col-3">
+        <div className="col-lg-1 col-md-2 col-1 heThongRap">
           {heThongRapChieu.map((item, index) => (
             <div
               key={index}
@@ -48,38 +70,17 @@ export default function ThongTinLichChieuPhim({
           ))}
         </div>
         {/* DANH SACH CUM RAP VA LICH CHIEU PHIM */}
-        {cumRapChieu ? (
-          <div className="col-9">
-            <div>
-              <DatePicker
-                getSelectedDay={onSelectedDay}
-                endDate={30}
-                // selectDate={new Date("2020-04-30")}
-                labelFormat={"MMMM-yyyy"}
-                color={"#374e8c"}
-              />
-            </div>
-            <div>
-              {cumRapChieu?.map((item, index) => (
+        {cumRapChieuFilter ? (
+          <div className="col-lg-11 col-md-10 col-11 LichChieuBox">
+            {/* <div>
+              {cumRapChieuFilter?.map((item, index) => (
                 <div key={index}>
                   <div>{item.tenCumRap}</div>
-                  {item.lichChieuPhim.map((lich) => (
-                    <span
-                      key={lich.maLichChieu}
-                      style={{ display: "inline-block", padding: "5px" }}
-                      onClick={() => {
-                        history.push("/chi-tiet-phong-ve/" + lich.maLichChieu);
-                      }}
-                    >
-                      <SuatChieu
-                        thoiGianBatDau={lich.ngayChieuGioChieu}
-                        thoiLuong={lich.thoiLuong}
-                      />
-                    </span>
-                  ))}
+                  <LichChieuTheoNgay lichChieu={item.lichChieuPhim} />
                 </div>
               ))}
-            </div>
+            </div> */}
+            {showLichChieuPhim(cumRapChieuFilter)}
           </div>
         ) : null}
       </div>

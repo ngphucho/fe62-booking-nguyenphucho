@@ -6,7 +6,7 @@ import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
-  const [today, setToday] = useState(new Date().toISOString().slice(0, 10));
+  const [today, setToday] = useState(new Date());
   const history = useHistory();
 
   const [danhSachCumRap, setDanhSachCumRap] = useState(null);
@@ -28,9 +28,9 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   };
 
   const onSelectedDay = (d) => {
-    d.setHours(7, 0, 0, 0);
-    // console.log(d.toISOString());
-    setToday(d.toISOString().slice(0, 10));
+    // d.setHours(7, 0, 0, 0);
+    console.log(d);
+    setToday(d);
   };
 
   useEffect(() => {
@@ -81,9 +81,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
               <div className="d-flex flex-wrap">
                 {/* Danh sach thoi gian chieu */}
                 {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                  const showingDate = new Date(subItem.ngayChieuGioChieu)
-                    .toISOString()
-                    .slice(0, 10);
+                  const showingDate = new Date(subItem.ngayChieuGioChieu);
                   return (
                     <div
                       style={{ fontSize: "1.5em" }}
@@ -194,16 +192,9 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         {/* DANH SACH PHIM */}
         <div className="col-sm-7 container-fluid customScrollbar listPhim">
           <div className="dateBox">
-            {/* DATE TIME PICKER */}
-            {/* <DatePicker
-              getSelectedDay={onSelectedDay}
-              endDate={30}
-              // selectDate={new Date()}
-              labelFormat={"MM-yyyy"}
-              color={"#374e8c"}
-            /> */}
             <ReactHorizontalDatePicker
               selectedDay={onSelectedDay}
+              // enableDaysBefore={0}
               enableScroll={true}
               enableDays={45}
             />

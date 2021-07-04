@@ -1,6 +1,7 @@
 import StarIcon from "@material-ui/icons/Star";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { CompassCalibrationOutlined } from "@material-ui/icons";
 
 //ham xu lu clone array object cho mang JSON-serializable (su dung khi mang ko chua function, số Number.POSITIVE_INFINITY,... )
 export const cloneArrayObject = (arr) => JSON.parse(JSON.stringify(arr));
@@ -24,8 +25,9 @@ export const generateStar = (score, maxScore) => {
   // console.log(score, maxScore, newScore, mod, newMaxScore);
   return [...Array(newMaxScore).keys()].map((key) => {
     if (key < newScore) return <StarIcon key={key} fontSize="inherit" />;
-    if (key === newScore && mod === 1) return <StarHalfIcon key={key}  fontSize="inherit"/>;
-    return <StarBorderIcon key={key}  fontSize="inherit"/>;
+    if (key === newScore && mod === 1)
+      return <StarHalfIcon key={key} fontSize="inherit" />;
+    return <StarBorderIcon key={key} fontSize="inherit" />;
   });
 };
 
@@ -35,3 +37,24 @@ export const httpToHttps = (data) => {
   const stringResult = stringData.replace(regex, "https://");
   return JSON.parse(stringResult);
 };
+
+export const phanTichMang = (data) => {
+  const res = [{ ...data }];
+
+  const result = res.reduce(
+    (h, { heThongRapChieu, maPhim }) =>
+      heThongRapChieu.reduce(
+        (c, { cumRapChieu }) =>
+          cumRapChieu.reduce(
+            (l, { lichChieuPhim }) =>
+              lichChieuPhim.reduce((i, item) => [...i, { ...item, maPhim }], l),
+            c
+          ),
+        h
+      ),
+    []
+  );
+
+  return result;
+};
+

@@ -51,7 +51,7 @@ a {
   font-size: 1rem;
   color: green;
   background-color: #dcf7465e;
-  border-radius: 1rem;
+  // border-radius: 1rem;
   padding: 5px;
   cursor: pointer;
 }
@@ -60,6 +60,11 @@ a {
   font-size: 1.5rem;
   color: green;
   cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .cursorPointer {
@@ -76,6 +81,31 @@ a {
 
 .btn {
   border-radius: 0;
+}
+
+.customScrollbar {
+  //scrollbar
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #00000020;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #88888810;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  //scrollbar
 }
 
 .phanTrangAppLayout {
@@ -98,15 +128,19 @@ a {
   }
 }
 
+.collapsing {
+  transition: all 1s;
+}
+
 @media screen and (max-width: 767.9px) {
-  .phanTrangAppLayout{
+  .phanTrangAppLayout {
     margin-bottom: 0;
   }
 }
 
 @media screen and (max-width: 575.9px) {
-  .phanTrangAppLayout{
+  .phanTrangAppLayout {
     margin-bottom: -30px;
-    margin-top: -10px
+    margin-top: -10px;
   }
 }

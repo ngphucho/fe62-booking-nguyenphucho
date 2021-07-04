@@ -102,16 +102,21 @@ export default function TimKiemPhim() {
   //laydanhsachphim
   useEffect(() => {
     dispatch(layDanhSachPhim());
+
     if (location.search) {
       const thongTinTrang = qs.parse(location.search, {
         ignoreQueryPrefix: true,
       });
       setTenPhim(thongTinTrang.tenPhim);
       setStartDate(
-        thongTinTrang.tuNgay === "" ? null : new Date(thongTinTrang.tuNgay)
+        thongTinTrang.tuNgay === ""
+          ? null
+          : new Date(thongTinTrang.tuNgay + "T00:00:00")
       );
       setEndDate(
-        thongTinTrang.denNgay === "" ? null : new Date(thongTinTrang.denNgay)
+        thongTinTrang.denNgay === ""
+          ? null
+          : new Date(thongTinTrang.denNgay + "T00:00:00")
       );
       setListCheckBox(thongTinTrang.listCheckBox);
       setDanhGia(thongTinTrang.danhGia.map((item) => parseInt(item)));
@@ -167,7 +172,7 @@ export default function TimKiemPhim() {
                 endDate={endDate}
                 onStartDateChange={setStartDate}
                 onEndDateChange={setEndDate}
-                minimumDate={new Date("2015-01-01")}
+                minimumDate={new Date("2015-01-01T00:00:00")}
                 // minimumLength={1}
                 format="dd-MM-yyyy"
                 locale={enGB}
