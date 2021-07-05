@@ -23,10 +23,6 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { login } from "../../actions/auth";
-//meterial
-import Box from "@material-ui/core/Box";
-import HomeIcon from "@material-ui/icons/Home";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const schema = yup.object().shape({
   taiKhoan: yup.string().required("Vui lòng nhập tên đăng nhập"),
@@ -41,10 +37,8 @@ export default function Login() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+    formState: { errors, isValid, isDirty },
+  } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
   const onSubmit = (data) => dispatch(login(data));
 
   if (userInfo) {
@@ -70,9 +64,6 @@ export default function Login() {
               <div className="text">TRANG CHỦ</div>
             </div>
           </Link>
-          {/* <div className="title">
-            <h1 className="text-center">ĐĂNG NHẬP</h1>
-          </div> */}
           <Link to="/sign-up">
             <div className="icon">
               <FontAwesomeIcon icon={faUserPlus} />
@@ -95,7 +86,7 @@ export default function Login() {
                     <Input
                       {...field}
                       type="text"
-                      placeholder="username"
+                      placeholder="Tên đăng nhập"
                       className="rounded-0"
                     />
                   )}
@@ -124,7 +115,7 @@ export default function Login() {
                     <Input
                       {...field}
                       type="password"
-                      placeholder="password"
+                      placeholder="Mật khẩu"
                       className="rounded-0"
                     />
                   )}
@@ -149,7 +140,7 @@ export default function Login() {
               </Label>
             </FormGroup>
             <div className="text-center inputGroup">
-              <Button>Đăng nhập</Button>
+              <Button disabled={!isValid}>Đăng nhập</Button>
               <br />
               {error && (
                 <div className="d-inline-block alert alert-danger p-1 mt-1">
@@ -160,11 +151,7 @@ export default function Login() {
           </Form>
         </div>
         <div className="dangNhapFooter text-center">
-          <img
-            className="img-fluid"
-            style={{ width: "150px" }}
-            src="./images/header-logo1.png"
-          ></img>
+          <img className="img-fluid" src="./images/header-logo1.png"></img>
         </div>
       </div>
       <div className="backgroundImage">

@@ -92,8 +92,8 @@ export default function FormDangKy() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+    formState: { errors, isDirty, isValid },
+  } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
 
   const onSubmit = async (values) => {
     const newValues = {
@@ -165,7 +165,7 @@ export default function FormDangKy() {
   };
 
   return (
-    <div className="formBox">
+    <div className="">
       <Form onSubmit={handleSubmit(onSubmit)} className="text-light ">
         {/* FULL NAME */}
         <FormGroup className="inputGroup">
@@ -396,7 +396,7 @@ export default function FormDangKy() {
           </FormControl>
         ) : null}
         <FormGroup className="text-center inputGroup">
-          <Button>{button}</Button>
+          <Button disabled={!isDirty || !isValid}>{button}</Button>
           {resError && <div className="alert alert-danger">{resError}</div>}
         </FormGroup>
       </Form>

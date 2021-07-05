@@ -26,20 +26,15 @@ export default function SignUp() {
   });
   return (
     <div className="signUp container-fluid">
-      <div
-        style={{ height: "100%" }}
-        className="container px-5 w-50 d-flex flex-column justify-content-around"
-      >
-        <div className="d-flex flex-row justify-content-between align-items-center">
+      <div className="container">
+        <div className="dangKyHeader d-flex flex-row justify-content-between align-items-center">
           <Link to="/home">
             <div className="icon">
               <FontAwesomeIcon icon={faHome} />
               <div className="text">Trang chủ</div>
             </div>
           </Link>
-          <div className="title">
-            <h1 className="text-center">Sign Up</h1>
-          </div>
+
           <Link to="/login">
             <div className="icon">
               <FontAwesomeIcon icon={faUserPlus} />
@@ -48,18 +43,20 @@ export default function SignUp() {
           </Link>
         </div>
 
-        <div>
+        <div className="formBox">
+          <div className="title">
+            <h3 className="text-center">ĐĂNG KÝ</h3>
+          </div>
           <FormDangKy button="Đăng ký" type="sign_up" />
         </div>
 
-        <div className="logo text-center">
-          <img
-            className="img-fluid"
-            style={{ width: "150px" }}
-            src="./images/header-logo1.png"
-          ></img>
+        <div className="dangKyFooter text-center">
+          <img className="img-fluid" src="./images/header-logo1.png"></img>
         </div>
         <SnackbarThongBao />
+      </div>
+      <div className="backgroundImage">
+        <img src="./images/sign-up-bg.jpg" alt="login background" />
       </div>
     </div>
   );

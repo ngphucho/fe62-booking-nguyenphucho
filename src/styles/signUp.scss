@@ -1,70 +1,44 @@
-.signUp {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
+// .signUp {
+//   position: relative;
+//   width: 100vw;
+//   min-height: 100vh;
+//   overflow: hidden;
 
-  &::before {
-    opacity: 0.8;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url(../assets/images/sign-up-bg.webp);
-    background-position: center;
-    background-size: cover;
-    background-color: #00000080;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+//   &::before {
+//     opacity: 0.8;
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background-image: url(../assets/images/sign-up-bg.webp);
+//     background-position: center;
+//     background-size: cover;
+//     background-color: #00000080;
+//     width: 100%;
+//     height: 100%;
+//     z-index: -1;
+//   }
 
-  .icon,
-  .title {
-    color: #ffffffbe !important;
-    font-size: 50px;
-    text-align: center;
+//   .icon,
+//   .title {
+//     color: #ffffffbe !important;
+//     font-size: 50px;
+//     text-align: center;
 
-    .text {
-      font-size: 24px;
-    }
+//     .text {
+//       font-size: 24px;
+//     }
 
-    &:hover {
-      // color: aquamarine;
-      text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
-    }
-    &:hover .fa-home,
-    &:hover .fa-user-plus {
-      filter: drop-shadow(0 0 0.75rem crimson);
-    }
-  }
-}
+//     &:hover {
+//       // color: aquamarine;
+//       text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+//     }
+//     &:hover .fa-home,
+//     &:hover .fa-user-plus {
+//       filter: drop-shadow(0 0 0.75rem crimson);
+//     }
+//   }
+// }
 
-.formBox {
-  padding: 20px 80px;
-  background-color: #00000080;
 
-  .inputGroup {
-    margin: 20px 0;
-  }
-
-  .alert {
-    border-radius: 0;
-    padding: 0.375rem 0.75rem;
-    margin-top: 1px;
-    opacity: 0.8;
-  }
-}
-
-@media screen and(max-width: 575.9px) {
-  .formBox {
-    padding: 20px 10px;
-  }
-}
-
-@media screen and(max-width: 575.9px) {
-  .dangNhapHeader {
-    font-size: 1rem;
-  }
-}
