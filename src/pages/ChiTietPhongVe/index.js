@@ -7,8 +7,10 @@ import IsLoading from "../../components/IsLoading";
 import ChiTietPhimPhongVe from "../../components/ChiTietPhimPhongVe";
 import ChiTietDatGhe from "../../components/ChiTietDatGhe";
 import GiaiThich from "../../components/GiaiThich";
+import { useMediaQuery } from "react-responsive";
 
 export default function ChiTietPhongVe() {
+  const isMd = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const [isSuccess, setSuccess] = useState(false);
   const { danhSachPhongVe, isLoading, error } = useSelector(
@@ -40,7 +42,7 @@ export default function ChiTietPhongVe() {
               <DanhSachGhe danhSachGhe={danhSachPhongVe.danhSachGhe} />
             </div>
             <div className="container-fluid p-0 giaiThichGhe">
-              <GiaiThich />
+              <GiaiThich edge={isMd?30:20}/>
             </div>
           </div>
           <div className="col-md-3">

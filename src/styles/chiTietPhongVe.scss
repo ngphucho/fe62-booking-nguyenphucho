@@ -1,5 +1,6 @@
 .chiTietPhongVe {
   $edge: 30px;
+  $danhSachGheMaxWidth: 600px;
 
   .chiTietPhimPhongVe {
     .chiTietPhim {
@@ -17,7 +18,7 @@
   }
 
   .danhSachGhe {
-    max-width: 600px;
+    max-width: $danhSachGheMaxWidth;
     margin: 0 auto;
 
     .col {
@@ -94,10 +95,11 @@
 
   .giaiThichGhe {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 10px;
     font-size: 0.7rem;
+    max-width: $danhSachGheMaxWidth;
 
     .gheVip,
     .gheThuong,
@@ -106,7 +108,12 @@
       display: flex;
       align-items: center;
       flex-direction: row-reverse;
-      margin-right: 10px;
+      justify-content: center;
+      margin-bottom: 5px;
+
+      .wrapBox {
+        margin-right: 5px;
+      }
     }
   }
 
@@ -160,6 +167,18 @@
     .danhSachGhe {
       .chairBox {
         font-size: 0.5rem;
+      }
+    }
+  }
+
+  @media screen and(max-width: 420px) {
+    .giaiThichGhe {
+      .gheVip,
+      .gheThuong,
+      .gheDangChon,
+      .gheDaDat {
+        flex: 50%;
+        justify-content: flex-end;
       }
     }
   }

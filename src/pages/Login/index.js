@@ -58,24 +58,21 @@ export default function Login() {
 
   return (
     <div className="login container-fluid">
-      <div
-        style={{ height: "100%" }}
-        className="container px-5 w-50 d-flex flex-column justify-content-around"
-      >
-        <div className="d-flex flex-row justify-content-between align-items-center">
+      <div className="container">
+        <div className="dangNhapHeader d-flex flex-row justify-content-between align-items-center">
           <Link to="/home">
             <div className="icon">
               <FontAwesomeIcon icon={faHome} />
-              <div className="text">Trang chủ</div>
+              <div className="text">TRANG CHỦ</div>
             </div>
           </Link>
           <div className="title">
-            <h1 className="text-center">Login</h1>
+            <h1 className="text-center">ĐĂNG NHẬP</h1>
           </div>
           <Link to="/sign-up">
             <div className="icon">
               <FontAwesomeIcon icon={faUserPlus} />
-              <div className="text">Đăng ký</div>
+              <div className="text">ĐĂNG KÝ</div>
             </div>
           </Link>
         </div>
@@ -155,13 +152,16 @@ export default function Login() {
             </div>
           </Form>
         </div>
-        <div className="logo text-center">
+        <div className="dangNhapFooter text-center">
           <img
             className="img-fluid"
             style={{ width: "150px" }}
             src="./images/header-logo1.png"
           ></img>
         </div>
+      </div>
+      <div className="backgroundImage">
+        <img src="./images/login-bg.webp" alt="login background" />
       </div>
     </div>
   );

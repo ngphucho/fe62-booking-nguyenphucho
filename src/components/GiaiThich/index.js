@@ -1,11 +1,11 @@
 import React from "react";
 import MovieIcon from "@material-ui/icons/Movie";
 
-export default function GiaiThich() {
-  const edge = 40;
-  const Square = ({ edge, background, border, opacity, icon }) => {
+export default function GiaiThich({ edge }) {
+  const Square = ({ background, border, opacity, icon }) => {
     return (
       <div
+      className="wrapBox"
         style={{
           width: edge,
           height: edge,
@@ -18,7 +18,7 @@ export default function GiaiThich() {
           fontSize: "1em",
         }}
       >
-        {icon || "000"}
+        {icon || "0"}
       </div>
     );
   };
@@ -28,26 +28,25 @@ export default function GiaiThich() {
       {/* ghe viep */}
       <div className="gheVip">
         <span>Ghế Vip</span>
-        {Square({ edge, background: "var(--color-gheVip)" })}
+        {Square({ background: "var(--color-gheVip)" })}
       </div>
 
       {/* ghe thuong */}
       <div className="gheThuong">
         <span>Ghế Thường</span>
-        {Square({ edge, background: "var(--color-gheThuong)" })}
+        {Square({ background: "var(--color-gheThuong)" })}
       </div>
 
       {/* ghe dang chon */}
       <div className="gheDangChon">
         <span>Ghế Đang Chọn</span>
-        {Square({ edge, border: "2px solid var(--color-dangChon)" })}
+        {Square({ border: "2px solid var(--color-dangChon)" })}
       </div>
 
       {/* ghe da dat truoc */}
       <div className="gheDaDat">
         <span>Ghế Đã Được Đặt</span>
         {Square({
-          edge,
           icon: <MovieIcon />,
           opacity: "0.4",
           background: "#00000020",
