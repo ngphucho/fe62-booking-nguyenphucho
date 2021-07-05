@@ -25,6 +25,25 @@ const MyCollapse = (props) => {
           </div>
           <div style={{ border: "1px solid red" }}>
             test body: {JSON.stringify(body)}
+            test json:{" "}
+            {JSON.stringify([
+              {
+                maLichChieu: "42948",
+                maRap: "475",
+                tenRap: "Rạp 5",
+                ngayChieuGioChieu: "2021-05-20T16:30:00",
+                giaVe: 75000,
+                thoiLuong: 120,
+              },
+              {
+                maLichChieu: "42949",
+                maRap: "476",
+                tenRap: "Rạp 6",
+                ngayChieuGioChieu: "2021-05-20T16:30:00",
+                giaVe: 75000,
+                thoiLuong: 120,
+              },
+            ])}
             {/* <LichChieuTheoNgay lichChieu={body} /> */}
           </div>
         </Collapse>
