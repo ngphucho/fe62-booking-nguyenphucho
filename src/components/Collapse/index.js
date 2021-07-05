@@ -19,14 +19,14 @@ const MyCollapse = (props) => {
       </div>
       <div className="collapseBody customScrollbar">
         <Collapse isOpen={isOpen}>
-          {/* <div>
+          <div style={{ border: "1px solid red" }}>
+            mong muon
             <LichChieuTheoNgay lichChieu={body} />
-          </div> */}
-          <Card>
-            <CardBody>
-              <LichChieuTheoNgay lichChieu={body} />
-            </CardBody>
-          </Card>
+          </div>
+          <div style={{ border: "1px solid red" }}>
+            test body: {JSON.stringify(body)}
+            {/* <LichChieuTheoNgay lichChieu={body} /> */}
+          </div>
         </Collapse>
       </div>
     </div>
