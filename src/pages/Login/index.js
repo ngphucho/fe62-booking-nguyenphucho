@@ -23,6 +23,10 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { login } from "../../actions/auth";
+//meterial
+import Box from "@material-ui/core/Box";
+import HomeIcon from "@material-ui/icons/Home";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const schema = yup.object().shape({
   taiKhoan: yup.string().required("Vui lòng nhập tên đăng nhập"),
@@ -66,9 +70,9 @@ export default function Login() {
               <div className="text">TRANG CHỦ</div>
             </div>
           </Link>
-          <div className="title">
+          {/* <div className="title">
             <h1 className="text-center">ĐĂNG NHẬP</h1>
-          </div>
+          </div> */}
           <Link to="/sign-up">
             <div className="icon">
               <FontAwesomeIcon icon={faUserPlus} />
@@ -77,6 +81,9 @@ export default function Login() {
           </Link>
         </div>
         <div className="formBox">
+          <div className="title">
+            <h3 className="text-center">ĐĂNG NHẬP</h3>
+          </div>
           <Form onSubmit={handleSubmit(onSubmit)} className="text-light">
             <FormGroup className="inputGroup">
               <InputGroup>
