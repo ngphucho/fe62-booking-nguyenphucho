@@ -45,6 +45,7 @@ export default function AdminQuanLyNguoiDung() {
           trangHienTai={trangHienTai}
           tongSoTrang={danhSachNguoiDungPhanTrang.totalPages}
           setTrangHienTai={setTrangHienTai}
+          link="/admin/quan-ly-nguoi-dung/"
         />
       ) : null}
       <Popup>

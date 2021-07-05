@@ -168,7 +168,7 @@ export default function Login() {
         </div>
       </div>
       <div className="backgroundImage">
-        <img src="./images/login-bg.webp" alt="login background" />
+        <img src="./images/login-bg.jpg" alt="login background" />
       </div>
     </div>
   );

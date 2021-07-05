@@ -9,6 +9,7 @@ export default function PhanTrang({
   trangHienTai,
   tongSoTrang,
   link,
+  setTrangHienTai,
 }) {
   const location = useLocation();
   const history = useHistory();
@@ -39,6 +40,9 @@ export default function PhanTrang({
   };
   const mangTrangRender = taoMangTrangRender();
   const diDenTrang = (page) => {
+    if(setTrangHienTai){
+      setTrangHienTai(page);
+    }
     const thongTinTrang = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
