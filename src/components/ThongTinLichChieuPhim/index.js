@@ -11,7 +11,7 @@ export default function ThongTinLichChieuPhim({
   thongTinLichChieuPhim: { heThongRapChieu },
 }) {
   const history = useHistory();
-  const [today, setToday] = useState(new Date("2019-01-08 00:00"));
+  const [today, setToday] = useState(new Date("2019-01-08T00:00:00"));
 
   const [cumRapChieu, setCumRapChieu] = useState(
     heThongRapChieu[0]?.cumRapChieu

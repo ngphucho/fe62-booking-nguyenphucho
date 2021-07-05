@@ -16,6 +16,7 @@ function MultiCollapse(props) {
 
   return (
     <>
+      {("collapse list: ", JSON.stringify(collapseList))}
       {collapseList.map((item, index) => (
         <MyCollapse
           key={index}
