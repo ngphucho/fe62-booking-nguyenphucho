@@ -21,9 +21,9 @@ export default function Movie() {
   const { movieId } = useParams();
   const { movie, isLoading, error } = useSelector((state) => state.movie);
   const [thongTinLichChieuPhim, setThongTinLichChieuPhim] = useState(null);
-  const [thongTinLichChieuPhimFilter, setThongTinLichChieuPhimFiter] = useState(
-    []
-  );
+  // const [thongTinLichChieuPhimFilter, setThongTinLichChieuPhimFiter] = useState(
+  //   []
+  // );
 
   useEffect(() => {
     dispatch(layThongTinPhim(movieId)); // lay chi tiet phim
@@ -41,17 +41,11 @@ export default function Movie() {
   }, []);
 
   //xu ly thong tin lich chieu
-  useEffect(() => {
-    if (thongTinLichChieuPhim) {
-      setThongTinLichChieuPhimFiter(phanTichMang(thongTinLichChieuPhim));
-    }
-  }, [thongTinLichChieuPhim]);
-
   // useEffect(() => {
-  //   if (thongTinLichChieuPhimFilter) {
-  //     console.log(thongTinLichChieuPhimFilter);
+  //   if (thongTinLichChieuPhim) {
+  //     setThongTinLichChieuPhimFiter(phanTichMang(thongTinLichChieuPhim));
   //   }
-  // }, [thongTinLichChieuPhimFilter]);
+  // }, [thongTinLichChieuPhim]);
 
   return isLoading ? (
     <IsLoading></IsLoading>

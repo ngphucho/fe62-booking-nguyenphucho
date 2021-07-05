@@ -1,21 +1,29 @@
 .dailyScheduleBox {
   .dateHeader {
     padding: 10px;
+    font-size: 1.1em;
   }
 
   .dateBody {
     padding: 10px;
     padding-top: 0;
+    padding-left: 20px;
+    font-size: 1em;
 
     display: flex;
     flex-wrap: wrap;
 
     .dateItem {
       margin-right: 10px;
+      margin-bottom: 10px;
+
+      .withEnd{
+        font-size: 0.9em;
+      }
     }
   }
 }
 
-.dailyScheduleBox:last-child{
+.dailyScheduleBox:last-child {
   padding-bottom: 20px;
 }

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SuatChieu from "../SuatChieu";
-import DatePicker from "react-horizontal-datepicker";
 import { useHistory } from "react-router-dom";
-import LichChieuTheoNgay from "../LichChieuTheoNgay";
 import MultiCollapse from "../MultiCollapse";
-import MyCollapse from "../Collapse";
 
 // thong tin lich chieu theo phim
 export default function ThongTinLichChieuPhim({

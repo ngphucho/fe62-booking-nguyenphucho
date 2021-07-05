@@ -8,7 +8,6 @@ import SuatChieu from "../SuatChieu";
 
 function LichChieuTheoNgay(props) {
   const { lichChieu } = props;
-  const [currentDay, setCurrentDay] = useState(new Date());
   const [newLichChieu, setNewLichChieu] = useState([]);
   const [hienThi, setHienThi] = useState([]);
 
