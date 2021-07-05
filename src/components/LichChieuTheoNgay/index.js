@@ -33,7 +33,9 @@ function LichChieuTheoNgay(props) {
       const row = (
         <div key={lich} className="dailyScheduleBox">
           <div className="dateHeader">
-            {formatDDMMYYYY(new Date(lich + " 00:00"), "/")}
+            {formatDDMMYYYY(new Date(lich + "T00:00:00"), "/")}
+            {/* {"  "}
+            {new Date(lich + "T00:00:00").toString()} */}
             {compareTwoDayWithoutTime(new Date(), new Date(lich + "00:00"))
               ? "(Hôm nay)"
               : ""}
