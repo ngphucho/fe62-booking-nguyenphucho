@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Table } from "reactstrap";
 import { formatDDMMYYYY } from "../../../../utils/timeFunction";
@@ -43,6 +43,10 @@ export default function BangDanhSachPhim({
   const handleThemLichchieu = (maPhim) => {
     themLichChieu(maPhim);
   };
+
+  // useEffect(() => {
+  //   console.log(danhSachPhim);
+  // });
   return (
     <Table hover>
       <thead>

@@ -109,14 +109,10 @@ export default function TimKiemPhim() {
       });
       setTenPhim(thongTinTrang.tenPhim);
       setStartDate(
-        thongTinTrang.tuNgay === ""
-          ? null
-          : new Date(thongTinTrang.tuNgay + "T00:00:00")
+        thongTinTrang.tuNgay === "" ? null : new Date(thongTinTrang.tuNgay)
       );
       setEndDate(
-        thongTinTrang.denNgay === ""
-          ? null
-          : new Date(thongTinTrang.denNgay + "T00:00:00")
+        thongTinTrang.denNgay === "" ? null : new Date(thongTinTrang.denNgay)
       );
       setListCheckBox(thongTinTrang.listCheckBox);
       setDanhGia(thongTinTrang.danhGia.map((item) => parseInt(item)));
@@ -125,6 +121,7 @@ export default function TimKiemPhim() {
 
   //cap nhat thongtintimkiemreducer khi input thay doi
   useEffect(() => {
+    console.log(startDate, endDate);
     timKiem();
   }, [tenPhim, startDate, endDate, listCheckBox, danhGia]);
 

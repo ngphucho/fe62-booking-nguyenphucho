@@ -266,6 +266,7 @@ export default function AdminQuanLyPhim() {
       ignoreQueryPrefix: true,
     });
     if (thongTinTrang) {
+      // console.log(JSON.stringify(thongTinTrang));
       if (
         qs.stringify({ tenPhim, tuNgay, denNgay, listCheckBox, danhGia }) !==
         qs.stringify({
@@ -277,13 +278,13 @@ export default function AdminQuanLyPhim() {
         })
       ) {
         setTenPhim(thongTinTrang.tenPhim);
-        setTuNgay(thongTinTrang.tuNgay + "T00:00:00");
-        setDenNgay(thongTinTrang.denNgay + "T00:00:00");
+        setTuNgay(thongTinTrang.tuNgay);
+        setDenNgay(thongTinTrang.denNgay);
         setListCheckBox(thongTinTrang.listCheckBox);
         setDanhGia(thongTinTrang.danhGia);
       }
       // } else {
-      setTrangHienTai(+thongTinTrang.trangHienTai);
+      setTrangHienTai(+thongTinTrang.trangHienTai || 1);
       // }
     }
   }, [location]);
@@ -294,10 +295,12 @@ export default function AdminQuanLyPhim() {
   }, [tenPhim, tuNgay, denNgay, listCheckBox, danhGia]);
 
   useEffect(() => {
+    // console.log(danhSachPhim);
     updateSort();
   }, [danhSachPhim]);
 
   useEffect(() => {
+    console.log("sort", danhSachPhimSorted);
     if (danhSachPhimSorted.length > 0) {
       setTongSoTrang(
         parseInt((danhSachPhimSorted.length - 1) / soPhanTuTrenTrang) + 1
@@ -307,6 +310,7 @@ export default function AdminQuanLyPhim() {
 
   //set danh sach phim duoc phan trang de xuat ra man hinh
   useEffect(() => {
+    // console.log("trang hien tai", trangHienTai);
     setDanhSachPhimHienThi(
       danhSachPhimSorted.slice(
         (trangHienTai - 1) * soPhanTuTrenTrang,
@@ -318,6 +322,7 @@ export default function AdminQuanLyPhim() {
   // loc ket qua tim kiem
   const updateSort = () => {
     if (danhSachPhim) {
+      console.log(danhGia, tuNgay, denNgay, listCheckBox);
       setDanhSachPhimSorted(
         danhSachPhim.filter((item) => {
           return (
