@@ -19,9 +19,14 @@ const MyCollapse = (props) => {
       </div>
       <div className="collapseBody customScrollbar">
         <Collapse isOpen={isOpen}>
-          <div>
+          {/* <div>
             <LichChieuTheoNgay lichChieu={body} />
-          </div>
+          </div> */}
+          <Card>
+            <CardBody>
+              <LichChieuTheoNgay lichChieu={body} />
+            </CardBody>
+          </Card>
         </Collapse>
       </div>
     </div>
