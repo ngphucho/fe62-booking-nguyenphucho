@@ -18,6 +18,9 @@ import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 // import khac
 import { appLayoutData } from "../../utils/myData";
 
+// material
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+
 const schema = yup.object().shape({
   hoTen: yup.string().required("Vui lòng nhập họ tên"),
   // taiKhoan: yup
@@ -150,25 +153,25 @@ export default function ThongTinTaiKhoan() {
     );
   }, []);
 
-    //close submenu o man hinh nho
-    useEffect(() => {
-      dispatch(toggleMenu("close"));
-    }, []);
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
+  }, []);
 
   return thongTinTaiKhoan && thongTinDatVe ? (
-    <div className="container">
-      <div className="thongTinCaNhan">
-        <h1>THÔNG TIN CÁ NHÂN</h1>
+    <div className="container-md p-0">
+      <div className="thongTinTaiKhoan bodyContainer">
+        <h3>THÔNG TIN CÁ NHÂN</h3>
         <div className="formBox">
-          <Form onSubmit={handleSubmit(onSubmit)} className="text-dark">
-            <div className="row">
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <div className="row mx-0">
               <div className="col-md-6 bg-light">
                 {inputList.map((item, index) => (
-                  <div key={index} className="row">
-                    <div className="col-md-3">
+                  <div key={index} className="row dataRow">
+                    <div className="col-sm-3 dataRowLabel">
                       <Label>{item.label}:</Label>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-sm-8 col-11 dataRowInfo">
                       <Controller
                         name={item.name}
                         control={control}
@@ -184,12 +187,17 @@ export default function ThongTinTaiKhoan() {
                         )}
                       />
                       {errors[item.name] && (
-                        <div className="alert alert-danger">
-                          {errors[item.name].message}
+                        <div className="alertBox">
+                          <div className="alert alert-danger">
+                            {errors[item.name].message}
+                          </div>
+                          <div className="icon">
+                            <HighlightOffIcon />
+                          </div>
                         </div>
                       )}
                     </div>
-                    <div className="col-md-1">
+                    <div className="col-1 dataRowButton">
                       {item.name === "taiKhoan" ? null : (
                         <div
                           onClick={() => {
@@ -215,153 +223,161 @@ export default function ThongTinTaiKhoan() {
               </div>
               <div className="col-md-6 bg-secondary">
                 {/* Checkbox đổi mật khẩu */}
-                <FormGroup check>
-                  <Label
-                    check
-                    onChange={async () => {
-                      if (isUpdatePassword) {
-                        await trigger([
-                          "matKhauCu",
-                          "matKhauMoi",
-                          "matKhauMoi2",
-                        ]);
-                      }
-                      setIsUpdatePassword(!isUpdatePassword);
-                      setWrongPassword(null);
-                      // console.log(watch("checkBox"));
-                      // console.log(dirtyFields);
-                    }}
-                  >
+                <div className="row dataRow">
+                  <div className="col dataRowInfo">
+                    <FormGroup check>
+                      <Label
+                        check
+                        onChange={async () => {
+                          if (isUpdatePassword) {
+                            await trigger([
+                              "matKhauCu",
+                              "matKhauMoi",
+                              "matKhauMoi2",
+                            ]);
+                          }
+                          setIsUpdatePassword(!isUpdatePassword);
+                          setWrongPassword(null);
+                          // console.log(watch("checkBox"));
+                          // console.log(dirtyFields);
+                        }}
+                      >
+                        <Controller
+                          name="checkBox"
+                          control={control}
+                          defaultValue={false}
+                          render={({ field }) => (
+                            <Input
+                              {...field}
+                              type="checkbox"
+                              // defaultValue={true}
+                              // onChange={() => {
+                              //   setIsUpdatePassword(!isUpdatePassword);
+                              // }}
+                            />
+                          )}
+                        />{" "}
+                        Đổi mật khẩu
+                      </Label>
+                    </FormGroup>
+                  </div>
+                </div>
+
+                {/* PASSWORD Cũ*/}
+                <div className="row dataRow">
+                  <div className="col-md-4 dataRowLabel">
+                    <Label>Mật khẩu cũ:</Label>
+                  </div>
+                  <div className="col-md-7 dataRowInfo">
+                    {/* <FormGroup className="inputGroup"> */}
                     <Controller
-                      name="checkBox"
+                      name="matKhauCu"
                       control={control}
-                      defaultValue={false}
+                      defaultValue=""
                       render={({ field }) => (
                         <Input
                           {...field}
-                          type="checkbox"
-                          // defaultValue={true}
-                          // onChange={() => {
-                          //   setIsUpdatePassword(!isUpdatePassword);
-                          // }}
+                          type="password"
+                          placeholder="Mật khẩu cũ"
+                          className="rounded-0"
+                          disabled={!isUpdatePassword}
+                          onFocus={() => {
+                            setWrongPassword(null);
+                          }}
                         />
                       )}
-                    />{" "}
-                    Đổi mật khẩu
-                  </Label>
-                </FormGroup>
-                {/* PASSWORD Cũ*/}
-                <div className="row">
-                  <div className="col-md-3">
-                    <Label>Mật khẩu cũ:</Label>
-                  </div>
-                  <div className="col-md-8">
-                    <FormGroup className="inputGroup">
-                      {/* <Controller
-                        name="matKhauCu2"
-                        control={control}
-                        defaultValue={thongTinTaiKhoan.matKhau}
-                        render={({ field }) => (
-                          <Input
-                            {...field}
-                            type="password"
-                            disabled={true}
-                            hidden={true}
-                          />
-                        )}
-                      /> */}
-                      <Controller
-                        name="matKhauCu"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                          <Input
-                            {...field}
-                            type="password"
-                            placeholder="Mật khẩu cũ"
-                            className="rounded-0"
-                            disabled={!isUpdatePassword}
-                            onFocus={() => {
-                              setWrongPassword(null);
-                            }}
-                          />
-                        )}
-                      />
-                      {(errors.matKhauCu || wrongPassword) && (
+                    />
+                    {(errors.matKhauCu || wrongPassword) && (
+                      <div className="alertBox">
                         <div className="alert alert-danger">
                           {wrongPassword
                             ? wrongPassword
                             : errors.matKhauCu.message}
                         </div>
-                      )}
-                    </FormGroup>
+                        <div className="icon">
+                          <HighlightOffIcon />
+                        </div>
+                      </div>
+                    )}
+                    {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1"></div>
+                  <div className="col-md-1 dataRowButton"></div>
                 </div>
                 {/* PASSWORD mới*/}
-                <div className="row">
-                  <div className="col-md-3">
+                <div className="row dataRow">
+                  <div className="col-md-4 dataRowLabel">
                     <Label>Mật khẩu mới:</Label>
                   </div>
-                  <div className="col-md-8">
-                    <FormGroup className="inputGroup">
-                      <Controller
-                        name="matKhauMoi"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                          <Input
-                            {...field}
-                            type="password"
-                            placeholder="Mật khẩu mới"
-                            className="rounded-0"
-                            disabled={!isUpdatePassword}
-                          />
-                        )}
-                      />
-                      {errors.matKhauMoi && (
+                  <div className="col-md-7 dataRowInfo">
+                    {/* <FormGroup className="inputGroup"> */}
+                    <Controller
+                      name="matKhauMoi"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="password"
+                          placeholder="Mật khẩu mới"
+                          className="rounded-0"
+                          disabled={!isUpdatePassword}
+                        />
+                      )}
+                    />
+                    {errors.matKhauMoi && (
+                      <div className="alertBox">
                         <div className="alert alert-danger">
                           {errors.matKhauMoi.message}
                         </div>
-                      )}
-                    </FormGroup>
+                        <div className="icon">
+                          <HighlightOffIcon />
+                        </div>
+                      </div>
+                    )}
+                    {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1"></div>
+                  <div className="col-md-1 dataRowButton"></div>
                 </div>
                 {/*CONFIRM PASSWORD mới*/}
-                <div className="row">
-                  <div className="col-md-3">
+                <div className="row dataRow">
+                  <div className="col-md-4 dataRowLabel">
                     <Label>Xác nhận khẩu mới:</Label>
                   </div>
-                  <div className="col-md-8">
-                    <FormGroup className="inputGroup">
-                      <Controller
-                        name="matKhauMoi2"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                          <Input
-                            {...field}
-                            type="password"
-                            placeholder="Xác nhận mật khẩu mới"
-                            className="rounded-0"
-                            disabled={!isUpdatePassword}
-                          />
-                        )}
-                      />
-                      {errors.matKhauMoi2 && (
+                  <div className="col-md-7 dataRowInfo">
+                    {/* <FormGroup className="inputGroup"> */}
+                    <Controller
+                      name="matKhauMoi2"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="password"
+                          placeholder="Xác nhận mật khẩu mới"
+                          className="rounded-0"
+                          disabled={!isUpdatePassword}
+                        />
+                      )}
+                    />
+                    {errors.matKhauMoi2 && (
+                      <div className="alertBox">
                         <div className="alert alert-danger">
                           {errors.matKhauMoi2.message}
                         </div>
-                      )}
-                    </FormGroup>
+                        <div className="icon">
+                          <HighlightOffIcon />
+                        </div>
+                      </div>
+                    )}
+                    {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1"></div>
+                  <div className="col-md-1 dataRowButton"></div>
                 </div>
               </div>
             </div>
             <FormGroup className="inputGroup">
               <Button
+                className="btnCapNhat"
                 disabled={
                   dirtyFields &&
                   Object.keys(dirtyFields).length === 0 &&
@@ -376,7 +392,7 @@ export default function ThongTinTaiKhoan() {
           </Form>
         </div>
         <div className="lichSuDatVe">
-          <h1>LỊCH SỬ ĐẶT VÉ</h1>
+          <h3>LỊCH SỬ ĐẶT VÉ</h3>
           {thongTinDatVe.map((item) => (
             <div key={item.maVe} className="p-1 mb-1 bg-light">
               <div>Mã vé: {item.maVe}</div>

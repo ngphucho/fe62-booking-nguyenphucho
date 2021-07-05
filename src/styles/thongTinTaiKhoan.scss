@@ -1,0 +1,95 @@
+.thongTinTaiKhoan {
+  font-size: 0.9rem;
+
+  .formBox {
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 0;
+    margin-bottom: 24px;
+  }
+
+  .dataRow {
+    height: 50px;
+    font-size: 1em;
+    padding: 0 10px;
+    border-bottom: 1px solid #cccccc;
+
+    .dataRowLabel,
+    .dataRowInfo,
+    .dataRowButton {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+    }
+
+    .dataRowLabel {
+      font-weight: 500;
+    }
+
+    .dataRowButton {
+      cursor: pointer;
+    }
+
+    .dataRowInfo {
+      position: relative;
+
+      .alertBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        position: absolute;
+        right: 12px;
+        top: 0;
+        bottom: 0;
+
+        .alert {
+          position: absolute;
+          right: 100%;
+          white-space: nowrap;
+          display: none;
+          margin: 0;
+          padding: 5px 10px;
+          border-radius: 0;
+        }
+
+        &:hover {
+          .alert {
+            display: block;
+          }
+        }
+      }
+
+    }
+
+    .form-control {
+      background-color: transparent;
+      border: none;
+      font-size: 1em;
+    }
+
+    .form-control:not(:disabled) {
+      font-weight: 600;
+    }
+
+    .form-check{
+      font-weight: 500;
+    }
+
+    .form-check-input{
+      border-radius: 0;
+    }
+  }
+
+  .btnCapNhat {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+  }
+
+  @media screen and (max-width: 575.9px) {
+    .form-control{
+      padding: 0;
+    }
+    
+  }
+}

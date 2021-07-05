@@ -17,5 +17,5 @@ import "./chiTietPhongVe.scss";
 import "./home.scss";
 import "./test.scss";
 import "./login.scss";
-import "./signUp.scss";
+import "./thongTinTaiKhoan.scss";
 import "./thongTinLichChieuHeThongRap2.scss";
