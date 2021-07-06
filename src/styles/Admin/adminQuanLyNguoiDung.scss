@@ -1,0 +1,19 @@
+.adminQuanLyNguoiDung {
+  .thanhCongCuQuanLyNguoiDung {
+    background-color: var(--color-primary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .bangDanhSachNguoiDung {
+    padding: 1rem;
+  }
+
+  .phanTrang{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

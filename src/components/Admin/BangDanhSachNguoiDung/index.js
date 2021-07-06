@@ -53,66 +53,68 @@ export default function BangDanhSachNguoiDung() {
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    <Table hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Tài khoản</th>
-          <th>Họ tên</th>
-          <th>Email</th>
-          <th>Số ĐT</th>
-          <th>Loại người dùng</th>
-          <th>{/* nút xóa + sửa */}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {danhSachNguoiDungPhanTrang?.items.map((item, index) => (
-          <tr key={index}>
-            <th scope="row">
-              {index +
-                1 +
-                (danhSachNguoiDungPhanTrang.currentPage - 1) *
-                  soPhanTuTrenTrang}
-            </th>
-            <td>{item.taiKhoan}</td>
-            <td>{item.hoTen}</td>
-            <td>{item.email}</td>
-            <td>{item.soDt}</td>
-            <td>{item.maLoaiNguoiDung}</td>
-            <td>
-              {/* <NutXoa /> */}
-              <button
-                className="btn btn-danger"
-                onClick={() => {
-                  xoaNguoiDung(item.taiKhoan);
-                }}
-              >
-                xoa
-              </button>
-              {/* <NutSua /> */}
-              <button
-                className="btn btn-success"
-                onClick={() => {
-                  dispatch(
-                    popupModalToggle({
-                      title: "SỬA THÔNG TIN NGƯỜI DÙNG",
-                    })
-                  );
-                  dispatch(
-                    changeFormData({
-                      button: "Sửa",
-                      type: "edit",
-                      values: item,
-                    })
-                  );
-                }}
-              >
-                sua
-              </button>
-            </td>
+    <div className="bangDanhSachNguoiDung">
+      <Table hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tài khoản</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Số ĐT</th>
+            <th>Loại người dùng</th>
+            <th>{/* nút xóa + sửa */}</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {danhSachNguoiDungPhanTrang?.items.map((item, index) => (
+            <tr key={index}>
+              <th scope="row">
+                {index +
+                  1 +
+                  (danhSachNguoiDungPhanTrang.currentPage - 1) *
+                    soPhanTuTrenTrang}
+              </th>
+              <td>{item.taiKhoan}</td>
+              <td>{item.hoTen}</td>
+              <td>{item.email}</td>
+              <td>{item.soDt}</td>
+              <td>{item.maLoaiNguoiDung}</td>
+              <td>
+                {/* <NutXoa /> */}
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    xoaNguoiDung(item.taiKhoan);
+                  }}
+                >
+                  xoa
+                </button>
+                {/* <NutSua /> */}
+                <button
+                  className="btn btn-success"
+                  onClick={() => {
+                    dispatch(
+                      popupModalToggle({
+                        title: "SỬA THÔNG TIN NGƯỜI DÙNG",
+                      })
+                    );
+                    dispatch(
+                      changeFormData({
+                        button: "Sửa",
+                        type: "edit",
+                        values: item,
+                      })
+                    );
+                  }}
+                >
+                  sua
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
   );
 }

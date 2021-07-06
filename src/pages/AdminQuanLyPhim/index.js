@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+
+// component
 import ThanhCongCuQuanLyPhim from "../../components/Admin/AdminPhim/ThanhCongCuQuanLyPhim";
 import BangDanhSachPhim from "../../components/Admin/AdminPhim/BangDanhSachPhim";
 import PhanTrang from "../../components/PhanTrang";
+import { listSortCheckBox } from "../../components/Admin/AdminPhim/ThanhCongCuQuanLyPhim/TimKiemPhim/listSortCheckBox";
+import Popup from "../../components/Controls/Popup";
+import FormPhim from "../../components/Controls/FormPhim";
 import {
   Button,
   Dialog,
@@ -12,17 +17,19 @@ import {
   DialogActions,
   DialogContentText,
 } from "@material-ui/core";
-import quanLyPhimAPI from "../../services/quanLyPhimAPI";
-import { snackbarThongBaoToggle } from "../../actions/snackbarThongBao";
-import Popup from "../../components/Controls/Popup";
-import FormPhim from "../../components/Controls/FormPhim";
-import qs from "qs";
-import { cloneArrayObject } from "../../utils/myFunction";
-import { listSortCheckBox } from "../../components/Admin/AdminPhim/ThanhCongCuQuanLyPhim/TimKiemPhim/listSortCheckBox";
+
+// import action
+import { pageTitleChange } from "../../actions/pageTitle";
 import { layDanhSachPhim } from "../../actions/movies";
+import { snackbarThongBaoToggle } from "../../actions/snackbarThongBao";
+
+// import services
+import quanLyPhimAPI from "../../services/quanLyPhimAPI";
 
 // import khac
+import qs from "qs";
 import { appLayoutData } from "../../utils/myData";
+import { cloneArrayObject } from "../../utils/myFunction";
 
 export default function AdminQuanLyPhim() {
   const history = useHistory();
@@ -260,6 +267,16 @@ export default function AdminQuanLyPhim() {
   };
 
   //
+
+  //set activePage
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 2,
+        pageTitle: "",
+      })
+    );
+  }, []);
 
   useEffect(() => {
     const thongTinTrang = qs.parse(location.search, {

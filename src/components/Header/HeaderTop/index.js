@@ -169,7 +169,6 @@ export default function HeaderTop() {
                   </DropdownToggle>
                   <DropdownMenu
                     className="border-0 rounded-0 p-0 subMenu"
-                    // style={{ top: "96px", backgroundColor: "#ffffff80" }}
                   >
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
                       <DropdownItem className="subItem">

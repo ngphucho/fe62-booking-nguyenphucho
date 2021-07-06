@@ -5,14 +5,16 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
+  NavbarBrand,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { logout } from "../../../actions/auth";
+import PageTitle from "../PageTitle";
 
 export default function NavBar() {
   const { userInfo } = useSelector((state) => state.auth);
@@ -22,16 +24,23 @@ export default function NavBar() {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <Navbar expand="md">
+        <NavbarBrand>
+          <PageTitle />
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar  className="d-flex justify-content-end">
+        <Collapse isOpen={isOpen} navbar className="d-flex justify-content-end">
           <Nav className="mr-auto" navbar>
             <UncontrolledDropdown nav inNavbar className="position-static">
-              <DropdownToggle nav>{userInfo.taiKhoan}</DropdownToggle>
+              <DropdownToggle nav>
+                <AccountCircleIcon />
+                <span style={{ paddingLeft: 10, letterSpacing: 2 }}>
+                  {userInfo.taiKhoan}
+                </span>
+              </DropdownToggle>
               <DropdownMenu
                 className="border-0 rounded-0 p-0"
-                style={{ top: "56px", right: 0, backgroundColor: "#00000080" }}
+                style={{ top: "70px", right: 0, backgroundColor: "#00000080" }}
               >
                 <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
                   <DropdownItem>Thông tin cá nhân</DropdownItem>

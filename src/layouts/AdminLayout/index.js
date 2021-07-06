@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import SnackbarThongBao from "../../components/Controls/SnackbarThongBao";
 // import Popup from "../../components/Controls/Popup"
 
@@ -12,15 +11,21 @@ export default function AdminLayout({ children }) {
     <div className="admin">
       <div className="container-fluid px-0">
         <div className="d-flex">
-          <div>
+          {/* slidebar */}
+          <div className="slideBarBox">
             <SlideBar />
           </div>
-          <div className="mainContent pt-0">
+
+          {/* main content */}
+          <div className="mainContent">
+            {/* navbar */}
             <div className="navBar">
               <NavBar />
             </div>
-            <PageTitle />
-            <div className="container-fluid">{children}</div>
+
+            {/* children */}
+            {/* <PageTitle /> */}
+            <div className="container-fluid p-0">{children}</div>
           </div>
         </div>
         <SnackbarThongBao />

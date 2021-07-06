@@ -2,7 +2,7 @@ import { PAGE_TITLE_CHANGE } from "../constants/pageTitle";
 
 const initialState = {
   pageTitle: "",
-  activePage: 1,
+  activePage: 1000,
 };
 
 const pageTitleReducer = (state = initialState, action) => {

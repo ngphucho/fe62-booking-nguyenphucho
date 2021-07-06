@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "@material-ui/core";
 
-import ThongTinLichChieuPhim from "../../components/ThongTinLichChieuPhim";
 import MySelect from "../../components/Controls/MySelect";
 import DateInput from "../../components/Controls/DateInput";
 
@@ -20,7 +19,9 @@ import { cloneArrayIdName } from "../../utils/myFunction";
 import { formatDDMMYYYY } from "../../utils/timeFunction";
 import TimeInput from "../../components/Controls/TimeInput";
 import MyInput from "../../components/Controls/MyInput";
-import quanLyRapAPI from "../../services/quanLyRapAPI";
+
+// actions
+import { pageTitleChange } from "../../actions/pageTitle";
 
 export default function AdminQuanLyLichChieu() {
   const history = useHistory();
@@ -159,11 +160,22 @@ export default function AdminQuanLyLichChieu() {
         </div>
       </div>
     );
-    console.log(lichChieuFiltered);
+    // console.log(lichChieuFiltered);
     return lichChieuFiltered;
   };
 
   // =======USEEFFECT=========
+
+    //set activePage
+    useEffect(() => {
+      dispatch(
+        pageTitleChange({
+          activePage: 3,
+          pageTitle: "",
+        })
+      );
+    }, []);
+
   //render lan dau
   useEffect(() => {
     dispatch(layDanhSachPhim());

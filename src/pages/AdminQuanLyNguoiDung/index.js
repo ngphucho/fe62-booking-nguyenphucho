@@ -9,7 +9,9 @@ import BangDanhSachNguoiDung from "../../components/Admin/BangDanhSachNguoiDung"
 import ThanhCongCuQuanLyNguoiDung from "../../components/Admin/ThanhCongCuQuanLyNguoiDung";
 import Popup from "../../components/Controls/Popup";
 import FormDangKy from "../../components/Controls/FormDangKy";
-// import SnackbarThongBao from "../../components/Controls/SnackbarThongBao";
+
+//import action
+import { pageTitleChange } from "../../actions/pageTitle";
 
 export default function AdminQuanLyNguoiDung() {
   const dispatch = useDispatch();
@@ -20,6 +22,17 @@ export default function AdminQuanLyNguoiDung() {
   const { danhSachNguoiDungPhanTrang } = useSelector(
     (state) => state.danhSachNguoiDungPhanTrang
   );
+
+  //set activePage
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 1,
+        pageTitle: "",
+      })
+    );
+  }, []);
+
   useEffect(() => {
     dispatch(layDanhSachLoaiNguoiDung());
   }, []);
@@ -36,7 +49,7 @@ export default function AdminQuanLyNguoiDung() {
   }, [trangHienTai]);
 
   return (
-    <div>
+    <div className="adminQuanLyNguoiDung">
       <ThanhCongCuQuanLyNguoiDung />
       <BangDanhSachNguoiDung />
       {danhSachNguoiDungPhanTrang ? (

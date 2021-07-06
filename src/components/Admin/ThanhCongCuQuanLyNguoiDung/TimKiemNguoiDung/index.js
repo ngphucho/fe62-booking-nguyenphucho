@@ -32,11 +32,12 @@ export default function TimKiemNguoiDung() {
               {...field}
               placeholder="... tim kiem"
               className="bg-white border-0 rounded-0"
+              style={{height: 38}}
             ></Input>
           )}
         />
       </FormGroup>
-      <Button color="success">Tim kiem</Button>
+      <Button color="success">Tìm</Button>
     </Form>
   );
 }
