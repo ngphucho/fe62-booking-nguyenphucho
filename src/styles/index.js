@@ -19,3 +19,4 @@ import "./test.scss";
 import "./login.scss";
 import "./thongTinTaiKhoan.scss";
 import "./thongTinLichChieuHeThongRap2.scss";
+import "./cinema.scss";

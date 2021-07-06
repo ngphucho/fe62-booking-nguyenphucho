@@ -33,26 +33,28 @@ export default function Cinema() {
     );
   }, []);
 
-    //close submenu o man hinh nho
-    useEffect(() => {
-      dispatch(toggleMenu("close"));
-    }, []);
+  //close submenu o man hinh nho
+  useEffect(() => {
+    dispatch(toggleMenu("close"));
+  }, []);
 
   return isLoading ? (
     <IsLoading></IsLoading>
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="container">
-      <div style={{ width: "200px" }} className="mx-auto">
-        <CinemaItem cinema={selectedCinema[0]} />
-      </div>
-      <div className="row">
-        {danhSachCumRap.map((item, index) => (
-          <div key={index} className="col-md-6">
-            <CinemaItemDetail detail={item} />
-          </div>
-        ))}
+    <div className="cinema">
+      <div className="container">
+        <div className="cinemaItemWrap">
+          <CinemaItem cinema={selectedCinema[0]} />
+        </div>
+        <div className="row">
+          {danhSachCumRap.map((item, index) => (
+            <div key={index} className="col-xl-4 col-md-6 cumRapBoxWrap">
+              <CinemaItemDetail detail={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

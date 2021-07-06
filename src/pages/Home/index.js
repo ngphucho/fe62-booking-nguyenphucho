@@ -98,7 +98,7 @@ export default function Home() {
         <div className="container-md homeBody p-0">
           <div
             className="oderTicketBox"
-            style={{ padding: isMd ? "0 24px" : 0, marginTop: isMd ? 72 : 0 }}
+            style={{ padding: isMd ? "0 24px" : 0, marginTop: isMd ? "2rem" : 0 }}
           >
             <OrderTicketBox></OrderTicketBox>
           </div>

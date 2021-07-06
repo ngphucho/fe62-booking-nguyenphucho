@@ -4,7 +4,7 @@
 
   font-size: 0.9rem;
   padding-bottom: 0;
-  margin-bottom: -72px;
+  // margin-bottom: -72px;
 
   //formBox
   .formBox {
@@ -114,13 +114,18 @@
 
   //lich su dat ve
   .lichSuDatVe {
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 
     .veBox {
       background-color: $bg1;
       padding: 10px;
       margin-bottom: 24px;
       font-size: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
 
       & > div {
         padding: 5px 10px;

@@ -87,18 +87,12 @@ export default function OrderTicketBox() {
 
   return (
     <div className="orderTicketBox" style={{ backgroundClip: "padding-box" }}>
-      <div
-        className={classes.root}
-        // style={{ paddingTop: "20px", paddingBottom: "20px", marginLeft: "auto", marginRight: "auto" }}
-      >
+      <div className={classes.root}>
         <AppBar position="static" color="transparent" elevation={0}>
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="simple tabs example"
-            // variant="fullWidth"
-            //     indicatorColor="secondary"
-            // textColor="primary"
             centered
           >
             <Tab label="THEO PHIM" {...a11yProps(0)} />

@@ -55,7 +55,6 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   const BoxPhim = (item) => {
     return (
       <div key={item.maPhim} className="phimBox">
-        {/* {console.log(item)} */}
         <div className="thongTinPhimBox">
           <div className="thongTinPhimBoxImage">
             <div className="itemPhimBoxImage cursorPointer">
@@ -82,19 +81,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
               <div className="d-flex flex-wrap">
                 {/* Danh sach thoi gian chieu */}
                 {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                  // const showingDate = new Date(subItem.ngayChieuGioChieu);
                   return (
-                    // <div
-                    //   className="text-success p-2 cursorPointer"
-                    //   key={index}
-                    //   onClick={() => {
-                    //     history.push(
-                    //       "/chi-tiet-phong-ve/" + subItem.maLichChieu
-                    //     );
-                    //   }}
-                    // >
-                    //   {subItem.ngayChieuGioChieu.slice(11, 16)}
-                    // </div>
                     <SuatChieu
                       thoiGianBatDau={subItem.ngayChieuGioChieu}
                       maLichChieu={subItem.maLichChieu}
@@ -127,7 +114,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   };
 
   return danhSachHeThongRap && danhSachCumRap && danhSachPhim ? (
-    <div className="container thongTinLichChieuHeThongRap2">
+    <div className="container-md thongTinLichChieuHeThongRap2">
       <div className="row" style={{ overflow: "hidden" }}>
         {/* DANH SACH HE THONG RAP */}
 

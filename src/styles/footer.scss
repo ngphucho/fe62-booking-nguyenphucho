@@ -1,5 +1,5 @@
 .footer {
-  margin-top: 72px;
+  margin-top: 2rem;
   padding-top: 20px;
   position: relative;
   background-color: #fafafa;
@@ -68,7 +68,7 @@
 
   @media screen and(max-width: 767.9px) {
     & {
-      margin-top: 0;
+      // margin-top: 0;
       box-shadow: none;
     }
 
