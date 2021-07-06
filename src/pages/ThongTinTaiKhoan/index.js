@@ -17,6 +17,7 @@ import quanLyNguoiDungAPI from "../../services/quanLyNguoiDungAPI";
 
 // import khac
 import { appLayoutData } from "../../utils/myData";
+import { formatDDMMYYYY } from "../../utils/timeFunction";
 
 // material
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
@@ -165,13 +166,14 @@ export default function ThongTinTaiKhoan() {
         <div className="formBox">
           <Form onSubmit={handleSubmit(onSubmit)}>
             <div className="row mx-0">
-              <div className="col-md-6 bg-light">
+              {/* ---------Left */}
+              <div className="col-md-6 left">
                 {inputList.map((item, index) => (
                   <div key={index} className="row dataRow">
                     <div className="col-sm-3 dataRowLabel">
                       <Label>{item.label}:</Label>
                     </div>
-                    <div className="col-sm-8 col-11 dataRowInfo">
+                    <div className="col-sm-8 col-9 dataRowInfo">
                       <Controller
                         name={item.name}
                         control={control}
@@ -197,7 +199,7 @@ export default function ThongTinTaiKhoan() {
                         </div>
                       )}
                     </div>
-                    <div className="col-1 dataRowButton">
+                    <div className="col-sm-1 col-3 dataRowButton">
                       {item.name === "taiKhoan" ? null : (
                         <div
                           onClick={() => {
@@ -221,7 +223,11 @@ export default function ThongTinTaiKhoan() {
                   </div>
                 ))}
               </div>
-              <div className="col-md-6 bg-secondary">
+
+              {/* ---------Right */}
+              <div
+                className={"col-md-6 " + (isUpdatePassword ? "left" : "right")}
+              >
                 {/* Checkbox đổi mật khẩu */}
                 <div className="row dataRow">
                   <div className="col dataRowInfo">
@@ -265,10 +271,10 @@ export default function ThongTinTaiKhoan() {
 
                 {/* PASSWORD Cũ*/}
                 <div className="row dataRow">
-                  <div className="col-md-4 dataRowLabel">
+                  <div className="col-sm-4 dataRowLabel">
                     <Label>Mật khẩu cũ:</Label>
                   </div>
-                  <div className="col-md-7 dataRowInfo">
+                  <div className="col-sm-7 col-9 dataRowInfo">
                     {/* <FormGroup className="inputGroup"> */}
                     <Controller
                       name="matKhauCu"
@@ -301,14 +307,14 @@ export default function ThongTinTaiKhoan() {
                     )}
                     {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1 dataRowButton"></div>
+                  <div className="col-sm-1 col-3 dataRowButton"></div>
                 </div>
                 {/* PASSWORD mới*/}
                 <div className="row dataRow">
-                  <div className="col-md-4 dataRowLabel">
+                  <div className="col-sm-4 dataRowLabel">
                     <Label>Mật khẩu mới:</Label>
                   </div>
-                  <div className="col-md-7 dataRowInfo">
+                  <div className="col-sm-7 col-9 dataRowInfo">
                     {/* <FormGroup className="inputGroup"> */}
                     <Controller
                       name="matKhauMoi"
@@ -336,14 +342,14 @@ export default function ThongTinTaiKhoan() {
                     )}
                     {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1 dataRowButton"></div>
+                  <div className="col-sm-1 col-3 dataRowButton"></div>
                 </div>
                 {/*CONFIRM PASSWORD mới*/}
                 <div className="row dataRow">
-                  <div className="col-md-4 dataRowLabel">
+                  <div className="col-sm-4 dataRowLabel">
                     <Label>Xác nhận khẩu mới:</Label>
                   </div>
-                  <div className="col-md-7 dataRowInfo">
+                  <div className="col-sm-7 col-9 dataRowInfo">
                     {/* <FormGroup className="inputGroup"> */}
                     <Controller
                       name="matKhauMoi2"
@@ -371,7 +377,7 @@ export default function ThongTinTaiKhoan() {
                     )}
                     {/* </FormGroup> */}
                   </div>
-                  <div className="col-md-1 dataRowButton"></div>
+                  <div className="col-sm-1 col-3 dataRowButton"></div>
                 </div>
               </div>
             </div>
@@ -391,22 +397,34 @@ export default function ThongTinTaiKhoan() {
             </FormGroup>
           </Form>
         </div>
+        <h3>LỊCH SỬ ĐẶT VÉ</h3>
         <div className="lichSuDatVe">
-          <h3>LỊCH SỬ ĐẶT VÉ</h3>
           {thongTinDatVe.map((item) => (
-            <div key={item.maVe} className="p-1 mb-1 bg-light">
-              <div>Mã vé: {item.maVe}</div>
-              <div>Ngày đặt: {item.ngayDat}</div>
-              <div>Tên phim: {item.tenPhim}</div>
-              <div>Thời lượng: {item.thoiLuongPhim}</div>
+            <div key={item.maVe} className="veBox">
               <div>
-                Rạp phim: {item.danhSachGhe[0].tenHeThongRap} -{" "}
+                <span className="label">Mã vé:</span> {item.maVe}
+              </div>
+              <div>
+                <span className="label">Ngày đặt:</span>{" "}
+                {formatDDMMYYYY(item.ngayDat, "/")} {item.ngayDat.slice(11, 19)}
+              </div>
+              <div>
+                <span className="label">Tên phim:</span> {item.tenPhim}
+              </div>
+              <div>
+                <span className="label">Thời lượng:</span> {item.thoiLuongPhim}
+              </div>
+              <div>
+                <span className="label">Rạp phim: </span>
+                {item.danhSachGhe[0].tenHeThongRap} -{" "}
                 {item.danhSachGhe[0].tenCumRap}
               </div>
               <div>
-                Ghế:{" "}
+                <span className="label">Ghế:</span>{" "}
                 {item.danhSachGhe.map((ghe, index) => (
-                  <span key={index}>ghế {ghe.tenGhe},</span>
+                  <span className="ghe" key={index}>
+                    Ghế {ghe.tenGhe}
+                  </span>
                 ))}
               </div>
             </div>

@@ -1,17 +1,43 @@
 .thongTinTaiKhoan {
-  font-size: 0.9rem;
+  $bg1: #f8f9fa;
+  $bg2: #f1f1f1;
 
+  font-size: 0.9rem;
+  padding-bottom: 0;
+  margin-bottom: -72px;
+
+  //formBox
   .formBox {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc80;
     padding: 10px 0;
     margin-bottom: 24px;
+
+    .col-md-6:first-child {
+      border-right: 1px solid #cccccc80;
+    }
+
+    .left {
+      background-color: $bg1;
+
+      .dataRow:hover {
+        background-color: $bg2;
+      }
+    }
+
+    .right {
+      background-color: $bg2;
+
+      .dataRow:hover {
+        background-color: $bg1;
+      }
+    }
   }
 
   .dataRow {
     height: 50px;
     font-size: 1em;
     padding: 0 10px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc80;
 
     .dataRowLabel,
     .dataRowInfo,
@@ -27,6 +53,8 @@
 
     .dataRowButton {
       cursor: pointer;
+      justify-content: flex-end;
+      padding-left: 0;
     }
 
     .dataRowInfo {
@@ -58,7 +86,6 @@
           }
         }
       }
-
     }
 
     .form-control {
@@ -71,25 +98,82 @@
       font-weight: 600;
     }
 
-    .form-check{
+    .form-check {
       font-weight: 500;
     }
 
-    .form-check-input{
+    .form-check-input {
       border-radius: 0;
     }
   }
 
   .btnCapNhat {
     display: block;
-    margin-top: 10px;
-    margin-left: auto;
+    margin: 10px auto 0;
+  }
+
+  //lich su dat ve
+  .lichSuDatVe {
+    padding: 10px 0;
+
+    .veBox {
+      background-color: $bg1;
+      padding: 10px;
+      margin-bottom: 24px;
+      font-size: 1em;
+
+      & > div {
+        padding: 5px 10px;
+      }
+
+      // &>div:last-child{
+      //   padding: 30px 10px;
+      // }
+
+      .ghe {
+        display: inline-block;
+        padding: 2px;
+        background-color: $bg2;
+        margin: 3px;
+      }
+
+      .label {
+        font-weight: 500;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767.9px) {
+    margin-bottom: 0;
+
+    .formBox {
+      .col-md-6:first-child {
+        border-right: none;
+      }
+    }
   }
 
   @media screen and (max-width: 575.9px) {
-    .form-control{
+    //formBox
+    .formBox {
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+
+    .form-control {
       padding: 0;
     }
-    
+
+    .dataRow {
+      height: 70px;
+    }
+
+    //lich su dat ve
+    .lichSuDatVe {
+      .veBox {
+        margin-left: -24px;
+        margin-right: -24px;
+      }
+    }
   }
 }

@@ -15,6 +15,8 @@ export default function MyCarousel() {
       showThumbs={false}
       stopOnHover={true}
       dynamicHeight={false}
+      interval={4000}
+      autoPlay={true}
     >
       {items.map((item, index) => (
         <div key={index} className="myCarouselImgageBox">

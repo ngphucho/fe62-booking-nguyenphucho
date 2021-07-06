@@ -89,9 +89,7 @@ export default function Home() {
     <IsLoading></IsLoading>
   ) : (
     <div className="home">
-      {/* <div className="container-xl p-0"> */}
-        <MyCarousel></MyCarousel>
-      {/* </div> */}
+      <MyCarousel></MyCarousel>
 
       {/* <MainContent></MainContent> */}
       {error ? (
