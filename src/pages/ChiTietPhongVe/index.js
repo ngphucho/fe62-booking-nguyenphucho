@@ -32,9 +32,9 @@ export default function ChiTietPhongVe() {
 
   return !isLoading && danhSachPhongVe ? (
     <div className="chiTietPhongVe">
-      <div className="container py-3">
+      <div className="container">
         <div className="row">
-          <div className="col-md-9">
+          <div className="col-md-8 left">
             <div className="container-fluid p-0 mb-3 chiTietPhimPhongVe">
               <ChiTietPhimPhongVe chiTietPhim={danhSachPhongVe.thongTinPhim} />
             </div>
@@ -45,7 +45,7 @@ export default function ChiTietPhongVe() {
               <GiaiThich edge={isMd?30:20}/>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4 right">
             <div>
               <div>
                 <ChiTietDatGhe

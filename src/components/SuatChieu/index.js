@@ -16,7 +16,9 @@ export default function SuatChieu(props) {
       onClick={() => {
         history.push("/chi-tiet-phong-ve/" + maLichChieu);
       }}
-      className={end ? "withEnd" : "withoutEnd" + disabled ? " disabled" : ""}
+      className={
+        (end ? "withEnd" : "withoutEnd") + (disabled ? " disabled" : "")
+      }
     >
       {start}
       {end ? " - " + end : null}

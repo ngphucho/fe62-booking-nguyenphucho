@@ -3,8 +3,13 @@ import { chairToggle } from "../../actions/quanLyDatVe";
 import { useDispatch, useSelector } from "react-redux";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import quanLyDatVeAPI from "../../services/quanLyDatVeAPI";
+import { formatVND } from "../../utils/myFunction";
 
-export default function ChiTietDatGhe({ danhSachPhongVe, isSuccess, setSuccess }) {
+export default function ChiTietDatGhe({
+  danhSachPhongVe,
+  isSuccess,
+  setSuccess,
+}) {
   const [selected, setSelected] = useState(null);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -46,26 +51,35 @@ export default function ChiTietDatGhe({ danhSachPhongVe, isSuccess, setSuccess }
 
   return (
     <div className="chiTietDatGhe">
-      <div className="thonTinPhim">
-        <div>{thongTinPhim.tenPhim}</div>
+      <div className="thongTinPhim">
+        <div className="group">Chi Tiết Phim</div>
         <div>
+          <span className="label">Tên phim: </span>
+          {thongTinPhim.tenPhim}
+        </div>
+        <div>
+          <span className="label">Tên rạp: </span>
           {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
         </div>
         <div>
+          <span className="label">Thời gian: </span>
           {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
         </div>
       </div>
       <div className="danhSachGhe">
-        <div>Danh Sach Ghe</div>
+        <div className="group">Danh Sách Ghế</div>
         {danhSachGheDangChon.map((item, index) => (
           <div key={item.maGhe} className="row">
-            <div className="col-7">
+            <div className="col-6">
               {index + 1 + ". "}
               {item.tenGhe}({item.loaiGhe})
             </div>
-            <div className="col-3">{item.giaVe}</div>
+            <div className="col-4" style={{ textAlign: "right" }}>
+              {formatVND(item.giaVe)}
+            </div>
             <div
               className="col-2"
+              style={{ paddingLeft: 0, textAlign: "right" }}
               onClick={() => {
                 toggle(item.x, item.y);
               }}
@@ -74,16 +88,28 @@ export default function ChiTietDatGhe({ danhSachPhongVe, isSuccess, setSuccess }
             </div>
           </div>
         ))}
-        <div>Tổng tiền: {tongTien}</div>
+        <div>Tổng tiền: {formatVND(tongTien)}</div>
       </div>
       <div className="thongTinKhachHang">
-        <div>Họ tên: {userInfo.hoTen}</div>
-        <div>Tên đăng nhập: {userInfo.taiKhoan}</div>
-        <div>Email: {userInfo.email}</div>
+        <div className="group">Thông tin khách hàng</div>
+        <div>
+          <span className="label">Họ tên: </span>
+          {userInfo.hoTen}
+        </div>
+        <div>
+          <span className="label">Tên đăng nhập: </span>
+          {userInfo.taiKhoan}
+        </div>
+        <div>
+          <span className="label">Email: </span>
+          {userInfo.email}
+        </div>
       </div>
       <div className="phuongThucThanhToan">
-        <div>Phương thức thanh toán</div>
-        <PhuongThucThanhToan selected={selected} setSelected={setSelected} />
+        <div className="group">Phương thức thanh toán</div>
+        <div className="btnPhuongThucThanhToan">
+          <PhuongThucThanhToan selected={selected} setSelected={setSelected} />
+        </div>
       </div>
       <div className="thanToan">
         <button

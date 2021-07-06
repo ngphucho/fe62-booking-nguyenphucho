@@ -4,6 +4,7 @@ import ReactHorizontalDatePicker from "react-horizontal-strip-datepicker";
 import "react-horizontal-strip-datepicker/dist/ReactHorizontalDatePicker.css";
 import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
 import ScrollContainer from "react-indiana-drag-scroll";
+import SuatChieu from "../../components/SuatChieu";
 
 export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
   const [today, setToday] = useState(new Date());
@@ -81,21 +82,23 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
               <div className="d-flex flex-wrap">
                 {/* Danh sach thoi gian chieu */}
                 {item.lstLichChieuTheoPhim.map((subItem, index) => {
-                  const showingDate = new Date(subItem.ngayChieuGioChieu);
+                  // const showingDate = new Date(subItem.ngayChieuGioChieu);
                   return (
-                    <div
-                      style={{ fontSize: "1.5em" }}
-                      className="text-success p-2 cursorPointer"
-                      key={index}
-                      onClick={() => {
-                        history.push(
-                          "/chi-tiet-phong-ve/" + subItem.maLichChieu
-                        );
-                      }}
-                    >
-                      {/* {console.log(subItem.ngayChieuGioChieu)} */}
-                      {subItem.ngayChieuGioChieu.slice(11, 16)}
-                    </div>
+                    // <div
+                    //   className="text-success p-2 cursorPointer"
+                    //   key={index}
+                    //   onClick={() => {
+                    //     history.push(
+                    //       "/chi-tiet-phong-ve/" + subItem.maLichChieu
+                    //     );
+                    //   }}
+                    // >
+                    //   {subItem.ngayChieuGioChieu.slice(11, 16)}
+                    // </div>
+                    <SuatChieu
+                      thoiGianBatDau={subItem.ngayChieuGioChieu}
+                      maLichChieu={subItem.maLichChieu}
+                    />
                   );
                 })}
               </div>

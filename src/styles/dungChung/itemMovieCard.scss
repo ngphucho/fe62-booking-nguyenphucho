@@ -169,7 +169,7 @@ $textContentHeight: 135%;
       .btnTrailer {
         color: #ffffff;
         // font-weight: bold;
-        font-family: "Pacifico";
+        // font-family: "Pacifico";
         cursor: pointer;
         transition: 0.5s linear;
         display: block;
@@ -312,7 +312,8 @@ $textContentHeight: 135%;
 
           .btnChiTiet,
           .btnTrailer {
-            font-family: "Roboto";
+            // font-family: "Roboto";
+            font-family: "Signika";
             display: block;
             width: 100%;
             margin-bottom: 5px;

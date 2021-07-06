@@ -5,6 +5,7 @@
     // overflow: auto;
     // height: 400px;
     padding: 10px 15px;
+    font-size: 14px;
     // background-color: black;
 
     .scroll-container {
@@ -29,6 +30,7 @@
     position: relative;
     padding-left: 15px;
     padding-right: 15px;
+    font-size: 0.9rem;
 
     &::before {
       content: "";
@@ -99,6 +101,7 @@
         justify-content: center;
         flex-direction: column;
         padding: 5px;
+        font-size: 0.9rem;
       }
 
       .thongTinCumRapBoxImage {
@@ -114,7 +117,7 @@
 
         .tenRap {
           font-weight: bold;
-          font-size: 1rem;
+          // font-size: 1rem;
           color: #000000;
         }
         .diaChi {
