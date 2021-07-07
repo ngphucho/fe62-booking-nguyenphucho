@@ -26,8 +26,8 @@ export default function ChiTietPhongVe() {
     setTimeout(() => {
       // setSuccess(false);
       window.location.reload();
-    }, 2000);
-    return <div>Đặt vé thành công</div>;
+    }, 3000);
+    // return <div>Đặt vé thành công</div>;
   }
 
   return !isLoading && danhSachPhongVe ? (

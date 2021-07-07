@@ -61,7 +61,7 @@ export default function Footer() {
             <Link to="/home">
               <img
                 className="bottom-logo"
-                src="./images/footer-logo1.png"
+                src="./images/header-logo1.png"
                 alt="bottom-log"
               />
             </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <div className="col-sm-7 d-flex flex-column justify-content-around footerNavBox">
+          <div className="col-sm-7 d-flex flex-column justify-content-around footerNavBox pt-1">
             <div className="footer-nav about">
               <b>MH Movie</b>
               <span className="d-inline-block">

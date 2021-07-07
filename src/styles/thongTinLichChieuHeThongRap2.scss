@@ -10,6 +10,7 @@
 
     .scroll-container {
       height: 485px;
+      cursor: grab;
     }
   }
 
@@ -182,6 +183,27 @@
 
   .dateBox {
     margin: -7px;
+
+    .datepicker-button-previous,
+    .datepicker-button-next {
+      background: #7d7d7d;
+    }
+
+    .datepicker-month-label {
+      color: #7d7d7d;
+    }
+
+    .datepicker-date-day-Item.wrapper.date-day-Item-selected {
+      border: 2px solid #7d7d7d;
+      color: #ffffff;
+      background-color: #7d7d7d;
+    }
+
+    .datepicker-date-day-Item:hover {
+      background-color: #ffffff;
+      border: 2px solid #7d7d7d;
+      color: #7d7d7d;
+    }
   }
 
   .customScrollbar {

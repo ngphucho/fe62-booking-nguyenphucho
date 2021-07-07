@@ -6,6 +6,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 // layouts
 import AppLayout from "./layouts/AppLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import ScrollToTop from "./components/ScrollToTop";
 
 // custom routes
 import ClientRoute from "./auth/ClientRoute";
@@ -20,43 +21,43 @@ const ChiTietPhongVe = lazy(() => import("./pages/ChiTietPhongVe"));
 const Cinema = lazy(() => import("./pages/Cinema"));
 
 // import Cinemas from "./pages/Cinemas";
-const Cinemas = lazy(() => import("./pages/Cinemas"))
+const Cinemas = lazy(() => import("./pages/Cinemas"));
 
 // import Home from "./pages/Home";
-const Home = lazy(() => import("./pages/Home"))
+const Home = lazy(() => import("./pages/Home"));
 
 // import Login from "./pages/Login";
-const Login = lazy(() => import("./pages/Login"))
+const Login = lazy(() => import("./pages/Login"));
 
 // import Movie from "./pages/Movie";
-const Movie = lazy(() => import("./pages/Movie"))
+const Movie = lazy(() => import("./pages/Movie"));
 
 // import AllMovies from "./pages/AllMovies";
-const AllMovies = lazy(() => import("./pages/AllMovies"))
+const AllMovies = lazy(() => import("./pages/AllMovies"));
 
 // import UpcomingMovies from "./pages/UpcomingMovies";
-const UpcomingMovies = lazy(() => import("./pages/UpcomingMovies"))
+const UpcomingMovies = lazy(() => import("./pages/UpcomingMovies"));
 
 // import NowShowingMovies from "./pages/NowShowingMovies";
-const NowShowingMovies = lazy(() => import("./pages/NowShowingMovies"))
+const NowShowingMovies = lazy(() => import("./pages/NowShowingMovies"));
 
 // import Search from "./pages/Search";
-const Search = lazy(() => import("./pages/Search"))
+const Search = lazy(() => import("./pages/Search"));
 
 // import SignUp from "./pages/SignUp";
-const SignUp = lazy(() => import("./pages/SignUp"))
+const SignUp = lazy(() => import("./pages/SignUp"));
 
 // import ThongTinTaiKhoan from "./pages/ThongTinTaiKhoan";
-const ThongTinTaiKhoan = lazy(() => import("./pages/ThongTinTaiKhoan"))
+const ThongTinTaiKhoan = lazy(() => import("./pages/ThongTinTaiKhoan"));
 
 // import AdminQuanLyNguoiDung from "./pages/AdminQuanLyNguoiDung";
-const AdminQuanLyNguoiDung = lazy(() => import("./pages/AdminQuanLyNguoiDung"))
+const AdminQuanLyNguoiDung = lazy(() => import("./pages/AdminQuanLyNguoiDung"));
 
 // import AdminQuanLyPhim from "./pages/AdminQuanLyPhim";
-const AdminQuanLyPhim = lazy(() => import("./pages/AdminQuanLyPhim"))
+const AdminQuanLyPhim = lazy(() => import("./pages/AdminQuanLyPhim"));
 
 // import AdminQuanLyLichChieu from "./pages/AdminQuanLyLichChieu";
-const AdminQuanLyLichChieu = lazy(() => import("./pages/AdminQuanLyLichChieu"))
+const AdminQuanLyLichChieu = lazy(() => import("./pages/AdminQuanLyLichChieu"));
 
 // Test==========
 // import TestPage from "./pages/TestPage";
@@ -65,13 +66,11 @@ const AdminQuanLyLichChieu = lazy(() => import("./pages/AdminQuanLyLichChieu"))
 // import TestPage2 from "./pages/TestPage2";
 // const TestPage2 = lazy(() => import("./pages/TestPage2"))
 
-
-
-
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
+        <ScrollToTop />
         <Switch>
           {/* Router Admin */}
           <AdminRoute path="/admin">

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import quanLyDatVeAPI from "../../services/quanLyDatVeAPI";
 import { formatVND } from "../../utils/myFunction";
+import { snackbarThongBaoToggle } from "../../actions/snackbarThongBao";
 
 export default function ChiTietDatGhe({
   danhSachPhongVe,
@@ -22,7 +23,6 @@ export default function ChiTietDatGhe({
         if (cell.dangChon) {
           danhSachGheDangChon.push({ ...cell, x, y });
           tongTien += cell.giaVe;
-          // console.log(danhSachGheDangChon);
         }
       }
     });
@@ -44,6 +44,13 @@ export default function ChiTietDatGhe({
     try {
       const { data } = await quanLyDatVeAPI.datVe(values);
       setSuccess(true);
+      dispatch(
+        snackbarThongBaoToggle({
+          message: "Đặt vé thành công",
+          type: "success",
+          autoHideTime: 3000,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
