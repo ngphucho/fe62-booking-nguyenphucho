@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import * as Scroll from "react-scroll";
@@ -15,7 +16,9 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import React, { useEffect } from "react";
+
+import AppleIcon from "@material-ui/icons/Apple";
+import AndroidIcon from "@material-ui/icons/Android";
 
 export default function Footer() {
   useEffect(() => {
@@ -44,7 +47,8 @@ export default function Footer() {
               className="border-bottom goToTop"
               style={{ textAlign: "right" }}
             >
-              <span className="cursorPointer"
+              <span
+                className="cursorPointer"
                 onClick={() => {
                   scroll.scrollToTop();
                 }}
@@ -53,7 +57,7 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <div className="col-sm-5 pb-5 footerLogo">
+          <div className="col-sm-5 footerLogo">
             <Link to="/home">
               <img
                 className="bottom-logo"
@@ -87,49 +91,60 @@ export default function Footer() {
           </div>
           <div className="col-sm-7 d-flex flex-column justify-content-around footerNavBox">
             <div className="footer-nav about">
-              <b>ABOUT</b>
-              <a href="/" className="footer-nav-item">
-                Privacy
-              </a>
-              <a href="/" className="footer-nav-item">
-                Notice
-              </a>
-              <a href="/" className="footer-nav-item">
-                Privacy
-              </a>
-              <a href="/" className="footer-nav-item">
-                Notice
-              </a>
+              <b>MH Movie</b>
+              <span className="d-inline-block">
+                <a href="/" className="footer-nav-item">
+                  Giới thiệu
+                </a>
+                <a href="/" className="footer-nav-item">
+                  Tuyển dụng
+                </a>
+                <a href="/" className="footer-nav-item">
+                  Chính sách
+                </a>
+                <a href="/" className="footer-nav-item">
+                  Điều khoản sử dụng
+                </a>
+              </span>
             </div>
             <div className="footer-nav">
-              <b>CONTACT</b>
-              <a href="/" className="footer-nav-item">
-                Privacy
-              </a>
-              <a href="/" className="footer-nav-item">
+              <b>Hỗ trợ KH</b>
+              <span className="d-inline-block">
+                <a href="/" className="footer-nav-item">
+                  Hướng dẫn sử dụng
+                </a>
+                <a href="/" className="footer-nav-item">
+                  Yêu cầu hỗ trợ
+                </a>
+                <a href="/" className="footer-nav-item">
+                  Hotline{" "}
+                  <span
+                    style={{ color: "#0078d1", textDecoration: "underline" }}
+                  >
+                    0356046662
+                  </span>
+                </a>
+                {/* <a href="/" className="footer-nav-item">
                 Notice
-              </a>
-              <a href="/" className="footer-nav-item">
-                Privacy
-              </a>
-              <a href="/" className="footer-nav-item">
-                Notice
-              </a>
+              </a> */}
+              </span>
             </div>
             <div className="footer-nav">
-              <b>CONECT</b>
-              <a href="/" className="footer-nav-item">
+              <b className="d-none d-sm-inline-block">Ứng dụng</b>
+              <span className="d-inline-block">
+                <a href="/" className="footer-nav-item">
+                  <AppleIcon />
+                </a>
+                <a href="/" className="footer-nav-item">
+                  <AndroidIcon />
+                </a>
+                {/* <a href="/" className="footer-nav-item">
                 Privacy
               </a>
               <a href="/" className="footer-nav-item">
                 Notice
-              </a>
-              <a href="/" className="footer-nav-item">
-                Privacy
-              </a>
-              <a href="/" className="footer-nav-item">
-                Notice
-              </a>
+              </a> */}
+              </span>
             </div>
           </div>
           <div className="col-sm-5 border-top py-2 copyright">
