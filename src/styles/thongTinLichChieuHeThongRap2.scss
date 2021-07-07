@@ -9,14 +9,14 @@
     // background-color: black;
 
     .scroll-container {
-      height: 485px;
+      max-height: 485px;
       cursor: grab;
     }
   }
 
   .listPhim {
     .scroll-container {
-      height: 400px;
+      max-height: 400px;
     }
   }
 
@@ -183,6 +183,17 @@
 
   .dateBox {
     margin: -7px;
+    margin-bottom: 0;
+
+    .datepicker{
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .datepicker-strip{
+      flex-direction: column-reverse;
+      margin-top: 0;
+    }
 
     .datepicker-button-previous,
     .datepicker-button-next {
@@ -191,6 +202,8 @@
 
     .datepicker-month-label {
       color: #7d7d7d;
+      text-align: center;
+      font-weight: 900;
     }
 
     .datepicker-date-day-Item.wrapper.date-day-Item-selected {
@@ -331,6 +344,10 @@
     .listPhim {
       height: auto;
       max-height: 400px;
+
+      .scroll-container{
+        max-height: 299px;
+      }
     }
   }
 }

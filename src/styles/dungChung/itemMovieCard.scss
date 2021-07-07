@@ -279,8 +279,8 @@ $textContentHeight: 135%;
         & > div {
           position: absolute;
           top: 0;
-          bottom: 0;
-          padding: 10px;
+          bottom: 10px;
+          padding: 10px 10px 0 10px;
           // max-height: 139px;
 
           p {

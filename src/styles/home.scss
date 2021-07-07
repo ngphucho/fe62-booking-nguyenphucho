@@ -3,13 +3,23 @@
     color: red;
   }
 
-  .homeBody > .oderTicketBox, .homeBody .mainContent, .homeBody .thongTinLichChieuHeThongRap{
+  .homeBody > .oderTicketBox,
+  .homeBody .mainContent,
+  .homeBody .thongTinLichChieuHeThongRap {
     margin-top: 2rem;
     background-color: #fafafa;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
-  .thongTinLichChieuHeThongRap{
+  .oderTicketBox > .orderTicketBox {
+    .tab {
+      .MuiButton-root {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .thongTinLichChieuHeThongRap {
     padding-top: 24px;
   }
 
@@ -54,14 +64,34 @@
   }
 
   @media screen and(max-width: 767.9px) {
-    .homeBody > .oderTicketBox, .homeBody .mainContent, .homeBody .thongTinLichChieuHeThongRap{
-      margin-top: 48px;
+    .homeBody > .oderTicketBox,
+    .homeBody .mainContent,
+    .homeBody .thongTinLichChieuHeThongRap {
+      margin-top: 2rem;
       background-color: #fafafa;
       box-shadow: none;
     }
 
-    .homeBody .thongTinLichChieuHeThongRap{
+    .oderTicketBox > .orderTicketBox {
+      .tab {
+        padding-top: 0;
+
+        & > div {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .MuiFormControl-root {
+          margin-bottom: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    .homeBody .thongTinLichChieuHeThongRap {
       background-color: #ffffff;
+      padding-top: 0;
+      margin-top: 0;
     }
   }
 }
