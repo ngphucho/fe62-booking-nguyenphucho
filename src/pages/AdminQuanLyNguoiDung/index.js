@@ -50,8 +50,12 @@ export default function AdminQuanLyNguoiDung() {
 
   return (
     <div className="adminQuanLyNguoiDung">
-      <ThanhCongCuQuanLyNguoiDung />
-      <BangDanhSachNguoiDung />
+      <div className="thanhCongCuBox">
+        <ThanhCongCuQuanLyNguoiDung />
+      </div>
+      <div className="bangBox customScrollbar">
+        <BangDanhSachNguoiDung />
+      </div>
       {danhSachNguoiDungPhanTrang ? (
         <PhanTrang
           soLuongRender={6}

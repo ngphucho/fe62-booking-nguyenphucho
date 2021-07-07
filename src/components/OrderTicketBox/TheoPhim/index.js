@@ -79,7 +79,7 @@ export default function TheoPhim() {
 
   return (
     <div>
-      <div class="d-md-flex">
+      <div className="d-md-flex">
         <div className="chonPhim">
           <MySelect
             danhSach={cloneArrayIdName(danhSachPhim, "maPhim", "tenPhim")}
@@ -120,7 +120,7 @@ export default function TheoPhim() {
           />
         </div>
       </div>
-      <div class="text-center mt-3">
+      <div className="text-center mt-3">
         <Button
           disabled={!maLichChieu}
           variant="outlined"

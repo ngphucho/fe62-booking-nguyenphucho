@@ -30,7 +30,7 @@ export default function TimKiemNguoiDung() {
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="... tim kiem"
+              placeholder="... Tìm kiếm"
               className="bg-white border-0 rounded-0"
               style={{height: 38}}
             ></Input>

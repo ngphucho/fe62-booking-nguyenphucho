@@ -9,8 +9,9 @@
 
   position: relative;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
   // box-shadow: rgba(255, 255, 255, 0.315) 0px 60px 40px -7px;
-  box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
+  // box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
 
   .navbar-toggler:focus {
     box-shadow: none;

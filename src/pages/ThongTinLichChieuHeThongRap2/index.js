@@ -83,6 +83,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
                 {item.lstLichChieuTheoPhim.map((subItem, index) => {
                   return (
                     <SuatChieu
+                      key={index}
                       thoiGianBatDau={subItem.ngayChieuGioChieu}
                       maLichChieu={subItem.maLichChieu}
                     />
@@ -182,6 +183,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
         {/* DANH SACH PHIM */}
         <div className="col-sm-7 container-fluid customScrollbar listPhim">
           <div className="dateBox">
+            {/* Note: ReactHorizontalDatePicker bị trễ, cần click 2 lần vô ngày cần chọn để chọn đúng ngày đó */}
             <ReactHorizontalDatePicker
               selectedDay={onSelectedDay}
               // enableDaysBefore={0}
@@ -190,6 +192,11 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
             />
           </div>
           <ScrollContainer className="scroll-container">
+            {danhSachPhimFilter.length > 0 ? (
+              danhSachPhimFilter.map((item) => BoxPhim(item))
+            ) : (
+              <div className="py-3">Không tìm thấy phim...</div>
+            )}
             {danhSachPhimFilter.map((item) => BoxPhim(item))}
           </ScrollContainer>
         </div>

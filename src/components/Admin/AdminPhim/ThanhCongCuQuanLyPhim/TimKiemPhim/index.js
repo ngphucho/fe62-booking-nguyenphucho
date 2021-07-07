@@ -17,12 +17,29 @@ import { layDanhSachPhim } from "../../../../../actions/movies";
 import { snackbarThongBaoToggle } from "../../../../../actions/snackbarThongBao";
 import { listSortCheckBox } from "./listSortCheckBox";
 //Datetime picker
-import { enGB } from "date-fns/locale";
+import { vi } from "date-fns/locale";
 import { DateRangePicker, START_DATE, END_DATE } from "react-nice-dates";
 import "react-nice-dates/build/style.css";
 import "./styles.scss";
 //
 import { cloneArrayObject } from "../../../../../utils/myFunction";
+import Tooltip from "@material-ui/core/Tooltip";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "Signika",
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+  },
+});
 
 export default function TimKiemPhim() {
   const location = useLocation();
@@ -125,45 +142,48 @@ export default function TimKiemPhim() {
     timKiem();
   }, [tenPhim, startDate, endDate, listCheckBox, danhGia]);
 
+  function ValueLabelComponent(props) {
+    const { children, open, value } = props;
+
+    return (
+      <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+        {children}
+      </Tooltip>
+    );
+  }
+
   return danhSachPhim ? (
-    <FormControl>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {/* line 1 */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          {/* input box */}
-          <FormGroup>
-            <Autocomplete
-              onInputChange={(event, inputValue) => {
-                setTenPhim(inputValue);
-              }}
-              value={tenPhim}
-              clearOnBlur={false}
-              style={{ width: "300px" }}
-              id="timKiemPhim"
-              freeSolo
-              disableClearable
-              options={danhSachPhim.map((movie) => movie.tenPhim)}
-              renderInput={(params) => (
-                <TextField
-                  style={{ backgroundColor: "#ffffff80" }}
-                  {...params}
-                  placeholder="Tìm kiếm ..."
-                  margin="normal"
-                  variant="outlined"
-                  InputProps={{ ...params.InputProps, type: "search" }}
-                />
-              )}
-            />
-          </FormGroup>
-          {/* datepicker */}
-          <FormGroup>
-            <div style={{ position: "relative" }}>
+    <ThemeProvider theme={theme}>
+      <FormControl>
+        <div className="formTimKiemPhim">
+          {/* line 1 */}
+          <div className="line1">
+            {/* input box */}
+            <FormGroup className="inputBox">
+              <Autocomplete
+                onInputChange={(event, inputValue) => {
+                  setTenPhim(inputValue);
+                }}
+                value={tenPhim}
+                clearOnBlur={false}
+                id="timKiemPhim"
+                freeSolo
+                disableClearable
+                options={danhSachPhim.map((movie) => movie.tenPhim)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Tìm kiếm ..."
+                    margin="normal"
+                    variant="outlined"
+                    InputProps={{ ...params.InputProps, type: "search" }}
+                  />
+                )}
+              />
+            </FormGroup>
+
+            {/* datepicker */}
+            <FormGroup className="rangeDatePickerBox">
               <DateRangePicker
                 startDate={startDate}
                 endDate={endDate}
@@ -172,7 +192,7 @@ export default function TimKiemPhim() {
                 minimumDate={new Date("2015-01-01T00:00:00")}
                 // minimumLength={1}
                 format="dd-MM-yyyy"
-                locale={enGB}
+                locale={vi}
               >
                 {({ startDateInputProps, endDateInputProps, focus }) => (
                   <div className="date-range">
@@ -194,31 +214,19 @@ export default function TimKiemPhim() {
                   </div>
                 )}
               </DateRangePicker>
-            </div>
-          </FormGroup>
-          {/* button submit */}
-          <FormGroup>
-            <Button color="primary" onClick={timKiem}>
-              Tìm Phim
-            </Button>
-          </FormGroup>
-        </div>
-        {/* line 2 */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          {/* list checkbox */}
-          <FormGroup>
-            <div style={{ display: "flex" }}>
+            </FormGroup>
+          </div>
+
+          {/* line 2 */}
+          <div className="line2">
+            {/* list checkbox */}
+            <FormGroup className="listCheckboxBox">
               {listCheckBox.map((item, index) => (
                 <FormControlLabel
                   key={index}
                   control={
                     <Checkbox
+                      disableRipple={true}
                       checked={item.isChecked === "true"}
                       onChange={(event) => {
                         checkBoxHandleChange(event, index);
@@ -229,12 +237,12 @@ export default function TimKiemPhim() {
                   label={item.label}
                 />
               ))}
-            </div>
-          </FormGroup>
-          {/* range slider */}
-          <FormGroup>
-            <div style={{ width: 100 }}>
+            </FormGroup>
+
+            {/* range slider */}
+            <FormGroup className="rangeSliderBox">
               <Slider
+                color="secondary"
                 value={danhGia}
                 onChange={danhGiaHandleChange}
                 valueLabelDisplay="auto"
@@ -242,20 +250,20 @@ export default function TimKiemPhim() {
                 getAriaValueText={danhGiaText}
                 min={1}
                 max={10}
+                ValueLabelComponent={ValueLabelComponent}
               />
-              <Typography id="range-slider" gutterBottom>
-                Đánh Giá
-              </Typography>
-            </div>
-          </FormGroup>
-          {/* button reset thong tin tim kiem */}
-          <FormGroup>
-            <Button color="secondary" onClick={resetTimKiem}>
-              Reset
-            </Button>
-          </FormGroup>
+              <Typography id="range-slider">Đánh Giá</Typography>
+            </FormGroup>
+
+            {/* button reset thong tin tim kiem */}
+            <FormGroup>
+              <Button color="secondary" onClick={resetTimKiem}>
+                Reset
+              </Button>
+            </FormGroup>
+          </div>
         </div>
-      </div>
-    </FormControl>
+      </FormControl>
+    </ThemeProvider>
   ) : null;
 }

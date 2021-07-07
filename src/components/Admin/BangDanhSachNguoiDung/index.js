@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "reactstrap";
-import NutXoa from "../../NutXoa";
-import NutSua from "../../NutSua";
 import quanLyNguoiDungAPI from "../../../services/quanLyNguoiDungAPI";
 import { timKiemNguoiDungPhanTrang } from "../../../actions/quanLyNguoiDung";
 import { popupModalToggle } from "../../../actions/popupModal";
 import { changeFormData } from "../../../actions/formData";
+
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+
+//tooltip
+import ReactTooltip from "react-tooltip";
 
 export default function BangDanhSachNguoiDung() {
   const dispatch = useDispatch();
@@ -81,35 +85,40 @@ export default function BangDanhSachNguoiDung() {
               <td>{item.soDt}</td>
               <td>{item.maLoaiNguoiDung}</td>
               <td>
-                {/* <NutXoa /> */}
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    xoaNguoiDung(item.taiKhoan);
-                  }}
-                >
-                  xoa
-                </button>
-                {/* <NutSua /> */}
-                <button
-                  className="btn btn-success"
-                  onClick={() => {
-                    dispatch(
-                      popupModalToggle({
-                        title: "SỬA THÔNG TIN NGƯỜI DÙNG",
-                      })
-                    );
-                    dispatch(
-                      changeFormData({
-                        button: "Sửa",
-                        type: "edit",
-                        values: item,
-                      })
-                    );
-                  }}
-                >
-                  sua
-                </button>
+                <div className="actionCell">
+                  {/* <NutXoa /> */}
+                  <button
+                    data-tip="Xóa người dùng"
+                    className="btn delete"
+                    onClick={() => {
+                      xoaNguoiDung(item.taiKhoan);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </button>
+                  {/* <NutSua /> */}
+                  <button
+                    data-tip="Sửa thông tin người dùng"
+                    className="btn edit"
+                    onClick={() => {
+                      dispatch(
+                        popupModalToggle({
+                          title: "SỬA THÔNG TIN NGƯỜI DÙNG",
+                        })
+                      );
+                      dispatch(
+                        changeFormData({
+                          button: "Sửa",
+                          type: "edit",
+                          values: item,
+                        })
+                      );
+                    }}
+                  >
+                    <EditIcon />
+                  </button>
+                  <ReactTooltip />
+                </div>
               </td>
             </tr>
           ))}

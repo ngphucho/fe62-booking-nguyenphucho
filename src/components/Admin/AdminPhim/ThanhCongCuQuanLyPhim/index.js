@@ -7,7 +7,7 @@ import { changeFormData } from "../../../../actions/formData";
 export default function ThanhCongCuQuanLyPhim() {
   const dispatch = useDispatch();
   return (
-    <div className="container-fluid d-flex justify-content-between bg-light">
+    <div className="thanhCongCuQuanLyPhim">
       <div className="timKiemPhim">
         <TimKiemPhim />
       </div>

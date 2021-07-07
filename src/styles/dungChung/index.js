@@ -1,2 +1,3 @@
-import "./lichChieuTheoNgay.scss"
-import "./myCollapse.scss"
+import "./lichChieuTheoNgay.scss";
+import "./myCollapse.scss";
+import "./tooltip.scss";

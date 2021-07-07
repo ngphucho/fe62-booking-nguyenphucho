@@ -370,15 +370,19 @@ export default function AdminQuanLyPhim() {
   };
 
   return (
-    <div>
-      <ThanhCongCuQuanLyPhim />
-      <BangDanhSachPhim
-        danhSachPhim={danhSachPhimHienThi}
-        trangHienTai={trangHienTai}
-        soPhanTuTrenTrang={soPhanTuTrenTrang}
-        xoaPhim={xoaPhim}
-        themLichChieu={themLichChieu}
-      />
+    <div className="adminQuanLyPhim">
+      <div className="thanhCongCuBox">
+        <ThanhCongCuQuanLyPhim />
+      </div>
+      <div className="bangBox customScrollbar">
+        <BangDanhSachPhim
+          danhSachPhim={danhSachPhimHienThi}
+          trangHienTai={trangHienTai}
+          soPhanTuTrenTrang={soPhanTuTrenTrang}
+          xoaPhim={xoaPhim}
+          themLichChieu={themLichChieu}
+        />
+      </div>
       <PhanTrang
         soLuongRender={6}
         trangHienTai={trangHienTai}

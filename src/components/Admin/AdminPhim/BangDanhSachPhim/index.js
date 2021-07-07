@@ -6,6 +6,14 @@ import RutGonText from "../../../RutGonText";
 import { popupModalToggle } from "../../../../actions/popupModal";
 import { changeFormData } from "../../../../actions/formData";
 
+//tooltip
+import ReactTooltip from "react-tooltip";
+
+//material
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
+
 export default function BangDanhSachPhim({
   danhSachPhim,
   trangHienTai,
@@ -86,34 +94,36 @@ export default function BangDanhSachPhim({
             <td>{formatDDMMYYYY(item.ngayKhoiChieu)}</td>
             <td>{item.danhGia}</td>
             <td>
-              <div style={{ display: "flex" }}>
-                {/* <NutXoa /> */}
+              <div className="actionCell">
                 <button
-                  className="btn btn-danger"
+                  data-tip="Xóa phim"
+                  className="btn delete"
                   onClick={() => {
                     xoaPhim(item);
                   }}
                 >
-                  xoa
+                  <DeleteIcon />
                 </button>
-                {/* <NutSua /> */}
                 <button
-                  className="btn btn-success"
+                  data-tip="Sửa thông tin phim"
+                  className="btn edit"
                   onClick={(e) => {
                     handleEdit(e, item);
                   }}
                 >
-                  sua
+                  <EditIcon />
                 </button>
                 {/* Nut them lich chieu */}
                 <button
-                  className="btn btn-warning"
+                  data-tip="Thêm lịch chiếu"
+                  className="btn add"
                   onClick={(e) => {
                     handleThemLichchieu(item.maPhim);
                   }}
                 >
-                  Them lich
+                  <AddIcon />
                 </button>
+                <ReactTooltip />
               </div>
             </td>
           </tr>

@@ -185,12 +185,12 @@
     margin: -7px;
     margin-bottom: 0;
 
-    .datepicker{
+    .datepicker {
       margin-top: 0;
       margin-bottom: 0;
     }
 
-    .datepicker-strip{
+    .datepicker-strip {
       flex-direction: column-reverse;
       margin-top: 0;
     }
@@ -345,8 +345,9 @@
       height: auto;
       max-height: 400px;
 
-      .scroll-container{
+      .scroll-container {
         max-height: 299px;
+        min-height: 100px;
       }
     }
   }

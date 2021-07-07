@@ -1,0 +1,114 @@
+.adminQuanLyPhim {
+  $inputHeight: 38px;
+
+  .thanhCongCuQuanLyPhim {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .MuiTypography-root {
+      font-size: 0.9rem;
+    }
+    .formTimKiemPhim {
+      display: flex;
+      flex-direction: column;
+
+      .line1,
+      .line2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .line1 {
+        margin-bottom: 0.5rem;
+      }
+      // o tim kiem
+      .inputBox {
+        margin-right: 12px;
+        .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
+          width: 150px;
+        }
+        .MuiFormControl-marginNormal {
+          margin: 0;
+        }
+        .MuiOutlinedInput-root {
+          border-radius: 0;
+        }
+        .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+          padding: 0;
+        }
+        fieldset {
+          top: 0;
+        }
+        .MuiInputBase-input {
+          background-color: #ffffff;
+        }
+      }
+      // o range datepicker
+      .rangeDatePickerBox {
+        position: relative;
+
+        .date-range_arrow {
+          width: 24px;
+        }
+        .input {
+          border-radius: 0;
+          border-color: #c4c4c4;
+          height: $inputHeight;
+          width: 160px;
+
+          &::placeholder{
+            color: #c5c5c5;
+            font-weight: 300;
+          }
+
+          &:focus {
+            border: 2px solid #3f51b5;
+          }
+        }
+
+        .nice-dates-popover {
+          border-radius: 0;
+        }
+      }
+      // buttonTim
+      .buttonTim {
+        .MuiButton-root {
+          border-radius: 0;
+        }
+      }
+      //listCheckboxBox
+      .listCheckboxBox {
+        display: flex;
+        flex-direction: row;
+
+        .MuiCheckbox-root {
+          padding: 5px;
+        }
+
+        .MuiFormControlLabel-root {
+          margin-left: 0px;
+          margin-right: 5px;
+        }
+      }
+
+      .rangeSliderBox {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 150px;
+        margin-left: 12px;
+
+        .MuiSlider-root {
+          width: 70px;
+        }
+      }
+    }
+  }
+
+  .bangBox {
+    height: calc(100vh - 70px - 114px - 40px) !important;
+  }
+}

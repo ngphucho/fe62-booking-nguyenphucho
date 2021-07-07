@@ -3,7 +3,7 @@
     position: relative;
     background-color: #000000;
     width: 40px;
-    // height: calc(100vh - 56px);
+    z-index: 1;
     height: 100vh;
     transition: all 1s;
 
@@ -57,8 +57,10 @@
         }
 
         &.active {
-          background-color: #ffffff80;
+          background-color: #f8f9fa;
           color: #000000;
+          pointer-events: none;
+          border-right: 1px solid #cccccc80;
         }
 
         .title {
@@ -82,17 +84,25 @@
       li {
         padding: 10px 30px;
 
+        .icon {
+          width: 20%;
+        }
+
         .title {
-          width: 100%;
+          width: 80%;
           opacity: 1;
           transition: all 1s;
-          padding-left: 20px;
+          // padding-left: 20px;
         }
       }
     }
   }
 
   .navBar {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+    position: relative;
+    z-index: 100;
+
     .navbar {
       padding: 0 1rem;
       background-color: var(--color-primary-dark);
@@ -113,12 +123,59 @@
   .mainContent {
     flex-grow: 1;
     padding: 0;
-    overflow: auto;
-    height: calc(100vh - 56px);
+    height: 100vh;
+
+    .bangDanhSachNguoiDung {
+      padding-bottom: 0;
+    }
+
+    .thanhCongCuBox {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+      padding: 1rem;
+      background-color: #f8f9fa;
+    }
+
+    .bangBox {
+      height: calc(100vh - 70px - 70px - 40px);
+      overflow: auto;
+
+      table {
+        tbody {
+          tr {
+            th,
+            td {
+              vertical-align: middle;
+            }
+          }
+        }
+
+        .actionCell {
+          display: flex;
+          justify-content: flex-end;
+
+          .btn.delete,
+          .btn.edit,
+          .btn.add {
+            padding: 0;
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
 
     .phanTrang {
-      position: fixed;
-      bottom: 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .pagination {
+        margin-bottom: 0;
+        .page-item .page-link {
+          border-radius: 0;
+          border: none;
+        }
+      }
     }
   }
 }
