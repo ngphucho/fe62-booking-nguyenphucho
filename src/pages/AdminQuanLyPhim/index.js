@@ -59,7 +59,7 @@ export default function AdminQuanLyPhim() {
   const [selectedPhim, setSelectedPhim] = useState(null);
   // let danhSachPhimSorted = [];
   //
-  const soPhanTuTrenTrang = 5;
+  const soPhanTuTrenTrang = 10;
   const MaNhom = appLayoutData.maNhom;
   //
 

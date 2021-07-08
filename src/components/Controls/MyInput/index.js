@@ -4,7 +4,7 @@ import { TextField } from "@material-ui/core";
 
 function MyInput(props) {
   const { data, handleChon } = props;
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState();
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -16,7 +16,7 @@ function MyInput(props) {
     <TextField
       onChange={(event) => handleChange(event)}
       id="standard-number"
-      label="Number"
+      label="Giá vé"
       type="number"
       inputProps={{ step: 1000, min: 0 }}
       disabled={data.disabled}

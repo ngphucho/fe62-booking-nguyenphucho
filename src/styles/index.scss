@@ -137,6 +137,11 @@ a {
   transition: all 1s;
 }
 
+.MuiInput-underline.Mui-disabled:before{
+  border-bottom-color: #cccccc;
+  border-bottom-style: solid !important;
+}
+
 @media screen and (max-width: 767.9px) {
   .phanTrangAppLayout {
     margin-bottom: 0;

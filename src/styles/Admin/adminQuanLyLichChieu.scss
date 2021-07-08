@@ -1,0 +1,61 @@
+.adminQuanLyLichChieu {
+  .thanhCongCuBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .line1 > div,
+    .line2 > div {
+      margin-right: 1rem;
+    }
+
+    .line1 {
+      .MuiFormControl-root {
+        margin: 0;
+      }
+    }
+
+    .chonGia {
+      .MuiInputBase-input {
+        text-align: right;
+      }
+    }
+
+    .nutThemLich {
+      flex-grow: 1;
+      text-align: right;
+
+      .MuiButton-root {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .bangBox {
+    height: calc(100vh - 70px - 137px) !important;
+  }
+
+  .danhSachLichChieuPhimBox{
+    .tenPhimBox{
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+      background-color: #f8f9fa;
+      position: relative;
+      // background-color: black;
+    }
+
+    .tenHeThongRapBox{
+      background-color: #fbfbfb;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .collapseHeader {
+      background-color: #ffffff;
+      border-left: 3px solid var(--color-primary-light)
+    }
+  }
+}

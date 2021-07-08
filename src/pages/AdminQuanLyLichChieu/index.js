@@ -19,9 +19,11 @@ import { cloneArrayIdName } from "../../utils/myFunction";
 import { formatDDMMYYYY } from "../../utils/timeFunction";
 import TimeInput from "../../components/Controls/TimeInput";
 import MyInput from "../../components/Controls/MyInput";
+import MultiCollapse from "../../components/MultiCollapse";
 
 // actions
 import { pageTitleChange } from "../../actions/pageTitle";
+import LichChieuTheoNgay from "../../components/LichChieuTheoNgay";
 
 export default function AdminQuanLyLichChieu() {
   const history = useHistory();
@@ -116,42 +118,59 @@ export default function AdminQuanLyLichChieu() {
     setThongTinLichChieuPhim(data);
   };
 
+  //filter cum rap
+  const filterCumRap = (danhSachCumRap, maCumRap) => {
+    const filter = danhSachCumRap.filter(
+      (cumRap) => cumRap.maCumRap === maCumRap || !maCumRap
+    );
+    return filter.map((item) => ({
+      header: item.tenCumRap,
+      body: item.lichChieuPhim,
+    }));
+  };
+
   //filter lich chieu phim de in ra man hinh
   const filterLichChieu = () => {
     const lichChieuFiltered = (
-      <div>
-        <div className="bg-warning">{thongTinLichChieuPhim.tenPhim}</div>
+      <div className="danhSachLichChieuPhimBox">
+        <div className="tenPhimBox">{thongTinLichChieuPhim.tenPhim}</div>
         <div>
           {thongTinLichChieuPhim.heThongRapChieu.map((heThongRap) => {
             // !maHeThongRap || maHeThongRap === heThongRap.maHeThongRap
             if (heThongRap.maHeThongRap === maHeThongRap || !maHeThongRap) {
               return (
-                <div >
-                  <div className="bg-success">{heThongRap.tenHeThongRap}</div>
-                  <div>
+                <div key={heThongRap.maHeThongRap}>
+                  <div className="tenHeThongRapBox">
+                    {heThongRap.tenHeThongRap}
+                  </div>
+                  {/* <div>
                     {heThongRap.cumRapChieu.map((cumRap) => {
                       if (cumRap.maCumRap === maCumRap || !maCumRap) {
+                        const collapseList = [
+                          {
+                            header: cumRap.tenCumRap,
+                            body: cumRap.lichChieuPhim,
+                          },
+                        ];
                         return (
-                          <div>
-                            <div className="bg-danger">{cumRap.tenCumRap}</div>
-                            <div className="row">
-                              {cumRap.lichChieuPhim.map((lichChieu) => {
-                                if (lichChieu) {
-                                  return (
-                                    <div className="col-md-4">
-                                      <div className="bg-light m-1">
-                                        <div>{lichChieu.ngayChieuGioChieu}</div>
-                                        <div>{lichChieu.tenRap}</div>
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                              })}
-                            </div>
-                          </div>
+                          <MultiCollapse
+                            key={cumRap.maCumRap}
+                            collapseList={collapseList}
+                            isShowTheFirst={false}
+                          />
                         );
                       }
                     })}
+                  </div> */}
+                  <div>
+                    <MultiCollapse
+                      collapseList={filterCumRap(
+                        heThongRap.cumRapChieu,
+                        maCumRap
+                      )}
+                      isShowTheFirst={false}
+                      isAdmin={true}
+                    />
                   </div>
                 </div>
               );
@@ -166,15 +185,15 @@ export default function AdminQuanLyLichChieu() {
 
   // =======USEEFFECT=========
 
-    //set activePage
-    useEffect(() => {
-      dispatch(
-        pageTitleChange({
-          activePage: 3,
-          pageTitle: "",
-        })
-      );
-    }, []);
+  //set activePage
+  useEffect(() => {
+    dispatch(
+      pageTitleChange({
+        activePage: 3,
+        pageTitle: "",
+      })
+    );
+  }, []);
 
   //render lan dau
   useEffect(() => {
@@ -230,77 +249,97 @@ export default function AdminQuanLyLichChieu() {
   }, [thongTinLichChieuPhim]);
 
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* chon phim */}
-        <div className="chonPhim-select">
-          <MySelect
-            danhSach={cloneArrayIdName(danhSachPhim, "maPhim", "tenPhim")}
-            handleChon={handleChonPhim}
-            label={"Phim"}
-            defaultValue={maPhim ? maPhim.toString() : ""}
-          />
+    <div className="adminQuanLyLichChieu">
+      <div className="thanhCongCuBox">
+        {/* line 1 */}
+        <div className="line1">
+          {/* chon phim */}
+          <div className="chonPhim-select">
+            <MySelect
+              danhSach={cloneArrayIdName(danhSachPhim, "maPhim", "tenPhim")}
+              handleChon={handleChonPhim}
+              label={"Phim"}
+              defaultValue={maPhim ? maPhim.toString() : ""}
+            />
+          </div>
+          {/* chon he thong rap */}
+          <div className="chonHeThongRap-select">
+            <MySelect
+              danhSach={cloneArrayIdName(
+                danhSachHeThongRap,
+                "maHeThongRap",
+                "tenHeThongRap"
+              )}
+              handleChon={handleChonHeThongRap}
+              label={"Hệ thống rạp"}
+            />
+          </div>
+          {/* chon cum rap */}
+          <div className="chonCumRap-select">
+            <MySelect
+              danhSach={cloneArrayIdName(
+                danhSachCumRap,
+                "maCumRap",
+                "tenCumRap"
+              )}
+              handleChon={handleChonCumRap}
+              label={"Cụm Rạp"}
+            />
+          </div>
+          {/* chon rap */}
+          <div className="chonRap-select">
+            <MySelect
+              danhSach={cloneArrayIdName(danhSachRap, "maRap", "tenRap")}
+              handleChon={handleChonRap}
+              label={"Rạp"}
+            />
+          </div>
         </div>
-        {/* chon he thong rap */}
-        <div className="chonHeThongRap-select">
-          <MySelect
-            danhSach={cloneArrayIdName(
-              danhSachHeThongRap,
-              "maHeThongRap",
-              "tenHeThongRap"
-            )}
-            handleChon={handleChonHeThongRap}
-            label={"Hệ thống rạp"}
-          />
-        </div>
-        {/* chon cum rap */}
-        <div className="chonCumRap-select">
-          <MySelect
-            danhSach={cloneArrayIdName(danhSachCumRap, "maCumRap", "tenCumRap")}
-            handleChon={handleChonCumRap}
-            label={"Cụm Rạp"}
-          />
-        </div>
-        {/* chon rap */}
-        <div className="chonRap-select">
-          <MySelect
-            danhSach={cloneArrayIdName(danhSachRap, "maRap", "tenRap")}
-            handleChon={handleChonRap}
-            label={"Rạp"}
-          />
-        </div>
-        {/* Chon ngay */}
-        <div className="chonNgay">
-          <DateInput data={{ disabled: !maRap }} handleChon={handleChonNgay} />
-        </div>
-        {/* Chon gio */}
-        <div className="chonGio">
-          <TimeInput
-            data={{ disabled: !ngayChieu }}
-            handleChon={handleChonGio}
-          />
-        </div>
-        <div className="chonGia">
-          <MyInput data={{ disabled: !gioChieu }} handleChon={handleChonGia} />
-        </div>
-        {/* Nut them lich chieu */}
-        <div className="nutThemLich">
-          <Button
-            variant="outlined"
-            disabled={!giaVe}
-            onClick={() => {
-              handleThemLichChieu();
-            }}
-          >
-            Thêm lịch chiếu
-          </Button>
+
+        {/* line 2 */}
+        <div className="line2">
+          {/* Chon ngay */}
+          <div className="chonNgay">
+            <DateInput
+              data={{ disabled: !maRap }}
+              handleChon={handleChonNgay}
+            />
+          </div>
+          {/* Chon gio */}
+          <div className="chonGio">
+            <TimeInput
+              data={{ disabled: !ngayChieu }}
+              handleChon={handleChonGio}
+            />
+          </div>
+          {/* chon gia */}
+          <div className="chonGia">
+            <MyInput
+              data={{ disabled: !gioChieu }}
+              handleChon={handleChonGia}
+            />
+          </div>
+          {/* Nut them lich chieu */}
+          <div className="nutThemLich">
+            <Button
+              variant="outlined"
+              disabled={!giaVe}
+              onClick={() => {
+                handleThemLichChieu();
+              }}
+            >
+              Thêm lịch chiếu
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* {thongTinLichChieuPhim && (
         <ThongTinLichChieuPhim thongTinLichChieuPhim={thongTinLichChieuPhim} />
       )} */}
-      {thongTinLichChieuPhim && filterLichChieu()}
+      <div className="bangBox">
+        {thongTinLichChieuPhim && filterLichChieu()}
+      </div>
     </div>
   );
 }

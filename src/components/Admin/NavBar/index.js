@@ -24,12 +24,12 @@ export default function NavBar() {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <>
-      <Navbar expand="md">
+      <Navbar dark expand="md">
         <NavbarBrand>
           <PageTitle />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar className="d-flex justify-content-end">
+        <Collapse isOpen={isOpen} navbar className="d-md-flex justify-content-end">
           <Nav className="mr-auto" navbar>
             <UncontrolledDropdown nav inNavbar className="position-static">
               <DropdownToggle nav>

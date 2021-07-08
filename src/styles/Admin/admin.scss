@@ -17,6 +17,8 @@
         #1d1d1d,
         var(--color-primary-dark)
       );
+      box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+      position: relative;
 
       .imageLogo {
         height: 70px;
@@ -25,6 +27,7 @@
     }
 
     .toggleButton {
+      cursor: pointer;
       display: block;
       opacity: 0.6;
       width: 30px;
@@ -104,6 +107,7 @@
     z-index: 100;
 
     .navbar {
+      // flex-wrap: nowrap;
       padding: 0 1rem;
       background-color: var(--color-primary-dark);
       background-image: linear-gradient(
@@ -133,11 +137,26 @@
       box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
       padding: 1rem;
       background-color: #f8f9fa;
+      position: relative;
+      z-index: 10;
+
+      .line1,
+      .line2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .line1 {
+        margin-bottom: 0.5rem;
+      }
     }
 
     .bangBox {
       height: calc(100vh - 70px - 70px - 40px);
       overflow: auto;
+      position: relative;
+      z-index: 9;
 
       table {
         tbody {
@@ -175,6 +194,20 @@
           border-radius: 0;
           border: none;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 767.9px) {
+    .navbar-collapse {
+      position: absolute;
+      top: 100%;
+      right: 0px;
+      background-color: rgba(0, 0, 0, 0.5);
+      min-width: 200px;
+
+      .nav-item .nav-link {
+        text-align: center;
       }
     }
   }
