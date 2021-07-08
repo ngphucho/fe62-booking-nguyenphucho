@@ -139,6 +139,9 @@ export default function FormDangKy() {
               autoHideTime: 3000,
             })
           );
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
         } catch (error) {
           setResError(error.response.data);
         }
@@ -154,6 +157,9 @@ export default function FormDangKy() {
               autoHideTime: 3000,
             })
           );
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
         } catch (error) {
           setResError(error.response.data);
         }
@@ -211,6 +217,7 @@ export default function FormDangKy() {
                   type="text"
                   placeholder="Tên đăng nhập"
                   className="rounded-0"
+                  disabled={type === "edit"}
                   onFocus={() => {
                     setResError(null);
                   }}

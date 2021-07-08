@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "reactstrap";
 import quanLyNguoiDungAPI from "../../../services/quanLyNguoiDungAPI";
@@ -11,6 +11,17 @@ import EditIcon from "@material-ui/icons/Edit";
 
 //tooltip
 import ReactTooltip from "react-tooltip";
+
+import { snackbarThongBaoToggle } from "../../../actions/snackbarThongBao";
+
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,
+  DialogContentText,
+} from "@material-ui/core";
 
 export default function BangDanhSachNguoiDung() {
   const dispatch = useDispatch();
@@ -27,10 +38,39 @@ export default function BangDanhSachNguoiDung() {
     (state) => state.thongTinPhanTrangNguoiDung
   );
 
-  const xoaNguoiDung = async (taiKhoan) => {
+  const [isOpenDialogConfirm, setIsOpenDialogConfirm] = useState(false); //dong mo dialogConfirm khi them xoa sua
+
+  // let action = ""; //action = "edit" // "add" // delete // ""
+  const [action, setAction] = useState("");
+  // let selectedNguoiDung = null; //nguoi dung dang duoc chon de sua // xoa
+  const [selectedNguoiDung, setSelectedNguoiDung] = useState(null);
+  // let danhSachPhimSorted = [];
+
+  //close dialogConfirm
+  const closeDialogConfirm = () => {
+    setIsOpenDialogConfirm(false);
+    setAction("");
+    setSelectedNguoiDung(null);
+  };
+  //open dialogConfirm
+  const openDialogConfirm = () => {
+    setIsOpenDialogConfirm(true);
+  };
+
+  // xóa người dùng
+  const xoaNguoiDung = async () => {
     try {
-      const { data } = await quanLyNguoiDungAPI.xoaNguoiDung(taiKhoan);
-      alert("xoa thanh cong: " + JSON.stringify(data));
+      const { data } = await quanLyNguoiDungAPI.xoaNguoiDung(
+        selectedNguoiDung.taiKhoan
+      );
+      dispatch(
+        snackbarThongBaoToggle({
+          message: "Xóa thành công",
+          type: "success",
+          autoHideTime: 3000,
+        })
+      );
+      // alert("xoa thanh cong: " + JSON.stringify(data));
       let soTrang =
         danhSachNguoiDungPhanTrang.count === 1
           ? danhSachNguoiDungPhanTrang.currentPage - 1
@@ -47,8 +87,38 @@ export default function BangDanhSachNguoiDung() {
         })
       );
     } catch (error) {
-      alert(error);
+      dispatch(
+        snackbarThongBaoToggle({
+          message: error.response.data,
+          type: "error",
+          autoHideTime: 3000,
+        })
+      );
+      // alert(error);
     }
+  };
+
+  const handleXoaNguoiDung = (nguoiDung) => {
+    setAction("delete");
+    setSelectedNguoiDung(nguoiDung);
+    openDialogConfirm();
+  };
+
+  //handle truoc khi xoa nguoi dung
+  const handleCloseDialog = (status) => {
+    if (status === false) {
+      closeDialogConfirm();
+      return;
+    }
+    switch (action) {
+      case "delete": {
+        xoaNguoiDung();
+        break;
+      }
+      default:
+        break;
+    }
+    closeDialogConfirm();
   };
 
   if (error) {
@@ -91,7 +161,7 @@ export default function BangDanhSachNguoiDung() {
                     data-tip="Xóa người dùng"
                     className="btn delete"
                     onClick={() => {
-                      xoaNguoiDung(item.taiKhoan);
+                      handleXoaNguoiDung(item);
                     }}
                   >
                     <DeleteIcon />
@@ -124,6 +194,42 @@ export default function BangDanhSachNguoiDung() {
           ))}
         </tbody>
       </Table>
+
+      {/* Dialog confirm truoc khi xoa */}
+      <Dialog
+        open={isOpenDialogConfirm}
+        onClose={() => {
+          handleCloseDialog(false);
+        }}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Xóa Người Dùng"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Xác nhận xóa người dùng???
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              handleCloseDialog(false);
+            }}
+            color="primary"
+          >
+            Hoàn tác
+          </Button>
+          <Button
+            onClick={() => {
+              handleCloseDialog(true);
+            }}
+            color="primary"
+            autoFocus
+          >
+            Xóa
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

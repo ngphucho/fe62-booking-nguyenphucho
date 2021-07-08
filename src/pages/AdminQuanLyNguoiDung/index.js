@@ -65,10 +65,11 @@ export default function AdminQuanLyNguoiDung() {
           link="/admin/quan-ly-nguoi-dung/"
         />
       ) : null}
+
+      {/* form dang ky */}
       <Popup>
         <FormDangKy />
       </Popup>
-      {/* <SnackbarThongBao /> */}
     </div>
   );
 }
