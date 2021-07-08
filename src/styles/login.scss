@@ -7,6 +7,14 @@
   min-height: 100vh;
   overflow: hidden;
 
+  .quenMK {
+    color: #111111;
+    &:hover {
+      color: #ffffff;
+      font-weight: 900;
+    }
+  }
+
   .backgroundImage {
     // opacity: 0.7;
     position: absolute;

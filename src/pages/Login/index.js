@@ -136,7 +136,8 @@ export default function Login() {
             </FormGroup>
             <FormGroup className="inputGroup">
               <Label>
-                Quên mật khẩu? <span>Bấm vào đây</span>
+                Quên mật khẩu?{" "}
+                <span className="quenMK cursorPointer">Bấm vào đây</span>
               </Label>
             </FormGroup>
             <div className="text-center inputGroup">
