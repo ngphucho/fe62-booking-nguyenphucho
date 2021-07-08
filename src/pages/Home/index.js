@@ -10,6 +10,7 @@ import { pageTitleChange } from "../../actions/pageTitle";
 import { useMediaQuery } from "react-responsive";
 
 import { toggleMenu } from "../../actions/toggleMenu";
+import { getSelectedDay } from "../../utils/timeFunction";
 
 export default function Home() {
   const isSm = useMediaQuery({ minWidth: 576 });
@@ -98,7 +99,10 @@ export default function Home() {
         <div className="container-md homeBody p-0">
           <div
             className="oderTicketBox"
-            style={{ padding: isMd ? "0 24px" : 0, marginTop: isMd ? "2rem" : 0 }}
+            style={{
+              padding: isMd ? "0 24px" : 0,
+              marginTop: isMd ? "2rem" : 0,
+            }}
           >
             <OrderTicketBox></OrderTicketBox>
           </div>
@@ -111,6 +115,14 @@ export default function Home() {
           {data ? (
             <div className="thongTinLichChieuHeThongRap">
               <ThongTinLichChieuHeThongRap2 danhSachHeThongRap={data} />
+              {/* <button
+                onClick={() => {
+                  console.log(getSelectedDay());
+                }}
+                className="btn btn-danger"
+              >
+                herrrrrre
+              </button> */}
             </div>
           ) : null}
         </div>

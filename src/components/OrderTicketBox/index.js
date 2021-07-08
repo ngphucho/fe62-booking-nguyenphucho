@@ -8,22 +8,22 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SwipeableViews from "react-swipeable-views";
 import TheoPhim from "./TheoPhim";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: [
-      "Signika",
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-  },
-});
+// const theme = createMuiTheme({
+//   typography: {
+//     fontFamily: [
+//       "Signika",
+//       "Roboto",
+//       '"Helvetica Neue"',
+//       "Arial",
+//       "sans-serif",
+//       '"Apple Color Emoji"',
+//       '"Segoe UI Emoji"',
+//       '"Segoe UI Symbol"',
+//     ].join(","),
+//   },
+// });
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,9 +38,9 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <ThemeProvider theme={theme}>
+          {/* <ThemeProvider theme={theme}> */}
             <Typography>{children}</Typography>
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
         </Box>
       )}
     </div>

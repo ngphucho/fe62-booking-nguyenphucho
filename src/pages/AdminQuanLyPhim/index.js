@@ -30,6 +30,7 @@ import quanLyPhimAPI from "../../services/quanLyPhimAPI";
 import qs from "qs";
 import { appLayoutData } from "../../utils/myData";
 import { cloneArrayObject } from "../../utils/myFunction";
+import { popupModalToggle } from "../../actions/popupModal";
 
 export default function AdminQuanLyPhim() {
   const history = useHistory();
@@ -154,6 +155,8 @@ export default function AdminQuanLyPhim() {
       );
       //load lai danh sach phim
       lamMoiDanhSachPhim();
+      // dispatch(popupModalToggle("Thêm Phim"));
+      window.location.reload();
     } catch (error) {
       console.log(error);
       dispatch(
@@ -174,7 +177,6 @@ export default function AdminQuanLyPhim() {
       // co cap nhat hinh
       try {
         const data = await quanLyPhimAPI.capNhatPhimUpload(formData);
-        // console.log(data);
         dispatch(
           snackbarThongBaoToggle({
             message: "Cập nhật phim thành công",
@@ -317,7 +319,7 @@ export default function AdminQuanLyPhim() {
   }, [danhSachPhim]);
 
   useEffect(() => {
-    console.log("sort", danhSachPhimSorted);
+    // console.log("sort", danhSachPhimSorted);
     if (danhSachPhimSorted.length > 0) {
       setTongSoTrang(
         parseInt((danhSachPhimSorted.length - 1) / soPhanTuTrenTrang) + 1
@@ -339,7 +341,7 @@ export default function AdminQuanLyPhim() {
   // loc ket qua tim kiem
   const updateSort = () => {
     if (danhSachPhim) {
-      console.log(danhGia, tuNgay, denNgay, listCheckBox);
+      // console.log(danhGia, tuNgay, denNgay, listCheckBox);
       setDanhSachPhimSorted(
         danhSachPhim.filter((item) => {
           return (
@@ -401,7 +403,7 @@ export default function AdminQuanLyPhim() {
         <DialogTitle id="alert-dialog-title">{"Xoa Phim"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Xoa phim nha
+            Xác nhận xóa phim???
           </DialogContentText>
         </DialogContent>
         <DialogActions>

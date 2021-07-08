@@ -59,7 +59,7 @@ export const inputList = [
   },
   {
     inputName: "ngayKhoiChieu",
-    label: "Ngày Khởi Chiếu",
+    label: "Ngày Khởi Chiếu (dd/mm/yyyy)",
     placeholder: "Ngày Khởi Chiếu",
     deafaultValue: "",
     type: "text",

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Button } from "@material-ui/core";
 
 import MySelect from "../../components/Controls/MySelect";
 import DateInput from "../../components/Controls/DateInput";
@@ -23,10 +21,8 @@ import MultiCollapse from "../../components/MultiCollapse";
 
 // actions
 import { pageTitleChange } from "../../actions/pageTitle";
-import LichChieuTheoNgay from "../../components/LichChieuTheoNgay";
 
 export default function AdminQuanLyLichChieu() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
   const { danhSachPhim } = useSelector((state) => state.danhSachPhim);
@@ -321,15 +317,15 @@ export default function AdminQuanLyLichChieu() {
           </div>
           {/* Nut them lich chieu */}
           <div className="nutThemLich">
-            <Button
-              variant="outlined"
+            <button
+              className="btn btn-success"
               disabled={!giaVe}
               onClick={() => {
                 handleThemLichChieu();
               }}
             >
               Thêm lịch chiếu
-            </Button>
+            </button>
           </div>
         </div>
       </div>

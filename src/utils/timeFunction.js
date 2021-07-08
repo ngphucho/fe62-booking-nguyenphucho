@@ -37,3 +37,15 @@ export const dateToToday = (date) => {
   const today = new Date();
   return compareTwoDayWithoutTime(newDate, today) ? "Hôm nay" : date;
 };
+
+export const getSelectedDay = () => {
+  const selectedDay = document.getElementsByClassName(
+    "datepicker-month-label"
+  )[0].innerHTML;
+  const d = new Date(selectedDay);
+  const today = new Date();
+  d.setHours(today.getHours());
+  d.setMinutes(today.getMinutes());
+  d.setSeconds(today.getSeconds());
+  return d;
+};

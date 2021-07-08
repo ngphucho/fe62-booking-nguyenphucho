@@ -165,7 +165,7 @@ export default function FormDangKy() {
   };
 
   return (
-    <div className="">
+    <>
       <Form onSubmit={handleSubmit(onSubmit)} className="text-light ">
         {/* FULL NAME */}
         <FormGroup className="inputGroup">
@@ -357,11 +357,11 @@ export default function FormDangKy() {
         {/* LOAI NGUOI DUNG - CHI HIEN THI O GIAO DIEN ADMIN */}
         {userInfo?.maLoaiNguoiDung === "QuanTri" ? (
           <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel
+            {/* <InputLabel
             //  id="maLoaiNguoiDungLabel"
             >
               Loại người dùng
-            </InputLabel>
+            </InputLabel> */}
             <Controller
               name="maLoaiNguoiDung"
               control={control}
@@ -400,6 +400,6 @@ export default function FormDangKy() {
           {resError && <div className="alert alert-danger">{resError}</div>}
         </FormGroup>
       </Form>
-    </div>
+    </>
   );
 }

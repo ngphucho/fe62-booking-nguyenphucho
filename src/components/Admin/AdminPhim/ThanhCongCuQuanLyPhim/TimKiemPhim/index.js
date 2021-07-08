@@ -24,22 +24,22 @@ import "./styles.scss";
 //
 import { cloneArrayObject } from "../../../../../utils/myFunction";
 import Tooltip from "@material-ui/core/Tooltip";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: [
-      "Signika",
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-  },
-});
+// const theme = createMuiTheme({
+//   typography: {
+//     fontFamily: [
+//       "Signika",
+//       "Roboto",
+//       '"Helvetica Neue"',
+//       "Arial",
+//       "sans-serif",
+//       '"Apple Color Emoji"',
+//       '"Segoe UI Emoji"',
+//       '"Segoe UI Symbol"',
+//     ].join(","),
+//   },
+// });
 
 export default function TimKiemPhim() {
   const location = useLocation();
@@ -138,7 +138,7 @@ export default function TimKiemPhim() {
 
   //cap nhat thongtintimkiemreducer khi input thay doi
   useEffect(() => {
-    console.log(startDate, endDate);
+    // console.log(startDate, endDate);
     timKiem();
   }, [tenPhim, startDate, endDate, listCheckBox, danhGia]);
 
@@ -153,117 +153,117 @@ export default function TimKiemPhim() {
   }
 
   return danhSachPhim ? (
-    <ThemeProvider theme={theme}>
-      <FormControl>
-        <div className="formTimKiemPhim">
-          {/* line 1 */}
-          <div className="line1">
-            {/* input box */}
-            <FormGroup className="inputBox">
-              <Autocomplete
-                onInputChange={(event, inputValue) => {
-                  setTenPhim(inputValue);
-                }}
-                value={tenPhim}
-                clearOnBlur={false}
-                id="timKiemPhim"
-                freeSolo
-                disableClearable
-                options={danhSachPhim.map((movie) => movie.tenPhim)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Tìm kiếm ..."
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={{ ...params.InputProps, type: "search" }}
-                  />
-                )}
-              />
-            </FormGroup>
-
-            {/* datepicker */}
-            <FormGroup className="rangeDatePickerBox">
-              <DateRangePicker
-                startDate={startDate}
-                endDate={endDate}
-                onStartDateChange={setStartDate}
-                onEndDateChange={setEndDate}
-                minimumDate={new Date("2015-01-01T00:00:00")}
-                // minimumLength={1}
-                format="dd-MM-yyyy"
-                locale={vi}
-              >
-                {({ startDateInputProps, endDateInputProps, focus }) => (
-                  <div className="date-range">
-                    <input
-                      className={
-                        "input" + (focus === START_DATE ? " -focused" : "")
-                      }
-                      {...startDateInputProps}
-                      placeholder="Từ ngày"
-                    />
-                    <span className="date-range_arrow" />
-                    <input
-                      className={
-                        "input" + (focus === END_DATE ? " -focused" : "")
-                      }
-                      {...endDateInputProps}
-                      placeholder="Đến ngày"
-                    />
-                  </div>
-                )}
-              </DateRangePicker>
-            </FormGroup>
-          </div>
-
-          {/* line 2 */}
-          <div className="line2">
-            {/* list checkbox */}
-            <FormGroup className="listCheckboxBox">
-              {listCheckBox.map((item, index) => (
-                <FormControlLabel
-                  key={index}
-                  control={
-                    <Checkbox
-                      disableRipple={true}
-                      checked={item.isChecked === "true"}
-                      onChange={(event) => {
-                        checkBoxHandleChange(event, index);
-                      }}
-                      name={item.name}
-                    />
-                  }
-                  label={item.label}
+    // <ThemeProvider theme={theme}>
+    <FormControl>
+      <div className="formTimKiemPhim">
+        {/* line 1 */}
+        <div className="line1">
+          {/* input box */}
+          <FormGroup className="inputBox">
+            <Autocomplete
+              onInputChange={(event, inputValue) => {
+                setTenPhim(inputValue);
+              }}
+              value={tenPhim}
+              clearOnBlur={false}
+              id="timKiemPhim"
+              freeSolo
+              disableClearable
+              options={danhSachPhim.map((movie) => movie.tenPhim)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Tìm kiếm ..."
+                  margin="normal"
+                  variant="outlined"
+                  InputProps={{ ...params.InputProps, type: "search" }}
                 />
-              ))}
-            </FormGroup>
+              )}
+            />
+          </FormGroup>
 
-            {/* range slider */}
-            <FormGroup className="rangeSliderBox">
-              <Slider
-                color="secondary"
-                value={danhGia}
-                onChange={danhGiaHandleChange}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                getAriaValueText={danhGiaText}
-                min={1}
-                max={10}
-                ValueLabelComponent={ValueLabelComponent}
-              />
-              <Typography id="range-slider">Đánh Giá</Typography>
-            </FormGroup>
-
-            {/* button reset thong tin tim kiem */}
-            <FormGroup>
-              <Button color="secondary" onClick={resetTimKiem}>
-                Reset
-              </Button>
-            </FormGroup>
-          </div>
+          {/* datepicker */}
+          <FormGroup className="rangeDatePickerBox">
+            <DateRangePicker
+              startDate={startDate}
+              endDate={endDate}
+              onStartDateChange={setStartDate}
+              onEndDateChange={setEndDate}
+              minimumDate={new Date("2015-01-01T00:00:00")}
+              // minimumLength={1}
+              format="dd-MM-yyyy"
+              locale={vi}
+            >
+              {({ startDateInputProps, endDateInputProps, focus }) => (
+                <div className="date-range">
+                  <input
+                    className={
+                      "input" + (focus === START_DATE ? " -focused" : "")
+                    }
+                    {...startDateInputProps}
+                    placeholder="Từ ngày"
+                  />
+                  <span className="date-range_arrow" />
+                  <input
+                    className={
+                      "input" + (focus === END_DATE ? " -focused" : "")
+                    }
+                    {...endDateInputProps}
+                    placeholder="Đến ngày"
+                  />
+                </div>
+              )}
+            </DateRangePicker>
+          </FormGroup>
         </div>
-      </FormControl>
-    </ThemeProvider>
-  ) : null;
+
+        {/* line 2 */}
+        <div className="line2">
+          {/* list checkbox */}
+          <FormGroup className="listCheckboxBox">
+            {listCheckBox.map((item, index) => (
+              <FormControlLabel
+                key={index}
+                control={
+                  <Checkbox
+                    disableRipple={true}
+                    checked={item.isChecked === "true"}
+                    onChange={(event) => {
+                      checkBoxHandleChange(event, index);
+                    }}
+                    name={item.name}
+                  />
+                }
+                label={item.label}
+              />
+            ))}
+          </FormGroup>
+
+          {/* range slider */}
+          <FormGroup className="rangeSliderBox">
+            <Slider
+              color="secondary"
+              value={danhGia}
+              onChange={danhGiaHandleChange}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              getAriaValueText={danhGiaText}
+              min={1}
+              max={10}
+              ValueLabelComponent={ValueLabelComponent}
+            />
+            <Typography id="range-slider">Đánh Giá</Typography>
+          </FormGroup>
+
+          {/* button reset thong tin tim kiem */}
+          <FormGroup>
+            <Button color="secondary" onClick={resetTimKiem}>
+              Reset
+            </Button>
+          </FormGroup>
+        </div>
+      </div>
+    </FormControl>
+  ) : // </ThemeProvider>
+  null;
 }

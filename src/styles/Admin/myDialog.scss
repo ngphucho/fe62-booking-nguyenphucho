@@ -1,0 +1,58 @@
+.myDialog {
+  .MuiButton-root.closeButton {
+    padding: 0;
+    border-radius: 0;
+    width: 32px;
+    min-width: 32px;
+    margin-left: 32px;
+  }
+
+  // .MuiButton-textSecondary:hover {
+  //   background-color: transparent;
+  // }
+
+  .MuiDialogContent-root {
+    form {
+      .inputGroup,
+      .MuiFormControl-root {
+        margin-bottom: 0.5rem;
+      }
+
+      .input-group-text {
+        width: 40px;
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .MuiOutlinedInput-notchedOutline {
+        top: 0;
+      }
+
+      .MuiOutlinedInput-input {
+        padding-top: 9.5px;
+        padding-bottom: 9.5px;
+      }
+
+      .alert {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .formPhim {
+    .MuiOutlinedInput-root,
+    .MuiButton-root {
+      border-radius: 0;
+    }
+
+    .MuiOutlinedInput-root{
+      width: 100%;
+    }
+
+    .MuiFormControl-root.MuiTextField-root {
+      margin-bottom: 0;
+    }
+  }
+}

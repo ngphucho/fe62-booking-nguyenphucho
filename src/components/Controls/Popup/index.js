@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { popupModalToggle } from "../../../actions/popupModal";
-import "./style.scss"
+import "./style.scss";
 
 const useStyle = makeStyles({
   root: {
@@ -24,23 +24,23 @@ export default function Popup({ children }) {
   const classes = useStyle();
   const { isOpen, title } = useSelector((state) => state.popupModal);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
   const handleClose = () => {
     dispatch(popupModalToggle(title));
   };
   return (
     <Dialog
       open={isOpen}
-      onClose={handleClose}
+      // onClose={handleClose}
       fullScreen={fullScreen}
-      className={classes.root}
+      className={classes.root + " myDialog"}
     >
       <DialogTitle>
         <div style={{ display: "flex" }}>
           <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
             {title}
           </Typography>
-          <Button color="secondary" onClick={handleClose}>
+          <Button className="closeButton" color="secondary" onClick={handleClose}>
             x
           </Button>
         </div>

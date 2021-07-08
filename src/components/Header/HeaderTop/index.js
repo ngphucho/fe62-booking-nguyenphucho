@@ -167,14 +167,19 @@ export default function HeaderTop() {
                       {userInfo.hoTen}
                     </span>
                   </DropdownToggle>
-                  <DropdownMenu
-                    className="border-0 rounded-0 p-0 subMenu"
-                  >
+                  <DropdownMenu className="border-0 rounded-0 p-0 subMenu">
                     <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
                       <DropdownItem className="subItem">
                         Thông tin cá nhân
                       </DropdownItem>
                     </Link>
+                    {userInfo.maLoaiNguoiDung === "QuanTri" ? (
+                      <Link to="/admin/">
+                        <DropdownItem className="subItem">
+                          Đến trang quản trị
+                        </DropdownItem>
+                      </Link>
+                    ) : null}
                     <DropdownItem
                       className="subItem"
                       onClick={() => {

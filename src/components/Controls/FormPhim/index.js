@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { FormControl, FormGroup, Button, TextField } from "@material-ui/core";
+import React from "react";
+import { FormControl, Button, TextField } from "@material-ui/core";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -18,8 +17,8 @@ const schema = yup.object().shape({
   ngayKhoiChieu: yup.string().required(),
   danhGia: yup.number().required().integer().positive().min(0).max(10),
 });
+
 export default function FormPhim({ handleFormSubmit, formData }) {
-  const dispatch = useDispatch();
   //khoi tao defautvalue cho form
   let defaultV = {};
   if (formData.values) {
@@ -35,12 +34,13 @@ export default function FormPhim({ handleFormSubmit, formData }) {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
     setValue,
     trigger,
   } = useForm({
     defaultValues: defaultV,
     resolver: yupResolver(schema),
+    mode: onchange,
   });
 
   //goi khi sumbit form
@@ -71,7 +71,8 @@ export default function FormPhim({ handleFormSubmit, formData }) {
                   disabled={item.disabled}
                   hidden={item.disabled}
                   type={item.type}
-                  label={item.label}
+                  // label={item.label}
+                  placeholder={item.label}
                   variant="outlined"
                 />
               )}
@@ -104,20 +105,31 @@ export default function FormPhim({ handleFormSubmit, formData }) {
   };
 
   return (
-    <form
-      // onSubmitCapture={() => {
-      //   console.log(getValues());
-      // }}
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      {inputList.map((item) => (
-        <FormControl key={item.inputName}>{switchItem(item)}</FormControl>
-      ))}
-      <FormControl>
-        <Button type="submit" variant="outlined">
-          {formData.button}
-        </Button>
-      </FormControl>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div
+        className="formPhim"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        {inputList.map((item) => (
+          <FormControl key={item.inputName}>{switchItem(item)}</FormControl>
+        ))}
+        <FormControl>
+          <Button
+            style={{
+              alignSelf: "baseline",
+              marginLeft: "auto",
+              marginRight: "auto",
+              backgroundColor: "#a0a6ab",
+              color: "#ffffff",
+            }}
+            disabled={!isValid || !isDirty}
+            type="submit"
+            // variant="outlined"
+          >
+            {formData.button}
+          </Button>
+        </FormControl>
+      </div>
     </form>
   );
 }

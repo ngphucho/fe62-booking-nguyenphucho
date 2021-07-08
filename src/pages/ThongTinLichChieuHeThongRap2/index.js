@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactHorizontalDatePicker from "react-horizontal-strip-datepicker";
 import "react-horizontal-strip-datepicker/dist/ReactHorizontalDatePicker.css";
-import { compareTwoDayWithoutTime } from "../../utils/timeFunction";
+import {
+  compareTwoDayWithoutTime,
+  getSelectedDay,
+} from "../../utils/timeFunction";
 import ScrollContainer from "react-indiana-drag-scroll";
 import SuatChieu from "../../components/SuatChieu";
 
@@ -28,10 +31,10 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
     }
   };
 
-  const onSelectedDay = (d) => {
-    // d.setHours(7, 0, 0, 0);
-    console.log(d);
-    setToday(d);
+  const onSelectedDay = () => {
+    setTimeout(() => {
+      setToday(getSelectedDay());
+    }, 500);
   };
 
   useEffect(() => {
@@ -50,6 +53,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
     if (danhSachPhim) {
       setDanhSachPhimFilter(filterPhim(danhSachPhim));
     }
+    // console.log("today", today);
   }, [danhSachPhim, today]);
 
   const BoxPhim = (item) => {
@@ -171,7 +175,9 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
                     <div className="tenRap">{item.tenCumRap}</div>
                     <div className="diaChi">
                       {item.diaChi}
-                      <span className="banDo">[Bản đồ]</span>
+                      <span className="banDo text-danger cursorPointer">
+                        [Bản đồ]
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -197,7 +203,7 @@ export default function ThongTinLichChieuHeThongRap2({ danhSachHeThongRap }) {
             ) : (
               <div className="py-3">Không tìm thấy phim...</div>
             )}
-            {danhSachPhimFilter.map((item) => BoxPhim(item))}
+            {/* {danhSachPhimFilter.map((item) => BoxPhim(item))} */}
           </ScrollContainer>
         </div>
       </div>

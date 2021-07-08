@@ -35,7 +35,7 @@ export default function NavBar() {
               <DropdownToggle nav>
                 <AccountCircleIcon />
                 <span style={{ paddingLeft: 10, letterSpacing: 2 }}>
-                  {userInfo.taiKhoan}
+                  {userInfo.hoTen}
                 </span>
               </DropdownToggle>
               <DropdownMenu
@@ -43,7 +43,7 @@ export default function NavBar() {
                 style={{ top: "70px", right: 0, backgroundColor: "#00000080" }}
               >
                 <Link to={"/thong-tin-tai-khoan/" + userInfo.taiKhoan}>
-                  <DropdownItem>Thông tin cá nhân</DropdownItem>
+                  <DropdownItem className="subItem">Thông tin cá nhân</DropdownItem>
                 </Link>
                 <DropdownItem
                   onClick={() => {
